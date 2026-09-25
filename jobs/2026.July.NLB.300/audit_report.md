@@ -1,0 +1,9490 @@
+# NLB SCRATCH LOTTERY - LAYOUT AUDIT REPORT
+
+Layout file : `0345-0346-0347-LAYOUT.TXT`
+Generated   : 2026-07-28 09:44:52
+
+## File load summary
+
+- Blocks (channels) per row : 3
+- Data rows read : 500,304
+- VOID tickets ignored : 912
+- Malformed serials : 0
+- Duplicate serials : 0
+- Detected: game 0345 on channels [1]
+- Detected: game 0346 on channels [2]
+- Detected: game 0347 on channels [3]
+
+## Layout verification
+
+- The file arrangement matches the declared LAYOUT (no discrepancies).
+
+---
+# Game 0345 - "JAYA SIKURUYI"
+
+**Overall: ALL CHECKS PASSED**
+
+## 1. Play positions  -  PASS - No exceptions
+
+*Procedure:* Check whether the play position fields are populated per the game specification, including the win-pattern rules of the game mechanic and the forbidden symbol combinations.
+
+- No exceptions were noted. All play patterns are valid for the game mechanic and consistent with winner/loser status.
+
+## 2. Prize box / position  -  PASS - No exceptions
+
+*Procedure:* Check whether the prize print code field is populated per the game specification (blank when the game has no prize spot).
+
+- No exceptions were noted. All prize print codes are valid and, for winners, match the system prize code.
+
+## 3. Serial number  -  PASS - No exceptions
+
+*Procedure:* Check whether the serial-number field is populated per the format PXXXGGGGTTTTTTT with a unique consecutive number over the full range.
+
+- No exceptions were noted. All 500,000 serials are present exactly once and correctly formatted.
+
+## 4. VIRN and Barcode  -  PASS - No exceptions
+
+*Procedure:* Check whether the VIRN and Barcode fields are populated per the format PXXXGGGGVVVVVVV with the barcode carrying the parity digit.
+
+- No exceptions were noted. All VIRNs are valid, unique and their barcodes carry the correct parity digit.
+
+## 5. Agent validation codes  -  PASS - No exceptions
+
+*Procedure:* Check whether the agent validation code fields are populated per the rules for high-tier/losing tickets and low-tier winning tickets.
+
+- No exceptions were noted. All agent validation codes follow the prescribed composition rules.
+
+## 6. Prize structure  -  PASS - No exceptions
+
+*Procedure:* Check whether the prize structure prescribed by the game specification is reflected in the data layout.
+
+- Rs.     50 (03,  Low): expected 100,000, found 100,000  OK
+- Rs.    500 (07, High): expected  12,500, found  12,500  OK
+- Rs.  1,000 (08, High): expected   1,160, found   1,160  OK
+- Rs. 10,000 (12, High): expected      84, found      84  OK
+- Losing tickets (99): expected 386,256, found 386,256  OK
+- Total tickets: expected 500,000, found 500,000  OK
+
+## 7. GLEPS per book  -  PASS - No exceptions
+
+*Procedure:* Check whether each book of 40 tickets contains the guaranteed 8 x Rs.50 low-end prizes.
+
+- No exceptions were noted. Every book contains exactly 8 x Rs.50.
+
+## 8. First cartons  -  PASS - No exceptions
+
+*Procedure:* Check whether each 'first' carton carries the prescribed prize allocation.
+
+- No exceptions were noted. Every 'first' carton meets the allocation (Rs.500=300, Rs.10000=2, Rs.1000>=27).
+
+## 9. Last carton  -  PASS - No exceptions
+
+*Procedure:* Check whether each 'last' carton carries the prescribed prize allocation.
+
+- No exceptions were noted. Every 'last' carton meets the allocation (Rs.500=200, Rs.10000=2, Rs.1000>=18).
+
+## 10. Non-GLEPS per book  -  PASS - No exceptions
+
+*Procedure:* Check whether each book of 40 tickets contains at least one NON-GLEPS prize.
+
+- No exceptions were noted. Every book contains at least one NON-GLEPS prize.
+
+## 11. Per-book prize rules  -  PASS - No exceptions
+
+*Procedure:* Check whether each book satisfies the per-book prize count rules: exactly 1 x Rs.500; at most 1 x Rs.1000; at most 1 x Rs.10000.
+
+- No exceptions were noted. Every book satisfies the per-book prize count rules.
+
+## 12. Consecutive play pattern  -  PASS - No exceptions
+
+*Procedure:* Check whether consecutive tickets contain the same play symbol pattern.
+
+- No exceptions were noted. Consecutive tickets do not contain the same play symbol pattern in any instance.
+
+## 13. Consecutive symbols (any rotation)  -  PASS - No exceptions
+
+*Procedure:* Check whether consecutive tickets contain the same winning symbols in any rotation.
+
+- No exceptions were noted. Consecutive tickets do not contain the same symbols in any rotation in any instance.
+
+## 14. Five-ticket block has a winner  -  PASS - No exceptions
+
+*Procedure:* Check whether each block of five tickets starting from ticket 001 in each book contains at least one prize.
+
+- No exceptions were noted. Every block of five tickets contains at least one prize.
+
+## 15. Prize value run length  -  PASS - No exceptions
+
+*Procedure:* Check whether more than three consecutive tickets contain the same winning value / prize amount symbol.
+
+- No exceptions were noted. No more than three consecutive tickets share the same prize value.
+
+## 16. Book-set prize rule  -  PASS - No exceptions
+
+*Procedure:* Check the configured book-set prize rule (e.g. one Umbrella prize in every consecutive set of 4 books).
+
+- Not applicable for this game.
+
+## Appendix I - Play symbol distribution (0345)
+
+| Play symbol | Code | Position 1 | Position 2 | Total |
+|---|---|---:|---:|---:|
+| Face | KA | 96,760 | 95,451 | 192,211 |
+| Crown | LA | 94,786 | 92,995 | 187,781 |
+| Flag | NA | 25,631 | 27,312 | 52,943 |
+| Trophy | PA | 92,657 | 94,438 | 187,095 |
+| Key | QA | 95,564 | 93,671 | 189,235 |
+| Motor Bicycle | UA | 94,602 | 96,133 | 190,735 |
+| **Total** |  | **500,000** | **500,000** | **1,000,000** |
+
+## Appendix II - Prize distribution (0345)
+
+| Prize amount (LKR) | Code | Total |
+|---:|---|---:|
+| 50 | dd | 176,535 |
+| 500 | hh | 114,955 |
+| 1,000 | jj | 106,358 |
+| 10,000 | nn | 102,152 |
+| **Total** |  | **500,000** |
+
+## Appendix III - Agent validation code distribution (0345)
+
+| Letter | GLEPS | Non-GLEPS | Losing | Total |
+|---|---:|---:|---:|---:|
+| A | 35,298 | 6,906 | 196,345 | 238,549 |
+| D | 33,165 | 7,052 | 192,441 | 232,658 |
+| R | 31,889 | 6,578 | 193,609 | 232,076 |
+| S | 34,259 | 6,817 | 190,546 | 231,622 |
+| T | 100,000 | 0 | 0 | 100,000 |
+| W | 33,521 | 7,125 | 194,557 | 235,203 |
+| Z | 31,868 | 6,754 | 191,270 | 229,892 |
+| **Total** | **300,000** | **41,232** | **1,158,768** | **1,500,000** |
+
+---
+# Game 0346 - "MINI KETA"
+
+**Overall: ALL CHECKS PASSED**
+
+## 1. Play positions  -  PASS - No exceptions
+
+*Procedure:* Check whether the play position fields are populated per the game specification, including the win-pattern rules of the game mechanic and the forbidden symbol combinations.
+
+- No exceptions were noted. All play patterns are valid for the game mechanic and consistent with winner/loser status.
+
+## 2. Prize box / position  -  PASS - No exceptions
+
+*Procedure:* Check whether the prize print code field is populated per the game specification (blank when the game has no prize spot).
+
+- No exceptions were noted. All prize print codes are valid and, for winners, match the system prize code.
+
+## 3. Serial number  -  PASS - No exceptions
+
+*Procedure:* Check whether the serial-number field is populated per the format PXXXGGGGTTTTTTT with a unique consecutive number over the full range.
+
+- No exceptions were noted. All 500,000 serials are present exactly once and correctly formatted.
+
+## 4. VIRN and Barcode  -  PASS - No exceptions
+
+*Procedure:* Check whether the VIRN and Barcode fields are populated per the format PXXXGGGGVVVVVVV with the barcode carrying the parity digit.
+
+- No exceptions were noted. All VIRNs are valid, unique and their barcodes carry the correct parity digit.
+
+## 5. Agent validation codes  -  PASS - No exceptions
+
+*Procedure:* Check whether the agent validation code fields are populated per the rules for high-tier/losing tickets and low-tier winning tickets.
+
+- No exceptions were noted. All agent validation codes follow the prescribed composition rules.
+
+## 6. Prize structure  -  PASS - No exceptions
+
+*Procedure:* Check whether the prize structure prescribed by the game specification is reflected in the data layout.
+
+- Rs.     50 (03,  Low): expected 100,000, found 100,000  OK
+- Rs.    500 (07, High): expected  12,500, found  12,500  OK
+- Rs.  5,000 (11, High): expected     106, found     106  OK
+- Rs. 10,000 (12, High): expected      42, found      42  OK
+- Rs. 25,000 (13, High): expected      42, found      42  OK
+- Losing tickets (99): expected 387,310, found 387,310  OK
+- Total tickets: expected 500,000, found 500,000  OK
+
+## 7. GLEPS per book  -  PASS - No exceptions
+
+*Procedure:* Check whether each book of 40 tickets contains the guaranteed 8 x Rs.50 low-end prizes.
+
+- No exceptions were noted. Every book contains exactly 8 x Rs.50.
+
+## 8. First cartons  -  PASS - No exceptions
+
+*Procedure:* Check whether each 'first' carton carries the prescribed prize allocation.
+
+- No exceptions were noted. Every 'first' carton meets the allocation (Rs.10000=1, Rs.25000=1, Rs.500>=300, Rs.5000>=2).
+
+## 9. Last carton  -  PASS - No exceptions
+
+*Procedure:* Check whether each 'last' carton carries the prescribed prize allocation.
+
+- No exceptions were noted. Every 'last' carton meets the allocation (Rs.10000=1, Rs.25000=1, Rs.500>=200, Rs.5000>=1).
+
+## 10. Non-GLEPS per book  -  PASS - No exceptions
+
+*Procedure:* Check whether each book of 40 tickets contains at least one NON-GLEPS prize.
+
+- No exceptions were noted. Every book contains at least one NON-GLEPS prize.
+
+## 11. Per-book prize rules  -  PASS - No exceptions
+
+*Procedure:* Check whether each book satisfies the per-book prize count rules: exactly 1 x Rs.500; at most 1 x Rs.5000; at most 1 x Rs.10000; at most 1 x Rs.25000.
+
+- No exceptions were noted. Every book satisfies the per-book prize count rules.
+
+## 12. Consecutive play pattern  -  PASS - No exceptions
+
+*Procedure:* Check whether consecutive tickets contain the same play symbol pattern.
+
+- No exceptions were noted. Consecutive tickets do not contain the same play symbol pattern in any instance.
+
+## 13. Consecutive symbols (any rotation)  -  PASS - No exceptions
+
+*Procedure:* Check whether consecutive tickets contain the same winning symbols in any rotation.
+
+- No exceptions were noted. Consecutive tickets do not contain the same symbols in any rotation in any instance.
+
+## 14. Five-ticket block has a winner  -  PASS - No exceptions
+
+*Procedure:* Check whether each block of five tickets starting from ticket 001 in each book contains at least one prize.
+
+- No exceptions were noted. Every block of five tickets contains at least one prize.
+
+## 15. Prize value run length  -  PASS - No exceptions
+
+*Procedure:* Check whether more than three consecutive tickets contain the same winning value / prize amount symbol.
+
+- No exceptions were noted. No more than three consecutive tickets share the same prize value.
+
+## 16. Book-set prize rule  -  PASS - No exceptions
+
+*Procedure:* Check the configured book-set prize rule (e.g. one Umbrella prize in every consecutive set of 4 books).
+
+- Not applicable for this game.
+
+## Appendix I - Play symbol distribution (0346)
+
+| Play symbol | Code | Position 1 | Position 2 | Total |
+|---|---|---:|---:|---:|
+| Gold Coin | KB | 27,949 | 28,669 | 56,618 |
+| Diamond | LB | 28,919 | 27,153 | 56,072 |
+| Gift Box | NB | 106,209 | 114,997 | 221,206 |
+| Hand | PB | 112,873 | 109,707 | 222,580 |
+| Bundle of Money | QB | 113,744 | 109,183 | 222,927 |
+| Face | UB | 110,306 | 110,291 | 220,597 |
+| **Total** |  | **500,000** | **500,000** | **1,000,000** |
+
+## Appendix II - Prize distribution (0346)
+
+| Prize amount (LKR) | Code | Total |
+|---:|---|---:|
+| 50 | dd | 160,897 |
+| 500 | hh | 92,303 |
+| 5,000 | mm | 83,946 |
+| 10,000 | nn | 81,925 |
+| 25,000 | pp | 80,929 |
+| **Total** |  | **500,000** |
+
+## Appendix III - Agent validation code distribution (0346)
+
+| Letter | GLEPS | Non-GLEPS | Losing | Total |
+|---|---:|---:|---:|---:|
+| A | 35,037 | 6,553 | 197,559 | 239,149 |
+| D | 31,064 | 6,001 | 191,539 | 228,604 |
+| R | 31,594 | 6,306 | 193,243 | 231,143 |
+| S | 33,419 | 6,282 | 192,183 | 231,884 |
+| T | 100,000 | 0 | 0 | 100,000 |
+| W | 34,433 | 6,361 | 193,512 | 234,306 |
+| Z | 34,453 | 6,567 | 193,894 | 234,914 |
+| **Total** | **300,000** | **38,070** | **1,161,930** | **1,500,000** |
+
+---
+# Game 0347 - "TOP CLASS"
+
+**Overall: 3 CHECK(S) WITH EXCEPTIONS**
+
+## 1. Play positions  -  PASS - No exceptions
+
+*Procedure:* Check whether the play position fields are populated per the game specification, including the win-pattern rules of the game mechanic and the forbidden symbol combinations.
+
+- No exceptions were noted. All play patterns are valid for the game mechanic and consistent with winner/loser status.
+
+## 2. Prize box / position  -  PASS - No exceptions
+
+*Procedure:* Check whether the prize print code field is populated per the game specification (blank when the game has no prize spot).
+
+- No exceptions were noted. The prize print code field is blank on every ticket, as this game has no prize spot.
+
+## 3. Serial number  -  PASS - No exceptions
+
+*Procedure:* Check whether the serial-number field is populated per the format PXXXGGGGTTTTTTT with a unique consecutive number over the full range.
+
+- No exceptions were noted. All 500,000 serials are present exactly once and correctly formatted.
+
+## 4. VIRN and Barcode  -  PASS - No exceptions
+
+*Procedure:* Check whether the VIRN and Barcode fields are populated per the format PXXXGGGGVVVVVVV with the barcode carrying the parity digit.
+
+- No exceptions were noted. All VIRNs are valid, unique and their barcodes carry the correct parity digit.
+
+## 5. Agent validation codes  -  PASS - No exceptions
+
+*Procedure:* Check whether the agent validation code fields are populated per the rules for high-tier/losing tickets and low-tier winning tickets.
+
+- No exceptions were noted. All agent validation codes follow the prescribed composition rules.
+
+## 6. Prize structure  -  PASS - No exceptions
+
+*Procedure:* Check whether the prize structure prescribed by the game specification is reflected in the data layout.
+
+- Rs.     50 (03,  Low): expected 100,000, found 100,000  OK
+- Rs.    500 (07, High): expected   9,900, found   9,900  OK
+- Rs.  5,000 (11, High): expected     210, found     210  OK
+- Rs.  1,200 (26, High): expected   3,125, found   3,125  OK
+- Losing tickets (99): expected 386,765, found 386,765  OK
+- Total tickets: expected 500,000, found 500,000  OK
+
+## 7. GLEPS per book  -  PASS - No exceptions
+
+*Procedure:* Check whether each book of 40 tickets contains the guaranteed 8 x Rs.50 low-end prizes.
+
+- No exceptions were noted. Every book contains exactly 8 x Rs.50.
+
+## 8. First cartons  -  PASS - No exceptions
+
+*Procedure:* Check whether each 'first' carton carries the prescribed prize allocation.
+
+- No exceptions were noted. Every 'first' carton meets the allocation (Rs.1200=75, Rs.500>=237, Rs.5000>=5).
+
+## 9. Last carton  -  PASS - No exceptions
+
+*Procedure:* Check whether each 'last' carton carries the prescribed prize allocation.
+
+- No exceptions were noted. Every 'last' carton meets the allocation (Rs.1200=50, Rs.500>=158, Rs.5000>=3).
+
+## 10. Non-GLEPS per book  -  EXCEPTIONS (1787)
+
+*Procedure:* Check whether each book of 40 tickets contains at least one NON-GLEPS prize.
+
+- 1787 book(s) with no NON-GLEPS prize.
+
+*Offending items (1787):*
+  - Book 7 (serials 241-280)
+  - Book 24 (serials 921-960)
+  - Book 26 (serials 1001-1040)
+  - Book 44 (serials 1721-1760)
+  - Book 48 (serials 1881-1920)
+  - Book 68 (serials 2681-2720)
+  - Book 71 (serials 2801-2840)
+  - Book 80 (serials 3161-3200)
+  - Book 86 (serials 3401-3440)
+  - Book 92 (serials 3641-3680)
+  - Book 101 (serials 4001-4040)
+  - Book 107 (serials 4241-4280)
+  - Book 112 (serials 4441-4480)
+  - Book 116 (serials 4601-4640)
+  - Book 120 (serials 4761-4800)
+  - Book 122 (serials 4841-4880)
+  - Book 130 (serials 5161-5200)
+  - Book 140 (serials 5561-5600)
+  - Book 149 (serials 5921-5960)
+  - Book 153 (serials 6081-6120)
+  - Book 165 (serials 6561-6600)
+  - Book 167 (serials 6641-6680)
+  - Book 183 (serials 7281-7320)
+  - Book 189 (serials 7521-7560)
+  - Book 193 (serials 7681-7720)
+  - Book 199 (serials 7921-7960)
+  - Book 205 (serials 8161-8200)
+  - Book 221 (serials 8801-8840)
+  - Book 223 (serials 8881-8920)
+  - Book 227 (serials 9041-9080)
+  - Book 234 (serials 9321-9360)
+  - Book 238 (serials 9481-9520)
+  - Book 247 (serials 9841-9880)
+  - Book 252 (serials 10041-10080)
+  - Book 253 (serials 10081-10120)
+  - Book 261 (serials 10401-10440)
+  - Book 265 (serials 10561-10600)
+  - Book 271 (serials 10801-10840)
+  - Book 285 (serials 11361-11400)
+  - Book 289 (serials 11521-11560)
+  - Book 317 (serials 12641-12680)
+  - Book 327 (serials 13041-13080)
+  - Book 329 (serials 13121-13160)
+  - Book 337 (serials 13441-13480)
+  - Book 344 (serials 13721-13760)
+  - Book 356 (serials 14201-14240)
+  - Book 365 (serials 14561-14600)
+  - Book 368 (serials 14681-14720)
+  - Book 383 (serials 15281-15320)
+  - Book 389 (serials 15521-15560)
+  - Book 392 (serials 15641-15680)
+  - Book 397 (serials 15841-15880)
+  - Book 407 (serials 16241-16280)
+  - Book 410 (serials 16361-16400)
+  - Book 413 (serials 16481-16520)
+  - Book 419 (serials 16721-16760)
+  - Book 422 (serials 16841-16880)
+  - Book 428 (serials 17081-17120)
+  - Book 440 (serials 17561-17600)
+  - Book 444 (serials 17721-17760)
+  - Book 452 (serials 18041-18080)
+  - Book 460 (serials 18361-18400)
+  - Book 466 (serials 18601-18640)
+  - Book 470 (serials 18761-18800)
+  - Book 487 (serials 19441-19480)
+  - Book 496 (serials 19801-19840)
+  - Book 501 (serials 20001-20040)
+  - Book 513 (serials 20481-20520)
+  - Book 523 (serials 20881-20920)
+  - Book 527 (serials 21041-21080)
+  - Book 530 (serials 21161-21200)
+  - Book 534 (serials 21321-21360)
+  - Book 539 (serials 21521-21560)
+  - Book 546 (serials 21801-21840)
+  - Book 554 (serials 22121-22160)
+  - Book 559 (serials 22321-22360)
+  - Book 566 (serials 22601-22640)
+  - Book 575 (serials 22961-23000)
+  - Book 579 (serials 23121-23160)
+  - Book 606 (serials 24201-24240)
+  - Book 609 (serials 24321-24360)
+  - Book 611 (serials 24401-24440)
+  - Book 618 (serials 24681-24720)
+  - Book 631 (serials 25201-25240)
+  - Book 636 (serials 25401-25440)
+  - Book 641 (serials 25601-25640)
+  - Book 655 (serials 26161-26200)
+  - Book 660 (serials 26361-26400)
+  - Book 669 (serials 26721-26760)
+  - Book 673 (serials 26881-26920)
+  - Book 680 (serials 27161-27200)
+  - Book 694 (serials 27721-27760)
+  - Book 704 (serials 28121-28160)
+  - Book 706 (serials 28201-28240)
+  - Book 710 (serials 28361-28400)
+  - Book 715 (serials 28561-28600)
+  - Book 739 (serials 29521-29560)
+  - Book 742 (serials 29641-29680)
+  - Book 745 (serials 29761-29800)
+  - Book 767 (serials 30641-30680)
+  - Book 774 (serials 30921-30960)
+  - Book 779 (serials 31121-31160)
+  - Book 785 (serials 31361-31400)
+  - Book 788 (serials 31481-31520)
+  - Book 791 (serials 31601-31640)
+  - Book 794 (serials 31721-31760)
+  - Book 818 (serials 32681-32720)
+  - Book 821 (serials 32801-32840)
+  - Book 828 (serials 33081-33120)
+  - Book 830 (serials 33161-33200)
+  - Book 833 (serials 33281-33320)
+  - Book 839 (serials 33521-33560)
+  - Book 849 (serials 33921-33960)
+  - Book 852 (serials 34041-34080)
+  - Book 854 (serials 34121-34160)
+  - Book 860 (serials 34361-34400)
+  - Book 865 (serials 34561-34600)
+  - Book 871 (serials 34801-34840)
+  - Book 876 (serials 35001-35040)
+  - Book 880 (serials 35161-35200)
+  - Book 883 (serials 35281-35320)
+  - Book 886 (serials 35401-35440)
+  - Book 899 (serials 35921-35960)
+  - Book 918 (serials 36681-36720)
+  - Book 920 (serials 36761-36800)
+  - Book 926 (serials 37001-37040)
+  - Book 930 (serials 37161-37200)
+  - Book 931 (serials 37201-37240)
+  - Book 935 (serials 37361-37400)
+  - Book 941 (serials 37601-37640)
+  - Book 946 (serials 37801-37840)
+  - Book 956 (serials 38201-38240)
+  - Book 968 (serials 38681-38720)
+  - Book 986 (serials 39401-39440)
+  - Book 992 (serials 39641-39680)
+  - Book 998 (serials 39881-39920)
+  - Book 1001 (serials 40001-40040)
+  - Book 1007 (serials 40241-40280)
+  - Book 1011 (serials 40401-40440)
+  - Book 1016 (serials 40601-40640)
+  - Book 1019 (serials 40721-40760)
+  - Book 1026 (serials 41001-41040)
+  - Book 1031 (serials 41201-41240)
+  - Book 1033 (serials 41281-41320)
+  - Book 1046 (serials 41801-41840)
+  - Book 1058 (serials 42281-42320)
+  - Book 1070 (serials 42761-42800)
+  - Book 1079 (serials 43121-43160)
+  - Book 1087 (serials 43441-43480)
+  - Book 1099 (serials 43921-43960)
+  - Book 1106 (serials 44201-44240)
+  - Book 1116 (serials 44601-44640)
+  - Book 1118 (serials 44681-44720)
+  - Book 1123 (serials 44881-44920)
+  - Book 1131 (serials 45201-45240)
+  - Book 1135 (serials 45361-45400)
+  - Book 1149 (serials 45921-45960)
+  - Book 1157 (serials 46241-46280)
+  - Book 1169 (serials 46721-46760)
+  - Book 1181 (serials 47201-47240)
+  - Book 1184 (serials 47321-47360)
+  - Book 1186 (serials 47401-47440)
+  - Book 1197 (serials 47841-47880)
+  - Book 1203 (serials 48081-48120)
+  - Book 1207 (serials 48241-48280)
+  - Book 1222 (serials 48841-48880)
+  - Book 1233 (serials 49281-49320)
+  - Book 1234 (serials 49321-49360)
+  - Book 1247 (serials 49841-49880)
+  - Book 1253 (serials 50081-50120)
+  - Book 1256 (serials 50201-50240)
+  - Book 1267 (serials 50641-50680)
+  - Book 1271 (serials 50801-50840)
+  - Book 1280 (serials 51161-51200)
+  - Book 1291 (serials 51601-51640)
+  - Book 1302 (serials 52041-52080)
+  - Book 1312 (serials 52441-52480)
+  - Book 1316 (serials 52601-52640)
+  - Book 1322 (serials 52841-52880)
+  - Book 1325 (serials 52961-53000)
+  - Book 1336 (serials 53401-53440)
+  - Book 1343 (serials 53681-53720)
+  - Book 1346 (serials 53801-53840)
+  - Book 1352 (serials 54041-54080)
+  - Book 1355 (serials 54161-54200)
+  - Book 1361 (serials 54401-54440)
+  - Book 1370 (serials 54761-54800)
+  - Book 1377 (serials 55041-55080)
+  - Book 1380 (serials 55161-55200)
+  - Book 1381 (serials 55201-55240)
+  - Book 1391 (serials 55601-55640)
+  - Book 1394 (serials 55721-55760)
+  - Book 1398 (serials 55881-55920)
+  - Book 1405 (serials 56161-56200)
+  - Book 1415 (serials 56561-56600)
+  - Book 1424 (serials 56921-56960)
+  - Book 1430 (serials 57161-57200)
+  - Book 1439 (serials 57521-57560)
+  - Book 1444 (serials 57721-57760)
+  - Book 1450 (serials 57961-58000)
+  - Book 1456 (serials 58201-58240)
+  - Book 1461 (serials 58401-58440)
+  - Book 1463 (serials 58481-58520)
+  - Book 1481 (serials 59201-59240)
+  - Book 1489 (serials 59521-59560)
+  - Book 1495 (serials 59761-59800)
+  - Book 1503 (serials 60081-60120)
+  - Book 1504 (serials 60121-60160)
+  - Book 1512 (serials 60441-60480)
+  - Book 1517 (serials 60641-60680)
+  - Book 1521 (serials 60801-60840)
+  - Book 1526 (serials 61001-61040)
+  - Book 1530 (serials 61161-61200)
+  - Book 1534 (serials 61321-61360)
+  - Book 1547 (serials 61841-61880)
+  - Book 1549 (serials 61921-61960)
+  - Book 1552 (serials 62041-62080)
+  - Book 1560 (serials 62361-62400)
+  - Book 1563 (serials 62481-62520)
+  - Book 1566 (serials 62601-62640)
+  - Book 1575 (serials 62961-63000)
+  - Book 1577 (serials 63041-63080)
+  - Book 1589 (serials 63521-63560)
+  - Book 1591 (serials 63601-63640)
+  - Book 1599 (serials 63921-63960)
+  - Book 1601 (serials 64001-64040)
+  - Book 1610 (serials 64361-64400)
+  - Book 1612 (serials 64441-64480)
+  - Book 1616 (serials 64601-64640)
+  - Book 1628 (serials 65081-65120)
+  - Book 1632 (serials 65241-65280)
+  - Book 1640 (serials 65561-65600)
+  - Book 1647 (serials 65841-65880)
+  - Book 1652 (serials 66041-66080)
+  - Book 1658 (serials 66281-66320)
+  - Book 1661 (serials 66401-66440)
+  - Book 1670 (serials 66761-66800)
+  - Book 1672 (serials 66841-66880)
+  - Book 1682 (serials 67241-67280)
+  - Book 1686 (serials 67401-67440)
+  - Book 1691 (serials 67601-67640)
+  - Book 1704 (serials 68121-68160)
+  - Book 1710 (serials 68361-68400)
+  - Book 1711 (serials 68401-68440)
+  - Book 1724 (serials 68921-68960)
+  - Book 1727 (serials 69041-69080)
+  - Book 1733 (serials 69281-69320)
+  - Book 1760 (serials 70361-70400)
+  - Book 1774 (serials 70921-70960)
+  - Book 1784 (serials 71321-71360)
+  - Book 1786 (serials 71401-71440)
+  - Book 1794 (serials 71721-71760)
+  - Book 1798 (serials 71881-71920)
+  - Book 1801 (serials 72001-72040)
+  - Book 1814 (serials 72521-72560)
+  - Book 1826 (serials 73001-73040)
+  - Book 1838 (serials 73481-73520)
+  - Book 1845 (serials 73761-73800)
+  - Book 1850 (serials 73961-74000)
+  - Book 1854 (serials 74121-74160)
+  - Book 1855 (serials 74161-74200)
+  - Book 1862 (serials 74441-74480)
+  - Book 1865 (serials 74561-74600)
+  - Book 1870 (serials 74761-74800)
+  - Book 1874 (serials 74921-74960)
+  - Book 1893 (serials 75681-75720)
+  - Book 1894 (serials 75721-75760)
+  - Book 1906 (serials 76201-76240)
+  - Book 1912 (serials 76441-76480)
+  - Book 1915 (serials 76561-76600)
+  - Book 1925 (serials 76961-77000)
+  - Book 1936 (serials 77401-77440)
+  - Book 1943 (serials 77681-77720)
+  - Book 1951 (serials 78001-78040)
+  - Book 1957 (serials 78241-78280)
+  - Book 1976 (serials 79001-79040)
+  - Book 1979 (serials 79121-79160)
+  - Book 1987 (serials 79441-79480)
+  - Book 2004 (serials 80121-80160)
+  - Book 2013 (serials 80481-80520)
+  - Book 2014 (serials 80521-80560)
+  - Book 2022 (serials 80841-80880)
+  - Book 2026 (serials 81001-81040)
+  - Book 2036 (serials 81401-81440)
+  - Book 2044 (serials 81721-81760)
+  - Book 2047 (serials 81841-81880)
+  - Book 2058 (serials 82281-82320)
+  - Book 2061 (serials 82401-82440)
+  - Book 2065 (serials 82561-82600)
+  - Book 2071 (serials 82801-82840)
+  - Book 2075 (serials 82961-83000)
+  - Book 2081 (serials 83201-83240)
+  - Book 2086 (serials 83401-83440)
+  - Book 2093 (serials 83681-83720)
+  - Book 2098 (serials 83881-83920)
+  - Book 2117 (serials 84641-84680)
+  - Book 2120 (serials 84761-84800)
+  - Book 2123 (serials 84881-84920)
+  - Book 2125 (serials 84961-85000)
+  - Book 2150 (serials 85961-86000)
+  - Book 2153 (serials 86081-86120)
+  - Book 2155 (serials 86161-86200)
+  - Book 2169 (serials 86721-86760)
+  - Book 2178 (serials 87081-87120)
+  - Book 2184 (serials 87321-87360)
+  - Book 2185 (serials 87361-87400)
+  - Book 2197 (serials 87841-87880)
+  - Book 2209 (serials 88321-88360)
+  - Book 2213 (serials 88481-88520)
+  - Book 2220 (serials 88761-88800)
+  - Book 2221 (serials 88801-88840)
+  - Book 2242 (serials 89641-89680)
+  - Book 2254 (serials 90121-90160)
+  - Book 2261 (serials 90401-90440)
+  - Book 2268 (serials 90681-90720)
+  - Book 2270 (serials 90761-90800)
+  - Book 2276 (serials 91001-91040)
+  - Book 2280 (serials 91161-91200)
+  - Book 2285 (serials 91361-91400)
+  - Book 2287 (serials 91441-91480)
+  - Book 2291 (serials 91601-91640)
+  - Book 2300 (serials 91961-92000)
+  - Book 2307 (serials 92241-92280)
+  - Book 2310 (serials 92361-92400)
+  - Book 2312 (serials 92441-92480)
+  - Book 2315 (serials 92561-92600)
+  - Book 2324 (serials 92921-92960)
+  - Book 2328 (serials 93081-93120)
+  - Book 2334 (serials 93321-93360)
+  - Book 2341 (serials 93601-93640)
+  - Book 2358 (serials 94281-94320)
+  - Book 2363 (serials 94481-94520)
+  - Book 2369 (serials 94721-94760)
+  - Book 2388 (serials 95481-95520)
+  - Book 2395 (serials 95761-95800)
+  - Book 2398 (serials 95881-95920)
+  - Book 2411 (serials 96401-96440)
+  - Book 2415 (serials 96561-96600)
+  - Book 2426 (serials 97001-97040)
+  - Book 2432 (serials 97241-97280)
+  - Book 2438 (serials 97481-97520)
+  - Book 2441 (serials 97601-97640)
+  - Book 2444 (serials 97721-97760)
+  - Book 2450 (serials 97961-98000)
+  - Book 2454 (serials 98121-98160)
+  - Book 2465 (serials 98561-98600)
+  - Book 2468 (serials 98681-98720)
+  - Book 2470 (serials 98761-98800)
+  - Book 2475 (serials 98961-99000)
+  - Book 2483 (serials 99281-99320)
+  - Book 2488 (serials 99481-99520)
+  - Book 2491 (serials 99601-99640)
+  - Book 2498 (serials 99881-99920)
+  - Book 2502 (serials 100041-100080)
+  - Book 2510 (serials 100361-100400)
+  - Book 2527 (serials 101041-101080)
+  - Book 2535 (serials 101361-101400)
+  - Book 2546 (serials 101801-101840)
+  - Book 2549 (serials 101921-101960)
+  - Book 2557 (serials 102241-102280)
+  - Book 2572 (serials 102841-102880)
+  - Book 2579 (serials 103121-103160)
+  - Book 2584 (serials 103321-103360)
+  - Book 2595 (serials 103761-103800)
+  - Book 2600 (serials 103961-104000)
+  - Book 2604 (serials 104121-104160)
+  - Book 2606 (serials 104201-104240)
+  - Book 2612 (serials 104441-104480)
+  - Book 2614 (serials 104521-104560)
+  - Book 2626 (serials 105001-105040)
+  - Book 2648 (serials 105881-105920)
+  - Book 2651 (serials 106001-106040)
+  - Book 2653 (serials 106081-106120)
+  - Book 2657 (serials 106241-106280)
+  - Book 2664 (serials 106521-106560)
+  - Book 2669 (serials 106721-106760)
+  - Book 2675 (serials 106961-107000)
+  - Book 2682 (serials 107241-107280)
+  - Book 2697 (serials 107841-107880)
+  - Book 2704 (serials 108121-108160)
+  - Book 2707 (serials 108241-108280)
+  - Book 2715 (serials 108561-108600)
+  - Book 2718 (serials 108681-108720)
+  - Book 2720 (serials 108761-108800)
+  - Book 2725 (serials 108961-109000)
+  - Book 2738 (serials 109481-109520)
+  - Book 2743 (serials 109681-109720)
+  - Book 2751 (serials 110001-110040)
+  - Book 2752 (serials 110041-110080)
+  - Book 2770 (serials 110761-110800)
+  - Book 2777 (serials 111041-111080)
+  - Book 2779 (serials 111121-111160)
+  - Book 2784 (serials 111321-111360)
+  - Book 2787 (serials 111441-111480)
+  - Book 2797 (serials 111841-111880)
+  - Book 2802 (serials 112041-112080)
+  - Book 2805 (serials 112161-112200)
+  - Book 2814 (serials 112521-112560)
+  - Book 2816 (serials 112601-112640)
+  - Book 2821 (serials 112801-112840)
+  - Book 2831 (serials 113201-113240)
+  - Book 2840 (serials 113561-113600)
+  - Book 2846 (serials 113801-113840)
+  - Book 2849 (serials 113921-113960)
+  - Book 2856 (serials 114201-114240)
+  - Book 2858 (serials 114281-114320)
+  - Book 2862 (serials 114441-114480)
+  - Book 2873 (serials 114881-114920)
+  - Book 2885 (serials 115361-115400)
+  - Book 2887 (serials 115441-115480)
+  - Book 2909 (serials 116321-116360)
+  - Book 2917 (serials 116641-116680)
+  - Book 2920 (serials 116761-116800)
+  - Book 2934 (serials 117321-117360)
+  - Book 2949 (serials 117921-117960)
+  - Book 2961 (serials 118401-118440)
+  - Book 2969 (serials 118721-118760)
+  - Book 2972 (serials 118841-118880)
+  - Book 2975 (serials 118961-119000)
+  - Book 2981 (serials 119201-119240)
+  - Book 2993 (serials 119681-119720)
+  - Book 2998 (serials 119881-119920)
+  - Book 3004 (serials 120121-120160)
+  - Book 3008 (serials 120281-120320)
+  - Book 3010 (serials 120361-120400)
+  - Book 3017 (serials 120641-120680)
+  - Book 3025 (serials 120961-121000)
+  - Book 3032 (serials 121241-121280)
+  - Book 3037 (serials 121441-121480)
+  - Book 3041 (serials 121601-121640)
+  - Book 3047 (serials 121841-121880)
+  - Book 3054 (serials 122121-122160)
+  - Book 3068 (serials 122681-122720)
+  - Book 3080 (serials 123161-123200)
+  - Book 3085 (serials 123361-123400)
+  - Book 3091 (serials 123601-123640)
+  - Book 3101 (serials 124001-124040)
+  - Book 3105 (serials 124161-124200)
+  - Book 3110 (serials 124361-124400)
+  - Book 3113 (serials 124481-124520)
+  - Book 3139 (serials 125521-125560)
+  - Book 3146 (serials 125801-125840)
+  - Book 3155 (serials 126161-126200)
+  - Book 3158 (serials 126281-126320)
+  - Book 3168 (serials 126681-126720)
+  - Book 3177 (serials 127041-127080)
+  - Book 3179 (serials 127121-127160)
+  - Book 3186 (serials 127401-127440)
+  - Book 3189 (serials 127521-127560)
+  - Book 3203 (serials 128081-128120)
+  - Book 3209 (serials 128321-128360)
+  - Book 3216 (serials 128601-128640)
+  - Book 3217 (serials 128641-128680)
+  - Book 3222 (serials 128841-128880)
+  - Book 3227 (serials 129041-129080)
+  - Book 3235 (serials 129361-129400)
+  - Book 3239 (serials 129521-129560)
+  - Book 3245 (serials 129761-129800)
+  - Book 3249 (serials 129921-129960)
+  - Book 3256 (serials 130201-130240)
+  - Book 3266 (serials 130601-130640)
+  - Book 3279 (serials 131121-131160)
+  - Book 3280 (serials 131161-131200)
+  - Book 3284 (serials 131321-131360)
+  - Book 3287 (serials 131441-131480)
+  - Book 3294 (serials 131721-131760)
+  - Book 3299 (serials 131921-131960)
+  - Book 3302 (serials 132041-132080)
+  - Book 3307 (serials 132241-132280)
+  - Book 3311 (serials 132401-132440)
+  - Book 3317 (serials 132641-132680)
+  - Book 3325 (serials 132961-133000)
+  - Book 3335 (serials 133361-133400)
+  - Book 3346 (serials 133801-133840)
+  - Book 3353 (serials 134081-134120)
+  - Book 3359 (serials 134321-134360)
+  - Book 3361 (serials 134401-134440)
+  - Book 3366 (serials 134601-134640)
+  - Book 3373 (serials 134881-134920)
+  - Book 3380 (serials 135161-135200)
+  - Book 3386 (serials 135401-135440)
+  - Book 3392 (serials 135641-135680)
+  - Book 3407 (serials 136241-136280)
+  - Book 3411 (serials 136401-136440)
+  - Book 3413 (serials 136481-136520)
+  - Book 3426 (serials 137001-137040)
+  - Book 3427 (serials 137041-137080)
+  - Book 3431 (serials 137201-137240)
+  - Book 3434 (serials 137321-137360)
+  - Book 3440 (serials 137561-137600)
+  - Book 3446 (serials 137801-137840)
+  - Book 3449 (serials 137921-137960)
+  - Book 3455 (serials 138161-138200)
+  - Book 3474 (serials 138921-138960)
+  - Book 3479 (serials 139121-139160)
+  - Book 3485 (serials 139361-139400)
+  - Book 3493 (serials 139681-139720)
+  - Book 3511 (serials 140401-140440)
+  - Book 3516 (serials 140601-140640)
+  - Book 3521 (serials 140801-140840)
+  - Book 3524 (serials 140921-140960)
+  - Book 3536 (serials 141401-141440)
+  - Book 3540 (serials 141561-141600)
+  - Book 3547 (serials 141841-141880)
+  - Book 3559 (serials 142321-142360)
+  - Book 3568 (serials 142681-142720)
+  - Book 3574 (serials 142921-142960)
+  - Book 3582 (serials 143241-143280)
+  - Book 3591 (serials 143601-143640)
+  - Book 3595 (serials 143761-143800)
+  - Book 3606 (serials 144201-144240)
+  - Book 3607 (serials 144241-144280)
+  - Book 3612 (serials 144441-144480)
+  - Book 3620 (serials 144761-144800)
+  - Book 3624 (serials 144921-144960)
+  - Book 3633 (serials 145281-145320)
+  - Book 3648 (serials 145881-145920)
+  - Book 3666 (serials 146601-146640)
+  - Book 3672 (serials 146841-146880)
+  - Book 3677 (serials 147041-147080)
+  - Book 3688 (serials 147481-147520)
+  - Book 3696 (serials 147801-147840)
+  - Book 3698 (serials 147881-147920)
+  - Book 3706 (serials 148201-148240)
+  - Book 3716 (serials 148601-148640)
+  - Book 3721 (serials 148801-148840)
+  - Book 3731 (serials 149201-149240)
+  - Book 3736 (serials 149401-149440)
+  - Book 3741 (serials 149601-149640)
+  - Book 3746 (serials 149801-149840)
+  - Book 3754 (serials 150121-150160)
+  - Book 3767 (serials 150641-150680)
+  - Book 3779 (serials 151121-151160)
+  - Book 3785 (serials 151361-151400)
+  - Book 3787 (serials 151441-151480)
+  - Book 3797 (serials 151841-151880)
+  - Book 3800 (serials 151961-152000)
+  - Book 3803 (serials 152081-152120)
+  - Book 3811 (serials 152401-152440)
+  - Book 3818 (serials 152681-152720)
+  - Book 3824 (serials 152921-152960)
+  - Book 3827 (serials 153041-153080)
+  - Book 3840 (serials 153561-153600)
+  - Book 3851 (serials 154001-154040)
+  - Book 3854 (serials 154121-154160)
+  - Book 3861 (serials 154401-154440)
+  - Book 3868 (serials 154681-154720)
+  - Book 3872 (serials 154841-154880)
+  - Book 3875 (serials 154961-155000)
+  - Book 3900 (serials 155961-156000)
+  - Book 3908 (serials 156281-156320)
+  - Book 3912 (serials 156441-156480)
+  - Book 3916 (serials 156601-156640)
+  - Book 3920 (serials 156761-156800)
+  - Book 3927 (serials 157041-157080)
+  - Book 3935 (serials 157361-157400)
+  - Book 3937 (serials 157441-157480)
+  - Book 3944 (serials 157721-157760)
+  - Book 3956 (serials 158201-158240)
+  - Book 3959 (serials 158321-158360)
+  - Book 3962 (serials 158441-158480)
+  - Book 3966 (serials 158601-158640)
+  - Book 3974 (serials 158921-158960)
+  - Book 3977 (serials 159041-159080)
+  - Book 3983 (serials 159281-159320)
+  - Book 3992 (serials 159641-159680)
+  - Book 4001 (serials 160001-160040)
+  - Book 4005 (serials 160161-160200)
+  - Book 4010 (serials 160361-160400)
+  - Book 4019 (serials 160721-160760)
+  - Book 4021 (serials 160801-160840)
+  - Book 4031 (serials 161201-161240)
+  - Book 4034 (serials 161321-161360)
+  - Book 4046 (serials 161801-161840)
+  - Book 4048 (serials 161881-161920)
+  - Book 4051 (serials 162001-162040)
+  - Book 4064 (serials 162521-162560)
+  - Book 4077 (serials 163041-163080)
+  - Book 4087 (serials 163441-163480)
+  - Book 4092 (serials 163641-163680)
+  - Book 4100 (serials 163961-164000)
+  - Book 4109 (serials 164321-164360)
+  - Book 4121 (serials 164801-164840)
+  - Book 4127 (serials 165041-165080)
+  - Book 4131 (serials 165201-165240)
+  - Book 4134 (serials 165321-165360)
+  - Book 4135 (serials 165361-165400)
+  - Book 4149 (serials 165921-165960)
+  - Book 4151 (serials 166001-166040)
+  - Book 4156 (serials 166201-166240)
+  - Book 4166 (serials 166601-166640)
+  - Book 4175 (serials 166961-167000)
+  - Book 4190 (serials 167561-167600)
+  - Book 4200 (serials 167961-168000)
+  - Book 4205 (serials 168161-168200)
+  - Book 4209 (serials 168321-168360)
+  - Book 4210 (serials 168361-168400)
+  - Book 4214 (serials 168521-168560)
+  - Book 4226 (serials 169001-169040)
+  - Book 4232 (serials 169241-169280)
+  - Book 4239 (serials 169521-169560)
+  - Book 4241 (serials 169601-169640)
+  - Book 4244 (serials 169721-169760)
+  - Book 4247 (serials 169841-169880)
+  - Book 4268 (serials 170681-170720)
+  - Book 4270 (serials 170761-170800)
+  - Book 4274 (serials 170921-170960)
+  - Book 4284 (serials 171321-171360)
+  - Book 4286 (serials 171401-171440)
+  - Book 4292 (serials 171641-171680)
+  - Book 4298 (serials 171881-171920)
+  - Book 4300 (serials 171961-172000)
+  - Book 4304 (serials 172121-172160)
+  - Book 4319 (serials 172721-172760)
+  - Book 4322 (serials 172841-172880)
+  - Book 4328 (serials 173081-173120)
+  - Book 4344 (serials 173721-173760)
+  - Book 4352 (serials 174041-174080)
+  - Book 4355 (serials 174161-174200)
+  - Book 4360 (serials 174361-174400)
+  - Book 4376 (serials 175001-175040)
+  - Book 4384 (serials 175321-175360)
+  - Book 4387 (serials 175441-175480)
+  - Book 4403 (serials 176081-176120)
+  - Book 4413 (serials 176481-176520)
+  - Book 4416 (serials 176601-176640)
+  - Book 4434 (serials 177321-177360)
+  - Book 4439 (serials 177521-177560)
+  - Book 4445 (serials 177761-177800)
+  - Book 4448 (serials 177881-177920)
+  - Book 4452 (serials 178041-178080)
+  - Book 4463 (serials 178481-178520)
+  - Book 4472 (serials 178841-178880)
+  - Book 4474 (serials 178921-178960)
+  - Book 4481 (serials 179201-179240)
+  - Book 4502 (serials 180041-180080)
+  - Book 4504 (serials 180121-180160)
+  - Book 4512 (serials 180441-180480)
+  - Book 4523 (serials 180881-180920)
+  - Book 4526 (serials 181001-181040)
+  - Book 4532 (serials 181241-181280)
+  - Book 4540 (serials 181561-181600)
+  - Book 4551 (serials 182001-182040)
+  - Book 4557 (serials 182241-182280)
+  - Book 4566 (serials 182601-182640)
+  - Book 4572 (serials 182841-182880)
+  - Book 4578 (serials 183081-183120)
+  - Book 4582 (serials 183241-183280)
+  - Book 4587 (serials 183441-183480)
+  - Book 4589 (serials 183521-183560)
+  - Book 4592 (serials 183641-183680)
+  - Book 4595 (serials 183761-183800)
+  - Book 4601 (serials 184001-184040)
+  - Book 4609 (serials 184321-184360)
+  - Book 4619 (serials 184721-184760)
+  - Book 4623 (serials 184881-184920)
+  - Book 4635 (serials 185361-185400)
+  - Book 4637 (serials 185441-185480)
+  - Book 4643 (serials 185681-185720)
+  - Book 4649 (serials 185921-185960)
+  - Book 4652 (serials 186041-186080)
+  - Book 4655 (serials 186161-186200)
+  - Book 4662 (serials 186441-186480)
+  - Book 4673 (serials 186881-186920)
+  - Book 4680 (serials 187161-187200)
+  - Book 4682 (serials 187241-187280)
+  - Book 4689 (serials 187521-187560)
+  - Book 4691 (serials 187601-187640)
+  - Book 4693 (serials 187681-187720)
+  - Book 4706 (serials 188201-188240)
+  - Book 4709 (serials 188321-188360)
+  - Book 4724 (serials 188921-188960)
+  - Book 4728 (serials 189081-189120)
+  - Book 4730 (serials 189161-189200)
+  - Book 4754 (serials 190121-190160)
+  - Book 4772 (serials 190841-190880)
+  - Book 4775 (serials 190961-191000)
+  - Book 4781 (serials 191201-191240)
+  - Book 4784 (serials 191321-191360)
+  - Book 4793 (serials 191681-191720)
+  - Book 4797 (serials 191841-191880)
+  - Book 4806 (serials 192201-192240)
+  - Book 4813 (serials 192481-192520)
+  - Book 4821 (serials 192801-192840)
+  - Book 4825 (serials 192961-193000)
+  - Book 4841 (serials 193601-193640)
+  - Book 4847 (serials 193841-193880)
+  - Book 4854 (serials 194121-194160)
+  - Book 4861 (serials 194401-194440)
+  - Book 4866 (serials 194601-194640)
+  - Book 4872 (serials 194841-194880)
+  - Book 4873 (serials 194881-194920)
+  - Book 4884 (serials 195321-195360)
+  - Book 4893 (serials 195681-195720)
+  - Book 4898 (serials 195881-195920)
+  - Book 4904 (serials 196121-196160)
+  - Book 4910 (serials 196361-196400)
+  - Book 4912 (serials 196441-196480)
+  - Book 4922 (serials 196841-196880)
+  - Book 4934 (serials 197321-197360)
+  - Book 4936 (serials 197401-197440)
+  - Book 4941 (serials 197601-197640)
+  - Book 4946 (serials 197801-197840)
+  - Book 4952 (serials 198041-198080)
+  - Book 4958 (serials 198281-198320)
+  - Book 4961 (serials 198401-198440)
+  - Book 4970 (serials 198761-198800)
+  - Book 4975 (serials 198961-199000)
+  - Book 4979 (serials 199121-199160)
+  - Book 4989 (serials 199521-199560)
+  - Book 4997 (serials 199841-199880)
+  - Book 5001 (serials 200001-200040)
+  - Book 5004 (serials 200121-200160)
+  - Book 5009 (serials 200321-200360)
+  - Book 5012 (serials 200441-200480)
+  - Book 5015 (serials 200561-200600)
+  - Book 5018 (serials 200681-200720)
+  - Book 5026 (serials 201001-201040)
+  - Book 5034 (serials 201321-201360)
+  - Book 5036 (serials 201401-201440)
+  - Book 5044 (serials 201721-201760)
+  - Book 5047 (serials 201841-201880)
+  - Book 5060 (serials 202361-202400)
+  - Book 5070 (serials 202761-202800)
+  - Book 5075 (serials 202961-203000)
+  - Book 5084 (serials 203321-203360)
+  - Book 5089 (serials 203521-203560)
+  - Book 5093 (serials 203681-203720)
+  - Book 5100 (serials 203961-204000)
+  - Book 5105 (serials 204161-204200)
+  - Book 5108 (serials 204281-204320)
+  - Book 5111 (serials 204401-204440)
+  - Book 5120 (serials 204761-204800)
+  - Book 5126 (serials 205001-205040)
+  - Book 5132 (serials 205241-205280)
+  - Book 5134 (serials 205321-205360)
+  - Book 5146 (serials 205801-205840)
+  - Book 5153 (serials 206081-206120)
+  - Book 5155 (serials 206161-206200)
+  - Book 5164 (serials 206521-206560)
+  - Book 5180 (serials 207161-207200)
+  - Book 5195 (serials 207761-207800)
+  - Book 5200 (serials 207961-208000)
+  - Book 5204 (serials 208121-208160)
+  - Book 5207 (serials 208241-208280)
+  - Book 5212 (serials 208441-208480)
+  - Book 5216 (serials 208601-208640)
+  - Book 5230 (serials 209161-209200)
+  - Book 5237 (serials 209441-209480)
+  - Book 5240 (serials 209561-209600)
+  - Book 5249 (serials 209921-209960)
+  - Book 5259 (serials 210321-210360)
+  - Book 5268 (serials 210681-210720)
+  - Book 5270 (serials 210761-210800)
+  - Book 5279 (serials 211121-211160)
+  - Book 5292 (serials 211641-211680)
+  - Book 5294 (serials 211721-211760)
+  - Book 5301 (serials 212001-212040)
+  - Book 5309 (serials 212321-212360)
+  - Book 5315 (serials 212561-212600)
+  - Book 5326 (serials 213001-213040)
+  - Book 5333 (serials 213281-213320)
+  - Book 5340 (serials 213561-213600)
+  - Book 5348 (serials 213881-213920)
+  - Book 5352 (serials 214041-214080)
+  - Book 5357 (serials 214241-214280)
+  - Book 5362 (serials 214441-214480)
+  - Book 5365 (serials 214561-214600)
+  - Book 5379 (serials 215121-215160)
+  - Book 5380 (serials 215161-215200)
+  - Book 5385 (serials 215361-215400)
+  - Book 5388 (serials 215481-215520)
+  - Book 5396 (serials 215801-215840)
+  - Book 5398 (serials 215881-215920)
+  - Book 5402 (serials 216041-216080)
+  - Book 5405 (serials 216161-216200)
+  - Book 5410 (serials 216361-216400)
+  - Book 5420 (serials 216761-216800)
+  - Book 5434 (serials 217321-217360)
+  - Book 5439 (serials 217521-217560)
+  - Book 5447 (serials 217841-217880)
+  - Book 5451 (serials 218001-218040)
+  - Book 5456 (serials 218201-218240)
+  - Book 5465 (serials 218561-218600)
+  - Book 5475 (serials 218961-219000)
+  - Book 5480 (serials 219161-219200)
+  - Book 5486 (serials 219401-219440)
+  - Book 5495 (serials 219761-219800)
+  - Book 5502 (serials 220041-220080)
+  - Book 5517 (serials 220641-220680)
+  - Book 5524 (serials 220921-220960)
+  - Book 5541 (serials 221601-221640)
+  - Book 5549 (serials 221921-221960)
+  - Book 5556 (serials 222201-222240)
+  - Book 5558 (serials 222281-222320)
+  - Book 5561 (serials 222401-222440)
+  - Book 5565 (serials 222561-222600)
+  - Book 5579 (serials 223121-223160)
+  - Book 5582 (serials 223241-223280)
+  - Book 5601 (serials 224001-224040)
+  - Book 5605 (serials 224161-224200)
+  - Book 5612 (serials 224441-224480)
+  - Book 5623 (serials 224881-224920)
+  - Book 5639 (serials 225521-225560)
+  - Book 5647 (serials 225841-225880)
+  - Book 5655 (serials 226161-226200)
+  - Book 5658 (serials 226281-226320)
+  - Book 5663 (serials 226481-226520)
+  - Book 5671 (serials 226801-226840)
+  - Book 5674 (serials 226921-226960)
+  - Book 5680 (serials 227161-227200)
+  - Book 5685 (serials 227361-227400)
+  - Book 5693 (serials 227681-227720)
+  - Book 5702 (serials 228041-228080)
+  - Book 5711 (serials 228401-228440)
+  - Book 5714 (serials 228521-228560)
+  - Book 5720 (serials 228761-228800)
+  - Book 5731 (serials 229201-229240)
+  - Book 5740 (serials 229561-229600)
+  - Book 5750 (serials 229961-230000)
+  - Book 5753 (serials 230081-230120)
+  - Book 5763 (serials 230481-230520)
+  - Book 5771 (serials 230801-230840)
+  - Book 5785 (serials 231361-231400)
+  - Book 5792 (serials 231641-231680)
+  - Book 5794 (serials 231721-231760)
+  - Book 5798 (serials 231881-231920)
+  - Book 5810 (serials 232361-232400)
+  - Book 5816 (serials 232601-232640)
+  - Book 5822 (serials 232841-232880)
+  - Book 5835 (serials 233361-233400)
+  - Book 5840 (serials 233561-233600)
+  - Book 5846 (serials 233801-233840)
+  - Book 5849 (serials 233921-233960)
+  - Book 5854 (serials 234121-234160)
+  - Book 5861 (serials 234401-234440)
+  - Book 5863 (serials 234481-234520)
+  - Book 5868 (serials 234681-234720)
+  - Book 5882 (serials 235241-235280)
+  - Book 5905 (serials 236161-236200)
+  - Book 5920 (serials 236761-236800)
+  - Book 5925 (serials 236961-237000)
+  - Book 5927 (serials 237041-237080)
+  - Book 5935 (serials 237361-237400)
+  - Book 5946 (serials 237801-237840)
+  - Book 5952 (serials 238041-238080)
+  - Book 5960 (serials 238361-238400)
+  - Book 5968 (serials 238681-238720)
+  - Book 5977 (serials 239041-239080)
+  - Book 5985 (serials 239361-239400)
+  - Book 5996 (serials 239801-239840)
+  - Book 5999 (serials 239921-239960)
+  - Book 6014 (serials 240521-240560)
+  - Book 6023 (serials 240881-240920)
+  - Book 6031 (serials 241201-241240)
+  - Book 6036 (serials 241401-241440)
+  - Book 6043 (serials 241681-241720)
+  - Book 6047 (serials 241841-241880)
+  - Book 6051 (serials 242001-242040)
+  - Book 6073 (serials 242881-242920)
+  - Book 6079 (serials 243121-243160)
+  - Book 6085 (serials 243361-243400)
+  - Book 6089 (serials 243521-243560)
+  - Book 6093 (serials 243681-243720)
+  - Book 6095 (serials 243761-243800)
+  - Book 6101 (serials 244001-244040)
+  - Book 6115 (serials 244561-244600)
+  - Book 6125 (serials 244961-245000)
+  - Book 6128 (serials 245081-245120)
+  - Book 6136 (serials 245401-245440)
+  - Book 6142 (serials 245641-245680)
+  - Book 6152 (serials 246041-246080)
+  - Book 6172 (serials 246841-246880)
+  - Book 6179 (serials 247121-247160)
+  - Book 6182 (serials 247241-247280)
+  - Book 6189 (serials 247521-247560)
+  - Book 6191 (serials 247601-247640)
+  - Book 6198 (serials 247881-247920)
+  - Book 6201 (serials 248001-248040)
+  - Book 6208 (serials 248281-248320)
+  - Book 6214 (serials 248521-248560)
+  - Book 6218 (serials 248681-248720)
+  - Book 6221 (serials 248801-248840)
+  - Book 6228 (serials 249081-249120)
+  - Book 6231 (serials 249201-249240)
+  - Book 6232 (serials 249241-249280)
+  - Book 6242 (serials 249641-249680)
+  - Book 6249 (serials 249921-249960)
+  - Book 6253 (serials 250081-250120)
+  - Book 6269 (serials 250721-250760)
+  - Book 6275 (serials 250961-251000)
+  - Book 6285 (serials 251361-251400)
+  - Book 6291 (serials 251601-251640)
+  - Book 6308 (serials 252281-252320)
+  - Book 6311 (serials 252401-252440)
+  - Book 6323 (serials 252881-252920)
+  - Book 6327 (serials 253041-253080)
+  - Book 6332 (serials 253241-253280)
+  - Book 6339 (serials 253521-253560)
+  - Book 6351 (serials 254001-254040)
+  - Book 6360 (serials 254361-254400)
+  - Book 6363 (serials 254481-254520)
+  - Book 6380 (serials 255161-255200)
+  - Book 6384 (serials 255321-255360)
+  - Book 6389 (serials 255521-255560)
+  - Book 6393 (serials 255681-255720)
+  - Book 6394 (serials 255721-255760)
+  - Book 6403 (serials 256081-256120)
+  - Book 6406 (serials 256201-256240)
+  - Book 6418 (serials 256681-256720)
+  - Book 6438 (serials 257481-257520)
+  - Book 6449 (serials 257921-257960)
+  - Book 6462 (serials 258441-258480)
+  - Book 6470 (serials 258761-258800)
+  - Book 6473 (serials 258881-258920)
+  - Book 6479 (serials 259121-259160)
+  - Book 6485 (serials 259361-259400)
+  - Book 6496 (serials 259801-259840)
+  - Book 6499 (serials 259921-259960)
+  - Book 6504 (serials 260121-260160)
+  - Book 6508 (serials 260281-260320)
+  - Book 6525 (serials 260961-261000)
+  - Book 6527 (serials 261041-261080)
+  - Book 6534 (serials 261321-261360)
+  - Book 6546 (serials 261801-261840)
+  - Book 6547 (serials 261841-261880)
+  - Book 6559 (serials 262321-262360)
+  - Book 6567 (serials 262641-262680)
+  - Book 6574 (serials 262921-262960)
+  - Book 6578 (serials 263081-263120)
+  - Book 6590 (serials 263561-263600)
+  - Book 6593 (serials 263681-263720)
+  - Book 6602 (serials 264041-264080)
+  - Book 6607 (serials 264241-264280)
+  - Book 6613 (serials 264481-264520)
+  - Book 6629 (serials 265121-265160)
+  - Book 6645 (serials 265761-265800)
+  - Book 6646 (serials 265801-265840)
+  - Book 6652 (serials 266041-266080)
+  - Book 6657 (serials 266241-266280)
+  - Book 6666 (serials 266601-266640)
+  - Book 6671 (serials 266801-266840)
+  - Book 6673 (serials 266881-266920)
+  - Book 6680 (serials 267161-267200)
+  - Book 6687 (serials 267441-267480)
+  - Book 6692 (serials 267641-267680)
+  - Book 6710 (serials 268361-268400)
+  - Book 6713 (serials 268481-268520)
+  - Book 6718 (serials 268681-268720)
+  - Book 6723 (serials 268881-268920)
+  - Book 6731 (serials 269201-269240)
+  - Book 6734 (serials 269321-269360)
+  - Book 6747 (serials 269841-269880)
+  - Book 6753 (serials 270081-270120)
+  - Book 6758 (serials 270281-270320)
+  - Book 6765 (serials 270561-270600)
+  - Book 6768 (serials 270681-270720)
+  - Book 6782 (serials 271241-271280)
+  - Book 6786 (serials 271401-271440)
+  - Book 6791 (serials 271601-271640)
+  - Book 6794 (serials 271721-271760)
+  - Book 6800 (serials 271961-272000)
+  - Book 6806 (serials 272201-272240)
+  - Book 6821 (serials 272801-272840)
+  - Book 6823 (serials 272881-272920)
+  - Book 6830 (serials 273161-273200)
+  - Book 6837 (serials 273441-273480)
+  - Book 6845 (serials 273761-273800)
+  - Book 6851 (serials 274001-274040)
+  - Book 6855 (serials 274161-274200)
+  - Book 6870 (serials 274761-274800)
+  - Book 6873 (serials 274881-274920)
+  - Book 6874 (serials 274921-274960)
+  - Book 6887 (serials 275441-275480)
+  - Book 6890 (serials 275561-275600)
+  - Book 6893 (serials 275681-275720)
+  - Book 6900 (serials 275961-276000)
+  - Book 6901 (serials 276001-276040)
+  - Book 6908 (serials 276281-276320)
+  - Book 6912 (serials 276441-276480)
+  - Book 6917 (serials 276641-276680)
+  - Book 6920 (serials 276761-276800)
+  - Book 6932 (serials 277241-277280)
+  - Book 6939 (serials 277521-277560)
+  - Book 6941 (serials 277601-277640)
+  - Book 6950 (serials 277961-278000)
+  - Book 6953 (serials 278081-278120)
+  - Book 6964 (serials 278521-278560)
+  - Book 6971 (serials 278801-278840)
+  - Book 6983 (serials 279281-279320)
+  - Book 6990 (serials 279561-279600)
+  - Book 6995 (serials 279761-279800)
+  - Book 7003 (serials 280081-280120)
+  - Book 7012 (serials 280441-280480)
+  - Book 7018 (serials 280681-280720)
+  - Book 7021 (serials 280801-280840)
+  - Book 7028 (serials 281081-281120)
+  - Book 7040 (serials 281561-281600)
+  - Book 7044 (serials 281721-281760)
+  - Book 7047 (serials 281841-281880)
+  - Book 7052 (serials 282041-282080)
+  - Book 7061 (serials 282401-282440)
+  - Book 7064 (serials 282521-282560)
+  - Book 7071 (serials 282801-282840)
+  - Book 7078 (serials 283081-283120)
+  - Book 7085 (serials 283361-283400)
+  - Book 7088 (serials 283481-283520)
+  - Book 7094 (serials 283721-283760)
+  - Book 7104 (serials 284121-284160)
+  - Book 7107 (serials 284241-284280)
+  - Book 7112 (serials 284441-284480)
+  - Book 7118 (serials 284681-284720)
+  - Book 7122 (serials 284841-284880)
+  - Book 7126 (serials 285001-285040)
+  - Book 7130 (serials 285161-285200)
+  - Book 7135 (serials 285361-285400)
+  - Book 7143 (serials 285681-285720)
+  - Book 7144 (serials 285721-285760)
+  - Book 7150 (serials 285961-286000)
+  - Book 7155 (serials 286161-286200)
+  - Book 7158 (serials 286281-286320)
+  - Book 7167 (serials 286641-286680)
+  - Book 7178 (serials 287081-287120)
+  - Book 7189 (serials 287521-287560)
+  - Book 7198 (serials 287881-287920)
+  - Book 7224 (serials 288921-288960)
+  - Book 7229 (serials 289121-289160)
+  - Book 7236 (serials 289401-289440)
+  - Book 7245 (serials 289761-289800)
+  - Book 7250 (serials 289961-290000)
+  - Book 7253 (serials 290081-290120)
+  - Book 7258 (serials 290281-290320)
+  - Book 7265 (serials 290561-290600)
+  - Book 7269 (serials 290721-290760)
+  - Book 7274 (serials 290921-290960)
+  - Book 7286 (serials 291401-291440)
+  - Book 7306 (serials 292201-292240)
+  - Book 7312 (serials 292441-292480)
+  - Book 7329 (serials 293121-293160)
+  - Book 7331 (serials 293201-293240)
+  - Book 7341 (serials 293601-293640)
+  - Book 7348 (serials 293881-293920)
+  - Book 7351 (serials 294001-294040)
+  - Book 7354 (serials 294121-294160)
+  - Book 7361 (serials 294401-294440)
+  - Book 7367 (serials 294641-294680)
+  - Book 7376 (serials 295001-295040)
+  - Book 7379 (serials 295121-295160)
+  - Book 7385 (serials 295361-295400)
+  - Book 7388 (serials 295481-295520)
+  - Book 7391 (serials 295601-295640)
+  - Book 7401 (serials 296001-296040)
+  - Book 7402 (serials 296041-296080)
+  - Book 7415 (serials 296561-296600)
+  - Book 7418 (serials 296681-296720)
+  - Book 7427 (serials 297041-297080)
+  - Book 7439 (serials 297521-297560)
+  - Book 7442 (serials 297641-297680)
+  - Book 7457 (serials 298241-298280)
+  - Book 7466 (serials 298601-298640)
+  - Book 7472 (serials 298841-298880)
+  - Book 7478 (serials 299081-299120)
+  - Book 7487 (serials 299441-299480)
+  - Book 7495 (serials 299761-299800)
+  - Book 7511 (serials 300401-300440)
+  - Book 7514 (serials 300521-300560)
+  - Book 7519 (serials 300721-300760)
+  - Book 7522 (serials 300841-300880)
+  - Book 7538 (serials 301481-301520)
+  - Book 7553 (serials 302081-302120)
+  - Book 7561 (serials 302401-302440)
+  - Book 7564 (serials 302521-302560)
+  - Book 7571 (serials 302801-302840)
+  - Book 7577 (serials 303041-303080)
+  - Book 7580 (serials 303161-303200)
+  - Book 7586 (serials 303401-303440)
+  - Book 7593 (serials 303681-303720)
+  - Book 7597 (serials 303841-303880)
+  - Book 7605 (serials 304161-304200)
+  - Book 7608 (serials 304281-304320)
+  - Book 7615 (serials 304561-304600)
+  - Book 7621 (serials 304801-304840)
+  - Book 7625 (serials 304961-305000)
+  - Book 7634 (serials 305321-305360)
+  - Book 7644 (serials 305721-305760)
+  - Book 7651 (serials 306001-306040)
+  - Book 7668 (serials 306681-306720)
+  - Book 7671 (serials 306801-306840)
+  - Book 7673 (serials 306881-306920)
+  - Book 7688 (serials 307481-307520)
+  - Book 7691 (serials 307601-307640)
+  - Book 7694 (serials 307721-307760)
+  - Book 7708 (serials 308281-308320)
+  - Book 7712 (serials 308441-308480)
+  - Book 7715 (serials 308561-308600)
+  - Book 7721 (serials 308801-308840)
+  - Book 7725 (serials 308961-309000)
+  - Book 7736 (serials 309401-309440)
+  - Book 7745 (serials 309761-309800)
+  - Book 7747 (serials 309841-309880)
+  - Book 7754 (serials 310121-310160)
+  - Book 7757 (serials 310241-310280)
+  - Book 7767 (serials 310641-310680)
+  - Book 7773 (serials 310881-310920)
+  - Book 7780 (serials 311161-311200)
+  - Book 7790 (serials 311561-311600)
+  - Book 7796 (serials 311801-311840)
+  - Book 7804 (serials 312121-312160)
+  - Book 7809 (serials 312321-312360)
+  - Book 7811 (serials 312401-312440)
+  - Book 7816 (serials 312601-312640)
+  - Book 7820 (serials 312761-312800)
+  - Book 7822 (serials 312841-312880)
+  - Book 7829 (serials 313121-313160)
+  - Book 7839 (serials 313521-313560)
+  - Book 7845 (serials 313761-313800)
+  - Book 7847 (serials 313841-313880)
+  - Book 7852 (serials 314041-314080)
+  - Book 7859 (serials 314321-314360)
+  - Book 7861 (serials 314401-314440)
+  - Book 7868 (serials 314681-314720)
+  - Book 7887 (serials 315441-315480)
+  - Book 7889 (serials 315521-315560)
+  - Book 7893 (serials 315681-315720)
+  - Book 7896 (serials 315801-315840)
+  - Book 7910 (serials 316361-316400)
+  - Book 7923 (serials 316881-316920)
+  - Book 7925 (serials 316961-317000)
+  - Book 7934 (serials 317321-317360)
+  - Book 7954 (serials 318121-318160)
+  - Book 7963 (serials 318481-318520)
+  - Book 7973 (serials 318881-318920)
+  - Book 7976 (serials 319001-319040)
+  - Book 7981 (serials 319201-319240)
+  - Book 7995 (serials 319761-319800)
+  - Book 8002 (serials 320041-320080)
+  - Book 8014 (serials 320521-320560)
+  - Book 8018 (serials 320681-320720)
+  - Book 8025 (serials 320961-321000)
+  - Book 8031 (serials 321201-321240)
+  - Book 8033 (serials 321281-321320)
+  - Book 8035 (serials 321361-321400)
+  - Book 8046 (serials 321801-321840)
+  - Book 8058 (serials 322281-322320)
+  - Book 8059 (serials 322321-322360)
+  - Book 8063 (serials 322481-322520)
+  - Book 8075 (serials 322961-323000)
+  - Book 8079 (serials 323121-323160)
+  - Book 8082 (serials 323241-323280)
+  - Book 8087 (serials 323441-323480)
+  - Book 8098 (serials 323881-323920)
+  - Book 8111 (serials 324401-324440)
+  - Book 8124 (serials 324921-324960)
+  - Book 8128 (serials 325081-325120)
+  - Book 8144 (serials 325721-325760)
+  - Book 8154 (serials 326121-326160)
+  - Book 8160 (serials 326361-326400)
+  - Book 8166 (serials 326601-326640)
+  - Book 8169 (serials 326721-326760)
+  - Book 8179 (serials 327121-327160)
+  - Book 8186 (serials 327401-327440)
+  - Book 8188 (serials 327481-327520)
+  - Book 8191 (serials 327601-327640)
+  - Book 8199 (serials 327921-327960)
+  - Book 8201 (serials 328001-328040)
+  - Book 8208 (serials 328281-328320)
+  - Book 8221 (serials 328801-328840)
+  - Book 8232 (serials 329241-329280)
+  - Book 8244 (serials 329721-329760)
+  - Book 8256 (serials 330201-330240)
+  - Book 8261 (serials 330401-330440)
+  - Book 8264 (serials 330521-330560)
+  - Book 8272 (serials 330841-330880)
+  - Book 8281 (serials 331201-331240)
+  - Book 8291 (serials 331601-331640)
+  - Book 8298 (serials 331881-331920)
+  - Book 8303 (serials 332081-332120)
+  - Book 8310 (serials 332361-332400)
+  - Book 8313 (serials 332481-332520)
+  - Book 8318 (serials 332681-332720)
+  - Book 8321 (serials 332801-332840)
+  - Book 8336 (serials 333401-333440)
+  - Book 8344 (serials 333721-333760)
+  - Book 8352 (serials 334041-334080)
+  - Book 8354 (serials 334121-334160)
+  - Book 8359 (serials 334321-334360)
+  - Book 8364 (serials 334521-334560)
+  - Book 8381 (serials 335201-335240)
+  - Book 8387 (serials 335441-335480)
+  - Book 8394 (serials 335721-335760)
+  - Book 8396 (serials 335801-335840)
+  - Book 8407 (serials 336241-336280)
+  - Book 8414 (serials 336521-336560)
+  - Book 8447 (serials 337841-337880)
+  - Book 8449 (serials 337921-337960)
+  - Book 8453 (serials 338081-338120)
+  - Book 8465 (serials 338561-338600)
+  - Book 8479 (serials 339121-339160)
+  - Book 8483 (serials 339281-339320)
+  - Book 8488 (serials 339481-339520)
+  - Book 8501 (serials 340001-340040)
+  - Book 8503 (serials 340081-340120)
+  - Book 8510 (serials 340361-340400)
+  - Book 8517 (serials 340641-340680)
+  - Book 8519 (serials 340721-340760)
+  - Book 8528 (serials 341081-341120)
+  - Book 8531 (serials 341201-341240)
+  - Book 8540 (serials 341561-341600)
+  - Book 8544 (serials 341721-341760)
+  - Book 8545 (serials 341761-341800)
+  - Book 8551 (serials 342001-342040)
+  - Book 8566 (serials 342601-342640)
+  - Book 8575 (serials 342961-343000)
+  - Book 8579 (serials 343121-343160)
+  - Book 8582 (serials 343241-343280)
+  - Book 8588 (serials 343481-343520)
+  - Book 8599 (serials 343921-343960)
+  - Book 8607 (serials 344241-344280)
+  - Book 8612 (serials 344441-344480)
+  - Book 8621 (serials 344801-344840)
+  - Book 8624 (serials 344921-344960)
+  - Book 8637 (serials 345441-345480)
+  - Book 8641 (serials 345601-345640)
+  - Book 8646 (serials 345801-345840)
+  - Book 8652 (serials 346041-346080)
+  - Book 8657 (serials 346241-346280)
+  - Book 8669 (serials 346721-346760)
+  - Book 8671 (serials 346801-346840)
+  - Book 8675 (serials 346961-347000)
+  - Book 8684 (serials 347321-347360)
+  - Book 8689 (serials 347521-347560)
+  - Book 8701 (serials 348001-348040)
+  - Book 8704 (serials 348121-348160)
+  - Book 8717 (serials 348641-348680)
+  - Book 8720 (serials 348761-348800)
+  - Book 8725 (serials 348961-349000)
+  - Book 8738 (serials 349481-349520)
+  - Book 8741 (serials 349601-349640)
+  - Book 8750 (serials 349961-350000)
+  - Book 8752 (serials 350041-350080)
+  - Book 8761 (serials 350401-350440)
+  - Book 8768 (serials 350681-350720)
+  - Book 8772 (serials 350841-350880)
+  - Book 8774 (serials 350921-350960)
+  - Book 8777 (serials 351041-351080)
+  - Book 8784 (serials 351321-351360)
+  - Book 8792 (serials 351641-351680)
+  - Book 8796 (serials 351801-351840)
+  - Book 8800 (serials 351961-352000)
+  - Book 8804 (serials 352121-352160)
+  - Book 8815 (serials 352561-352600)
+  - Book 8825 (serials 352961-353000)
+  - Book 8841 (serials 353601-353640)
+  - Book 8846 (serials 353801-353840)
+  - Book 8849 (serials 353921-353960)
+  - Book 8855 (serials 354161-354200)
+  - Book 8861 (serials 354401-354440)
+  - Book 8868 (serials 354681-354720)
+  - Book 8871 (serials 354801-354840)
+  - Book 8873 (serials 354881-354920)
+  - Book 8880 (serials 355161-355200)
+  - Book 8882 (serials 355241-355280)
+  - Book 8891 (serials 355601-355640)
+  - Book 8897 (serials 355841-355880)
+  - Book 8909 (serials 356321-356360)
+  - Book 8912 (serials 356441-356480)
+  - Book 8921 (serials 356801-356840)
+  - Book 8925 (serials 356961-357000)
+  - Book 8932 (serials 357241-357280)
+  - Book 8944 (serials 357721-357760)
+  - Book 8951 (serials 358001-358040)
+  - Book 8954 (serials 358121-358160)
+  - Book 8964 (serials 358521-358560)
+  - Book 8966 (serials 358601-358640)
+  - Book 8975 (serials 358961-359000)
+  - Book 8981 (serials 359201-359240)
+  - Book 9000 (serials 359961-360000)
+  - Book 9002 (serials 360041-360080)
+  - Book 9008 (serials 360281-360320)
+  - Book 9018 (serials 360681-360720)
+  - Book 9027 (serials 361041-361080)
+  - Book 9029 (serials 361121-361160)
+  - Book 9035 (serials 361361-361400)
+  - Book 9037 (serials 361441-361480)
+  - Book 9040 (serials 361561-361600)
+  - Book 9044 (serials 361721-361760)
+  - Book 9048 (serials 361881-361920)
+  - Book 9066 (serials 362601-362640)
+  - Book 9074 (serials 362921-362960)
+  - Book 9077 (serials 363041-363080)
+  - Book 9090 (serials 363561-363600)
+  - Book 9092 (serials 363641-363680)
+  - Book 9099 (serials 363921-363960)
+  - Book 9107 (serials 364241-364280)
+  - Book 9112 (serials 364441-364480)
+  - Book 9130 (serials 365161-365200)
+  - Book 9138 (serials 365481-365520)
+  - Book 9144 (serials 365721-365760)
+  - Book 9151 (serials 366001-366040)
+  - Book 9155 (serials 366161-366200)
+  - Book 9160 (serials 366361-366400)
+  - Book 9164 (serials 366521-366560)
+  - Book 9168 (serials 366681-366720)
+  - Book 9173 (serials 366881-366920)
+  - Book 9182 (serials 367241-367280)
+  - Book 9188 (serials 367481-367520)
+  - Book 9200 (serials 367961-368000)
+  - Book 9218 (serials 368681-368720)
+  - Book 9220 (serials 368761-368800)
+  - Book 9225 (serials 368961-369000)
+  - Book 9236 (serials 369401-369440)
+  - Book 9239 (serials 369521-369560)
+  - Book 9245 (serials 369761-369800)
+  - Book 9257 (serials 370241-370280)
+  - Book 9259 (serials 370321-370360)
+  - Book 9265 (serials 370561-370600)
+  - Book 9275 (serials 370961-371000)
+  - Book 9277 (serials 371041-371080)
+  - Book 9282 (serials 371241-371280)
+  - Book 9297 (serials 371841-371880)
+  - Book 9298 (serials 371881-371920)
+  - Book 9305 (serials 372161-372200)
+  - Book 9311 (serials 372401-372440)
+  - Book 9327 (serials 373041-373080)
+  - Book 9330 (serials 373161-373200)
+  - Book 9332 (serials 373241-373280)
+  - Book 9339 (serials 373521-373560)
+  - Book 9340 (serials 373561-373600)
+  - Book 9347 (serials 373841-373880)
+  - Book 9361 (serials 374401-374440)
+  - Book 9365 (serials 374561-374600)
+  - Book 9381 (serials 375201-375240)
+  - Book 9386 (serials 375401-375440)
+  - Book 9402 (serials 376041-376080)
+  - Book 9410 (serials 376361-376400)
+  - Book 9413 (serials 376481-376520)
+  - Book 9415 (serials 376561-376600)
+  - Book 9437 (serials 377441-377480)
+  - Book 9443 (serials 377681-377720)
+  - Book 9445 (serials 377761-377800)
+  - Book 9458 (serials 378281-378320)
+  - Book 9461 (serials 378401-378440)
+  - Book 9467 (serials 378641-378680)
+  - Book 9478 (serials 379081-379120)
+  - Book 9486 (serials 379401-379440)
+  - Book 9488 (serials 379481-379520)
+  - Book 9490 (serials 379561-379600)
+  - Book 9503 (serials 380081-380120)
+  - Book 9505 (serials 380161-380200)
+  - Book 9513 (serials 380481-380520)
+  - Book 9518 (serials 380681-380720)
+  - Book 9524 (serials 380921-380960)
+  - Book 9530 (serials 381161-381200)
+  - Book 9533 (serials 381281-381320)
+  - Book 9539 (serials 381521-381560)
+  - Book 9544 (serials 381721-381760)
+  - Book 9548 (serials 381881-381920)
+  - Book 9551 (serials 382001-382040)
+  - Book 9554 (serials 382121-382160)
+  - Book 9559 (serials 382321-382360)
+  - Book 9564 (serials 382521-382560)
+  - Book 9570 (serials 382761-382800)
+  - Book 9572 (serials 382841-382880)
+  - Book 9585 (serials 383361-383400)
+  - Book 9596 (serials 383801-383840)
+  - Book 9598 (serials 383881-383920)
+  - Book 9607 (serials 384241-384280)
+  - Book 9612 (serials 384441-384480)
+  - Book 9613 (serials 384481-384520)
+  - Book 9625 (serials 384961-385000)
+  - Book 9632 (serials 385241-385280)
+  - Book 9641 (serials 385601-385640)
+  - Book 9644 (serials 385721-385760)
+  - Book 9648 (serials 385881-385920)
+  - Book 9652 (serials 386041-386080)
+  - Book 9658 (serials 386281-386320)
+  - Book 9661 (serials 386401-386440)
+  - Book 9665 (serials 386561-386600)
+  - Book 9672 (serials 386841-386880)
+  - Book 9674 (serials 386921-386960)
+  - Book 9677 (serials 387041-387080)
+  - Book 9692 (serials 387641-387680)
+  - Book 9695 (serials 387761-387800)
+  - Book 9701 (serials 388001-388040)
+  - Book 9707 (serials 388241-388280)
+  - Book 9710 (serials 388361-388400)
+  - Book 9719 (serials 388721-388760)
+  - Book 9722 (serials 388841-388880)
+  - Book 9725 (serials 388961-389000)
+  - Book 9739 (serials 389521-389560)
+  - Book 9745 (serials 389761-389800)
+  - Book 9752 (serials 390041-390080)
+  - Book 9764 (serials 390521-390560)
+  - Book 9771 (serials 390801-390840)
+  - Book 9785 (serials 391361-391400)
+  - Book 9788 (serials 391481-391520)
+  - Book 9800 (serials 391961-392000)
+  - Book 9808 (serials 392281-392320)
+  - Book 9827 (serials 393041-393080)
+  - Book 9830 (serials 393161-393200)
+  - Book 9837 (serials 393441-393480)
+  - Book 9845 (serials 393761-393800)
+  - Book 9848 (serials 393881-393920)
+  - Book 9858 (serials 394281-394320)
+  - Book 9866 (serials 394601-394640)
+  - Book 9870 (serials 394761-394800)
+  - Book 9878 (serials 395081-395120)
+  - Book 9886 (serials 395401-395440)
+  - Book 9893 (serials 395681-395720)
+  - Book 9900 (serials 395961-396000)
+  - Book 9908 (serials 396281-396320)
+  - Book 9912 (serials 396441-396480)
+  - Book 9919 (serials 396721-396760)
+  - Book 9928 (serials 397081-397120)
+  - Book 9934 (serials 397321-397360)
+  - Book 9939 (serials 397521-397560)
+  - Book 9942 (serials 397641-397680)
+  - Book 9962 (serials 398441-398480)
+  - Book 9975 (serials 398961-399000)
+  - Book 9977 (serials 399041-399080)
+  - Book 9983 (serials 399281-399320)
+  - Book 9986 (serials 399401-399440)
+  - Book 9995 (serials 399761-399800)
+  - Book 9997 (serials 399841-399880)
+  - Book 10000 (serials 399961-400000)
+  - Book 10004 (serials 400121-400160)
+  - Book 10015 (serials 400561-400600)
+  - Book 10021 (serials 400801-400840)
+  - Book 10030 (serials 401161-401200)
+  - Book 10034 (serials 401321-401360)
+  - Book 10037 (serials 401441-401480)
+  - Book 10042 (serials 401641-401680)
+  - Book 10048 (serials 401881-401920)
+  - Book 10058 (serials 402281-402320)
+  - Book 10063 (serials 402481-402520)
+  - Book 10072 (serials 402841-402880)
+  - Book 10085 (serials 403361-403400)
+  - Book 10094 (serials 403721-403760)
+  - Book 10106 (serials 404201-404240)
+  - Book 10116 (serials 404601-404640)
+  - Book 10119 (serials 404721-404760)
+  - Book 10125 (serials 404961-405000)
+  - Book 10126 (serials 405001-405040)
+  - Book 10132 (serials 405241-405280)
+  - Book 10140 (serials 405561-405600)
+  - Book 10148 (serials 405881-405920)
+  - Book 10151 (serials 406001-406040)
+  - Book 10175 (serials 406961-407000)
+  - Book 10179 (serials 407121-407160)
+  - Book 10183 (serials 407281-407320)
+  - Book 10186 (serials 407401-407440)
+  - Book 10197 (serials 407841-407880)
+  - Book 10200 (serials 407961-408000)
+  - Book 10201 (serials 408001-408040)
+  - Book 10211 (serials 408401-408440)
+  - Book 10216 (serials 408601-408640)
+  - Book 10225 (serials 408961-409000)
+  - Book 10228 (serials 409081-409120)
+  - Book 10231 (serials 409201-409240)
+  - Book 10246 (serials 409801-409840)
+  - Book 10254 (serials 410121-410160)
+  - Book 10279 (serials 411121-411160)
+  - Book 10288 (serials 411481-411520)
+  - Book 10292 (serials 411641-411680)
+  - Book 10295 (serials 411761-411800)
+  - Book 10301 (serials 412001-412040)
+  - Book 10305 (serials 412161-412200)
+  - Book 10312 (serials 412441-412480)
+  - Book 10327 (serials 413041-413080)
+  - Book 10330 (serials 413161-413200)
+  - Book 10338 (serials 413481-413520)
+  - Book 10345 (serials 413761-413800)
+  - Book 10354 (serials 414121-414160)
+  - Book 10361 (serials 414401-414440)
+  - Book 10380 (serials 415161-415200)
+  - Book 10389 (serials 415521-415560)
+  - Book 10392 (serials 415641-415680)
+  - Book 10397 (serials 415841-415880)
+  - Book 10404 (serials 416121-416160)
+  - Book 10406 (serials 416201-416240)
+  - Book 10412 (serials 416441-416480)
+  - Book 10415 (serials 416561-416600)
+  - Book 10430 (serials 417161-417200)
+  - Book 10451 (serials 418001-418040)
+  - Book 10457 (serials 418241-418280)
+  - Book 10463 (serials 418481-418520)
+  - Book 10469 (serials 418721-418760)
+  - Book 10472 (serials 418841-418880)
+  - Book 10474 (serials 418921-418960)
+  - Book 10488 (serials 419481-419520)
+  - Book 10489 (serials 419521-419560)
+  - Book 10493 (serials 419681-419720)
+  - Book 10496 (serials 419801-419840)
+  - Book 10502 (serials 420041-420080)
+  - Book 10506 (serials 420201-420240)
+  - Book 10509 (serials 420321-420360)
+  - Book 10517 (serials 420641-420680)
+  - Book 10519 (serials 420721-420760)
+  - Book 10526 (serials 421001-421040)
+  - Book 10529 (serials 421121-421160)
+  - Book 10535 (serials 421361-421400)
+  - Book 10538 (serials 421481-421520)
+  - Book 10547 (serials 421841-421880)
+  - Book 10556 (serials 422201-422240)
+  - Book 10568 (serials 422681-422720)
+  - Book 10571 (serials 422801-422840)
+  - Book 10574 (serials 422921-422960)
+  - Book 10583 (serials 423281-423320)
+  - Book 10586 (serials 423401-423440)
+  - Book 10592 (serials 423641-423680)
+  - Book 10606 (serials 424201-424240)
+  - Book 10614 (serials 424521-424560)
+  - Book 10616 (serials 424601-424640)
+  - Book 10634 (serials 425321-425360)
+  - Book 10637 (serials 425441-425480)
+  - Book 10652 (serials 426041-426080)
+  - Book 10655 (serials 426161-426200)
+  - Book 10661 (serials 426401-426440)
+  - Book 10664 (serials 426521-426560)
+  - Book 10673 (serials 426881-426920)
+  - Book 10688 (serials 427481-427520)
+  - Book 10697 (serials 427841-427880)
+  - Book 10701 (serials 428001-428040)
+  - Book 10703 (serials 428081-428120)
+  - Book 10709 (serials 428321-428360)
+  - Book 10712 (serials 428441-428480)
+  - Book 10721 (serials 428801-428840)
+  - Book 10730 (serials 429161-429200)
+  - Book 10746 (serials 429801-429840)
+  - Book 10751 (serials 430001-430040)
+  - Book 10766 (serials 430601-430640)
+  - Book 10769 (serials 430721-430760)
+  - Book 10775 (serials 430961-431000)
+  - Book 10778 (serials 431081-431120)
+  - Book 10781 (serials 431201-431240)
+  - Book 10787 (serials 431441-431480)
+  - Book 10789 (serials 431521-431560)
+  - Book 10805 (serials 432161-432200)
+  - Book 10809 (serials 432321-432360)
+  - Book 10811 (serials 432401-432440)
+  - Book 10817 (serials 432641-432680)
+  - Book 10823 (serials 432881-432920)
+  - Book 10841 (serials 433601-433640)
+  - Book 10848 (serials 433881-433920)
+  - Book 10851 (serials 434001-434040)
+  - Book 10854 (serials 434121-434160)
+  - Book 10857 (serials 434241-434280)
+  - Book 10863 (serials 434481-434520)
+  - Book 10866 (serials 434601-434640)
+  - Book 10874 (serials 434921-434960)
+  - Book 10880 (serials 435161-435200)
+  - Book 10887 (serials 435441-435480)
+  - Book 10891 (serials 435601-435640)
+  - Book 10907 (serials 436241-436280)
+  - Book 10909 (serials 436321-436360)
+  - Book 10917 (serials 436641-436680)
+  - Book 10919 (serials 436721-436760)
+  - Book 10931 (serials 437201-437240)
+  - Book 10936 (serials 437401-437440)
+  - Book 10943 (serials 437681-437720)
+  - Book 10946 (serials 437801-437840)
+  - Book 10951 (serials 438001-438040)
+  - Book 10957 (serials 438241-438280)
+  - Book 10966 (serials 438601-438640)
+  - Book 10970 (serials 438761-438800)
+  - Book 10977 (serials 439041-439080)
+  - Book 10984 (serials 439321-439360)
+  - Book 10990 (serials 439561-439600)
+  - Book 10996 (serials 439801-439840)
+  - Book 11006 (serials 440201-440240)
+  - Book 11008 (serials 440281-440320)
+  - Book 11012 (serials 440441-440480)
+  - Book 11017 (serials 440641-440680)
+  - Book 11027 (serials 441041-441080)
+  - Book 11030 (serials 441161-441200)
+  - Book 11040 (serials 441561-441600)
+  - Book 11044 (serials 441721-441760)
+  - Book 11052 (serials 442041-442080)
+  - Book 11053 (serials 442081-442120)
+  - Book 11069 (serials 442721-442760)
+  - Book 11076 (serials 443001-443040)
+  - Book 11081 (serials 443201-443240)
+  - Book 11083 (serials 443281-443320)
+  - Book 11095 (serials 443761-443800)
+  - Book 11107 (serials 444241-444280)
+  - Book 11115 (serials 444561-444600)
+  - Book 11120 (serials 444761-444800)
+  - Book 11124 (serials 444921-444960)
+  - Book 11125 (serials 444961-445000)
+  - Book 11139 (serials 445521-445560)
+  - Book 11142 (serials 445641-445680)
+  - Book 11145 (serials 445761-445800)
+  - Book 11150 (serials 445961-446000)
+  - Book 11153 (serials 446081-446120)
+  - Book 11155 (serials 446161-446200)
+  - Book 11171 (serials 446801-446840)
+  - Book 11180 (serials 447161-447200)
+  - Book 11189 (serials 447521-447560)
+  - Book 11198 (serials 447881-447920)
+  - Book 11207 (serials 448241-448280)
+  - Book 11217 (serials 448641-448680)
+  - Book 11228 (serials 449081-449120)
+  - Book 11234 (serials 449321-449360)
+  - Book 11246 (serials 449801-449840)
+  - Book 11256 (serials 450201-450240)
+  - Book 11260 (serials 450361-450400)
+  - Book 11265 (serials 450561-450600)
+  - Book 11273 (serials 450881-450920)
+  - Book 11282 (serials 451241-451280)
+  - Book 11285 (serials 451361-451400)
+  - Book 11297 (serials 451841-451880)
+  - Book 11303 (serials 452081-452120)
+  - Book 11306 (serials 452201-452240)
+  - Book 11315 (serials 452561-452600)
+  - Book 11321 (serials 452801-452840)
+  - Book 11324 (serials 452921-452960)
+  - Book 11329 (serials 453121-453160)
+  - Book 11339 (serials 453521-453560)
+  - Book 11343 (serials 453681-453720)
+  - Book 11360 (serials 454361-454400)
+  - Book 11375 (serials 454961-455000)
+  - Book 11378 (serials 455081-455120)
+  - Book 11381 (serials 455201-455240)
+  - Book 11383 (serials 455281-455320)
+  - Book 11391 (serials 455601-455640)
+  - Book 11394 (serials 455721-455760)
+  - Book 11396 (serials 455801-455840)
+  - Book 11405 (serials 456161-456200)
+  - Book 11420 (serials 456761-456800)
+  - Book 11422 (serials 456841-456880)
+  - Book 11425 (serials 456961-457000)
+  - Book 11441 (serials 457601-457640)
+  - Book 11445 (serials 457761-457800)
+  - Book 11449 (serials 457921-457960)
+  - Book 11454 (serials 458121-458160)
+  - Book 11456 (serials 458201-458240)
+  - Book 11468 (serials 458681-458720)
+  - Book 11471 (serials 458801-458840)
+  - Book 11484 (serials 459321-459360)
+  - Book 11486 (serials 459401-459440)
+  - Book 11496 (serials 459801-459840)
+  - Book 11498 (serials 459881-459920)
+  - Book 11506 (serials 460201-460240)
+  - Book 11512 (serials 460441-460480)
+  - Book 11517 (serials 460641-460680)
+  - Book 11526 (serials 461001-461040)
+  - Book 11527 (serials 461041-461080)
+  - Book 11534 (serials 461321-461360)
+  - Book 11539 (serials 461521-461560)
+  - Book 11553 (serials 462081-462120)
+  - Book 11554 (serials 462121-462160)
+  - Book 11566 (serials 462601-462640)
+  - Book 11574 (serials 462921-462960)
+  - Book 11576 (serials 463001-463040)
+  - Book 11585 (serials 463361-463400)
+  - Book 11597 (serials 463841-463880)
+  - Book 11601 (serials 464001-464040)
+  - Book 11616 (serials 464601-464640)
+  - Book 11621 (serials 464801-464840)
+  - Book 11626 (serials 465001-465040)
+  - Book 11629 (serials 465121-465160)
+  - Book 11635 (serials 465361-465400)
+  - Book 11640 (serials 465561-465600)
+  - Book 11643 (serials 465681-465720)
+  - Book 11650 (serials 465961-466000)
+  - Book 11658 (serials 466281-466320)
+  - Book 11665 (serials 466561-466600)
+  - Book 11672 (serials 466841-466880)
+  - Book 11681 (serials 467201-467240)
+  - Book 11687 (serials 467441-467480)
+  - Book 11693 (serials 467681-467720)
+  - Book 11700 (serials 467961-468000)
+  - Book 11708 (serials 468281-468320)
+  - Book 11719 (serials 468721-468760)
+  - Book 11723 (serials 468881-468920)
+  - Book 11734 (serials 469321-469360)
+  - Book 11738 (serials 469481-469520)
+  - Book 11744 (serials 469721-469760)
+  - Book 11751 (serials 470001-470040)
+  - Book 11753 (serials 470081-470120)
+  - Book 11756 (serials 470201-470240)
+  - Book 11763 (serials 470481-470520)
+  - Book 11772 (serials 470841-470880)
+  - Book 11773 (serials 470881-470920)
+  - Book 11794 (serials 471721-471760)
+  - Book 11803 (serials 472081-472120)
+  - Book 11813 (serials 472481-472520)
+  - Book 11837 (serials 473441-473480)
+  - Book 11839 (serials 473521-473560)
+  - Book 11846 (serials 473801-473840)
+  - Book 11849 (serials 473921-473960)
+  - Book 11855 (serials 474161-474200)
+  - Book 11863 (serials 474481-474520)
+  - Book 11868 (serials 474681-474720)
+  - Book 11870 (serials 474761-474800)
+  - Book 11874 (serials 474921-474960)
+  - Book 11876 (serials 475001-475040)
+  - Book 11882 (serials 475241-475280)
+  - Book 11888 (serials 475481-475520)
+  - Book 11897 (serials 475841-475880)
+  - Book 11901 (serials 476001-476040)
+  - Book 11910 (serials 476361-476400)
+  - Book 11915 (serials 476561-476600)
+  - Book 11925 (serials 476961-477000)
+  - Book 11930 (serials 477161-477200)
+  - Book 11937 (serials 477441-477480)
+  - Book 11944 (serials 477721-477760)
+  - Book 11954 (serials 478121-478160)
+  - Book 11963 (serials 478481-478520)
+  - Book 11966 (serials 478601-478640)
+  - Book 11981 (serials 479201-479240)
+  - Book 11994 (serials 479721-479760)
+  - Book 11999 (serials 479921-479960)
+  - Book 12002 (serials 480041-480080)
+  - Book 12009 (serials 480321-480360)
+  - Book 12010 (serials 480361-480400)
+  - Book 12017 (serials 480641-480680)
+  - Book 12019 (serials 480721-480760)
+  - Book 12024 (serials 480921-480960)
+  - Book 12037 (serials 481441-481480)
+  - Book 12044 (serials 481721-481760)
+  - Book 12055 (serials 482161-482200)
+  - Book 12059 (serials 482321-482360)
+  - Book 12061 (serials 482401-482440)
+  - Book 12068 (serials 482681-482720)
+  - Book 12071 (serials 482801-482840)
+  - Book 12074 (serials 482921-482960)
+  - Book 12083 (serials 483281-483320)
+  - Book 12089 (serials 483521-483560)
+  - Book 12093 (serials 483681-483720)
+  - Book 12095 (serials 483761-483800)
+  - Book 12101 (serials 484001-484040)
+  - Book 12107 (serials 484241-484280)
+  - Book 12119 (serials 484721-484760)
+  - Book 12130 (serials 485161-485200)
+  - Book 12135 (serials 485361-485400)
+  - Book 12142 (serials 485641-485680)
+  - Book 12149 (serials 485921-485960)
+  - Book 12158 (serials 486281-486320)
+  - Book 12162 (serials 486441-486480)
+  - Book 12164 (serials 486521-486560)
+  - Book 12167 (serials 486641-486680)
+  - Book 12179 (serials 487121-487160)
+  - Book 12181 (serials 487201-487240)
+  - Book 12185 (serials 487361-487400)
+  - Book 12196 (serials 487801-487840)
+  - Book 12213 (serials 488481-488520)
+  - Book 12214 (serials 488521-488560)
+  - Book 12225 (serials 488961-489000)
+  - Book 12233 (serials 489281-489320)
+  - Book 12236 (serials 489401-489440)
+  - Book 12242 (serials 489641-489680)
+  - Book 12248 (serials 489881-489920)
+  - Book 12257 (serials 490241-490280)
+  - Book 12260 (serials 490361-490400)
+  - Book 12263 (serials 490481-490520)
+  - Book 12268 (serials 490681-490720)
+  - Book 12291 (serials 491601-491640)
+  - Book 12294 (serials 491721-491760)
+  - Book 12302 (serials 492041-492080)
+  - Book 12308 (serials 492281-492320)
+  - Book 12326 (serials 493001-493040)
+  - Book 12335 (serials 493361-493400)
+  - Book 12347 (serials 493841-493880)
+  - Book 12360 (serials 494361-494400)
+  - Book 12365 (serials 494561-494600)
+  - Book 12372 (serials 494841-494880)
+  - Book 12374 (serials 494921-494960)
+  - Book 12383 (serials 495281-495320)
+  - Book 12395 (serials 495761-495800)
+  - Book 12399 (serials 495921-495960)
+  - Book 12405 (serials 496161-496200)
+  - Book 12410 (serials 496361-496400)
+  - Book 12416 (serials 496601-496640)
+  - Book 12424 (serials 496921-496960)
+  - Book 12430 (serials 497161-497200)
+  - Book 12434 (serials 497321-497360)
+  - Book 12442 (serials 497641-497680)
+  - Book 12449 (serials 497921-497960)
+  - Book 12453 (serials 498081-498120)
+  - Book 12457 (serials 498241-498280)
+  - Book 12466 (serials 498601-498640)
+  - Book 12470 (serials 498761-498800)
+  - Book 12474 (serials 498921-498960)
+  - Book 12486 (serials 499401-499440)
+  - Book 12492 (serials 499641-499680)
+  - Book 12494 (serials 499721-499760)
+
+## 11. Per-book prize rules  -  PASS - No exceptions
+
+*Procedure:* Check whether each book satisfies the per-book prize count rules: at most 1 prize(s) combined from {Rs.500 / Rs.5000}.
+
+- No exceptions were noted. Every book satisfies the per-book prize count rules.
+
+## 12. Consecutive play pattern  -  EXCEPTIONS (3627)
+
+*Procedure:* Check whether consecutive tickets contain the same play symbol pattern.
+
+- 3627 instance(s), affecting 7254 tickets.
+
+*Offending items (3627):*
+  - 130003470000920 & 130003470000921
+  - 130003470000960 & 130003470000961
+  - 130003470001000 & 130003470001001
+  - 130003470001300 & 130003470001301
+  - 130003470001310 & 130003470001311
+  - 130003470001385 & 130003470001386
+  - 130003470001520 & 130003470001521
+  - 130003470001580 & 130003470001581
+  - 130003470001625 & 130003470001626
+  - 130003470002175 & 130003470002176
+  - 130003470002690 & 130003470002691
+  - 130003470002790 & 130003470002791
+  - 130003470002800 & 130003470002801
+  - 130003470003060 & 130003470003061
+  - 130003470003070 & 130003470003071
+  - 130003470003160 & 130003470003161
+  - 130003470003190 & 130003470003191
+  - 130003470003755 & 130003470003756
+  - 130003470003880 & 130003470003881
+  - 130003470003900 & 130003470003901
+  - 130003470004075 & 130003470004076
+  - 130003470004100 & 130003470004101
+  - 130003470004125 & 130003470004126
+  - 130003470004180 & 130003470004181
+  - 130003470004205 & 130003470004206
+  - 130003470004340 & 130003470004341
+  - 130003470004375 & 130003470004376
+  - 130003470004410 & 130003470004411
+  - 130003470004745 & 130003470004746
+  - 130003470004810 & 130003470004811
+  - 130003470004885 & 130003470004886
+  - 130003470004940 & 130003470004941
+  - 130003470005125 & 130003470005126
+  - 130003470005460 & 130003470005461
+  - 130003470005750 & 130003470005751
+  - 130003470005790 & 130003470005791
+  - 130003470006085 & 130003470006086
+  - 130003470006215 & 130003470006216
+  - 130003470006245 & 130003470006246
+  - 130003470006455 & 130003470006456
+  - 130003470006465 & 130003470006466
+  - 130003470006540 & 130003470006541
+  - 130003470006560 & 130003470006561
+  - 130003470006575 & 130003470006576
+  - 130003470006610 & 130003470006611
+  - 130003470006880 & 130003470006881
+  - 130003470007300 & 130003470007301
+  - 130003470007395 & 130003470007396
+  - 130003470007525 & 130003470007526
+  - 130003470007815 & 130003470007816
+  - 130003470007935 & 130003470007936
+  - 130003470008115 & 130003470008116
+  - 130003470008125 & 130003470008126
+  - 130003470008200 & 130003470008201
+  - 130003470008230 & 130003470008231
+  - 130003470008255 & 130003470008256
+  - 130003470008435 & 130003470008436
+  - 130003470008465 & 130003470008466
+  - 130003470008620 & 130003470008621
+  - 130003470008955 & 130003470008956
+  - 130003470009185 & 130003470009186
+  - 130003470009210 & 130003470009211
+  - 130003470009350 & 130003470009351
+  - 130003470009760 & 130003470009761
+  - 130003470009785 & 130003470009786
+  - 130003470009830 & 130003470009831
+  - 130003470009900 & 130003470009901
+  - 130003470010265 & 130003470010266
+  - 130003470010305 & 130003470010306
+  - 130003470010345 & 130003470010346
+  - 130003470010375 & 130003470010376
+  - 130003470010425 & 130003470010426
+  - 130003470010475 & 130003470010476
+  - 130003470010595 & 130003470010596
+  - 130003470010695 & 130003470010696
+  - 130003470010780 & 130003470010781
+  - 130003470010975 & 130003470010976
+  - 130003470011060 & 130003470011061
+  - 130003470011075 & 130003470011076
+  - 130003470011130 & 130003470011131
+  - 130003470011280 & 130003470011281
+  - 130003470011305 & 130003470011306
+  - 130003470011320 & 130003470011321
+  - 130003470011375 & 130003470011376
+  - 130003470011485 & 130003470011486
+  - 130003470011515 & 130003470011516
+  - 130003470011555 & 130003470011556
+  - 130003470011640 & 130003470011641
+  - 130003470011705 & 130003470011706
+  - 130003470012230 & 130003470012231
+  - 130003470012345 & 130003470012346
+  - 130003470012395 & 130003470012396
+  - 130003470012495 & 130003470012496
+  - 130003470012630 & 130003470012631
+  - 130003470012675 & 130003470012676
+  - 130003470012745 & 130003470012746
+  - 130003470012845 & 130003470012846
+  - 130003470013225 & 130003470013226
+  - 130003470013595 & 130003470013596
+  - 130003470013615 & 130003470013616
+  - 130003470013795 & 130003470013796
+  - 130003470013835 & 130003470013836
+  - 130003470013870 & 130003470013871
+  - 130003470014090 & 130003470014091
+  - 130003470014415 & 130003470014416
+  - 130003470014640 & 130003470014641
+  - 130003470014870 & 130003470014871
+  - 130003470014880 & 130003470014881
+  - 130003470014980 & 130003470014981
+  - 130003470015065 & 130003470015066
+  - 130003470015200 & 130003470015201
+  - 130003470015280 & 130003470015281
+  - 130003470015355 & 130003470015356
+  - 130003470015385 & 130003470015386
+  - 130003470015500 & 130003470015501
+  - 130003470015585 & 130003470015586
+  - 130003470015600 & 130003470015601
+  - 130003470015615 & 130003470015616
+  - 130003470015785 & 130003470015786
+  - 130003470015890 & 130003470015891
+  - 130003470015950 & 130003470015951
+  - 130003470015990 & 130003470015991
+  - 130003470016045 & 130003470016046
+  - 130003470016140 & 130003470016141
+  - 130003470016160 & 130003470016161
+  - 130003470016180 & 130003470016181
+  - 130003470016335 & 130003470016336
+  - 130003470016570 & 130003470016571
+  - 130003470016650 & 130003470016651
+  - 130003470016870 & 130003470016871
+  - 130003470017040 & 130003470017041
+  - 130003470017095 & 130003470017096
+  - 130003470017485 & 130003470017486
+  - 130003470017505 & 130003470017506
+  - 130003470017525 & 130003470017526
+  - 130003470017575 & 130003470017576
+  - 130003470017785 & 130003470017786
+  - 130003470018010 & 130003470018011
+  - 130003470018210 & 130003470018211
+  - 130003470018280 & 130003470018281
+  - 130003470018375 & 130003470018376
+  - 130003470018550 & 130003470018551
+  - 130003470018655 & 130003470018656
+  - 130003470018745 & 130003470018746
+  - 130003470018975 & 130003470018976
+  - 130003470019080 & 130003470019081
+  - 130003470019170 & 130003470019171
+  - 130003470019385 & 130003470019386
+  - 130003470019720 & 130003470019721
+  - 130003470020275 & 130003470020276
+  - 130003470020290 & 130003470020291
+  - 130003470020410 & 130003470020411
+  - 130003470020480 & 130003470020481
+  - 130003470020520 & 130003470020521
+  - 130003470020795 & 130003470020796
+  - 130003470020900 & 130003470020901
+  - 130003470020955 & 130003470020956
+  - 130003470021055 & 130003470021056
+  - 130003470021180 & 130003470021181
+  - 130003470021195 & 130003470021196
+  - 130003470021240 & 130003470021241
+  - 130003470021510 & 130003470021511
+  - 130003470021555 & 130003470021556
+  - 130003470021575 & 130003470021576
+  - 130003470021690 & 130003470021691
+  - 130003470021800 & 130003470021801
+  - 130003470021810 & 130003470021811
+  - 130003470022040 & 130003470022041
+  - 130003470022205 & 130003470022206
+  - 130003470022290 & 130003470022291
+  - 130003470022515 & 130003470022516
+  - 130003470022860 & 130003470022861
+  - 130003470022905 & 130003470022906
+  - 130003470022925 & 130003470022926
+  - 130003470023230 & 130003470023231
+  - 130003470023245 & 130003470023246
+  - 130003470023305 & 130003470023306
+  - 130003470023595 & 130003470023596
+  - 130003470023730 & 130003470023731
+  - 130003470023785 & 130003470023786
+  - 130003470023910 & 130003470023911
+  - 130003470024010 & 130003470024011
+  - 130003470024215 & 130003470024216
+  - 130003470024290 & 130003470024291
+  - 130003470024440 & 130003470024441
+  - 130003470024505 & 130003470024506
+  - 130003470024530 & 130003470024531
+  - 130003470024600 & 130003470024601
+  - 130003470024655 & 130003470024656
+  - 130003470024705 & 130003470024706
+  - 130003470024780 & 130003470024781
+  - 130003470024805 & 130003470024806
+  - 130003470024930 & 130003470024931
+  - 130003470025105 & 130003470025106
+  - 130003470025115 & 130003470025116
+  - 130003470025135 & 130003470025136
+  - 130003470025150 & 130003470025151
+  - 130003470025250 & 130003470025251
+  - 130003470025340 & 130003470025341
+  - 130003470025430 & 130003470025431
+  - 130003470025815 & 130003470025816
+  - 130003470026550 & 130003470026551
+  - 130003470026665 & 130003470026666
+  - 130003470026725 & 130003470026726
+  - 130003470027035 & 130003470027036
+  - 130003470027445 & 130003470027446
+  - 130003470028090 & 130003470028091
+  - 130003470028155 & 130003470028156
+  - 130003470028375 & 130003470028376
+  - 130003470028445 & 130003470028446
+  - 130003470028575 & 130003470028576
+  - 130003470028655 & 130003470028656
+  - 130003470028695 & 130003470028696
+  - 130003470028715 & 130003470028716
+  - 130003470028730 & 130003470028731
+  - 130003470028850 & 130003470028851
+  - 130003470029235 & 130003470029236
+  - 130003470029265 & 130003470029266
+  - 130003470029375 & 130003470029376
+  - 130003470029440 & 130003470029441
+  - 130003470029460 & 130003470029461
+  - 130003470029610 & 130003470029611
+  - 130003470029710 & 130003470029711
+  - 130003470029725 & 130003470029726
+  - 130003470029750 & 130003470029751
+  - 130003470029765 & 130003470029766
+  - 130003470029790 & 130003470029791
+  - 130003470030100 & 130003470030101
+  - 130003470030155 & 130003470030156
+  - 130003470030275 & 130003470030276
+  - 130003470030460 & 130003470030461
+  - 130003470030610 & 130003470030611
+  - 130003470030760 & 130003470030761
+  - 130003470030855 & 130003470030856
+  - 130003470031385 & 130003470031386
+  - 130003470031430 & 130003470031431
+  - 130003470031495 & 130003470031496
+  - 130003470031510 & 130003470031511
+  - 130003470031625 & 130003470031626
+  - 130003470031840 & 130003470031841
+  - 130003470031975 & 130003470031976
+  - 130003470032075 & 130003470032076
+  - 130003470032595 & 130003470032596
+  - 130003470032625 & 130003470032626
+  - 130003470032660 & 130003470032661
+  - 130003470032775 & 130003470032776
+  - 130003470032850 & 130003470032851
+  - 130003470033010 & 130003470033011
+  - 130003470033390 & 130003470033391
+  - 130003470033445 & 130003470033446
+  - 130003470033520 & 130003470033521
+  - 130003470033775 & 130003470033776
+  - 130003470033870 & 130003470033871
+  - 130003470033930 & 130003470033931
+  - 130003470034025 & 130003470034026
+  - 130003470034200 & 130003470034201
+  - 130003470034230 & 130003470034231
+  - 130003470034250 & 130003470034251
+  - 130003470034490 & 130003470034491
+  - 130003470034540 & 130003470034541
+  - 130003470034620 & 130003470034621
+  - 130003470034680 & 130003470034681
+  - 130003470034785 & 130003470034786
+  - 130003470034815 & 130003470034816
+  - 130003470034920 & 130003470034921
+  - 130003470034945 & 130003470034946
+  - 130003470035065 & 130003470035066
+  - 130003470035385 & 130003470035386
+  - 130003470035485 & 130003470035486
+  - 130003470035505 & 130003470035506
+  - 130003470035640 & 130003470035641
+  - 130003470035655 & 130003470035656
+  - 130003470035730 & 130003470035731
+  - 130003470035745 & 130003470035746
+  - 130003470035865 & 130003470035866
+  - 130003470035970 & 130003470035971
+  - 130003470036050 & 130003470036051
+  - 130003470036190 & 130003470036191
+  - 130003470036415 & 130003470036416
+  - 130003470036425 & 130003470036426
+  - 130003470036540 & 130003470036541
+  - 130003470036550 & 130003470036551
+  - 130003470036815 & 130003470036816
+  - 130003470036880 & 130003470036881
+  - 130003470037035 & 130003470037036
+  - 130003470037225 & 130003470037226
+  - 130003470037385 & 130003470037386
+  - 130003470037455 & 130003470037456
+  - 130003470037930 & 130003470037931
+  - 130003470038095 & 130003470038096
+  - 130003470038215 & 130003470038216
+  - 130003470038285 & 130003470038286
+  - 130003470038710 & 130003470038711
+  - 130003470039135 & 130003470039136
+  - 130003470039260 & 130003470039261
+  - 130003470039340 & 130003470039341
+  - 130003470039730 & 130003470039731
+  - 130003470039800 & 130003470039801
+  - 130003470039940 & 130003470039941
+  - 130003470040010 & 130003470040011
+  - 130003470040055 & 130003470040056
+  - 130003470040070 & 130003470040071
+  - 130003470040100 & 130003470040101
+  - 130003470040190 & 130003470040191
+  - 130003470040705 & 130003470040706
+  - 130003470040790 & 130003470040791
+  - 130003470040845 & 130003470040846
+  - 130003470041090 & 130003470041091
+  - 130003470041115 & 130003470041116
+  - 130003470041415 & 130003470041416
+  - 130003470041435 & 130003470041436
+  - 130003470041470 & 130003470041471
+  - 130003470041485 & 130003470041486
+  - 130003470041660 & 130003470041661
+  - 130003470041740 & 130003470041741
+  - 130003470041940 & 130003470041941
+  - 130003470042105 & 130003470042106
+  - 130003470042140 & 130003470042141
+  - 130003470042325 & 130003470042326
+  - 130003470042675 & 130003470042676
+  - 130003470043075 & 130003470043076
+  - 130003470043120 & 130003470043121
+  - 130003470043350 & 130003470043351
+  - 130003470043415 & 130003470043416
+  - 130003470043520 & 130003470043521
+  - 130003470043705 & 130003470043706
+  - 130003470043905 & 130003470043906
+  - 130003470044120 & 130003470044121
+  - 130003470044340 & 130003470044341
+  - 130003470044475 & 130003470044476
+  - 130003470045510 & 130003470045511
+  - 130003470045540 & 130003470045541
+  - 130003470045560 & 130003470045561
+  - 130003470045770 & 130003470045771
+  - 130003470046305 & 130003470046306
+  - 130003470046490 & 130003470046491
+  - 130003470047125 & 130003470047126
+  - 130003470047325 & 130003470047326
+  - 130003470047670 & 130003470047671
+  - 130003470047705 & 130003470047706
+  - 130003470047760 & 130003470047761
+  - 130003470047785 & 130003470047786
+  - 130003470047855 & 130003470047856
+  - 130003470047870 & 130003470047871
+  - 130003470047920 & 130003470047921
+  - 130003470048210 & 130003470048211
+  - 130003470048425 & 130003470048426
+  - 130003470048465 & 130003470048466
+  - 130003470048600 & 130003470048601
+  - 130003470048885 & 130003470048886
+  - 130003470048915 & 130003470048916
+  - 130003470049125 & 130003470049126
+  - 130003470049150 & 130003470049151
+  - 130003470049225 & 130003470049226
+  - 130003470049345 & 130003470049346
+  - 130003470049595 & 130003470049596
+  - 130003470049820 & 130003470049821
+  - 130003470049975 & 130003470049976
+  - 130003470050105 & 130003470050106
+  - 130003470050380 & 130003470050381
+  - 130003470050525 & 130003470050526
+  - 130003470050770 & 130003470050771
+  - 130003470050780 & 130003470050781
+  - 130003470050850 & 130003470050851
+  - 130003470050945 & 130003470050946
+  - 130003470051150 & 130003470051151
+  - 130003470051200 & 130003470051201
+  - 130003470051210 & 130003470051211
+  - 130003470051455 & 130003470051456
+  - 130003470051820 & 130003470051821
+  - 130003470051945 & 130003470051946
+  - 130003470052300 & 130003470052301
+  - 130003470052430 & 130003470052431
+  - 130003470052545 & 130003470052546
+  - 130003470052670 & 130003470052671
+  - 130003470052970 & 130003470052971
+  - 130003470053130 & 130003470053131
+  - 130003470053210 & 130003470053211
+  - 130003470053230 & 130003470053231
+  - 130003470053420 & 130003470053421
+  - 130003470053515 & 130003470053516
+  - 130003470053595 & 130003470053596
+  - 130003470053810 & 130003470053811
+  - 130003470054425 & 130003470054426
+  - 130003470054525 & 130003470054526
+  - 130003470054535 & 130003470054536
+  - 130003470054615 & 130003470054616
+  - 130003470054690 & 130003470054691
+  - 130003470054725 & 130003470054726
+  - 130003470054750 & 130003470054751
+  - 130003470054860 & 130003470054861
+  - 130003470054880 & 130003470054881
+  - 130003470055010 & 130003470055011
+  - 130003470055445 & 130003470055446
+  - 130003470055565 & 130003470055566
+  - 130003470055680 & 130003470055681
+  - 130003470055865 & 130003470055866
+  - 130003470055995 & 130003470055996
+  - 130003470056175 & 130003470056176
+  - 130003470056240 & 130003470056241
+  - 130003470056895 & 130003470056896
+  - 130003470057005 & 130003470057006
+  - 130003470057050 & 130003470057051
+  - 130003470057085 & 130003470057086
+  - 130003470057420 & 130003470057421
+  - 130003470057440 & 130003470057441
+  - 130003470057580 & 130003470057581
+  - 130003470057595 & 130003470057596
+  - 130003470057995 & 130003470057996
+  - 130003470058405 & 130003470058406
+  - 130003470058495 & 130003470058496
+  - 130003470058730 & 130003470058731
+  - 130003470058770 & 130003470058771
+  - 130003470059040 & 130003470059041
+  - 130003470059080 & 130003470059081
+  - 130003470059175 & 130003470059176
+  - 130003470059285 & 130003470059286
+  - 130003470059315 & 130003470059316
+  - 130003470059475 & 130003470059476
+  - 130003470059545 & 130003470059546
+  - 130003470059680 & 130003470059681
+  - 130003470059710 & 130003470059711
+  - 130003470059830 & 130003470059831
+  - 130003470060085 & 130003470060086
+  - 130003470060190 & 130003470060191
+  - 130003470060255 & 130003470060256
+  - 130003470060400 & 130003470060401
+  - 130003470060430 & 130003470060431
+  - 130003470060565 & 130003470060566
+  - 130003470060620 & 130003470060621
+  - 130003470060765 & 130003470060766
+  - 130003470061120 & 130003470061121
+  - 130003470061320 & 130003470061321
+  - 130003470061405 & 130003470061406
+  - 130003470061855 & 130003470061856
+  - 130003470062035 & 130003470062036
+  - 130003470062095 & 130003470062096
+  - 130003470062110 & 130003470062111
+  - 130003470062355 & 130003470062356
+  - 130003470062785 & 130003470062786
+  - 130003470062825 & 130003470062826
+  - 130003470062840 & 130003470062841
+  - 130003470062905 & 130003470062906
+  - 130003470062965 & 130003470062966
+  - 130003470063260 & 130003470063261
+  - 130003470063285 & 130003470063286
+  - 130003470063665 & 130003470063666
+  - 130003470063695 & 130003470063696
+  - 130003470064220 & 130003470064221
+  - 130003470064255 & 130003470064256
+  - 130003470064675 & 130003470064676
+  - 130003470065330 & 130003470065331
+  - 130003470065470 & 130003470065471
+  - 130003470065660 & 130003470065661
+  - 130003470065730 & 130003470065731
+  - 130003470065775 & 130003470065776
+  - 130003470065865 & 130003470065866
+  - 130003470065960 & 130003470065961
+  - 130003470066085 & 130003470066086
+  - 130003470066250 & 130003470066251
+  - 130003470066435 & 130003470066436
+  - 130003470066490 & 130003470066491
+  - 130003470066630 & 130003470066631
+  - 130003470066730 & 130003470066731
+  - 130003470066805 & 130003470066806
+  - 130003470066885 & 130003470066886
+  - 130003470066935 & 130003470066936
+  - 130003470067030 & 130003470067031
+  - 130003470067115 & 130003470067116
+  - 130003470067150 & 130003470067151
+  - 130003470067265 & 130003470067266
+  - 130003470067420 & 130003470067421
+  - 130003470067590 & 130003470067591
+  - 130003470067625 & 130003470067626
+  - 130003470067650 & 130003470067651
+  - 130003470067995 & 130003470067996
+  - 130003470068010 & 130003470068011
+  - 130003470068025 & 130003470068026
+  - 130003470068075 & 130003470068076
+  - 130003470068135 & 130003470068136
+  - 130003470068185 & 130003470068186
+  - 130003470068245 & 130003470068246
+  - 130003470068305 & 130003470068306
+  - 130003470068335 & 130003470068336
+  - 130003470068480 & 130003470068481
+  - 130003470068655 & 130003470068656
+  - 130003470068830 & 130003470068831
+  - 130003470069030 & 130003470069031
+  - 130003470069220 & 130003470069221
+  - 130003470069400 & 130003470069401
+  - 130003470069460 & 130003470069461
+  - 130003470069625 & 130003470069626
+  - 130003470069710 & 130003470069711
+  - 130003470070235 & 130003470070236
+  - 130003470070385 & 130003470070386
+  - 130003470070575 & 130003470070576
+  - 130003470071075 & 130003470071076
+  - 130003470071295 & 130003470071296
+  - 130003470071580 & 130003470071581
+  - 130003470071710 & 130003470071711
+  - 130003470071920 & 130003470071921
+  - 130003470071965 & 130003470071966
+  - 130003470072005 & 130003470072006
+  - 130003470072100 & 130003470072101
+  - 130003470072120 & 130003470072121
+  - 130003470072165 & 130003470072166
+  - 130003470072260 & 130003470072261
+  - 130003470072280 & 130003470072281
+  - 130003470072425 & 130003470072426
+  - 130003470072490 & 130003470072491
+  - 130003470072555 & 130003470072556
+  - 130003470072865 & 130003470072866
+  - 130003470073145 & 130003470073146
+  - 130003470073580 & 130003470073581
+  - 130003470073685 & 130003470073686
+  - 130003470073700 & 130003470073701
+  - 130003470073725 & 130003470073726
+  - 130003470074035 & 130003470074036
+  - 130003470074105 & 130003470074106
+  - 130003470074450 & 130003470074451
+  - 130003470074570 & 130003470074571
+  - 130003470074600 & 130003470074601
+  - 130003470074620 & 130003470074621
+  - 130003470074760 & 130003470074761
+  - 130003470075360 & 130003470075361
+  - 130003470075440 & 130003470075441
+  - 130003470075540 & 130003470075541
+  - 130003470075620 & 130003470075621
+  - 130003470075725 & 130003470075726
+  - 130003470075805 & 130003470075806
+  - 130003470075970 & 130003470075971
+  - 130003470075990 & 130003470075991
+  - 130003470076010 & 130003470076011
+  - 130003470076250 & 130003470076251
+  - 130003470076330 & 130003470076331
+  - 130003470076760 & 130003470076761
+  - 130003470076855 & 130003470076856
+  - 130003470076910 & 130003470076911
+  - 130003470077145 & 130003470077146
+  - 130003470077175 & 130003470077176
+  - 130003470077205 & 130003470077206
+  - 130003470077260 & 130003470077261
+  - 130003470077285 & 130003470077286
+  - 130003470077540 & 130003470077541
+  - 130003470077645 & 130003470077646
+  - 130003470077705 & 130003470077706
+  - 130003470077785 & 130003470077786
+  - 130003470078030 & 130003470078031
+  - 130003470078360 & 130003470078361
+  - 130003470078415 & 130003470078416
+  - 130003470078540 & 130003470078541
+  - 130003470078600 & 130003470078601
+  - 130003470078635 & 130003470078636
+  - 130003470078765 & 130003470078766
+  - 130003470078780 & 130003470078781
+  - 130003470078965 & 130003470078966
+  - 130003470079250 & 130003470079251
+  - 130003470079390 & 130003470079391
+  - 130003470079640 & 130003470079641
+  - 130003470079945 & 130003470079946
+  - 130003470080075 & 130003470080076
+  - 130003470080115 & 130003470080116
+  - 130003470080390 & 130003470080391
+  - 130003470080490 & 130003470080491
+  - 130003470080580 & 130003470080581
+  - 130003470080740 & 130003470080741
+  - 130003470080900 & 130003470080901
+  - 130003470081000 & 130003470081001
+  - 130003470081155 & 130003470081156
+  - 130003470081365 & 130003470081366
+  - 130003470081415 & 130003470081416
+  - 130003470081545 & 130003470081546
+  - 130003470081650 & 130003470081651
+  - 130003470081675 & 130003470081676
+  - 130003470081935 & 130003470081936
+  - 130003470082075 & 130003470082076
+  - 130003470082215 & 130003470082216
+  - 130003470082590 & 130003470082591
+  - 130003470082710 & 130003470082711
+  - 130003470083030 & 130003470083031
+  - 130003470083060 & 130003470083061
+  - 130003470083400 & 130003470083401
+  - 130003470083430 & 130003470083431
+  - 130003470083500 & 130003470083501
+  - 130003470083630 & 130003470083631
+  - 130003470083900 & 130003470083901
+  - 130003470083915 & 130003470083916
+  - 130003470084020 & 130003470084021
+  - 130003470084155 & 130003470084156
+  - 130003470084475 & 130003470084476
+  - 130003470084490 & 130003470084491
+  - 130003470084620 & 130003470084621
+  - 130003470084700 & 130003470084701
+  - 130003470084870 & 130003470084871
+  - 130003470085000 & 130003470085001
+  - 130003470085155 & 130003470085156
+  - 130003470085305 & 130003470085306
+  - 130003470085340 & 130003470085341
+  - 130003470085395 & 130003470085396
+  - 130003470085540 & 130003470085541
+  - 130003470085590 & 130003470085591
+  - 130003470085600 & 130003470085601
+  - 130003470085960 & 130003470085961
+  - 130003470085990 & 130003470085991
+  - 130003470086040 & 130003470086041
+  - 130003470086210 & 130003470086211
+  - 130003470086255 & 130003470086256
+  - 130003470086270 & 130003470086271
+  - 130003470086435 & 130003470086436
+  - 130003470086480 & 130003470086481
+  - 130003470086635 & 130003470086636
+  - 130003470086660 & 130003470086661
+  - 130003470086830 & 130003470086831
+  - 130003470087025 & 130003470087026
+  - 130003470087040 & 130003470087041
+  - 130003470087210 & 130003470087211
+  - 130003470087430 & 130003470087431
+  - 130003470087520 & 130003470087521
+  - 130003470087805 & 130003470087806
+  - 130003470087830 & 130003470087831
+  - 130003470088070 & 130003470088071
+  - 130003470088125 & 130003470088126
+  - 130003470088345 & 130003470088346
+  - 130003470088405 & 130003470088406
+  - 130003470088545 & 130003470088546
+  - 130003470088620 & 130003470088621
+  - 130003470088645 & 130003470088646
+  - 130003470088660 & 130003470088661
+  - 130003470088715 & 130003470088716
+  - 130003470088790 & 130003470088791
+  - 130003470088855 & 130003470088856
+  - 130003470089115 & 130003470089116
+  - 130003470089430 & 130003470089431
+  - 130003470089715 & 130003470089716
+  - 130003470089765 & 130003470089766
+  - 130003470089895 & 130003470089896
+  - 130003470090165 & 130003470090166
+  - 130003470090175 & 130003470090176
+  - 130003470090225 & 130003470090226
+  - 130003470090270 & 130003470090271
+  - 130003470090335 & 130003470090336
+  - 130003470090365 & 130003470090366
+  - 130003470090450 & 130003470090451
+  - 130003470090585 & 130003470090586
+  - 130003470090680 & 130003470090681
+  - 130003470090705 & 130003470090706
+  - 130003470090755 & 130003470090756
+  - 130003470091230 & 130003470091231
+  - 130003470091310 & 130003470091311
+  - 130003470091335 & 130003470091336
+  - 130003470091425 & 130003470091426
+  - 130003470091645 & 130003470091646
+  - 130003470091665 & 130003470091666
+  - 130003470091680 & 130003470091681
+  - 130003470091690 & 130003470091691
+  - 130003470091930 & 130003470091931
+  - 130003470092400 & 130003470092401
+  - 130003470092425 & 130003470092426
+  - 130003470092705 & 130003470092706
+  - 130003470092730 & 130003470092731
+  - 130003470092845 & 130003470092846
+  - 130003470093010 & 130003470093011
+  - 130003470093035 & 130003470093036
+  - 130003470093150 & 130003470093151
+  - 130003470093255 & 130003470093256
+  - 130003470093670 & 130003470093671
+  - 130003470093800 & 130003470093801
+  - 130003470093930 & 130003470093931
+  - 130003470094000 & 130003470094001
+  - 130003470094075 & 130003470094076
+  - 130003470094250 & 130003470094251
+  - 130003470094410 & 130003470094411
+  - 130003470094540 & 130003470094541
+  - 130003470094730 & 130003470094731
+  - 130003470094815 & 130003470094816
+  - 130003470094860 & 130003470094861
+  - 130003470094905 & 130003470094906
+  - 130003470094995 & 130003470094996
+  - 130003470095150 & 130003470095151
+  - 130003470095285 & 130003470095286
+  - 130003470095320 & 130003470095321
+  - 130003470095600 & 130003470095601
+  - 130003470095885 & 130003470095886
+  - 130003470096100 & 130003470096101
+  - 130003470096220 & 130003470096221
+  - 130003470096275 & 130003470096276
+  - 130003470096380 & 130003470096381
+  - 130003470096400 & 130003470096401
+  - 130003470096430 & 130003470096431
+  - 130003470096510 & 130003470096511
+  - 130003470096570 & 130003470096571
+  - 130003470096590 & 130003470096591
+  - 130003470096785 & 130003470096786
+  - 130003470096840 & 130003470096841
+  - 130003470096885 & 130003470096886
+  - 130003470097290 & 130003470097291
+  - 130003470097340 & 130003470097341
+  - 130003470097495 & 130003470097496
+  - 130003470097720 & 130003470097721
+  - 130003470098030 & 130003470098031
+  - 130003470098345 & 130003470098346
+  - 130003470098455 & 130003470098456
+  - 130003470098505 & 130003470098506
+  - 130003470098595 & 130003470098596
+  - 130003470098825 & 130003470098826
+  - 130003470098840 & 130003470098841
+  - 130003470098865 & 130003470098866
+  - 130003470099245 & 130003470099246
+  - 130003470099325 & 130003470099326
+  - 130003470099590 & 130003470099591
+  - 130003470099805 & 130003470099806
+  - 130003470099875 & 130003470099876
+  - 130003470099890 & 130003470099891
+  - 130003470099910 & 130003470099911
+  - 130003470099980 & 130003470099981
+  - 130003470100020 & 130003470100021
+  - 130003470100165 & 130003470100166
+  - 130003470100215 & 130003470100216
+  - 130003470100255 & 130003470100256
+  - 130003470100310 & 130003470100311
+  - 130003470100745 & 130003470100746
+  - 130003470100885 & 130003470100886
+  - 130003470101340 & 130003470101341
+  - 130003470101595 & 130003470101596
+  - 130003470101650 & 130003470101651
+  - 130003470102420 & 130003470102421
+  - 130003470102635 & 130003470102636
+  - 130003470102705 & 130003470102706
+  - 130003470102865 & 130003470102866
+  - 130003470102965 & 130003470102966
+  - 130003470102985 & 130003470102986
+  - 130003470103220 & 130003470103221
+  - 130003470103325 & 130003470103326
+  - 130003470103480 & 130003470103481
+  - 130003470103555 & 130003470103556
+  - 130003470103665 & 130003470103666
+  - 130003470103770 & 130003470103771
+  - 130003470103780 & 130003470103781
+  - 130003470103915 & 130003470103916
+  - 130003470103955 & 130003470103956
+  - 130003470104345 & 130003470104346
+  - 130003470104520 & 130003470104521
+  - 130003470104660 & 130003470104661
+  - 130003470104825 & 130003470104826
+  - 130003470104915 & 130003470104916
+  - 130003470105070 & 130003470105071
+  - 130003470105135 & 130003470105136
+  - 130003470105570 & 130003470105571
+  - 130003470105590 & 130003470105591
+  - 130003470105720 & 130003470105721
+  - 130003470105735 & 130003470105736
+  - 130003470105845 & 130003470105846
+  - 130003470106235 & 130003470106236
+  - 130003470106295 & 130003470106296
+  - 130003470106400 & 130003470106401
+  - 130003470106900 & 130003470106901
+  - 130003470106970 & 130003470106971
+  - 130003470107140 & 130003470107141
+  - 130003470107205 & 130003470107206
+  - 130003470107225 & 130003470107226
+  - 130003470107235 & 130003470107236
+  - 130003470107290 & 130003470107291
+  - 130003470107465 & 130003470107466
+  - 130003470107560 & 130003470107561
+  - 130003470107675 & 130003470107676
+  - 130003470107715 & 130003470107716
+  - 130003470107820 & 130003470107821
+  - 130003470108020 & 130003470108021
+  - 130003470108140 & 130003470108141
+  - 130003470108465 & 130003470108466
+  - 130003470108480 & 130003470108481
+  - 130003470108560 & 130003470108561
+  - 130003470108620 & 130003470108621
+  - 130003470108755 & 130003470108756
+  - 130003470109175 & 130003470109176
+  - 130003470109275 & 130003470109276
+  - 130003470109315 & 130003470109316
+  - 130003470109435 & 130003470109436
+  - 130003470110230 & 130003470110231
+  - 130003470110440 & 130003470110441
+  - 130003470110480 & 130003470110481
+  - 130003470110730 & 130003470110731
+  - 130003470111040 & 130003470111041
+  - 130003470111050 & 130003470111051
+  - 130003470111270 & 130003470111271
+  - 130003470111350 & 130003470111351
+  - 130003470111455 & 130003470111456
+  - 130003470111505 & 130003470111506
+  - 130003470111925 & 130003470111926
+  - 130003470112010 & 130003470112011
+  - 130003470112035 & 130003470112036
+  - 130003470112475 & 130003470112476
+  - 130003470112585 & 130003470112586
+  - 130003470113085 & 130003470113086
+  - 130003470113145 & 130003470113146
+  - 130003470113230 & 130003470113231
+  - 130003470113300 & 130003470113301
+  - 130003470113425 & 130003470113426
+  - 130003470113450 & 130003470113451
+  - 130003470113545 & 130003470113546
+  - 130003470114115 & 130003470114116
+  - 130003470114125 & 130003470114126
+  - 130003470114425 & 130003470114426
+  - 130003470114515 & 130003470114516
+  - 130003470114560 & 130003470114561
+  - 130003470114615 & 130003470114616
+  - 130003470114700 & 130003470114701
+  - 130003470114920 & 130003470114921
+  - 130003470115160 & 130003470115161
+  - 130003470115275 & 130003470115276
+  - 130003470115345 & 130003470115346
+  - 130003470115465 & 130003470115466
+  - 130003470115880 & 130003470115881
+  - 130003470115920 & 130003470115921
+  - 130003470116080 & 130003470116081
+  - 130003470116230 & 130003470116231
+  - 130003470116485 & 130003470116486
+  - 130003470116590 & 130003470116591
+  - 130003470116605 & 130003470116606
+  - 130003470116680 & 130003470116681
+  - 130003470116820 & 130003470116821
+  - 130003470117190 & 130003470117191
+  - 130003470117260 & 130003470117261
+  - 130003470117470 & 130003470117471
+  - 130003470117545 & 130003470117546
+  - 130003470117805 & 130003470117806
+  - 130003470117840 & 130003470117841
+  - 130003470118180 & 130003470118181
+  - 130003470118510 & 130003470118511
+  - 130003470118655 & 130003470118656
+  - 130003470118865 & 130003470118866
+  - 130003470119160 & 130003470119161
+  - 130003470119290 & 130003470119291
+  - 130003470119405 & 130003470119406
+  - 130003470119525 & 130003470119526
+  - 130003470119685 & 130003470119686
+  - 130003470119695 & 130003470119696
+  - 130003470119895 & 130003470119896
+  - 130003470119925 & 130003470119926
+  - 130003470120205 & 130003470120206
+  - 130003470120250 & 130003470120251
+  - 130003470120470 & 130003470120471
+  - 130003470120495 & 130003470120496
+  - 130003470120675 & 130003470120676
+  - 130003470121095 & 130003470121096
+  - 130003470121345 & 130003470121346
+  - 130003470121555 & 130003470121556
+  - 130003470122080 & 130003470122081
+  - 130003470122185 & 130003470122186
+  - 130003470122480 & 130003470122481
+  - 130003470122600 & 130003470122601
+  - 130003470122905 & 130003470122906
+  - 130003470123015 & 130003470123016
+  - 130003470123025 & 130003470123026
+  - 130003470123055 & 130003470123056
+  - 130003470123130 & 130003470123131
+  - 130003470123645 & 130003470123646
+  - 130003470123835 & 130003470123836
+  - 130003470124165 & 130003470124166
+  - 130003470124195 & 130003470124196
+  - 130003470124360 & 130003470124361
+  - 130003470124610 & 130003470124611
+  - 130003470124770 & 130003470124771
+  - 130003470124930 & 130003470124931
+  - 130003470125380 & 130003470125381
+  - 130003470125710 & 130003470125711
+  - 130003470125865 & 130003470125866
+  - 130003470126010 & 130003470126011
+  - 130003470126080 & 130003470126081
+  - 130003470126235 & 130003470126236
+  - 130003470126455 & 130003470126456
+  - 130003470126475 & 130003470126476
+  - 130003470126490 & 130003470126491
+  - 130003470126520 & 130003470126521
+  - 130003470126665 & 130003470126666
+  - 130003470126705 & 130003470126706
+  - 130003470126745 & 130003470126746
+  - 130003470126815 & 130003470126816
+  - 130003470127220 & 130003470127221
+  - 130003470127455 & 130003470127456
+  - 130003470127555 & 130003470127556
+  - 130003470127655 & 130003470127656
+  - 130003470127670 & 130003470127671
+  - 130003470127740 & 130003470127741
+  - 130003470128020 & 130003470128021
+  - 130003470128245 & 130003470128246
+  - 130003470128450 & 130003470128451
+  - 130003470128470 & 130003470128471
+  - 130003470128665 & 130003470128666
+  - 130003470128800 & 130003470128801
+  - 130003470128845 & 130003470128846
+  - 130003470128855 & 130003470128856
+  - 130003470128875 & 130003470128876
+  - 130003470129000 & 130003470129001
+  - 130003470129315 & 130003470129316
+  - 130003470129330 & 130003470129331
+  - 130003470129480 & 130003470129481
+  - 130003470129610 & 130003470129611
+  - 130003470129680 & 130003470129681
+  - 130003470129825 & 130003470129826
+  - 130003470130085 & 130003470130086
+  - 130003470130190 & 130003470130191
+  - 130003470130290 & 130003470130291
+  - 130003470130300 & 130003470130301
+  - 130003470130350 & 130003470130351
+  - 130003470130390 & 130003470130391
+  - 130003470130490 & 130003470130491
+  - 130003470130695 & 130003470130696
+  - 130003470130995 & 130003470130996
+  - 130003470131175 & 130003470131176
+  - 130003470131245 & 130003470131246
+  - 130003470131260 & 130003470131261
+  - 130003470131335 & 130003470131336
+  - 130003470131380 & 130003470131381
+  - 130003470131525 & 130003470131526
+  - 130003470131660 & 130003470131661
+  - 130003470131750 & 130003470131751
+  - 130003470131765 & 130003470131766
+  - 130003470131905 & 130003470131906
+  - 130003470131985 & 130003470131986
+  - 130003470132235 & 130003470132236
+  - 130003470132340 & 130003470132341
+  - 130003470132385 & 130003470132386
+  - 130003470132525 & 130003470132526
+  - 130003470132675 & 130003470132676
+  - 130003470132730 & 130003470132731
+  - 130003470132760 & 130003470132761
+  - 130003470132980 & 130003470132981
+  - 130003470133305 & 130003470133306
+  - 130003470133325 & 130003470133326
+  - 130003470133345 & 130003470133346
+  - 130003470133630 & 130003470133631
+  - 130003470133920 & 130003470133921
+  - 130003470134020 & 130003470134021
+  - 130003470134400 & 130003470134401
+  - 130003470134625 & 130003470134626
+  - 130003470134760 & 130003470134761
+  - 130003470134910 & 130003470134911
+  - 130003470135060 & 130003470135061
+  - 130003470135140 & 130003470135141
+  - 130003470135275 & 130003470135276
+  - 130003470135790 & 130003470135791
+  - 130003470135805 & 130003470135806
+  - 130003470135875 & 130003470135876
+  - 130003470135990 & 130003470135991
+  - 130003470136145 & 130003470136146
+  - 130003470136345 & 130003470136346
+  - 130003470136515 & 130003470136516
+  - 130003470136580 & 130003470136581
+  - 130003470136840 & 130003470136841
+  - 130003470137175 & 130003470137176
+  - 130003470137335 & 130003470137336
+  - 130003470137395 & 130003470137396
+  - 130003470137445 & 130003470137446
+  - 130003470137575 & 130003470137576
+  - 130003470137665 & 130003470137666
+  - 130003470137930 & 130003470137931
+  - 130003470137980 & 130003470137981
+  - 130003470138015 & 130003470138016
+  - 130003470138035 & 130003470138036
+  - 130003470138100 & 130003470138101
+  - 130003470138180 & 130003470138181
+  - 130003470138200 & 130003470138201
+  - 130003470138210 & 130003470138211
+  - 130003470138355 & 130003470138356
+  - 130003470138725 & 130003470138726
+  - 130003470138830 & 130003470138831
+  - 130003470138840 & 130003470138841
+  - 130003470138950 & 130003470138951
+  - 130003470139135 & 130003470139136
+  - 130003470139250 & 130003470139251
+  - 130003470139320 & 130003470139321
+  - 130003470139350 & 130003470139351
+  - 130003470139390 & 130003470139391
+  - 130003470139490 & 130003470139491
+  - 130003470139555 & 130003470139556
+  - 130003470139650 & 130003470139651
+  - 130003470140245 & 130003470140246
+  - 130003470140290 & 130003470140291
+  - 130003470140380 & 130003470140381
+  - 130003470140565 & 130003470140566
+  - 130003470140625 & 130003470140626
+  - 130003470140645 & 130003470140646
+  - 130003470141380 & 130003470141381
+  - 130003470141450 & 130003470141451
+  - 130003470141565 & 130003470141566
+  - 130003470141600 & 130003470141601
+  - 130003470141755 & 130003470141756
+  - 130003470142055 & 130003470142056
+  - 130003470142135 & 130003470142136
+  - 130003470142240 & 130003470142241
+  - 130003470142270 & 130003470142271
+  - 130003470142405 & 130003470142406
+  - 130003470142650 & 130003470142651
+  - 130003470143025 & 130003470143026
+  - 130003470143070 & 130003470143071
+  - 130003470143115 & 130003470143116
+  - 130003470143375 & 130003470143376
+  - 130003470143460 & 130003470143461
+  - 130003470143510 & 130003470143511
+  - 130003470143805 & 130003470143806
+  - 130003470143875 & 130003470143876
+  - 130003470143960 & 130003470143961
+  - 130003470144010 & 130003470144011
+  - 130003470144080 & 130003470144081
+  - 130003470144340 & 130003470144341
+  - 130003470144445 & 130003470144446
+  - 130003470144585 & 130003470144586
+  - 130003470144815 & 130003470144816
+  - 130003470144950 & 130003470144951
+  - 130003470144970 & 130003470144971
+  - 130003470145110 & 130003470145111
+  - 130003470145150 & 130003470145151
+  - 130003470145160 & 130003470145161
+  - 130003470145190 & 130003470145191
+  - 130003470145355 & 130003470145356
+  - 130003470145375 & 130003470145376
+  - 130003470145390 & 130003470145391
+  - 130003470145425 & 130003470145426
+  - 130003470145585 & 130003470145586
+  - 130003470145785 & 130003470145786
+  - 130003470146005 & 130003470146006
+  - 130003470146110 & 130003470146111
+  - 130003470146280 & 130003470146281
+  - 130003470146340 & 130003470146341
+  - 130003470146590 & 130003470146591
+  - 130003470146645 & 130003470146646
+  - 130003470146835 & 130003470146836
+  - 130003470146855 & 130003470146856
+  - 130003470146955 & 130003470146956
+  - 130003470147085 & 130003470147086
+  - 130003470147175 & 130003470147176
+  - 130003470147265 & 130003470147266
+  - 130003470147350 & 130003470147351
+  - 130003470147410 & 130003470147411
+  - 130003470147850 & 130003470147851
+  - 130003470147900 & 130003470147901
+  - 130003470147915 & 130003470147916
+  - 130003470147970 & 130003470147971
+  - 130003470148255 & 130003470148256
+  - 130003470148275 & 130003470148276
+  - 130003470148520 & 130003470148521
+  - 130003470148575 & 130003470148576
+  - 130003470148825 & 130003470148826
+  - 130003470149025 & 130003470149026
+  - 130003470149035 & 130003470149036
+  - 130003470149110 & 130003470149111
+  - 130003470149320 & 130003470149321
+  - 130003470149390 & 130003470149391
+  - 130003470149660 & 130003470149661
+  - 130003470149790 & 130003470149791
+  - 130003470149995 & 130003470149996
+  - 130003470150020 & 130003470150021
+  - 130003470150345 & 130003470150346
+  - 130003470150355 & 130003470150356
+  - 130003470150500 & 130003470150501
+  - 130003470150725 & 130003470150726
+  - 130003470151030 & 130003470151031
+  - 130003470151070 & 130003470151071
+  - 130003470151125 & 130003470151126
+  - 130003470151210 & 130003470151211
+  - 130003470151355 & 130003470151356
+  - 130003470151655 & 130003470151656
+  - 130003470151730 & 130003470151731
+  - 130003470152000 & 130003470152001
+  - 130003470152060 & 130003470152061
+  - 130003470152430 & 130003470152431
+  - 130003470152580 & 130003470152581
+  - 130003470152960 & 130003470152961
+  - 130003470153195 & 130003470153196
+  - 130003470153355 & 130003470153356
+  - 130003470153445 & 130003470153446
+  - 130003470153635 & 130003470153636
+  - 130003470153735 & 130003470153736
+  - 130003470153770 & 130003470153771
+  - 130003470153895 & 130003470153896
+  - 130003470154040 & 130003470154041
+  - 130003470154270 & 130003470154271
+  - 130003470154410 & 130003470154411
+  - 130003470154440 & 130003470154441
+  - 130003470154535 & 130003470154536
+  - 130003470154550 & 130003470154551
+  - 130003470154830 & 130003470154831
+  - 130003470154865 & 130003470154866
+  - 130003470154875 & 130003470154876
+  - 130003470154965 & 130003470154966
+  - 130003470155185 & 130003470155186
+  - 130003470155800 & 130003470155801
+  - 130003470156240 & 130003470156241
+  - 130003470156285 & 130003470156286
+  - 130003470156295 & 130003470156296
+  - 130003470156480 & 130003470156481
+  - 130003470156610 & 130003470156611
+  - 130003470156655 & 130003470156656
+  - 130003470156680 & 130003470156681
+  - 130003470156775 & 130003470156776
+  - 130003470156935 & 130003470156936
+  - 130003470156965 & 130003470156966
+  - 130003470157000 & 130003470157001
+  - 130003470157080 & 130003470157081
+  - 130003470157335 & 130003470157336
+  - 130003470157400 & 130003470157401
+  - 130003470157450 & 130003470157451
+  - 130003470157535 & 130003470157536
+  - 130003470157560 & 130003470157561
+  - 130003470157610 & 130003470157611
+  - 130003470157620 & 130003470157621
+  - 130003470157805 & 130003470157806
+  - 130003470158060 & 130003470158061
+  - 130003470158395 & 130003470158396
+  - 130003470158470 & 130003470158471
+  - 130003470158540 & 130003470158541
+  - 130003470158630 & 130003470158631
+  - 130003470158715 & 130003470158716
+  - 130003470158825 & 130003470158826
+  - 130003470159105 & 130003470159106
+  - 130003470159575 & 130003470159576
+  - 130003470159980 & 130003470159981
+  - 130003470160005 & 130003470160006
+  - 130003470160060 & 130003470160061
+  - 130003470160105 & 130003470160106
+  - 130003470160125 & 130003470160126
+  - 130003470160630 & 130003470160631
+  - 130003470161205 & 130003470161206
+  - 130003470161255 & 130003470161256
+  - 130003470161405 & 130003470161406
+  - 130003470161905 & 130003470161906
+  - 130003470162255 & 130003470162256
+  - 130003470162325 & 130003470162326
+  - 130003470162335 & 130003470162336
+  - 130003470162350 & 130003470162351
+  - 130003470162380 & 130003470162381
+  - 130003470162660 & 130003470162661
+  - 130003470162770 & 130003470162771
+  - 130003470162810 & 130003470162811
+  - 130003470162975 & 130003470162976
+  - 130003470163075 & 130003470163076
+  - 130003470163110 & 130003470163111
+  - 130003470163255 & 130003470163256
+  - 130003470163280 & 130003470163281
+  - 130003470163545 & 130003470163546
+  - 130003470163575 & 130003470163576
+  - 130003470163720 & 130003470163721
+  - 130003470163875 & 130003470163876
+  - 130003470163895 & 130003470163896
+  - 130003470164060 & 130003470164061
+  - 130003470164100 & 130003470164101
+  - 130003470164235 & 130003470164236
+  - 130003470164480 & 130003470164481
+  - 130003470164700 & 130003470164701
+  - 130003470164720 & 130003470164721
+  - 130003470164760 & 130003470164761
+  - 130003470164795 & 130003470164796
+  - 130003470164830 & 130003470164831
+  - 130003470164900 & 130003470164901
+  - 130003470165030 & 130003470165031
+  - 130003470165100 & 130003470165101
+  - 130003470165495 & 130003470165496
+  - 130003470165505 & 130003470165506
+  - 130003470165555 & 130003470165556
+  - 130003470165730 & 130003470165731
+  - 130003470165810 & 130003470165811
+  - 130003470166035 & 130003470166036
+  - 130003470166055 & 130003470166056
+  - 130003470166445 & 130003470166446
+  - 130003470166660 & 130003470166661
+  - 130003470166745 & 130003470166746
+  - 130003470166775 & 130003470166776
+  - 130003470166820 & 130003470166821
+  - 130003470167410 & 130003470167411
+  - 130003470167535 & 130003470167536
+  - 130003470167945 & 130003470167946
+  - 130003470168255 & 130003470168256
+  - 130003470168265 & 130003470168266
+  - 130003470168400 & 130003470168401
+  - 130003470168455 & 130003470168456
+  - 130003470168620 & 130003470168621
+  - 130003470168635 & 130003470168636
+  - 130003470168675 & 130003470168676
+  - 130003470168750 & 130003470168751
+  - 130003470168975 & 130003470168976
+  - 130003470169195 & 130003470169196
+  - 130003470169290 & 130003470169291
+  - 130003470169405 & 130003470169406
+  - 130003470169930 & 130003470169931
+  - 130003470170230 & 130003470170231
+  - 130003470170245 & 130003470170246
+  - 130003470170550 & 130003470170551
+  - 130003470170570 & 130003470170571
+  - 130003470170955 & 130003470170956
+  - 130003470170965 & 130003470170966
+  - 130003470171035 & 130003470171036
+  - 130003470171230 & 130003470171231
+  - 130003470171330 & 130003470171331
+  - 130003470171740 & 130003470171741
+  - 130003470171845 & 130003470171846
+  - 130003470172040 & 130003470172041
+  - 130003470172340 & 130003470172341
+  - 130003470172360 & 130003470172361
+  - 130003470172390 & 130003470172391
+  - 130003470172420 & 130003470172421
+  - 130003470172975 & 130003470172976
+  - 130003470173070 & 130003470173071
+  - 130003470173100 & 130003470173101
+  - 130003470173145 & 130003470173146
+  - 130003470173160 & 130003470173161
+  - 130003470173190 & 130003470173191
+  - 130003470173225 & 130003470173226
+  - 130003470173240 & 130003470173241
+  - 130003470173265 & 130003470173266
+  - 130003470173280 & 130003470173281
+  - 130003470173325 & 130003470173326
+  - 130003470173360 & 130003470173361
+  - 130003470173485 & 130003470173486
+  - 130003470173570 & 130003470173571
+  - 130003470173705 & 130003470173706
+  - 130003470173815 & 130003470173816
+  - 130003470173860 & 130003470173861
+  - 130003470173965 & 130003470173966
+  - 130003470174005 & 130003470174006
+  - 130003470174125 & 130003470174126
+  - 130003470174205 & 130003470174206
+  - 130003470174295 & 130003470174296
+  - 130003470174330 & 130003470174331
+  - 130003470174605 & 130003470174606
+  - 130003470174810 & 130003470174811
+  - 130003470174830 & 130003470174831
+  - 130003470174850 & 130003470174851
+  - 130003470175045 & 130003470175046
+  - 130003470175120 & 130003470175121
+  - 130003470175145 & 130003470175146
+  - 130003470175280 & 130003470175281
+  - 130003470175355 & 130003470175356
+  - 130003470175535 & 130003470175536
+  - 130003470175860 & 130003470175861
+  - 130003470175910 & 130003470175911
+  - 130003470176130 & 130003470176131
+  - 130003470176265 & 130003470176266
+  - 130003470176575 & 130003470176576
+  - 130003470176765 & 130003470176766
+  - 130003470176780 & 130003470176781
+  - 130003470176835 & 130003470176836
+  - 130003470176945 & 130003470176946
+  - 130003470177145 & 130003470177146
+  - 130003470177230 & 130003470177231
+  - 130003470177440 & 130003470177441
+  - 130003470177455 & 130003470177456
+  - 130003470177600 & 130003470177601
+  - 130003470177670 & 130003470177671
+  - 130003470178100 & 130003470178101
+  - 130003470178225 & 130003470178226
+  - 130003470178475 & 130003470178476
+  - 130003470178485 & 130003470178486
+  - 130003470178525 & 130003470178526
+  - 130003470178540 & 130003470178541
+  - 130003470178580 & 130003470178581
+  - 130003470178600 & 130003470178601
+  - 130003470178720 & 130003470178721
+  - 130003470178770 & 130003470178771
+  - 130003470178810 & 130003470178811
+  - 130003470178885 & 130003470178886
+  - 130003470178940 & 130003470178941
+  - 130003470179085 & 130003470179086
+  - 130003470179145 & 130003470179146
+  - 130003470179195 & 130003470179196
+  - 130003470179240 & 130003470179241
+  - 130003470179385 & 130003470179386
+  - 130003470179520 & 130003470179521
+  - 130003470179540 & 130003470179541
+  - 130003470179740 & 130003470179741
+  - 130003470179815 & 130003470179816
+  - 130003470180240 & 130003470180241
+  - 130003470180315 & 130003470180316
+  - 130003470180395 & 130003470180396
+  - 130003470180480 & 130003470180481
+  - 130003470180555 & 130003470180556
+  - 130003470180645 & 130003470180646
+  - 130003470180775 & 130003470180776
+  - 130003470180830 & 130003470180831
+  - 130003470180920 & 130003470180921
+  - 130003470181035 & 130003470181036
+  - 130003470181165 & 130003470181166
+  - 130003470181315 & 130003470181316
+  - 130003470181435 & 130003470181436
+  - 130003470181460 & 130003470181461
+  - 130003470181535 & 130003470181536
+  - 130003470181775 & 130003470181776
+  - 130003470182030 & 130003470182031
+  - 130003470182090 & 130003470182091
+  - 130003470182275 & 130003470182276
+  - 130003470182710 & 130003470182711
+  - 130003470182730 & 130003470182731
+  - 130003470182975 & 130003470182976
+  - 130003470183170 & 130003470183171
+  - 130003470183220 & 130003470183221
+  - 130003470183300 & 130003470183301
+  - 130003470183335 & 130003470183336
+  - 130003470183420 & 130003470183421
+  - 130003470183545 & 130003470183546
+  - 130003470183595 & 130003470183596
+  - 130003470183650 & 130003470183651
+  - 130003470183730 & 130003470183731
+  - 130003470183775 & 130003470183776
+  - 130003470183975 & 130003470183976
+  - 130003470184220 & 130003470184221
+  - 130003470184285 & 130003470184286
+  - 130003470184310 & 130003470184311
+  - 130003470184650 & 130003470184651
+  - 130003470184825 & 130003470184826
+  - 130003470185025 & 130003470185026
+  - 130003470185215 & 130003470185216
+  - 130003470185340 & 130003470185341
+  - 130003470185450 & 130003470185451
+  - 130003470185580 & 130003470185581
+  - 130003470185690 & 130003470185691
+  - 130003470185750 & 130003470185751
+  - 130003470185770 & 130003470185771
+  - 130003470185785 & 130003470185786
+  - 130003470185925 & 130003470185926
+  - 130003470186210 & 130003470186211
+  - 130003470186385 & 130003470186386
+  - 130003470186430 & 130003470186431
+  - 130003470186570 & 130003470186571
+  - 130003470186700 & 130003470186701
+  - 130003470187090 & 130003470187091
+  - 130003470187510 & 130003470187511
+  - 130003470187640 & 130003470187641
+  - 130003470187865 & 130003470187866
+  - 130003470187935 & 130003470187936
+  - 130003470188000 & 130003470188001
+  - 130003470188010 & 130003470188011
+  - 130003470188195 & 130003470188196
+  - 130003470188225 & 130003470188226
+  - 130003470188280 & 130003470188281
+  - 130003470188305 & 130003470188306
+  - 130003470188385 & 130003470188386
+  - 130003470188395 & 130003470188396
+  - 130003470188645 & 130003470188646
+  - 130003470188660 & 130003470188661
+  - 130003470188985 & 130003470188986
+  - 130003470189040 & 130003470189041
+  - 130003470189120 & 130003470189121
+  - 130003470189130 & 130003470189131
+  - 130003470189360 & 130003470189361
+  - 130003470189440 & 130003470189441
+  - 130003470189455 & 130003470189456
+  - 130003470189570 & 130003470189571
+  - 130003470189685 & 130003470189686
+  - 130003470189710 & 130003470189711
+  - 130003470189720 & 130003470189721
+  - 130003470189735 & 130003470189736
+  - 130003470190165 & 130003470190166
+  - 130003470190225 & 130003470190226
+  - 130003470190250 & 130003470190251
+  - 130003470190590 & 130003470190591
+  - 130003470190680 & 130003470190681
+  - 130003470190785 & 130003470190786
+  - 130003470190795 & 130003470190796
+  - 130003470190925 & 130003470190926
+  - 130003470191030 & 130003470191031
+  - 130003470191315 & 130003470191316
+  - 130003470191370 & 130003470191371
+  - 130003470191520 & 130003470191521
+  - 130003470191545 & 130003470191546
+  - 130003470191555 & 130003470191556
+  - 130003470191615 & 130003470191616
+  - 130003470191860 & 130003470191861
+  - 130003470192120 & 130003470192121
+  - 130003470192585 & 130003470192586
+  - 130003470192665 & 130003470192666
+  - 130003470192840 & 130003470192841
+  - 130003470192875 & 130003470192876
+  - 130003470193095 & 130003470193096
+  - 130003470193155 & 130003470193156
+  - 130003470193350 & 130003470193351
+  - 130003470193690 & 130003470193691
+  - 130003470193810 & 130003470193811
+  - 130003470193825 & 130003470193826
+  - 130003470194020 & 130003470194021
+  - 130003470194415 & 130003470194416
+  - 130003470194755 & 130003470194756
+  - 130003470194945 & 130003470194946
+  - 130003470195080 & 130003470195081
+  - 130003470195090 & 130003470195091
+  - 130003470195145 & 130003470195146
+  - 130003470195460 & 130003470195461
+  - 130003470195475 & 130003470195476
+  - 130003470195485 & 130003470195486
+  - 130003470195700 & 130003470195701
+  - 130003470195965 & 130003470195966
+  - 130003470196330 & 130003470196331
+  - 130003470196370 & 130003470196371
+  - 130003470196410 & 130003470196411
+  - 130003470196510 & 130003470196511
+  - 130003470196785 & 130003470196786
+  - 130003470196795 & 130003470196796
+  - 130003470196840 & 130003470196841
+  - 130003470197130 & 130003470197131
+  - 130003470197150 & 130003470197151
+  - 130003470197190 & 130003470197191
+  - 130003470197440 & 130003470197441
+  - 130003470197600 & 130003470197601
+  - 130003470197795 & 130003470197796
+  - 130003470197930 & 130003470197931
+  - 130003470198105 & 130003470198106
+  - 130003470198155 & 130003470198156
+  - 130003470198175 & 130003470198176
+  - 130003470198210 & 130003470198211
+  - 130003470198335 & 130003470198336
+  - 130003470198430 & 130003470198431
+  - 130003470198800 & 130003470198801
+  - 130003470198955 & 130003470198956
+  - 130003470198980 & 130003470198981
+  - 130003470199140 & 130003470199141
+  - 130003470199165 & 130003470199166
+  - 130003470199220 & 130003470199221
+  - 130003470199275 & 130003470199276
+  - 130003470199345 & 130003470199346
+  - 130003470199420 & 130003470199421
+  - 130003470199440 & 130003470199441
+  - 130003470199480 & 130003470199481
+  - 130003470199565 & 130003470199566
+  - 130003470199885 & 130003470199886
+  - 130003470199895 & 130003470199896
+  - 130003470199970 & 130003470199971
+  - 130003470200035 & 130003470200036
+  - 130003470200110 & 130003470200111
+  - 130003470200535 & 130003470200536
+  - 130003470200555 & 130003470200556
+  - 130003470200755 & 130003470200756
+  - 130003470200840 & 130003470200841
+  - 130003470200975 & 130003470200976
+  - 130003470201005 & 130003470201006
+  - 130003470201085 & 130003470201086
+  - 130003470201435 & 130003470201436
+  - 130003470201935 & 130003470201936
+  - 130003470202040 & 130003470202041
+  - 130003470202170 & 130003470202171
+  - 130003470202395 & 130003470202396
+  - 130003470202555 & 130003470202556
+  - 130003470202585 & 130003470202586
+  - 130003470202625 & 130003470202626
+  - 130003470202655 & 130003470202656
+  - 130003470202710 & 130003470202711
+  - 130003470202815 & 130003470202816
+  - 130003470202840 & 130003470202841
+  - 130003470202985 & 130003470202986
+  - 130003470203000 & 130003470203001
+  - 130003470203225 & 130003470203226
+  - 130003470203290 & 130003470203291
+  - 130003470203310 & 130003470203311
+  - 130003470203670 & 130003470203671
+  - 130003470203785 & 130003470203786
+  - 130003470203820 & 130003470203821
+  - 130003470203940 & 130003470203941
+  - 130003470204075 & 130003470204076
+  - 130003470204330 & 130003470204331
+  - 130003470204435 & 130003470204436
+  - 130003470204470 & 130003470204471
+  - 130003470204705 & 130003470204706
+  - 130003470204725 & 130003470204726
+  - 130003470204905 & 130003470204906
+  - 130003470205125 & 130003470205126
+  - 130003470205360 & 130003470205361
+  - 130003470205420 & 130003470205421
+  - 130003470205440 & 130003470205441
+  - 130003470205500 & 130003470205501
+  - 130003470205900 & 130003470205901
+  - 130003470206035 & 130003470206036
+  - 130003470206290 & 130003470206291
+  - 130003470206330 & 130003470206331
+  - 130003470206655 & 130003470206656
+  - 130003470206665 & 130003470206666
+  - 130003470206700 & 130003470206701
+  - 130003470207080 & 130003470207081
+  - 130003470207220 & 130003470207221
+  - 130003470207830 & 130003470207831
+  - 130003470207855 & 130003470207856
+  - 130003470208160 & 130003470208161
+  - 130003470208230 & 130003470208231
+  - 130003470208755 & 130003470208756
+  - 130003470208850 & 130003470208851
+  - 130003470208885 & 130003470208886
+  - 130003470209010 & 130003470209011
+  - 130003470209710 & 130003470209711
+  - 130003470209720 & 130003470209721
+  - 130003470209870 & 130003470209871
+  - 130003470210435 & 130003470210436
+  - 130003470210485 & 130003470210486
+  - 130003470210540 & 130003470210541
+  - 130003470210550 & 130003470210551
+  - 130003470210710 & 130003470210711
+  - 130003470210735 & 130003470210736
+  - 130003470210760 & 130003470210761
+  - 130003470211365 & 130003470211366
+  - 130003470211760 & 130003470211761
+  - 130003470211840 & 130003470211841
+  - 130003470211855 & 130003470211856
+  - 130003470211920 & 130003470211921
+  - 130003470212025 & 130003470212026
+  - 130003470212055 & 130003470212056
+  - 130003470212290 & 130003470212291
+  - 130003470212335 & 130003470212336
+  - 130003470212455 & 130003470212456
+  - 130003470212690 & 130003470212691
+  - 130003470212755 & 130003470212756
+  - 130003470213365 & 130003470213366
+  - 130003470213445 & 130003470213446
+  - 130003470213525 & 130003470213526
+  - 130003470213580 & 130003470213581
+  - 130003470213590 & 130003470213591
+  - 130003470213610 & 130003470213611
+  - 130003470213655 & 130003470213656
+  - 130003470213695 & 130003470213696
+  - 130003470213790 & 130003470213791
+  - 130003470214150 & 130003470214151
+  - 130003470214190 & 130003470214191
+  - 130003470214265 & 130003470214266
+  - 130003470214335 & 130003470214336
+  - 130003470214400 & 130003470214401
+  - 130003470214460 & 130003470214461
+  - 130003470214495 & 130003470214496
+  - 130003470214535 & 130003470214536
+  - 130003470214630 & 130003470214631
+  - 130003470214665 & 130003470214666
+  - 130003470214785 & 130003470214786
+  - 130003470214865 & 130003470214866
+  - 130003470214950 & 130003470214951
+  - 130003470215075 & 130003470215076
+  - 130003470215125 & 130003470215126
+  - 130003470215205 & 130003470215206
+  - 130003470215260 & 130003470215261
+  - 130003470215280 & 130003470215281
+  - 130003470215315 & 130003470215316
+  - 130003470215430 & 130003470215431
+  - 130003470215695 & 130003470215696
+  - 130003470215915 & 130003470215916
+  - 130003470215945 & 130003470215946
+  - 130003470216140 & 130003470216141
+  - 130003470216300 & 130003470216301
+  - 130003470216650 & 130003470216651
+  - 130003470216675 & 130003470216676
+  - 130003470216790 & 130003470216791
+  - 130003470216840 & 130003470216841
+  - 130003470216860 & 130003470216861
+  - 130003470217025 & 130003470217026
+  - 130003470217085 & 130003470217086
+  - 130003470217175 & 130003470217176
+  - 130003470217360 & 130003470217361
+  - 130003470217465 & 130003470217466
+  - 130003470217610 & 130003470217611
+  - 130003470217680 & 130003470217681
+  - 130003470217905 & 130003470217906
+  - 130003470218125 & 130003470218126
+  - 130003470218295 & 130003470218296
+  - 130003470218345 & 130003470218346
+  - 130003470218585 & 130003470218586
+  - 130003470218860 & 130003470218861
+  - 130003470218960 & 130003470218961
+  - 130003470218990 & 130003470218991
+  - 130003470219045 & 130003470219046
+  - 130003470219540 & 130003470219541
+  - 130003470219610 & 130003470219611
+  - 130003470219850 & 130003470219851
+  - 130003470219925 & 130003470219926
+  - 130003470220170 & 130003470220171
+  - 130003470220290 & 130003470220291
+  - 130003470220345 & 130003470220346
+  - 130003470220395 & 130003470220396
+  - 130003470220430 & 130003470220431
+  - 130003470220440 & 130003470220441
+  - 130003470220565 & 130003470220566
+  - 130003470220835 & 130003470220836
+  - 130003470220855 & 130003470220856
+  - 130003470220925 & 130003470220926
+  - 130003470221015 & 130003470221016
+  - 130003470221365 & 130003470221366
+  - 130003470221545 & 130003470221546
+  - 130003470222135 & 130003470222136
+  - 130003470222310 & 130003470222311
+  - 130003470222370 & 130003470222371
+  - 130003470222485 & 130003470222486
+  - 130003470222670 & 130003470222671
+  - 130003470222720 & 130003470222721
+  - 130003470222800 & 130003470222801
+  - 130003470222895 & 130003470222896
+  - 130003470223235 & 130003470223236
+  - 130003470223250 & 130003470223251
+  - 130003470223345 & 130003470223346
+  - 130003470223460 & 130003470223461
+  - 130003470223490 & 130003470223491
+  - 130003470223520 & 130003470223521
+  - 130003470223590 & 130003470223591
+  - 130003470223765 & 130003470223766
+  - 130003470223820 & 130003470223821
+  - 130003470223865 & 130003470223866
+  - 130003470224020 & 130003470224021
+  - 130003470224050 & 130003470224051
+  - 130003470224145 & 130003470224146
+  - 130003470224195 & 130003470224196
+  - 130003470224475 & 130003470224476
+  - 130003470224505 & 130003470224506
+  - 130003470224520 & 130003470224521
+  - 130003470224595 & 130003470224596
+  - 130003470224925 & 130003470224926
+  - 130003470225045 & 130003470225046
+  - 130003470225115 & 130003470225116
+  - 130003470225255 & 130003470225256
+  - 130003470225560 & 130003470225561
+  - 130003470225630 & 130003470225631
+  - 130003470225940 & 130003470225941
+  - 130003470226165 & 130003470226166
+  - 130003470226320 & 130003470226321
+  - 130003470226355 & 130003470226356
+  - 130003470226595 & 130003470226596
+  - 130003470226715 & 130003470226716
+  - 130003470226745 & 130003470226746
+  - 130003470226795 & 130003470226796
+  - 130003470226870 & 130003470226871
+  - 130003470226925 & 130003470226926
+  - 130003470226935 & 130003470226936
+  - 130003470227265 & 130003470227266
+  - 130003470227320 & 130003470227321
+  - 130003470227350 & 130003470227351
+  - 130003470227480 & 130003470227481
+  - 130003470227780 & 130003470227781
+  - 130003470227850 & 130003470227851
+  - 130003470227895 & 130003470227896
+  - 130003470228215 & 130003470228216
+  - 130003470228275 & 130003470228276
+  - 130003470228335 & 130003470228336
+  - 130003470228425 & 130003470228426
+  - 130003470228475 & 130003470228476
+  - 130003470228650 & 130003470228651
+  - 130003470228870 & 130003470228871
+  - 130003470229025 & 130003470229026
+  - 130003470229165 & 130003470229166
+  - 130003470229305 & 130003470229306
+  - 130003470229420 & 130003470229421
+  - 130003470229480 & 130003470229481
+  - 130003470229540 & 130003470229541
+  - 130003470229570 & 130003470229571
+  - 130003470229580 & 130003470229581
+  - 130003470229605 & 130003470229606
+  - 130003470230075 & 130003470230076
+  - 130003470230345 & 130003470230346
+  - 130003470230485 & 130003470230486
+  - 130003470230660 & 130003470230661
+  - 130003470230790 & 130003470230791
+  - 130003470230885 & 130003470230886
+  - 130003470230925 & 130003470230926
+  - 130003470230985 & 130003470230986
+  - 130003470231015 & 130003470231016
+  - 130003470231165 & 130003470231166
+  - 130003470231280 & 130003470231281
+  - 130003470231590 & 130003470231591
+  - 130003470231615 & 130003470231616
+  - 130003470231770 & 130003470231771
+  - 130003470231795 & 130003470231796
+  - 130003470231940 & 130003470231941
+  - 130003470231980 & 130003470231981
+  - 130003470231990 & 130003470231991
+  - 130003470232070 & 130003470232071
+  - 130003470232285 & 130003470232286
+  - 130003470232395 & 130003470232396
+  - 130003470232485 & 130003470232486
+  - 130003470232590 & 130003470232591
+  - 130003470232625 & 130003470232626
+  - 130003470232860 & 130003470232861
+  - 130003470232920 & 130003470232921
+  - 130003470233000 & 130003470233001
+  - 130003470233015 & 130003470233016
+  - 130003470233100 & 130003470233101
+  - 130003470233255 & 130003470233256
+  - 130003470233635 & 130003470233636
+  - 130003470233850 & 130003470233851
+  - 130003470233870 & 130003470233871
+  - 130003470233885 & 130003470233886
+  - 130003470233975 & 130003470233976
+  - 130003470234005 & 130003470234006
+  - 130003470234060 & 130003470234061
+  - 130003470234210 & 130003470234211
+  - 130003470234585 & 130003470234586
+  - 130003470234980 & 130003470234981
+  - 130003470235090 & 130003470235091
+  - 130003470235175 & 130003470235176
+  - 130003470235195 & 130003470235196
+  - 130003470235350 & 130003470235351
+  - 130003470235500 & 130003470235501
+  - 130003470235575 & 130003470235576
+  - 130003470235590 & 130003470235591
+  - 130003470235795 & 130003470235796
+  - 130003470235805 & 130003470235806
+  - 130003470235825 & 130003470235826
+  - 130003470235910 & 130003470235911
+  - 130003470236000 & 130003470236001
+  - 130003470236045 & 130003470236046
+  - 130003470236125 & 130003470236126
+  - 130003470236245 & 130003470236246
+  - 130003470236260 & 130003470236261
+  - 130003470236375 & 130003470236376
+  - 130003470237110 & 130003470237111
+  - 130003470237280 & 130003470237281
+  - 130003470237325 & 130003470237326
+  - 130003470237380 & 130003470237381
+  - 130003470237395 & 130003470237396
+  - 130003470237665 & 130003470237666
+  - 130003470237840 & 130003470237841
+  - 130003470237880 & 130003470237881
+  - 130003470237930 & 130003470237931
+  - 130003470237945 & 130003470237946
+  - 130003470238150 & 130003470238151
+  - 130003470238185 & 130003470238186
+  - 130003470238470 & 130003470238471
+  - 130003470238550 & 130003470238551
+  - 130003470238620 & 130003470238621
+  - 130003470238765 & 130003470238766
+  - 130003470238780 & 130003470238781
+  - 130003470238930 & 130003470238931
+  - 130003470239050 & 130003470239051
+  - 130003470239080 & 130003470239081
+  - 130003470239100 & 130003470239101
+  - 130003470239210 & 130003470239211
+  - 130003470239245 & 130003470239246
+  - 130003470239395 & 130003470239396
+  - 130003470239435 & 130003470239436
+  - 130003470239455 & 130003470239456
+  - 130003470239470 & 130003470239471
+  - 130003470239560 & 130003470239561
+  - 130003470239635 & 130003470239636
+  - 130003470239650 & 130003470239651
+  - 130003470239675 & 130003470239676
+  - 130003470239840 & 130003470239841
+  - 130003470240055 & 130003470240056
+  - 130003470240290 & 130003470240291
+  - 130003470240690 & 130003470240691
+  - 130003470240850 & 130003470240851
+  - 130003470240930 & 130003470240931
+  - 130003470240945 & 130003470240946
+  - 130003470241215 & 130003470241216
+  - 130003470241405 & 130003470241406
+  - 130003470241475 & 130003470241476
+  - 130003470241505 & 130003470241506
+  - 130003470241515 & 130003470241516
+  - 130003470241530 & 130003470241531
+  - 130003470241545 & 130003470241546
+  - 130003470241570 & 130003470241571
+  - 130003470241585 & 130003470241586
+  - 130003470241630 & 130003470241631
+  - 130003470241650 & 130003470241651
+  - 130003470241800 & 130003470241801
+  - 130003470242105 & 130003470242106
+  - 130003470242180 & 130003470242181
+  - 130003470242350 & 130003470242351
+  - 130003470242455 & 130003470242456
+  - 130003470242475 & 130003470242476
+  - 130003470242660 & 130003470242661
+  - 130003470242975 & 130003470242976
+  - 130003470243020 & 130003470243021
+  - 130003470243270 & 130003470243271
+  - 130003470243335 & 130003470243336
+  - 130003470243360 & 130003470243361
+  - 130003470243385 & 130003470243386
+  - 130003470243815 & 130003470243816
+  - 130003470244200 & 130003470244201
+  - 130003470244240 & 130003470244241
+  - 130003470244265 & 130003470244266
+  - 130003470244280 & 130003470244281
+  - 130003470244355 & 130003470244356
+  - 130003470244660 & 130003470244661
+  - 130003470244805 & 130003470244806
+  - 130003470244835 & 130003470244836
+  - 130003470244855 & 130003470244856
+  - 130003470244965 & 130003470244966
+  - 130003470245055 & 130003470245056
+  - 130003470245150 & 130003470245151
+  - 130003470245170 & 130003470245171
+  - 130003470245400 & 130003470245401
+  - 130003470245990 & 130003470245991
+  - 130003470246120 & 130003470246121
+  - 130003470246170 & 130003470246171
+  - 130003470246405 & 130003470246406
+  - 130003470246600 & 130003470246601
+  - 130003470246790 & 130003470246791
+  - 130003470246825 & 130003470246826
+  - 130003470246840 & 130003470246841
+  - 130003470247120 & 130003470247121
+  - 130003470247140 & 130003470247141
+  - 130003470247170 & 130003470247171
+  - 130003470247360 & 130003470247361
+  - 130003470247490 & 130003470247491
+  - 130003470247795 & 130003470247796
+  - 130003470247935 & 130003470247936
+  - 130003470247970 & 130003470247971
+  - 130003470248235 & 130003470248236
+  - 130003470248735 & 130003470248736
+  - 130003470248860 & 130003470248861
+  - 130003470249050 & 130003470249051
+  - 130003470249125 & 130003470249126
+  - 130003470249250 & 130003470249251
+  - 130003470249330 & 130003470249331
+  - 130003470249415 & 130003470249416
+  - 130003470249720 & 130003470249721
+  - 130003470249915 & 130003470249916
+  - 130003470250035 & 130003470250036
+  - 130003470250150 & 130003470250151
+  - 130003470250180 & 130003470250181
+  - 130003470250665 & 130003470250666
+  - 130003470250715 & 130003470250716
+  - 130003470250745 & 130003470250746
+  - 130003470250935 & 130003470250936
+  - 130003470250965 & 130003470250966
+  - 130003470251645 & 130003470251646
+  - 130003470251665 & 130003470251666
+  - 130003470251775 & 130003470251776
+  - 130003470252090 & 130003470252091
+  - 130003470252370 & 130003470252371
+  - 130003470252385 & 130003470252386
+  - 130003470252430 & 130003470252431
+  - 130003470252650 & 130003470252651
+  - 130003470252700 & 130003470252701
+  - 130003470252725 & 130003470252726
+  - 130003470252755 & 130003470252756
+  - 130003470253030 & 130003470253031
+  - 130003470253065 & 130003470253066
+  - 130003470253105 & 130003470253106
+  - 130003470253150 & 130003470253151
+  - 130003470253185 & 130003470253186
+  - 130003470253200 & 130003470253201
+  - 130003470253340 & 130003470253341
+  - 130003470253360 & 130003470253361
+  - 130003470253450 & 130003470253451
+  - 130003470253580 & 130003470253581
+  - 130003470253595 & 130003470253596
+  - 130003470253675 & 130003470253676
+  - 130003470253720 & 130003470253721
+  - 130003470253750 & 130003470253751
+  - 130003470253950 & 130003470253951
+  - 130003470254225 & 130003470254226
+  - 130003470254300 & 130003470254301
+  - 130003470254450 & 130003470254451
+  - 130003470254495 & 130003470254496
+  - 130003470254795 & 130003470254796
+  - 130003470254975 & 130003470254976
+  - 130003470255015 & 130003470255016
+  - 130003470255180 & 130003470255181
+  - 130003470255210 & 130003470255211
+  - 130003470255240 & 130003470255241
+  - 130003470255255 & 130003470255256
+  - 130003470255275 & 130003470255276
+  - 130003470255300 & 130003470255301
+  - 130003470255560 & 130003470255561
+  - 130003470255640 & 130003470255641
+  - 130003470255800 & 130003470255801
+  - 130003470256100 & 130003470256101
+  - 130003470256310 & 130003470256311
+  - 130003470256710 & 130003470256711
+  - 130003470256840 & 130003470256841
+  - 130003470256975 & 130003470256976
+  - 130003470257235 & 130003470257236
+  - 130003470257465 & 130003470257466
+  - 130003470257475 & 130003470257476
+  - 130003470257565 & 130003470257566
+  - 130003470257610 & 130003470257611
+  - 130003470257725 & 130003470257726
+  - 130003470257835 & 130003470257836
+  - 130003470257915 & 130003470257916
+  - 130003470258045 & 130003470258046
+  - 130003470258060 & 130003470258061
+  - 130003470258080 & 130003470258081
+  - 130003470258270 & 130003470258271
+  - 130003470258310 & 130003470258311
+  - 130003470258395 & 130003470258396
+  - 130003470258590 & 130003470258591
+  - 130003470258865 & 130003470258866
+  - 130003470258875 & 130003470258876
+  - 130003470258920 & 130003470258921
+  - 130003470259285 & 130003470259286
+  - 130003470259350 & 130003470259351
+  - 130003470259385 & 130003470259386
+  - 130003470259655 & 130003470259656
+  - 130003470259705 & 130003470259706
+  - 130003470259810 & 130003470259811
+  - 130003470259895 & 130003470259896
+  - 130003470260030 & 130003470260031
+  - 130003470260085 & 130003470260086
+  - 130003470260480 & 130003470260481
+  - 130003470260530 & 130003470260531
+  - 130003470260565 & 130003470260566
+  - 130003470260630 & 130003470260631
+  - 130003470260665 & 130003470260666
+  - 130003470260775 & 130003470260776
+  - 130003470260895 & 130003470260896
+  - 130003470260920 & 130003470260921
+  - 130003470261125 & 130003470261126
+  - 130003470261215 & 130003470261216
+  - 130003470261365 & 130003470261366
+  - 130003470261550 & 130003470261551
+  - 130003470261575 & 130003470261576
+  - 130003470261605 & 130003470261606
+  - 130003470261755 & 130003470261756
+  - 130003470261810 & 130003470261811
+  - 130003470262290 & 130003470262291
+  - 130003470262350 & 130003470262351
+  - 130003470262365 & 130003470262366
+  - 130003470262490 & 130003470262491
+  - 130003470262515 & 130003470262516
+  - 130003470262730 & 130003470262731
+  - 130003470262960 & 130003470262961
+  - 130003470263075 & 130003470263076
+  - 130003470263100 & 130003470263101
+  - 130003470263355 & 130003470263356
+  - 130003470263440 & 130003470263441
+  - 130003470263465 & 130003470263466
+  - 130003470263570 & 130003470263571
+  - 130003470263725 & 130003470263726
+  - 130003470263945 & 130003470263946
+  - 130003470263955 & 130003470263956
+  - 130003470264050 & 130003470264051
+  - 130003470264425 & 130003470264426
+  - 130003470264575 & 130003470264576
+  - 130003470264890 & 130003470264891
+  - 130003470265320 & 130003470265321
+  - 130003470265570 & 130003470265571
+  - 130003470265635 & 130003470265636
+  - 130003470265725 & 130003470265726
+  - 130003470265880 & 130003470265881
+  - 130003470266060 & 130003470266061
+  - 130003470266165 & 130003470266166
+  - 130003470266315 & 130003470266316
+  - 130003470266385 & 130003470266386
+  - 130003470266455 & 130003470266456
+  - 130003470266710 & 130003470266711
+  - 130003470266770 & 130003470266771
+  - 130003470266820 & 130003470266821
+  - 130003470266955 & 130003470266956
+  - 130003470267030 & 130003470267031
+  - 130003470267335 & 130003470267336
+  - 130003470267410 & 130003470267411
+  - 130003470267460 & 130003470267461
+  - 130003470267630 & 130003470267631
+  - 130003470267710 & 130003470267711
+  - 130003470268050 & 130003470268051
+  - 130003470268070 & 130003470268071
+  - 130003470268225 & 130003470268226
+  - 130003470269095 & 130003470269096
+  - 130003470269140 & 130003470269141
+  - 130003470269425 & 130003470269426
+  - 130003470269515 & 130003470269516
+  - 130003470269835 & 130003470269836
+  - 130003470269995 & 130003470269996
+  - 130003470270080 & 130003470270081
+  - 130003470270405 & 130003470270406
+  - 130003470270650 & 130003470270651
+  - 130003470270705 & 130003470270706
+  - 130003470270845 & 130003470270846
+  - 130003470270920 & 130003470270921
+  - 130003470270940 & 130003470270941
+  - 130003470270965 & 130003470270966
+  - 130003470271045 & 130003470271046
+  - 130003470271100 & 130003470271101
+  - 130003470271225 & 130003470271226
+  - 130003470271340 & 130003470271341
+  - 130003470271485 & 130003470271486
+  - 130003470271560 & 130003470271561
+  - 130003470271585 & 130003470271586
+  - 130003470271610 & 130003470271611
+  - 130003470271640 & 130003470271641
+  - 130003470271705 & 130003470271706
+  - 130003470271720 & 130003470271721
+  - 130003470271745 & 130003470271746
+  - 130003470271795 & 130003470271796
+  - 130003470271830 & 130003470271831
+  - 130003470271860 & 130003470271861
+  - 130003470271890 & 130003470271891
+  - 130003470272360 & 130003470272361
+  - 130003470272685 & 130003470272686
+  - 130003470272795 & 130003470272796
+  - 130003470272835 & 130003470272836
+  - 130003470272870 & 130003470272871
+  - 130003470272950 & 130003470272951
+  - 130003470273060 & 130003470273061
+  - 130003470273130 & 130003470273131
+  - 130003470273165 & 130003470273166
+  - 130003470273270 & 130003470273271
+  - 130003470273305 & 130003470273306
+  - 130003470273390 & 130003470273391
+  - 130003470273495 & 130003470273496
+  - 130003470273505 & 130003470273506
+  - 130003470273615 & 130003470273616
+  - 130003470273960 & 130003470273961
+  - 130003470274170 & 130003470274171
+  - 130003470274565 & 130003470274566
+  - 130003470274910 & 130003470274911
+  - 130003470274930 & 130003470274931
+  - 130003470274945 & 130003470274946
+  - 130003470274985 & 130003470274986
+  - 130003470275240 & 130003470275241
+  - 130003470275285 & 130003470275286
+  - 130003470275535 & 130003470275536
+  - 130003470275845 & 130003470275846
+  - 130003470275925 & 130003470275926
+  - 130003470275955 & 130003470275956
+  - 130003470275980 & 130003470275981
+  - 130003470276185 & 130003470276186
+  - 130003470276370 & 130003470276371
+  - 130003470276610 & 130003470276611
+  - 130003470276635 & 130003470276636
+  - 130003470276750 & 130003470276751
+  - 130003470276820 & 130003470276821
+  - 130003470277030 & 130003470277031
+  - 130003470277095 & 130003470277096
+  - 130003470277185 & 130003470277186
+  - 130003470277255 & 130003470277256
+  - 130003470277460 & 130003470277461
+  - 130003470277575 & 130003470277576
+  - 130003470277585 & 130003470277586
+  - 130003470277825 & 130003470277826
+  - 130003470277870 & 130003470277871
+  - 130003470277890 & 130003470277891
+  - 130003470278330 & 130003470278331
+  - 130003470278345 & 130003470278346
+  - 130003470278500 & 130003470278501
+  - 130003470278845 & 130003470278846
+  - 130003470279010 & 130003470279011
+  - 130003470279030 & 130003470279031
+  - 130003470279240 & 130003470279241
+  - 130003470279285 & 130003470279286
+  - 130003470279750 & 130003470279751
+  - 130003470279780 & 130003470279781
+  - 130003470279900 & 130003470279901
+  - 130003470280075 & 130003470280076
+  - 130003470280090 & 130003470280091
+  - 130003470280125 & 130003470280126
+  - 130003470280145 & 130003470280146
+  - 130003470280330 & 130003470280331
+  - 130003470280570 & 130003470280571
+  - 130003470280620 & 130003470280621
+  - 130003470280645 & 130003470280646
+  - 130003470280655 & 130003470280656
+  - 130003470280720 & 130003470280721
+  - 130003470280850 & 130003470280851
+  - 130003470281145 & 130003470281146
+  - 130003470281270 & 130003470281271
+  - 130003470281435 & 130003470281436
+  - 130003470281635 & 130003470281636
+  - 130003470281805 & 130003470281806
+  - 130003470281855 & 130003470281856
+  - 130003470281935 & 130003470281936
+  - 130003470281955 & 130003470281956
+  - 130003470282090 & 130003470282091
+  - 130003470282415 & 130003470282416
+  - 130003470282660 & 130003470282661
+  - 130003470282750 & 130003470282751
+  - 130003470283005 & 130003470283006
+  - 130003470283085 & 130003470283086
+  - 130003470283145 & 130003470283146
+  - 130003470283155 & 130003470283156
+  - 130003470283255 & 130003470283256
+  - 130003470283570 & 130003470283571
+  - 130003470283685 & 130003470283686
+  - 130003470283750 & 130003470283751
+  - 130003470283760 & 130003470283761
+  - 130003470283810 & 130003470283811
+  - 130003470283945 & 130003470283946
+  - 130003470283955 & 130003470283956
+  - 130003470283995 & 130003470283996
+  - 130003470284145 & 130003470284146
+  - 130003470284165 & 130003470284166
+  - 130003470284230 & 130003470284231
+  - 130003470284290 & 130003470284291
+  - 130003470284380 & 130003470284381
+  - 130003470284430 & 130003470284431
+  - 130003470284985 & 130003470284986
+  - 130003470285250 & 130003470285251
+  - 130003470285420 & 130003470285421
+  - 130003470285435 & 130003470285436
+  - 130003470285870 & 130003470285871
+  - 130003470285965 & 130003470285966
+  - 130003470286120 & 130003470286121
+  - 130003470286150 & 130003470286151
+  - 130003470286175 & 130003470286176
+  - 130003470286200 & 130003470286201
+  - 130003470286285 & 130003470286286
+  - 130003470286395 & 130003470286396
+  - 130003470286415 & 130003470286416
+  - 130003470286570 & 130003470286571
+  - 130003470286600 & 130003470286601
+  - 130003470286900 & 130003470286901
+  - 130003470287255 & 130003470287256
+  - 130003470287425 & 130003470287426
+  - 130003470287535 & 130003470287536
+  - 130003470287700 & 130003470287701
+  - 130003470288195 & 130003470288196
+  - 130003470288495 & 130003470288496
+  - 130003470288570 & 130003470288571
+  - 130003470288780 & 130003470288781
+  - 130003470288845 & 130003470288846
+  - 130003470288860 & 130003470288861
+  - 130003470288875 & 130003470288876
+  - 130003470288900 & 130003470288901
+  - 130003470288925 & 130003470288926
+  - 130003470289005 & 130003470289006
+  - 130003470289075 & 130003470289076
+  - 130003470289450 & 130003470289451
+  - 130003470289495 & 130003470289496
+  - 130003470289560 & 130003470289561
+  - 130003470289670 & 130003470289671
+  - 130003470289710 & 130003470289711
+  - 130003470289870 & 130003470289871
+  - 130003470290435 & 130003470290436
+  - 130003470290445 & 130003470290446
+  - 130003470290830 & 130003470290831
+  - 130003470290880 & 130003470290881
+  - 130003470290890 & 130003470290891
+  - 130003470291245 & 130003470291246
+  - 130003470291375 & 130003470291376
+  - 130003470291565 & 130003470291566
+  - 130003470291615 & 130003470291616
+  - 130003470291630 & 130003470291631
+  - 130003470291735 & 130003470291736
+  - 130003470292140 & 130003470292141
+  - 130003470292195 & 130003470292196
+  - 130003470292345 & 130003470292346
+  - 130003470292555 & 130003470292556
+  - 130003470292705 & 130003470292706
+  - 130003470292765 & 130003470292766
+  - 130003470292850 & 130003470292851
+  - 130003470293070 & 130003470293071
+  - 130003470293110 & 130003470293111
+  - 130003470293265 & 130003470293266
+  - 130003470293330 & 130003470293331
+  - 130003470293410 & 130003470293411
+  - 130003470293715 & 130003470293716
+  - 130003470294135 & 130003470294136
+  - 130003470294185 & 130003470294186
+  - 130003470294215 & 130003470294216
+  - 130003470294255 & 130003470294256
+  - 130003470294275 & 130003470294276
+  - 130003470294510 & 130003470294511
+  - 130003470294730 & 130003470294731
+  - 130003470294925 & 130003470294926
+  - 130003470295365 & 130003470295366
+  - 130003470295410 & 130003470295411
+  - 130003470295520 & 130003470295521
+  - 130003470295680 & 130003470295681
+  - 130003470296150 & 130003470296151
+  - 130003470296160 & 130003470296161
+  - 130003470296255 & 130003470296256
+  - 130003470296525 & 130003470296526
+  - 130003470296565 & 130003470296566
+  - 130003470296595 & 130003470296596
+  - 130003470296615 & 130003470296616
+  - 130003470296975 & 130003470296976
+  - 130003470297055 & 130003470297056
+  - 130003470297465 & 130003470297466
+  - 130003470297490 & 130003470297491
+  - 130003470297540 & 130003470297541
+  - 130003470297625 & 130003470297626
+  - 130003470297695 & 130003470297696
+  - 130003470297755 & 130003470297756
+  - 130003470298105 & 130003470298106
+  - 130003470298585 & 130003470298586
+  - 130003470298615 & 130003470298616
+  - 130003470298860 & 130003470298861
+  - 130003470299115 & 130003470299116
+  - 130003470299125 & 130003470299126
+  - 130003470299275 & 130003470299276
+  - 130003470299395 & 130003470299396
+  - 130003470299685 & 130003470299686
+  - 130003470299730 & 130003470299731
+  - 130003470299790 & 130003470299791
+  - 130003470299985 & 130003470299986
+  - 130003470300080 & 130003470300081
+  - 130003470300145 & 130003470300146
+  - 130003470300265 & 130003470300266
+  - 130003470300325 & 130003470300326
+  - 130003470300560 & 130003470300561
+  - 130003470300970 & 130003470300971
+  - 130003470301040 & 130003470301041
+  - 130003470301095 & 130003470301096
+  - 130003470301375 & 130003470301376
+  - 130003470302010 & 130003470302011
+  - 130003470302090 & 130003470302091
+  - 130003470302155 & 130003470302156
+  - 130003470302195 & 130003470302196
+  - 130003470302315 & 130003470302316
+  - 130003470302325 & 130003470302326
+  - 130003470302660 & 130003470302661
+  - 130003470302780 & 130003470302781
+  - 130003470303155 & 130003470303156
+  - 130003470303315 & 130003470303316
+  - 130003470303375 & 130003470303376
+  - 130003470303435 & 130003470303436
+  - 130003470303460 & 130003470303461
+  - 130003470303685 & 130003470303686
+  - 130003470303825 & 130003470303826
+  - 130003470304065 & 130003470304066
+  - 130003470304140 & 130003470304141
+  - 130003470304245 & 130003470304246
+  - 130003470304395 & 130003470304396
+  - 130003470304495 & 130003470304496
+  - 130003470304505 & 130003470304506
+  - 130003470304525 & 130003470304526
+  - 130003470304535 & 130003470304536
+  - 130003470304665 & 130003470304666
+  - 130003470304680 & 130003470304681
+  - 130003470304720 & 130003470304721
+  - 130003470304735 & 130003470304736
+  - 130003470304885 & 130003470304886
+  - 130003470304910 & 130003470304911
+  - 130003470305085 & 130003470305086
+  - 130003470305590 & 130003470305591
+  - 130003470306100 & 130003470306101
+  - 130003470306505 & 130003470306506
+  - 130003470306520 & 130003470306521
+  - 130003470306565 & 130003470306566
+  - 130003470306605 & 130003470306606
+  - 130003470306830 & 130003470306831
+  - 130003470306890 & 130003470306891
+  - 130003470307005 & 130003470307006
+  - 130003470307365 & 130003470307366
+  - 130003470308195 & 130003470308196
+  - 130003470308240 & 130003470308241
+  - 130003470308260 & 130003470308261
+  - 130003470308460 & 130003470308461
+  - 130003470308480 & 130003470308481
+  - 130003470308900 & 130003470308901
+  - 130003470308930 & 130003470308931
+  - 130003470309020 & 130003470309021
+  - 130003470309095 & 130003470309096
+  - 130003470309165 & 130003470309166
+  - 130003470309195 & 130003470309196
+  - 130003470309400 & 130003470309401
+  - 130003470309480 & 130003470309481
+  - 130003470309495 & 130003470309496
+  - 130003470309560 & 130003470309561
+  - 130003470309775 & 130003470309776
+  - 130003470309815 & 130003470309816
+  - 130003470309860 & 130003470309861
+  - 130003470310040 & 130003470310041
+  - 130003470310100 & 130003470310101
+  - 130003470310130 & 130003470310131
+  - 130003470310170 & 130003470310171
+  - 130003470310530 & 130003470310531
+  - 130003470310585 & 130003470310586
+  - 130003470310665 & 130003470310666
+  - 130003470310695 & 130003470310696
+  - 130003470310745 & 130003470310746
+  - 130003470310755 & 130003470310756
+  - 130003470310785 & 130003470310786
+  - 130003470310855 & 130003470310856
+  - 130003470310915 & 130003470310916
+  - 130003470310940 & 130003470310941
+  - 130003470311280 & 130003470311281
+  - 130003470311480 & 130003470311481
+  - 130003470311490 & 130003470311491
+  - 130003470311510 & 130003470311511
+  - 130003470311540 & 130003470311541
+  - 130003470311635 & 130003470311636
+  - 130003470311695 & 130003470311696
+  - 130003470311800 & 130003470311801
+  - 130003470311895 & 130003470311896
+  - 130003470312225 & 130003470312226
+  - 130003470312390 & 130003470312391
+  - 130003470312490 & 130003470312491
+  - 130003470312645 & 130003470312646
+  - 130003470312940 & 130003470312941
+  - 130003470312960 & 130003470312961
+  - 130003470313240 & 130003470313241
+  - 130003470313355 & 130003470313356
+  - 130003470313420 & 130003470313421
+  - 130003470313460 & 130003470313461
+  - 130003470313470 & 130003470313471
+  - 130003470313600 & 130003470313601
+  - 130003470313625 & 130003470313626
+  - 130003470313655 & 130003470313656
+  - 130003470313700 & 130003470313701
+  - 130003470313900 & 130003470313901
+  - 130003470313920 & 130003470313921
+  - 130003470314510 & 130003470314511
+  - 130003470314650 & 130003470314651
+  - 130003470315005 & 130003470315006
+  - 130003470315140 & 130003470315141
+  - 130003470315225 & 130003470315226
+  - 130003470315310 & 130003470315311
+  - 130003470315430 & 130003470315431
+  - 130003470315525 & 130003470315526
+  - 130003470315550 & 130003470315551
+  - 130003470315600 & 130003470315601
+  - 130003470316100 & 130003470316101
+  - 130003470316440 & 130003470316441
+  - 130003470316670 & 130003470316671
+  - 130003470316720 & 130003470316721
+  - 130003470316775 & 130003470316776
+  - 130003470316865 & 130003470316866
+  - 130003470316880 & 130003470316881
+  - 130003470317015 & 130003470317016
+  - 130003470317065 & 130003470317066
+  - 130003470317150 & 130003470317151
+  - 130003470317840 & 130003470317841
+  - 130003470317935 & 130003470317936
+  - 130003470318185 & 130003470318186
+  - 130003470318210 & 130003470318211
+  - 130003470318310 & 130003470318311
+  - 130003470318520 & 130003470318521
+  - 130003470318630 & 130003470318631
+  - 130003470318720 & 130003470318721
+  - 130003470319520 & 130003470319521
+  - 130003470319845 & 130003470319846
+  - 130003470319975 & 130003470319976
+  - 130003470320060 & 130003470320061
+  - 130003470320070 & 130003470320071
+  - 130003470320195 & 130003470320196
+  - 130003470320465 & 130003470320466
+  - 130003470320505 & 130003470320506
+  - 130003470320575 & 130003470320576
+  - 130003470320880 & 130003470320881
+  - 130003470321165 & 130003470321166
+  - 130003470321185 & 130003470321186
+  - 130003470321210 & 130003470321211
+  - 130003470321285 & 130003470321286
+  - 130003470321435 & 130003470321436
+  - 130003470321445 & 130003470321446
+  - 130003470321550 & 130003470321551
+  - 130003470321645 & 130003470321646
+  - 130003470322040 & 130003470322041
+  - 130003470322105 & 130003470322106
+  - 130003470322245 & 130003470322246
+  - 130003470322270 & 130003470322271
+  - 130003470322280 & 130003470322281
+  - 130003470322360 & 130003470322361
+  - 130003470322635 & 130003470322636
+  - 130003470322980 & 130003470322981
+  - 130003470323035 & 130003470323036
+  - 130003470323255 & 130003470323256
+  - 130003470323375 & 130003470323376
+  - 130003470323430 & 130003470323431
+  - 130003470323555 & 130003470323556
+  - 130003470323600 & 130003470323601
+  - 130003470323645 & 130003470323646
+  - 130003470323700 & 130003470323701
+  - 130003470323905 & 130003470323906
+  - 130003470323960 & 130003470323961
+  - 130003470324100 & 130003470324101
+  - 130003470324270 & 130003470324271
+  - 130003470324625 & 130003470324626
+  - 130003470324665 & 130003470324666
+  - 130003470324785 & 130003470324786
+  - 130003470324890 & 130003470324891
+  - 130003470325045 & 130003470325046
+  - 130003470325115 & 130003470325116
+  - 130003470325185 & 130003470325186
+  - 130003470325255 & 130003470325256
+  - 130003470325300 & 130003470325301
+  - 130003470325490 & 130003470325491
+  - 130003470325500 & 130003470325501
+  - 130003470325620 & 130003470325621
+  - 130003470325690 & 130003470325691
+  - 130003470325815 & 130003470325816
+  - 130003470326090 & 130003470326091
+  - 130003470326125 & 130003470326126
+  - 130003470326310 & 130003470326311
+  - 130003470326900 & 130003470326901
+  - 130003470327130 & 130003470327131
+  - 130003470327460 & 130003470327461
+  - 130003470327615 & 130003470327616
+  - 130003470327740 & 130003470327741
+  - 130003470327870 & 130003470327871
+  - 130003470328060 & 130003470328061
+  - 130003470328250 & 130003470328251
+  - 130003470328295 & 130003470328296
+  - 130003470328395 & 130003470328396
+  - 130003470328585 & 130003470328586
+  - 130003470328620 & 130003470328621
+  - 130003470328700 & 130003470328701
+  - 130003470328710 & 130003470328711
+  - 130003470328745 & 130003470328746
+  - 130003470328805 & 130003470328806
+  - 130003470328970 & 130003470328971
+  - 130003470329010 & 130003470329011
+  - 130003470329055 & 130003470329056
+  - 130003470329185 & 130003470329186
+  - 130003470329225 & 130003470329226
+  - 130003470329470 & 130003470329471
+  - 130003470329580 & 130003470329581
+  - 130003470329710 & 130003470329711
+  - 130003470330125 & 130003470330126
+  - 130003470330140 & 130003470330141
+  - 130003470330190 & 130003470330191
+  - 130003470330270 & 130003470330271
+  - 130003470330325 & 130003470330326
+  - 130003470330395 & 130003470330396
+  - 130003470330450 & 130003470330451
+  - 130003470330475 & 130003470330476
+  - 130003470330605 & 130003470330606
+  - 130003470330850 & 130003470330851
+  - 130003470331235 & 130003470331236
+  - 130003470331405 & 130003470331406
+  - 130003470331565 & 130003470331566
+  - 130003470331695 & 130003470331696
+  - 130003470331870 & 130003470331871
+  - 130003470331940 & 130003470331941
+  - 130003470332090 & 130003470332091
+  - 130003470332420 & 130003470332421
+  - 130003470332585 & 130003470332586
+  - 130003470333045 & 130003470333046
+  - 130003470333190 & 130003470333191
+  - 130003470333340 & 130003470333341
+  - 130003470333375 & 130003470333376
+  - 130003470333450 & 130003470333451
+  - 130003470333535 & 130003470333536
+  - 130003470333635 & 130003470333636
+  - 130003470333800 & 130003470333801
+  - 130003470333835 & 130003470333836
+  - 130003470333890 & 130003470333891
+  - 130003470333995 & 130003470333996
+  - 130003470334055 & 130003470334056
+  - 130003470334510 & 130003470334511
+  - 130003470334525 & 130003470334526
+  - 130003470334535 & 130003470334536
+  - 130003470334670 & 130003470334671
+  - 130003470334785 & 130003470334786
+  - 130003470334930 & 130003470334931
+  - 130003470334950 & 130003470334951
+  - 130003470335030 & 130003470335031
+  - 130003470335115 & 130003470335116
+  - 130003470335325 & 130003470335326
+  - 130003470335490 & 130003470335491
+  - 130003470335555 & 130003470335556
+  - 130003470335595 & 130003470335596
+  - 130003470336135 & 130003470336136
+  - 130003470336320 & 130003470336321
+  - 130003470336480 & 130003470336481
+  - 130003470336535 & 130003470336536
+  - 130003470336565 & 130003470336566
+  - 130003470336640 & 130003470336641
+  - 130003470337000 & 130003470337001
+  - 130003470337045 & 130003470337046
+  - 130003470337125 & 130003470337126
+  - 130003470337380 & 130003470337381
+  - 130003470337445 & 130003470337446
+  - 130003470337470 & 130003470337471
+  - 130003470337560 & 130003470337561
+  - 130003470337845 & 130003470337846
+  - 130003470337870 & 130003470337871
+  - 130003470338050 & 130003470338051
+  - 130003470338450 & 130003470338451
+  - 130003470338680 & 130003470338681
+  - 130003470339120 & 130003470339121
+  - 130003470339440 & 130003470339441
+  - 130003470339515 & 130003470339516
+  - 130003470339560 & 130003470339561
+  - 130003470339580 & 130003470339581
+  - 130003470339610 & 130003470339611
+  - 130003470339645 & 130003470339646
+  - 130003470339840 & 130003470339841
+  - 130003470339865 & 130003470339866
+  - 130003470339975 & 130003470339976
+  - 130003470340155 & 130003470340156
+  - 130003470340200 & 130003470340201
+  - 130003470340295 & 130003470340296
+  - 130003470340360 & 130003470340361
+  - 130003470340680 & 130003470340681
+  - 130003470340715 & 130003470340716
+  - 130003470341290 & 130003470341291
+  - 130003470341310 & 130003470341311
+  - 130003470341720 & 130003470341721
+  - 130003470341840 & 130003470341841
+  - 130003470342045 & 130003470342046
+  - 130003470342100 & 130003470342101
+  - 130003470342430 & 130003470342431
+  - 130003470342480 & 130003470342481
+  - 130003470342520 & 130003470342521
+  - 130003470342550 & 130003470342551
+  - 130003470342625 & 130003470342626
+  - 130003470342665 & 130003470342666
+  - 130003470342690 & 130003470342691
+  - 130003470342720 & 130003470342721
+  - 130003470342840 & 130003470342841
+  - 130003470343570 & 130003470343571
+  - 130003470343605 & 130003470343606
+  - 130003470343845 & 130003470343846
+  - 130003470343880 & 130003470343881
+  - 130003470343950 & 130003470343951
+  - 130003470344145 & 130003470344146
+  - 130003470344300 & 130003470344301
+  - 130003470344430 & 130003470344431
+  - 130003470344460 & 130003470344461
+  - 130003470344635 & 130003470344636
+  - 130003470344815 & 130003470344816
+  - 130003470344960 & 130003470344961
+  - 130003470345250 & 130003470345251
+  - 130003470345410 & 130003470345411
+  - 130003470345595 & 130003470345596
+  - 130003470345660 & 130003470345661
+  - 130003470345700 & 130003470345701
+  - 130003470345720 & 130003470345721
+  - 130003470345730 & 130003470345731
+  - 130003470345790 & 130003470345791
+  - 130003470345910 & 130003470345911
+  - 130003470346130 & 130003470346131
+  - 130003470346190 & 130003470346191
+  - 130003470346330 & 130003470346331
+  - 130003470346420 & 130003470346421
+  - 130003470346455 & 130003470346456
+  - 130003470346830 & 130003470346831
+  - 130003470346980 & 130003470346981
+  - 130003470347085 & 130003470347086
+  - 130003470347295 & 130003470347296
+  - 130003470347465 & 130003470347466
+  - 130003470347545 & 130003470347546
+  - 130003470347980 & 130003470347981
+  - 130003470348015 & 130003470348016
+  - 130003470348085 & 130003470348086
+  - 130003470348160 & 130003470348161
+  - 130003470348245 & 130003470348246
+  - 130003470348410 & 130003470348411
+  - 130003470348425 & 130003470348426
+  - 130003470348505 & 130003470348506
+  - 130003470348620 & 130003470348621
+  - 130003470348630 & 130003470348631
+  - 130003470348725 & 130003470348726
+  - 130003470348880 & 130003470348881
+  - 130003470348920 & 130003470348921
+  - 130003470348935 & 130003470348936
+  - 130003470349035 & 130003470349036
+  - 130003470349055 & 130003470349056
+  - 130003470349930 & 130003470349931
+  - 130003470350015 & 130003470350016
+  - 130003470350235 & 130003470350236
+  - 130003470350340 & 130003470350341
+  - 130003470350525 & 130003470350526
+  - 130003470350730 & 130003470350731
+  - 130003470350765 & 130003470350766
+  - 130003470350810 & 130003470350811
+  - 130003470351100 & 130003470351101
+  - 130003470351310 & 130003470351311
+  - 130003470351550 & 130003470351551
+  - 130003470351660 & 130003470351661
+  - 130003470351710 & 130003470351711
+  - 130003470352110 & 130003470352111
+  - 130003470352140 & 130003470352141
+  - 130003470352190 & 130003470352191
+  - 130003470352215 & 130003470352216
+  - 130003470352255 & 130003470352256
+  - 130003470352265 & 130003470352266
+  - 130003470352350 & 130003470352351
+  - 130003470352475 & 130003470352476
+  - 130003470352655 & 130003470352656
+  - 130003470352730 & 130003470352731
+  - 130003470352740 & 130003470352741
+  - 130003470352795 & 130003470352796
+  - 130003470352875 & 130003470352876
+  - 130003470352975 & 130003470352976
+  - 130003470353275 & 130003470353276
+  - 130003470353285 & 130003470353286
+  - 130003470353320 & 130003470353321
+  - 130003470353655 & 130003470353656
+  - 130003470353795 & 130003470353796
+  - 130003470353860 & 130003470353861
+  - 130003470354015 & 130003470354016
+  - 130003470354050 & 130003470354051
+  - 130003470354210 & 130003470354211
+  - 130003470354255 & 130003470354256
+  - 130003470354480 & 130003470354481
+  - 130003470354530 & 130003470354531
+  - 130003470354550 & 130003470354551
+  - 130003470354735 & 130003470354736
+  - 130003470354755 & 130003470354756
+  - 130003470354765 & 130003470354766
+  - 130003470354870 & 130003470354871
+  - 130003470355000 & 130003470355001
+  - 130003470355030 & 130003470355031
+  - 130003470355260 & 130003470355261
+  - 130003470355320 & 130003470355321
+  - 130003470355480 & 130003470355481
+  - 130003470355555 & 130003470355556
+  - 130003470355840 & 130003470355841
+  - 130003470355995 & 130003470355996
+  - 130003470356115 & 130003470356116
+  - 130003470356150 & 130003470356151
+  - 130003470356230 & 130003470356231
+  - 130003470356305 & 130003470356306
+  - 130003470356500 & 130003470356501
+  - 130003470356510 & 130003470356511
+  - 130003470356725 & 130003470356726
+  - 130003470356775 & 130003470356776
+  - 130003470356805 & 130003470356806
+  - 130003470357025 & 130003470357026
+  - 130003470357140 & 130003470357141
+  - 130003470357290 & 130003470357291
+  - 130003470357675 & 130003470357676
+  - 130003470357800 & 130003470357801
+  - 130003470358105 & 130003470358106
+  - 130003470358160 & 130003470358161
+  - 130003470358205 & 130003470358206
+  - 130003470358360 & 130003470358361
+  - 130003470358435 & 130003470358436
+  - 130003470358465 & 130003470358466
+  - 130003470358520 & 130003470358521
+  - 130003470358695 & 130003470358696
+  - 130003470358860 & 130003470358861
+  - 130003470359330 & 130003470359331
+  - 130003470359450 & 130003470359451
+  - 130003470359760 & 130003470359761
+  - 130003470359960 & 130003470359961
+  - 130003470360085 & 130003470360086
+  - 130003470360165 & 130003470360166
+  - 130003470360520 & 130003470360521
+  - 130003470360605 & 130003470360606
+  - 130003470360685 & 130003470360686
+  - 130003470360700 & 130003470360701
+  - 130003470360755 & 130003470360756
+  - 130003470360800 & 130003470360801
+  - 130003470360855 & 130003470360856
+  - 130003470360975 & 130003470360976
+  - 130003470361015 & 130003470361016
+  - 130003470361050 & 130003470361051
+  - 130003470361330 & 130003470361331
+  - 130003470361395 & 130003470361396
+  - 130003470361595 & 130003470361596
+  - 130003470361660 & 130003470361661
+  - 130003470361900 & 130003470361901
+  - 130003470361920 & 130003470361921
+  - 130003470362180 & 130003470362181
+  - 130003470362390 & 130003470362391
+  - 130003470362625 & 130003470362626
+  - 130003470362900 & 130003470362901
+  - 130003470363340 & 130003470363341
+  - 130003470363420 & 130003470363421
+  - 130003470363460 & 130003470363461
+  - 130003470363515 & 130003470363516
+  - 130003470363650 & 130003470363651
+  - 130003470363700 & 130003470363701
+  - 130003470363725 & 130003470363726
+  - 130003470363875 & 130003470363876
+  - 130003470364035 & 130003470364036
+  - 130003470364240 & 130003470364241
+  - 130003470364325 & 130003470364326
+  - 130003470364365 & 130003470364366
+  - 130003470364440 & 130003470364441
+  - 130003470364505 & 130003470364506
+  - 130003470364935 & 130003470364936
+  - 130003470365050 & 130003470365051
+  - 130003470365210 & 130003470365211
+  - 130003470365550 & 130003470365551
+  - 130003470365575 & 130003470365576
+  - 130003470365620 & 130003470365621
+  - 130003470365675 & 130003470365676
+  - 130003470366015 & 130003470366016
+  - 130003470366335 & 130003470366336
+  - 130003470366355 & 130003470366356
+  - 130003470366510 & 130003470366511
+  - 130003470366725 & 130003470366726
+  - 130003470366735 & 130003470366736
+  - 130003470366750 & 130003470366751
+  - 130003470366775 & 130003470366776
+  - 130003470366855 & 130003470366856
+  - 130003470366935 & 130003470366936
+  - 130003470367030 & 130003470367031
+  - 130003470367165 & 130003470367166
+  - 130003470367585 & 130003470367586
+  - 130003470367620 & 130003470367621
+  - 130003470367770 & 130003470367771
+  - 130003470367820 & 130003470367821
+  - 130003470367970 & 130003470367971
+  - 130003470368075 & 130003470368076
+  - 130003470368375 & 130003470368376
+  - 130003470368555 & 130003470368556
+  - 130003470368640 & 130003470368641
+  - 130003470368785 & 130003470368786
+  - 130003470368805 & 130003470368806
+  - 130003470368850 & 130003470368851
+  - 130003470368880 & 130003470368881
+  - 130003470368920 & 130003470368921
+  - 130003470369030 & 130003470369031
+  - 130003470369205 & 130003470369206
+  - 130003470369380 & 130003470369381
+  - 130003470369435 & 130003470369436
+  - 130003470369495 & 130003470369496
+  - 130003470369965 & 130003470369966
+  - 130003470370115 & 130003470370116
+  - 130003470370360 & 130003470370361
+  - 130003470370370 & 130003470370371
+  - 130003470370690 & 130003470370691
+  - 130003470370730 & 130003470370731
+  - 130003470370840 & 130003470370841
+  - 130003470370970 & 130003470370971
+  - 130003470371165 & 130003470371166
+  - 130003470371270 & 130003470371271
+  - 130003470371465 & 130003470371466
+  - 130003470371525 & 130003470371526
+  - 130003470371555 & 130003470371556
+  - 130003470371565 & 130003470371566
+  - 130003470371610 & 130003470371611
+  - 130003470371650 & 130003470371651
+  - 130003470371745 & 130003470371746
+  - 130003470371900 & 130003470371901
+  - 130003470371965 & 130003470371966
+  - 130003470372040 & 130003470372041
+  - 130003470372050 & 130003470372051
+  - 130003470372270 & 130003470372271
+  - 130003470372305 & 130003470372306
+  - 130003470372635 & 130003470372636
+  - 130003470372930 & 130003470372931
+  - 130003470372975 & 130003470372976
+  - 130003470373015 & 130003470373016
+  - 130003470373220 & 130003470373221
+  - 130003470373230 & 130003470373231
+  - 130003470373305 & 130003470373306
+  - 130003470373455 & 130003470373456
+  - 130003470373495 & 130003470373496
+  - 130003470373550 & 130003470373551
+  - 130003470373610 & 130003470373611
+  - 130003470373655 & 130003470373656
+  - 130003470373690 & 130003470373691
+  - 130003470373765 & 130003470373766
+  - 130003470373835 & 130003470373836
+  - 130003470373965 & 130003470373966
+  - 130003470374420 & 130003470374421
+  - 130003470374500 & 130003470374501
+  - 130003470374605 & 130003470374606
+  - 130003470374730 & 130003470374731
+  - 130003470375170 & 130003470375171
+  - 130003470375190 & 130003470375191
+  - 130003470375370 & 130003470375371
+  - 130003470375460 & 130003470375461
+  - 130003470375520 & 130003470375521
+  - 130003470375695 & 130003470375696
+  - 130003470375780 & 130003470375781
+  - 130003470375975 & 130003470375976
+  - 130003470376045 & 130003470376046
+  - 130003470376075 & 130003470376076
+  - 130003470376315 & 130003470376316
+  - 130003470376365 & 130003470376366
+  - 130003470376475 & 130003470376476
+  - 130003470376850 & 130003470376851
+  - 130003470377145 & 130003470377146
+  - 130003470377200 & 130003470377201
+  - 130003470377385 & 130003470377386
+  - 130003470377605 & 130003470377606
+  - 130003470377660 & 130003470377661
+  - 130003470377785 & 130003470377786
+  - 130003470377835 & 130003470377836
+  - 130003470377950 & 130003470377951
+  - 130003470377975 & 130003470377976
+  - 130003470378010 & 130003470378011
+  - 130003470378105 & 130003470378106
+  - 130003470378415 & 130003470378416
+  - 130003470378900 & 130003470378901
+  - 130003470379110 & 130003470379111
+  - 130003470379240 & 130003470379241
+  - 130003470379325 & 130003470379326
+  - 130003470379370 & 130003470379371
+  - 130003470379485 & 130003470379486
+  - 130003470379745 & 130003470379746
+  - 130003470379975 & 130003470379976
+  - 130003470379985 & 130003470379986
+  - 130003470380150 & 130003470380151
+  - 130003470380505 & 130003470380506
+  - 130003470380630 & 130003470380631
+  - 130003470380850 & 130003470380851
+  - 130003470380940 & 130003470380941
+  - 130003470381045 & 130003470381046
+  - 130003470381220 & 130003470381221
+  - 130003470381285 & 130003470381286
+  - 130003470381460 & 130003470381461
+  - 130003470381495 & 130003470381496
+  - 130003470381590 & 130003470381591
+  - 130003470381710 & 130003470381711
+  - 130003470381840 & 130003470381841
+  - 130003470382015 & 130003470382016
+  - 130003470382040 & 130003470382041
+  - 130003470382315 & 130003470382316
+  - 130003470382455 & 130003470382456
+  - 130003470382535 & 130003470382536
+  - 130003470382635 & 130003470382636
+  - 130003470383210 & 130003470383211
+  - 130003470383530 & 130003470383531
+  - 130003470383595 & 130003470383596
+  - 130003470383710 & 130003470383711
+  - 130003470383795 & 130003470383796
+  - 130003470383940 & 130003470383941
+  - 130003470384395 & 130003470384396
+  - 130003470384530 & 130003470384531
+  - 130003470384590 & 130003470384591
+  - 130003470384760 & 130003470384761
+  - 130003470384770 & 130003470384771
+  - 130003470384865 & 130003470384866
+  - 130003470384965 & 130003470384966
+  - 130003470384985 & 130003470384986
+  - 130003470385065 & 130003470385066
+  - 130003470385080 & 130003470385081
+  - 130003470385100 & 130003470385101
+  - 130003470385170 & 130003470385171
+  - 130003470385225 & 130003470385226
+  - 130003470385270 & 130003470385271
+  - 130003470385560 & 130003470385561
+  - 130003470385690 & 130003470385691
+  - 130003470385890 & 130003470385891
+  - 130003470385940 & 130003470385941
+  - 130003470386020 & 130003470386021
+  - 130003470386030 & 130003470386031
+  - 130003470386085 & 130003470386086
+  - 130003470386220 & 130003470386221
+  - 130003470386360 & 130003470386361
+  - 130003470386585 & 130003470386586
+  - 130003470386870 & 130003470386871
+  - 130003470386955 & 130003470386956
+  - 130003470387140 & 130003470387141
+  - 130003470387420 & 130003470387421
+  - 130003470387660 & 130003470387661
+  - 130003470387985 & 130003470387986
+  - 130003470388015 & 130003470388016
+  - 130003470388130 & 130003470388131
+  - 130003470388360 & 130003470388361
+  - 130003470388485 & 130003470388486
+  - 130003470388650 & 130003470388651
+  - 130003470388815 & 130003470388816
+  - 130003470388860 & 130003470388861
+  - 130003470388995 & 130003470388996
+  - 130003470389475 & 130003470389476
+  - 130003470389595 & 130003470389596
+  - 130003470389765 & 130003470389766
+  - 130003470389775 & 130003470389776
+  - 130003470389790 & 130003470389791
+  - 130003470389810 & 130003470389811
+  - 130003470389995 & 130003470389996
+  - 130003470390210 & 130003470390211
+  - 130003470390340 & 130003470390341
+  - 130003470390430 & 130003470390431
+  - 130003470390440 & 130003470390441
+  - 130003470390540 & 130003470390541
+  - 130003470390665 & 130003470390666
+  - 130003470390685 & 130003470390686
+  - 130003470390985 & 130003470390986
+  - 130003470391555 & 130003470391556
+  - 130003470391590 & 130003470391591
+  - 130003470392090 & 130003470392091
+  - 130003470392190 & 130003470392191
+  - 130003470392405 & 130003470392406
+  - 130003470392425 & 130003470392426
+  - 130003470392615 & 130003470392616
+  - 130003470392645 & 130003470392646
+  - 130003470392820 & 130003470392821
+  - 130003470392940 & 130003470392941
+  - 130003470393015 & 130003470393016
+  - 130003470393220 & 130003470393221
+  - 130003470393415 & 130003470393416
+  - 130003470393540 & 130003470393541
+  - 130003470393780 & 130003470393781
+  - 130003470393925 & 130003470393926
+  - 130003470394005 & 130003470394006
+  - 130003470394110 & 130003470394111
+  - 130003470394245 & 130003470394246
+  - 130003470394275 & 130003470394276
+  - 130003470394480 & 130003470394481
+  - 130003470394545 & 130003470394546
+  - 130003470394560 & 130003470394561
+  - 130003470394620 & 130003470394621
+  - 130003470394725 & 130003470394726
+  - 130003470395310 & 130003470395311
+  - 130003470395590 & 130003470395591
+  - 130003470395640 & 130003470395641
+  - 130003470395775 & 130003470395776
+  - 130003470395875 & 130003470395876
+  - 130003470396060 & 130003470396061
+  - 130003470396350 & 130003470396351
+  - 130003470396385 & 130003470396386
+  - 130003470396455 & 130003470396456
+  - 130003470396580 & 130003470396581
+  - 130003470396640 & 130003470396641
+  - 130003470396655 & 130003470396656
+  - 130003470397225 & 130003470397226
+  - 130003470397235 & 130003470397236
+  - 130003470397450 & 130003470397451
+  - 130003470397765 & 130003470397766
+  - 130003470397980 & 130003470397981
+  - 130003470398155 & 130003470398156
+  - 130003470398285 & 130003470398286
+  - 130003470398295 & 130003470398296
+  - 130003470398570 & 130003470398571
+  - 130003470398670 & 130003470398671
+  - 130003470398715 & 130003470398716
+  - 130003470398800 & 130003470398801
+  - 130003470398935 & 130003470398936
+  - 130003470399005 & 130003470399006
+  - 130003470399085 & 130003470399086
+  - 130003470399380 & 130003470399381
+  - 130003470399945 & 130003470399946
+  - 130003470400160 & 130003470400161
+  - 130003470400515 & 130003470400516
+  - 130003470400650 & 130003470400651
+  - 130003470400820 & 130003470400821
+  - 130003470401045 & 130003470401046
+  - 130003470401055 & 130003470401056
+  - 130003470401120 & 130003470401121
+  - 130003470401190 & 130003470401191
+  - 130003470401320 & 130003470401321
+  - 130003470401410 & 130003470401411
+  - 130003470401690 & 130003470401691
+  - 130003470402140 & 130003470402141
+  - 130003470402195 & 130003470402196
+  - 130003470402265 & 130003470402266
+  - 130003470402420 & 130003470402421
+  - 130003470402445 & 130003470402446
+  - 130003470402750 & 130003470402751
+  - 130003470402880 & 130003470402881
+  - 130003470402890 & 130003470402891
+  - 130003470402950 & 130003470402951
+  - 130003470403095 & 130003470403096
+  - 130003470403185 & 130003470403186
+  - 130003470403215 & 130003470403216
+  - 130003470403250 & 130003470403251
+  - 130003470403360 & 130003470403361
+  - 130003470403600 & 130003470403601
+  - 130003470404260 & 130003470404261
+  - 130003470404385 & 130003470404386
+  - 130003470404895 & 130003470404896
+  - 130003470404980 & 130003470404981
+  - 130003470405015 & 130003470405016
+  - 130003470405210 & 130003470405211
+  - 130003470405280 & 130003470405281
+  - 130003470405375 & 130003470405376
+  - 130003470405565 & 130003470405566
+  - 130003470405785 & 130003470405786
+  - 130003470405895 & 130003470405896
+  - 130003470405950 & 130003470405951
+  - 130003470406010 & 130003470406011
+  - 130003470406195 & 130003470406196
+  - 130003470406215 & 130003470406216
+  - 130003470406245 & 130003470406246
+  - 130003470406335 & 130003470406336
+  - 130003470406470 & 130003470406471
+  - 130003470406480 & 130003470406481
+  - 130003470406630 & 130003470406631
+  - 130003470406665 & 130003470406666
+  - 130003470406715 & 130003470406716
+  - 130003470406820 & 130003470406821
+  - 130003470406955 & 130003470406956
+  - 130003470407255 & 130003470407256
+  - 130003470407270 & 130003470407271
+  - 130003470407435 & 130003470407436
+  - 130003470407515 & 130003470407516
+  - 130003470407685 & 130003470407686
+  - 130003470407760 & 130003470407761
+  - 130003470407770 & 130003470407771
+  - 130003470407865 & 130003470407866
+  - 130003470408065 & 130003470408066
+  - 130003470408240 & 130003470408241
+  - 130003470408290 & 130003470408291
+  - 130003470408380 & 130003470408381
+  - 130003470408395 & 130003470408396
+  - 130003470408425 & 130003470408426
+  - 130003470408465 & 130003470408466
+  - 130003470408575 & 130003470408576
+  - 130003470408705 & 130003470408706
+  - 130003470408735 & 130003470408736
+  - 130003470409255 & 130003470409256
+  - 130003470409315 & 130003470409316
+  - 130003470409370 & 130003470409371
+  - 130003470409570 & 130003470409571
+  - 130003470409645 & 130003470409646
+  - 130003470409710 & 130003470409711
+  - 130003470409830 & 130003470409831
+  - 130003470409875 & 130003470409876
+  - 130003470409940 & 130003470409941
+  - 130003470410095 & 130003470410096
+  - 130003470410120 & 130003470410121
+  - 130003470410130 & 130003470410131
+  - 130003470410260 & 130003470410261
+  - 130003470410275 & 130003470410276
+  - 130003470410430 & 130003470410431
+  - 130003470410475 & 130003470410476
+  - 130003470410745 & 130003470410746
+  - 130003470410820 & 130003470410821
+  - 130003470410895 & 130003470410896
+  - 130003470410925 & 130003470410926
+  - 130003470410965 & 130003470410966
+  - 130003470410995 & 130003470410996
+  - 130003470411090 & 130003470411091
+  - 130003470411185 & 130003470411186
+  - 130003470411210 & 130003470411211
+  - 130003470411230 & 130003470411231
+  - 130003470411305 & 130003470411306
+  - 130003470411440 & 130003470411441
+  - 130003470411575 & 130003470411576
+  - 130003470411755 & 130003470411756
+  - 130003470411850 & 130003470411851
+  - 130003470411915 & 130003470411916
+  - 130003470412135 & 130003470412136
+  - 130003470412365 & 130003470412366
+  - 130003470412425 & 130003470412426
+  - 130003470412435 & 130003470412436
+  - 130003470412560 & 130003470412561
+  - 130003470412985 & 130003470412986
+  - 130003470413015 & 130003470413016
+  - 130003470413245 & 130003470413246
+  - 130003470413580 & 130003470413581
+  - 130003470413860 & 130003470413861
+  - 130003470414265 & 130003470414266
+  - 130003470414310 & 130003470414311
+  - 130003470414365 & 130003470414366
+  - 130003470414470 & 130003470414471
+  - 130003470414635 & 130003470414636
+  - 130003470414880 & 130003470414881
+  - 130003470415050 & 130003470415051
+  - 130003470415070 & 130003470415071
+  - 130003470415120 & 130003470415121
+  - 130003470415285 & 130003470415286
+  - 130003470415335 & 130003470415336
+  - 130003470415535 & 130003470415536
+  - 130003470415605 & 130003470415606
+  - 130003470415675 & 130003470415676
+  - 130003470415785 & 130003470415786
+  - 130003470415795 & 130003470415796
+  - 130003470415805 & 130003470415806
+  - 130003470415850 & 130003470415851
+  - 130003470416075 & 130003470416076
+  - 130003470416320 & 130003470416321
+  - 130003470416495 & 130003470416496
+  - 130003470416600 & 130003470416601
+  - 130003470416625 & 130003470416626
+  - 130003470416830 & 130003470416831
+  - 130003470416865 & 130003470416866
+  - 130003470416875 & 130003470416876
+  - 130003470417015 & 130003470417016
+  - 130003470417035 & 130003470417036
+  - 130003470417155 & 130003470417156
+  - 130003470417250 & 130003470417251
+  - 130003470417320 & 130003470417321
+  - 130003470417335 & 130003470417336
+  - 130003470417345 & 130003470417346
+  - 130003470417605 & 130003470417606
+  - 130003470418005 & 130003470418006
+  - 130003470418120 & 130003470418121
+  - 130003470418220 & 130003470418221
+  - 130003470418315 & 130003470418316
+  - 130003470418415 & 130003470418416
+  - 130003470418440 & 130003470418441
+  - 130003470418730 & 130003470418731
+  - 130003470418775 & 130003470418776
+  - 130003470418830 & 130003470418831
+  - 130003470418860 & 130003470418861
+  - 130003470418965 & 130003470418966
+  - 130003470419055 & 130003470419056
+  - 130003470419105 & 130003470419106
+  - 130003470419665 & 130003470419666
+  - 130003470419770 & 130003470419771
+  - 130003470419830 & 130003470419831
+  - 130003470419930 & 130003470419931
+  - 130003470419960 & 130003470419961
+  - 130003470420050 & 130003470420051
+  - 130003470420170 & 130003470420171
+  - 130003470420300 & 130003470420301
+  - 130003470420345 & 130003470420346
+  - 130003470420455 & 130003470420456
+  - 130003470420550 & 130003470420551
+  - 130003470420620 & 130003470420621
+  - 130003470421015 & 130003470421016
+  - 130003470421150 & 130003470421151
+  - 130003470421235 & 130003470421236
+  - 130003470421325 & 130003470421326
+  - 130003470421475 & 130003470421476
+  - 130003470422325 & 130003470422326
+  - 130003470422365 & 130003470422366
+  - 130003470422685 & 130003470422686
+  - 130003470422760 & 130003470422761
+  - 130003470422855 & 130003470422856
+  - 130003470423000 & 130003470423001
+  - 130003470423085 & 130003470423086
+  - 130003470423200 & 130003470423201
+  - 130003470423255 & 130003470423256
+  - 130003470423265 & 130003470423266
+  - 130003470423415 & 130003470423416
+  - 130003470423590 & 130003470423591
+  - 130003470423620 & 130003470423621
+  - 130003470423875 & 130003470423876
+  - 130003470423965 & 130003470423966
+  - 130003470424190 & 130003470424191
+  - 130003470424335 & 130003470424336
+  - 130003470424400 & 130003470424401
+  - 130003470424495 & 130003470424496
+  - 130003470424850 & 130003470424851
+  - 130003470424880 & 130003470424881
+  - 130003470425055 & 130003470425056
+  - 130003470425075 & 130003470425076
+  - 130003470425105 & 130003470425106
+  - 130003470425370 & 130003470425371
+  - 130003470425395 & 130003470425396
+  - 130003470425480 & 130003470425481
+  - 130003470426020 & 130003470426021
+  - 130003470426250 & 130003470426251
+  - 130003470426690 & 130003470426691
+  - 130003470426785 & 130003470426786
+  - 130003470427135 & 130003470427136
+  - 130003470427325 & 130003470427326
+  - 130003470427375 & 130003470427376
+  - 130003470427640 & 130003470427641
+  - 130003470427705 & 130003470427706
+  - 130003470427890 & 130003470427891
+  - 130003470428065 & 130003470428066
+  - 130003470428085 & 130003470428086
+  - 130003470428190 & 130003470428191
+  - 130003470428350 & 130003470428351
+  - 130003470428510 & 130003470428511
+  - 130003470428525 & 130003470428526
+  - 130003470428535 & 130003470428536
+  - 130003470428900 & 130003470428901
+  - 130003470429195 & 130003470429196
+  - 130003470429395 & 130003470429396
+  - 130003470429545 & 130003470429546
+  - 130003470429915 & 130003470429916
+  - 130003470429990 & 130003470429991
+  - 130003470430170 & 130003470430171
+  - 130003470430330 & 130003470430331
+  - 130003470430535 & 130003470430536
+  - 130003470430740 & 130003470430741
+  - 130003470430820 & 130003470430821
+  - 130003470430830 & 130003470430831
+  - 130003470431120 & 130003470431121
+  - 130003470431380 & 130003470431381
+  - 130003470431405 & 130003470431406
+  - 130003470431475 & 130003470431476
+  - 130003470431965 & 130003470431966
+  - 130003470432010 & 130003470432011
+  - 130003470432070 & 130003470432071
+  - 130003470432135 & 130003470432136
+  - 130003470432395 & 130003470432396
+  - 130003470432520 & 130003470432521
+  - 130003470432775 & 130003470432776
+  - 130003470432785 & 130003470432786
+  - 130003470432810 & 130003470432811
+  - 130003470432865 & 130003470432866
+  - 130003470433150 & 130003470433151
+  - 130003470433180 & 130003470433181
+  - 130003470433380 & 130003470433381
+  - 130003470433445 & 130003470433446
+  - 130003470433885 & 130003470433886
+  - 130003470434030 & 130003470434031
+  - 130003470434165 & 130003470434166
+  - 130003470434375 & 130003470434376
+  - 130003470434435 & 130003470434436
+  - 130003470434460 & 130003470434461
+  - 130003470434515 & 130003470434516
+  - 130003470434775 & 130003470434776
+  - 130003470434815 & 130003470434816
+  - 130003470434845 & 130003470434846
+  - 130003470434920 & 130003470434921
+  - 130003470434940 & 130003470434941
+  - 130003470435030 & 130003470435031
+  - 130003470435640 & 130003470435641
+  - 130003470435805 & 130003470435806
+  - 130003470435845 & 130003470435846
+  - 130003470435860 & 130003470435861
+  - 130003470435885 & 130003470435886
+  - 130003470435960 & 130003470435961
+  - 130003470436530 & 130003470436531
+  - 130003470436640 & 130003470436641
+  - 130003470436690 & 130003470436691
+  - 130003470436725 & 130003470436726
+  - 130003470436840 & 130003470436841
+  - 130003470436850 & 130003470436851
+  - 130003470436880 & 130003470436881
+  - 130003470437160 & 130003470437161
+  - 130003470437185 & 130003470437186
+  - 130003470437260 & 130003470437261
+  - 130003470437500 & 130003470437501
+  - 130003470437820 & 130003470437821
+  - 130003470438100 & 130003470438101
+  - 130003470438280 & 130003470438281
+  - 130003470438290 & 130003470438291
+  - 130003470438645 & 130003470438646
+  - 130003470438660 & 130003470438661
+  - 130003470438750 & 130003470438751
+  - 130003470438785 & 130003470438786
+  - 130003470438890 & 130003470438891
+  - 130003470438960 & 130003470438961
+  - 130003470439000 & 130003470439001
+  - 130003470439015 & 130003470439016
+  - 130003470439025 & 130003470439026
+  - 130003470439115 & 130003470439116
+  - 130003470439255 & 130003470439256
+  - 130003470439410 & 130003470439411
+  - 130003470439475 & 130003470439476
+  - 130003470439865 & 130003470439866
+  - 130003470439875 & 130003470439876
+  - 130003470440045 & 130003470440046
+  - 130003470440280 & 130003470440281
+  - 130003470440365 & 130003470440366
+  - 130003470440385 & 130003470440386
+  - 130003470440540 & 130003470440541
+  - 130003470440610 & 130003470440611
+  - 130003470440760 & 130003470440761
+  - 130003470440870 & 130003470440871
+  - 130003470440900 & 130003470440901
+  - 130003470441000 & 130003470441001
+  - 130003470441035 & 130003470441036
+  - 130003470441235 & 130003470441236
+  - 130003470441295 & 130003470441296
+  - 130003470441525 & 130003470441526
+  - 130003470441560 & 130003470441561
+  - 130003470441695 & 130003470441696
+  - 130003470441710 & 130003470441711
+  - 130003470441800 & 130003470441801
+  - 130003470441975 & 130003470441976
+  - 130003470442180 & 130003470442181
+  - 130003470442215 & 130003470442216
+  - 130003470442235 & 130003470442236
+  - 130003470442390 & 130003470442391
+  - 130003470442625 & 130003470442626
+  - 130003470442655 & 130003470442656
+  - 130003470442790 & 130003470442791
+  - 130003470442905 & 130003470442906
+  - 130003470443355 & 130003470443356
+  - 130003470443445 & 130003470443446
+  - 130003470443460 & 130003470443461
+  - 130003470443650 & 130003470443651
+  - 130003470443675 & 130003470443676
+  - 130003470444080 & 130003470444081
+  - 130003470444200 & 130003470444201
+  - 130003470444440 & 130003470444441
+  - 130003470444520 & 130003470444521
+  - 130003470444560 & 130003470444561
+  - 130003470444820 & 130003470444821
+  - 130003470444925 & 130003470444926
+  - 130003470444940 & 130003470444941
+  - 130003470444955 & 130003470444956
+  - 130003470445070 & 130003470445071
+  - 130003470445235 & 130003470445236
+  - 130003470445275 & 130003470445276
+  - 130003470445375 & 130003470445376
+  - 130003470445450 & 130003470445451
+  - 130003470445600 & 130003470445601
+  - 130003470445790 & 130003470445791
+  - 130003470445835 & 130003470445836
+  - 130003470445895 & 130003470445896
+  - 130003470446045 & 130003470446046
+  - 130003470446170 & 130003470446171
+  - 130003470446235 & 130003470446236
+  - 130003470446250 & 130003470446251
+  - 130003470446300 & 130003470446301
+  - 130003470446430 & 130003470446431
+  - 130003470446465 & 130003470446466
+  - 130003470446520 & 130003470446521
+  - 130003470446540 & 130003470446541
+  - 130003470446700 & 130003470446701
+  - 130003470446855 & 130003470446856
+  - 130003470447025 & 130003470447026
+  - 130003470447070 & 130003470447071
+  - 130003470447165 & 130003470447166
+  - 130003470447275 & 130003470447276
+  - 130003470447465 & 130003470447466
+  - 130003470447720 & 130003470447721
+  - 130003470448090 & 130003470448091
+  - 130003470448135 & 130003470448136
+  - 130003470448170 & 130003470448171
+  - 130003470448360 & 130003470448361
+  - 130003470448405 & 130003470448406
+  - 130003470448485 & 130003470448486
+  - 130003470448505 & 130003470448506
+  - 130003470448745 & 130003470448746
+  - 130003470448810 & 130003470448811
+  - 130003470448900 & 130003470448901
+  - 130003470449030 & 130003470449031
+  - 130003470449140 & 130003470449141
+  - 130003470449315 & 130003470449316
+  - 130003470449525 & 130003470449526
+  - 130003470449600 & 130003470449601
+  - 130003470449765 & 130003470449766
+  - 130003470449815 & 130003470449816
+  - 130003470449865 & 130003470449866
+  - 130003470449910 & 130003470449911
+  - 130003470449925 & 130003470449926
+  - 130003470450010 & 130003470450011
+  - 130003470450090 & 130003470450091
+  - 130003470450215 & 130003470450216
+  - 130003470450320 & 130003470450321
+  - 130003470450845 & 130003470450846
+  - 130003470450965 & 130003470450966
+  - 130003470451070 & 130003470451071
+  - 130003470451180 & 130003470451181
+  - 130003470451310 & 130003470451311
+  - 130003470451500 & 130003470451501
+  - 130003470451770 & 130003470451771
+  - 130003470452060 & 130003470452061
+  - 130003470452100 & 130003470452101
+  - 130003470452155 & 130003470452156
+  - 130003470452165 & 130003470452166
+  - 130003470452195 & 130003470452196
+  - 130003470452315 & 130003470452316
+  - 130003470452360 & 130003470452361
+  - 130003470452435 & 130003470452436
+  - 130003470452735 & 130003470452736
+  - 130003470452800 & 130003470452801
+  - 130003470452915 & 130003470452916
+  - 130003470453090 & 130003470453091
+  - 130003470453270 & 130003470453271
+  - 130003470453325 & 130003470453326
+  - 130003470453440 & 130003470453441
+  - 130003470453455 & 130003470453456
+  - 130003470453890 & 130003470453891
+  - 130003470453935 & 130003470453936
+  - 130003470453950 & 130003470453951
+  - 130003470454075 & 130003470454076
+  - 130003470454160 & 130003470454161
+  - 130003470454445 & 130003470454446
+  - 130003470454495 & 130003470454496
+  - 130003470454580 & 130003470454581
+  - 130003470454945 & 130003470454946
+  - 130003470455010 & 130003470455011
+  - 130003470455320 & 130003470455321
+  - 130003470455395 & 130003470455396
+  - 130003470455765 & 130003470455766
+  - 130003470455850 & 130003470455851
+  - 130003470456125 & 130003470456126
+  - 130003470456145 & 130003470456146
+  - 130003470456190 & 130003470456191
+  - 130003470456245 & 130003470456246
+  - 130003470456270 & 130003470456271
+  - 130003470456285 & 130003470456286
+  - 130003470456780 & 130003470456781
+  - 130003470456920 & 130003470456921
+  - 130003470456945 & 130003470456946
+  - 130003470457060 & 130003470457061
+  - 130003470457080 & 130003470457081
+  - 130003470457230 & 130003470457231
+  - 130003470457365 & 130003470457366
+  - 130003470457440 & 130003470457441
+  - 130003470457620 & 130003470457621
+  - 130003470458040 & 130003470458041
+  - 130003470458075 & 130003470458076
+  - 130003470458275 & 130003470458276
+  - 130003470458405 & 130003470458406
+  - 130003470458540 & 130003470458541
+  - 130003470458630 & 130003470458631
+  - 130003470458665 & 130003470458666
+  - 130003470458705 & 130003470458706
+  - 130003470458755 & 130003470458756
+  - 130003470458780 & 130003470458781
+  - 130003470458945 & 130003470458946
+  - 130003470459005 & 130003470459006
+  - 130003470459100 & 130003470459101
+  - 130003470459545 & 130003470459546
+  - 130003470459640 & 130003470459641
+  - 130003470459665 & 130003470459666
+  - 130003470459795 & 130003470459796
+  - 130003470459870 & 130003470459871
+  - 130003470459915 & 130003470459916
+  - 130003470459925 & 130003470459926
+  - 130003470460115 & 130003470460116
+  - 130003470460235 & 130003470460236
+  - 130003470460330 & 130003470460331
+  - 130003470460365 & 130003470460366
+  - 130003470460575 & 130003470460576
+  - 130003470460785 & 130003470460786
+  - 130003470460800 & 130003470460801
+  - 130003470460890 & 130003470460891
+  - 130003470461010 & 130003470461011
+  - 130003470461040 & 130003470461041
+  - 130003470461165 & 130003470461166
+  - 130003470461175 & 130003470461176
+  - 130003470461205 & 130003470461206
+  - 130003470461270 & 130003470461271
+  - 130003470461715 & 130003470461716
+  - 130003470461825 & 130003470461826
+  - 130003470461845 & 130003470461846
+  - 130003470461860 & 130003470461861
+  - 130003470462015 & 130003470462016
+  - 130003470462175 & 130003470462176
+  - 130003470462490 & 130003470462491
+  - 130003470462645 & 130003470462646
+  - 130003470462900 & 130003470462901
+  - 130003470462955 & 130003470462956
+  - 130003470463365 & 130003470463366
+  - 130003470463410 & 130003470463411
+  - 130003470463450 & 130003470463451
+  - 130003470463650 & 130003470463651
+  - 130003470463830 & 130003470463831
+  - 130003470463910 & 130003470463911
+  - 130003470464060 & 130003470464061
+  - 130003470464130 & 130003470464131
+  - 130003470464240 & 130003470464241
+  - 130003470464260 & 130003470464261
+  - 130003470464335 & 130003470464336
+  - 130003470464380 & 130003470464381
+  - 130003470464390 & 130003470464391
+  - 130003470464495 & 130003470464496
+  - 130003470464600 & 130003470464601
+  - 130003470464850 & 130003470464851
+  - 130003470465015 & 130003470465016
+  - 130003470465160 & 130003470465161
+  - 130003470465215 & 130003470465216
+  - 130003470465615 & 130003470465616
+  - 130003470466130 & 130003470466131
+  - 130003470466150 & 130003470466151
+  - 130003470466290 & 130003470466291
+  - 130003470466315 & 130003470466316
+  - 130003470466420 & 130003470466421
+  - 130003470466650 & 130003470466651
+  - 130003470467000 & 130003470467001
+  - 130003470467115 & 130003470467116
+  - 130003470467410 & 130003470467411
+  - 130003470467560 & 130003470467561
+  - 130003470467690 & 130003470467691
+  - 130003470467705 & 130003470467706
+  - 130003470467765 & 130003470467766
+  - 130003470467910 & 130003470467911
+  - 130003470468120 & 130003470468121
+  - 130003470468140 & 130003470468141
+  - 130003470468205 & 130003470468206
+  - 130003470468280 & 130003470468281
+  - 130003470468425 & 130003470468426
+  - 130003470468670 & 130003470468671
+  - 130003470468815 & 130003470468816
+  - 130003470468980 & 130003470468981
+  - 130003470469065 & 130003470469066
+  - 130003470469830 & 130003470469831
+  - 130003470469865 & 130003470469866
+  - 130003470470080 & 130003470470081
+  - 130003470470100 & 130003470470101
+  - 130003470470145 & 130003470470146
+  - 130003470470275 & 130003470470276
+  - 130003470470705 & 130003470470706
+  - 130003470470825 & 130003470470826
+  - 130003470470920 & 130003470470921
+  - 130003470471060 & 130003470471061
+  - 130003470471145 & 130003470471146
+  - 130003470471195 & 130003470471196
+  - 130003470471375 & 130003470471376
+  - 130003470471650 & 130003470471651
+  - 130003470471840 & 130003470471841
+  - 130003470472140 & 130003470472141
+  - 130003470472205 & 130003470472206
+  - 130003470472240 & 130003470472241
+  - 130003470472320 & 130003470472321
+  - 130003470472445 & 130003470472446
+  - 130003470472460 & 130003470472461
+  - 130003470472475 & 130003470472476
+  - 130003470472535 & 130003470472536
+  - 130003470472685 & 130003470472686
+  - 130003470472720 & 130003470472721
+  - 130003470472745 & 130003470472746
+  - 130003470472855 & 130003470472856
+  - 130003470472905 & 130003470472906
+  - 130003470472980 & 130003470472981
+  - 130003470473200 & 130003470473201
+  - 130003470473230 & 130003470473231
+  - 130003470473335 & 130003470473336
+  - 130003470473720 & 130003470473721
+  - 130003470473935 & 130003470473936
+  - 130003470474010 & 130003470474011
+  - 130003470474695 & 130003470474696
+  - 130003470474855 & 130003470474856
+  - 130003470475325 & 130003470475326
+  - 130003470475640 & 130003470475641
+  - 130003470475655 & 130003470475656
+  - 130003470475715 & 130003470475716
+  - 130003470475810 & 130003470475811
+  - 130003470475820 & 130003470475821
+  - 130003470475925 & 130003470475926
+  - 130003470476010 & 130003470476011
+  - 130003470476080 & 130003470476081
+  - 130003470476310 & 130003470476311
+  - 130003470476525 & 130003470476526
+  - 130003470476640 & 130003470476641
+  - 130003470476710 & 130003470476711
+  - 130003470476765 & 130003470476766
+  - 130003470476845 & 130003470476846
+  - 130003470477100 & 130003470477101
+  - 130003470477725 & 130003470477726
+  - 130003470477945 & 130003470477946
+  - 130003470477965 & 130003470477966
+  - 130003470478000 & 130003470478001
+  - 130003470478150 & 130003470478151
+  - 130003470478260 & 130003470478261
+  - 130003470478415 & 130003470478416
+  - 130003470478455 & 130003470478456
+  - 130003470478485 & 130003470478486
+  - 130003470478950 & 130003470478951
+  - 130003470479090 & 130003470479091
+  - 130003470479100 & 130003470479101
+  - 130003470479145 & 130003470479146
+  - 130003470479380 & 130003470479381
+  - 130003470479500 & 130003470479501
+  - 130003470479555 & 130003470479556
+  - 130003470479825 & 130003470479826
+  - 130003470480030 & 130003470480031
+  - 130003470480090 & 130003470480091
+  - 130003470480495 & 130003470480496
+  - 130003470480515 & 130003470480516
+  - 130003470480595 & 130003470480596
+  - 130003470480810 & 130003470480811
+  - 130003470480950 & 130003470480951
+  - 130003470480985 & 130003470480986
+  - 130003470481075 & 130003470481076
+  - 130003470481125 & 130003470481126
+  - 130003470481485 & 130003470481486
+  - 130003470481505 & 130003470481506
+  - 130003470481515 & 130003470481516
+  - 130003470481540 & 130003470481541
+  - 130003470481550 & 130003470481551
+  - 130003470481615 & 130003470481616
+  - 130003470481845 & 130003470481846
+  - 130003470481955 & 130003470481956
+  - 130003470482045 & 130003470482046
+  - 130003470482195 & 130003470482196
+  - 130003470482505 & 130003470482506
+  - 130003470482670 & 130003470482671
+  - 130003470482825 & 130003470482826
+  - 130003470482985 & 130003470482986
+  - 130003470483305 & 130003470483306
+  - 130003470483395 & 130003470483396
+  - 130003470483625 & 130003470483626
+  - 130003470483645 & 130003470483646
+  - 130003470483770 & 130003470483771
+  - 130003470483900 & 130003470483901
+  - 130003470483945 & 130003470483946
+  - 130003470483985 & 130003470483986
+  - 130003470484090 & 130003470484091
+  - 130003470484395 & 130003470484396
+  - 130003470484835 & 130003470484836
+  - 130003470485075 & 130003470485076
+  - 130003470485160 & 130003470485161
+  - 130003470485210 & 130003470485211
+  - 130003470485255 & 130003470485256
+  - 130003470485405 & 130003470485406
+  - 130003470485600 & 130003470485601
+  - 130003470485730 & 130003470485731
+  - 130003470485745 & 130003470485746
+  - 130003470485845 & 130003470485846
+  - 130003470485900 & 130003470485901
+  - 130003470485970 & 130003470485971
+  - 130003470486675 & 130003470486676
+  - 130003470486800 & 130003470486801
+  - 130003470486815 & 130003470486816
+  - 130003470486955 & 130003470486956
+  - 130003470487205 & 130003470487206
+  - 130003470487420 & 130003470487421
+  - 130003470487565 & 130003470487566
+  - 130003470487595 & 130003470487596
+  - 130003470487820 & 130003470487821
+  - 130003470487840 & 130003470487841
+  - 130003470487870 & 130003470487871
+  - 130003470487940 & 130003470487941
+  - 130003470488005 & 130003470488006
+  - 130003470488300 & 130003470488301
+  - 130003470488410 & 130003470488411
+  - 130003470488905 & 130003470488906
+  - 130003470489035 & 130003470489036
+  - 130003470489075 & 130003470489076
+  - 130003470489185 & 130003470489186
+  - 130003470489250 & 130003470489251
+  - 130003470489385 & 130003470489386
+  - 130003470489580 & 130003470489581
+  - 130003470489670 & 130003470489671
+  - 130003470489680 & 130003470489681
+  - 130003470489745 & 130003470489746
+  - 130003470489805 & 130003470489806
+  - 130003470490725 & 130003470490726
+  - 130003470490785 & 130003470490786
+  - 130003470490805 & 130003470490806
+  - 130003470490985 & 130003470490986
+  - 130003470491045 & 130003470491046
+  - 130003470491165 & 130003470491166
+  - 130003470491345 & 130003470491346
+  - 130003470491410 & 130003470491411
+  - 130003470491760 & 130003470491761
+  - 130003470491780 & 130003470491781
+  - 130003470491795 & 130003470491796
+  - 130003470492310 & 130003470492311
+  - 130003470492330 & 130003470492331
+  - 130003470492460 & 130003470492461
+  - 130003470492610 & 130003470492611
+  - 130003470493075 & 130003470493076
+  - 130003470493145 & 130003470493146
+  - 130003470493365 & 130003470493366
+  - 130003470493640 & 130003470493641
+  - 130003470493730 & 130003470493731
+  - 130003470493920 & 130003470493921
+  - 130003470493935 & 130003470493936
+  - 130003470494030 & 130003470494031
+  - 130003470494150 & 130003470494151
+  - 130003470494290 & 130003470494291
+  - 130003470494480 & 130003470494481
+  - 130003470494575 & 130003470494576
+  - 130003470494740 & 130003470494741
+  - 130003470494835 & 130003470494836
+  - 130003470495295 & 130003470495296
+  - 130003470495440 & 130003470495441
+  - 130003470495455 & 130003470495456
+  - 130003470495520 & 130003470495521
+  - 130003470495600 & 130003470495601
+  - 130003470495655 & 130003470495656
+  - 130003470495680 & 130003470495681
+  - 130003470495830 & 130003470495831
+  - 130003470496000 & 130003470496001
+  - 130003470496035 & 130003470496036
+  - 130003470496065 & 130003470496066
+  - 130003470496100 & 130003470496101
+  - 130003470496335 & 130003470496336
+  - 130003470496825 & 130003470496826
+  - 130003470496905 & 130003470496906
+  - 130003470496945 & 130003470496946
+  - 130003470497010 & 130003470497011
+  - 130003470497355 & 130003470497356
+  - 130003470497400 & 130003470497401
+  - 130003470497455 & 130003470497456
+  - 130003470497565 & 130003470497566
+  - 130003470497645 & 130003470497646
+  - 130003470497800 & 130003470497801
+  - 130003470497810 & 130003470497811
+  - 130003470497850 & 130003470497851
+  - 130003470498120 & 130003470498121
+  - 130003470498215 & 130003470498216
+  - 130003470498280 & 130003470498281
+  - 130003470498325 & 130003470498326
+  - 130003470498410 & 130003470498411
+  - 130003470498425 & 130003470498426
+  - 130003470498490 & 130003470498491
+  - 130003470498680 & 130003470498681
+  - 130003470499085 & 130003470499086
+  - 130003470499165 & 130003470499166
+  - 130003470499525 & 130003470499526
+  - 130003470499670 & 130003470499671
+  - 130003470499690 & 130003470499691
+
+## 13. Consecutive symbols (any rotation)  -  EXCEPTIONS (3627)
+
+*Procedure:* Check whether consecutive tickets contain the same winning symbols in any rotation.
+
+- 3627 instance(s), affecting 7254 tickets.
+
+*Offending items (3627):*
+  - 130003470000920 & 130003470000921
+  - 130003470000960 & 130003470000961
+  - 130003470001000 & 130003470001001
+  - 130003470001300 & 130003470001301
+  - 130003470001310 & 130003470001311
+  - 130003470001385 & 130003470001386
+  - 130003470001520 & 130003470001521
+  - 130003470001580 & 130003470001581
+  - 130003470001625 & 130003470001626
+  - 130003470002175 & 130003470002176
+  - 130003470002690 & 130003470002691
+  - 130003470002790 & 130003470002791
+  - 130003470002800 & 130003470002801
+  - 130003470003060 & 130003470003061
+  - 130003470003070 & 130003470003071
+  - 130003470003160 & 130003470003161
+  - 130003470003190 & 130003470003191
+  - 130003470003755 & 130003470003756
+  - 130003470003880 & 130003470003881
+  - 130003470003900 & 130003470003901
+  - 130003470004075 & 130003470004076
+  - 130003470004100 & 130003470004101
+  - 130003470004125 & 130003470004126
+  - 130003470004180 & 130003470004181
+  - 130003470004205 & 130003470004206
+  - 130003470004340 & 130003470004341
+  - 130003470004375 & 130003470004376
+  - 130003470004410 & 130003470004411
+  - 130003470004745 & 130003470004746
+  - 130003470004810 & 130003470004811
+  - 130003470004885 & 130003470004886
+  - 130003470004940 & 130003470004941
+  - 130003470005125 & 130003470005126
+  - 130003470005460 & 130003470005461
+  - 130003470005750 & 130003470005751
+  - 130003470005790 & 130003470005791
+  - 130003470006085 & 130003470006086
+  - 130003470006215 & 130003470006216
+  - 130003470006245 & 130003470006246
+  - 130003470006455 & 130003470006456
+  - 130003470006465 & 130003470006466
+  - 130003470006540 & 130003470006541
+  - 130003470006560 & 130003470006561
+  - 130003470006575 & 130003470006576
+  - 130003470006610 & 130003470006611
+  - 130003470006880 & 130003470006881
+  - 130003470007300 & 130003470007301
+  - 130003470007395 & 130003470007396
+  - 130003470007525 & 130003470007526
+  - 130003470007815 & 130003470007816
+  - 130003470007935 & 130003470007936
+  - 130003470008115 & 130003470008116
+  - 130003470008125 & 130003470008126
+  - 130003470008200 & 130003470008201
+  - 130003470008230 & 130003470008231
+  - 130003470008255 & 130003470008256
+  - 130003470008435 & 130003470008436
+  - 130003470008465 & 130003470008466
+  - 130003470008620 & 130003470008621
+  - 130003470008955 & 130003470008956
+  - 130003470009185 & 130003470009186
+  - 130003470009210 & 130003470009211
+  - 130003470009350 & 130003470009351
+  - 130003470009760 & 130003470009761
+  - 130003470009785 & 130003470009786
+  - 130003470009830 & 130003470009831
+  - 130003470009900 & 130003470009901
+  - 130003470010265 & 130003470010266
+  - 130003470010305 & 130003470010306
+  - 130003470010345 & 130003470010346
+  - 130003470010375 & 130003470010376
+  - 130003470010425 & 130003470010426
+  - 130003470010475 & 130003470010476
+  - 130003470010595 & 130003470010596
+  - 130003470010695 & 130003470010696
+  - 130003470010780 & 130003470010781
+  - 130003470010975 & 130003470010976
+  - 130003470011060 & 130003470011061
+  - 130003470011075 & 130003470011076
+  - 130003470011130 & 130003470011131
+  - 130003470011280 & 130003470011281
+  - 130003470011305 & 130003470011306
+  - 130003470011320 & 130003470011321
+  - 130003470011375 & 130003470011376
+  - 130003470011485 & 130003470011486
+  - 130003470011515 & 130003470011516
+  - 130003470011555 & 130003470011556
+  - 130003470011640 & 130003470011641
+  - 130003470011705 & 130003470011706
+  - 130003470012230 & 130003470012231
+  - 130003470012345 & 130003470012346
+  - 130003470012395 & 130003470012396
+  - 130003470012495 & 130003470012496
+  - 130003470012630 & 130003470012631
+  - 130003470012675 & 130003470012676
+  - 130003470012745 & 130003470012746
+  - 130003470012845 & 130003470012846
+  - 130003470013225 & 130003470013226
+  - 130003470013595 & 130003470013596
+  - 130003470013615 & 130003470013616
+  - 130003470013795 & 130003470013796
+  - 130003470013835 & 130003470013836
+  - 130003470013870 & 130003470013871
+  - 130003470014090 & 130003470014091
+  - 130003470014415 & 130003470014416
+  - 130003470014640 & 130003470014641
+  - 130003470014870 & 130003470014871
+  - 130003470014880 & 130003470014881
+  - 130003470014980 & 130003470014981
+  - 130003470015065 & 130003470015066
+  - 130003470015200 & 130003470015201
+  - 130003470015280 & 130003470015281
+  - 130003470015355 & 130003470015356
+  - 130003470015385 & 130003470015386
+  - 130003470015500 & 130003470015501
+  - 130003470015585 & 130003470015586
+  - 130003470015600 & 130003470015601
+  - 130003470015615 & 130003470015616
+  - 130003470015785 & 130003470015786
+  - 130003470015890 & 130003470015891
+  - 130003470015950 & 130003470015951
+  - 130003470015990 & 130003470015991
+  - 130003470016045 & 130003470016046
+  - 130003470016140 & 130003470016141
+  - 130003470016160 & 130003470016161
+  - 130003470016180 & 130003470016181
+  - 130003470016335 & 130003470016336
+  - 130003470016570 & 130003470016571
+  - 130003470016650 & 130003470016651
+  - 130003470016870 & 130003470016871
+  - 130003470017040 & 130003470017041
+  - 130003470017095 & 130003470017096
+  - 130003470017485 & 130003470017486
+  - 130003470017505 & 130003470017506
+  - 130003470017525 & 130003470017526
+  - 130003470017575 & 130003470017576
+  - 130003470017785 & 130003470017786
+  - 130003470018010 & 130003470018011
+  - 130003470018210 & 130003470018211
+  - 130003470018280 & 130003470018281
+  - 130003470018375 & 130003470018376
+  - 130003470018550 & 130003470018551
+  - 130003470018655 & 130003470018656
+  - 130003470018745 & 130003470018746
+  - 130003470018975 & 130003470018976
+  - 130003470019080 & 130003470019081
+  - 130003470019170 & 130003470019171
+  - 130003470019385 & 130003470019386
+  - 130003470019720 & 130003470019721
+  - 130003470020275 & 130003470020276
+  - 130003470020290 & 130003470020291
+  - 130003470020410 & 130003470020411
+  - 130003470020480 & 130003470020481
+  - 130003470020520 & 130003470020521
+  - 130003470020795 & 130003470020796
+  - 130003470020900 & 130003470020901
+  - 130003470020955 & 130003470020956
+  - 130003470021055 & 130003470021056
+  - 130003470021180 & 130003470021181
+  - 130003470021195 & 130003470021196
+  - 130003470021240 & 130003470021241
+  - 130003470021510 & 130003470021511
+  - 130003470021555 & 130003470021556
+  - 130003470021575 & 130003470021576
+  - 130003470021690 & 130003470021691
+  - 130003470021800 & 130003470021801
+  - 130003470021810 & 130003470021811
+  - 130003470022040 & 130003470022041
+  - 130003470022205 & 130003470022206
+  - 130003470022290 & 130003470022291
+  - 130003470022515 & 130003470022516
+  - 130003470022860 & 130003470022861
+  - 130003470022905 & 130003470022906
+  - 130003470022925 & 130003470022926
+  - 130003470023230 & 130003470023231
+  - 130003470023245 & 130003470023246
+  - 130003470023305 & 130003470023306
+  - 130003470023595 & 130003470023596
+  - 130003470023730 & 130003470023731
+  - 130003470023785 & 130003470023786
+  - 130003470023910 & 130003470023911
+  - 130003470024010 & 130003470024011
+  - 130003470024215 & 130003470024216
+  - 130003470024290 & 130003470024291
+  - 130003470024440 & 130003470024441
+  - 130003470024505 & 130003470024506
+  - 130003470024530 & 130003470024531
+  - 130003470024600 & 130003470024601
+  - 130003470024655 & 130003470024656
+  - 130003470024705 & 130003470024706
+  - 130003470024780 & 130003470024781
+  - 130003470024805 & 130003470024806
+  - 130003470024930 & 130003470024931
+  - 130003470025105 & 130003470025106
+  - 130003470025115 & 130003470025116
+  - 130003470025135 & 130003470025136
+  - 130003470025150 & 130003470025151
+  - 130003470025250 & 130003470025251
+  - 130003470025340 & 130003470025341
+  - 130003470025430 & 130003470025431
+  - 130003470025815 & 130003470025816
+  - 130003470026550 & 130003470026551
+  - 130003470026665 & 130003470026666
+  - 130003470026725 & 130003470026726
+  - 130003470027035 & 130003470027036
+  - 130003470027445 & 130003470027446
+  - 130003470028090 & 130003470028091
+  - 130003470028155 & 130003470028156
+  - 130003470028375 & 130003470028376
+  - 130003470028445 & 130003470028446
+  - 130003470028575 & 130003470028576
+  - 130003470028655 & 130003470028656
+  - 130003470028695 & 130003470028696
+  - 130003470028715 & 130003470028716
+  - 130003470028730 & 130003470028731
+  - 130003470028850 & 130003470028851
+  - 130003470029235 & 130003470029236
+  - 130003470029265 & 130003470029266
+  - 130003470029375 & 130003470029376
+  - 130003470029440 & 130003470029441
+  - 130003470029460 & 130003470029461
+  - 130003470029610 & 130003470029611
+  - 130003470029710 & 130003470029711
+  - 130003470029725 & 130003470029726
+  - 130003470029750 & 130003470029751
+  - 130003470029765 & 130003470029766
+  - 130003470029790 & 130003470029791
+  - 130003470030100 & 130003470030101
+  - 130003470030155 & 130003470030156
+  - 130003470030275 & 130003470030276
+  - 130003470030460 & 130003470030461
+  - 130003470030610 & 130003470030611
+  - 130003470030760 & 130003470030761
+  - 130003470030855 & 130003470030856
+  - 130003470031385 & 130003470031386
+  - 130003470031430 & 130003470031431
+  - 130003470031495 & 130003470031496
+  - 130003470031510 & 130003470031511
+  - 130003470031625 & 130003470031626
+  - 130003470031840 & 130003470031841
+  - 130003470031975 & 130003470031976
+  - 130003470032075 & 130003470032076
+  - 130003470032595 & 130003470032596
+  - 130003470032625 & 130003470032626
+  - 130003470032660 & 130003470032661
+  - 130003470032775 & 130003470032776
+  - 130003470032850 & 130003470032851
+  - 130003470033010 & 130003470033011
+  - 130003470033390 & 130003470033391
+  - 130003470033445 & 130003470033446
+  - 130003470033520 & 130003470033521
+  - 130003470033775 & 130003470033776
+  - 130003470033870 & 130003470033871
+  - 130003470033930 & 130003470033931
+  - 130003470034025 & 130003470034026
+  - 130003470034200 & 130003470034201
+  - 130003470034230 & 130003470034231
+  - 130003470034250 & 130003470034251
+  - 130003470034490 & 130003470034491
+  - 130003470034540 & 130003470034541
+  - 130003470034620 & 130003470034621
+  - 130003470034680 & 130003470034681
+  - 130003470034785 & 130003470034786
+  - 130003470034815 & 130003470034816
+  - 130003470034920 & 130003470034921
+  - 130003470034945 & 130003470034946
+  - 130003470035065 & 130003470035066
+  - 130003470035385 & 130003470035386
+  - 130003470035485 & 130003470035486
+  - 130003470035505 & 130003470035506
+  - 130003470035640 & 130003470035641
+  - 130003470035655 & 130003470035656
+  - 130003470035730 & 130003470035731
+  - 130003470035745 & 130003470035746
+  - 130003470035865 & 130003470035866
+  - 130003470035970 & 130003470035971
+  - 130003470036050 & 130003470036051
+  - 130003470036190 & 130003470036191
+  - 130003470036415 & 130003470036416
+  - 130003470036425 & 130003470036426
+  - 130003470036540 & 130003470036541
+  - 130003470036550 & 130003470036551
+  - 130003470036815 & 130003470036816
+  - 130003470036880 & 130003470036881
+  - 130003470037035 & 130003470037036
+  - 130003470037225 & 130003470037226
+  - 130003470037385 & 130003470037386
+  - 130003470037455 & 130003470037456
+  - 130003470037930 & 130003470037931
+  - 130003470038095 & 130003470038096
+  - 130003470038215 & 130003470038216
+  - 130003470038285 & 130003470038286
+  - 130003470038710 & 130003470038711
+  - 130003470039135 & 130003470039136
+  - 130003470039260 & 130003470039261
+  - 130003470039340 & 130003470039341
+  - 130003470039730 & 130003470039731
+  - 130003470039800 & 130003470039801
+  - 130003470039940 & 130003470039941
+  - 130003470040010 & 130003470040011
+  - 130003470040055 & 130003470040056
+  - 130003470040070 & 130003470040071
+  - 130003470040100 & 130003470040101
+  - 130003470040190 & 130003470040191
+  - 130003470040705 & 130003470040706
+  - 130003470040790 & 130003470040791
+  - 130003470040845 & 130003470040846
+  - 130003470041090 & 130003470041091
+  - 130003470041115 & 130003470041116
+  - 130003470041415 & 130003470041416
+  - 130003470041435 & 130003470041436
+  - 130003470041470 & 130003470041471
+  - 130003470041485 & 130003470041486
+  - 130003470041660 & 130003470041661
+  - 130003470041740 & 130003470041741
+  - 130003470041940 & 130003470041941
+  - 130003470042105 & 130003470042106
+  - 130003470042140 & 130003470042141
+  - 130003470042325 & 130003470042326
+  - 130003470042675 & 130003470042676
+  - 130003470043075 & 130003470043076
+  - 130003470043120 & 130003470043121
+  - 130003470043350 & 130003470043351
+  - 130003470043415 & 130003470043416
+  - 130003470043520 & 130003470043521
+  - 130003470043705 & 130003470043706
+  - 130003470043905 & 130003470043906
+  - 130003470044120 & 130003470044121
+  - 130003470044340 & 130003470044341
+  - 130003470044475 & 130003470044476
+  - 130003470045510 & 130003470045511
+  - 130003470045540 & 130003470045541
+  - 130003470045560 & 130003470045561
+  - 130003470045770 & 130003470045771
+  - 130003470046305 & 130003470046306
+  - 130003470046490 & 130003470046491
+  - 130003470047125 & 130003470047126
+  - 130003470047325 & 130003470047326
+  - 130003470047670 & 130003470047671
+  - 130003470047705 & 130003470047706
+  - 130003470047760 & 130003470047761
+  - 130003470047785 & 130003470047786
+  - 130003470047855 & 130003470047856
+  - 130003470047870 & 130003470047871
+  - 130003470047920 & 130003470047921
+  - 130003470048210 & 130003470048211
+  - 130003470048425 & 130003470048426
+  - 130003470048465 & 130003470048466
+  - 130003470048600 & 130003470048601
+  - 130003470048885 & 130003470048886
+  - 130003470048915 & 130003470048916
+  - 130003470049125 & 130003470049126
+  - 130003470049150 & 130003470049151
+  - 130003470049225 & 130003470049226
+  - 130003470049345 & 130003470049346
+  - 130003470049595 & 130003470049596
+  - 130003470049820 & 130003470049821
+  - 130003470049975 & 130003470049976
+  - 130003470050105 & 130003470050106
+  - 130003470050380 & 130003470050381
+  - 130003470050525 & 130003470050526
+  - 130003470050770 & 130003470050771
+  - 130003470050780 & 130003470050781
+  - 130003470050850 & 130003470050851
+  - 130003470050945 & 130003470050946
+  - 130003470051150 & 130003470051151
+  - 130003470051200 & 130003470051201
+  - 130003470051210 & 130003470051211
+  - 130003470051455 & 130003470051456
+  - 130003470051820 & 130003470051821
+  - 130003470051945 & 130003470051946
+  - 130003470052300 & 130003470052301
+  - 130003470052430 & 130003470052431
+  - 130003470052545 & 130003470052546
+  - 130003470052670 & 130003470052671
+  - 130003470052970 & 130003470052971
+  - 130003470053130 & 130003470053131
+  - 130003470053210 & 130003470053211
+  - 130003470053230 & 130003470053231
+  - 130003470053420 & 130003470053421
+  - 130003470053515 & 130003470053516
+  - 130003470053595 & 130003470053596
+  - 130003470053810 & 130003470053811
+  - 130003470054425 & 130003470054426
+  - 130003470054525 & 130003470054526
+  - 130003470054535 & 130003470054536
+  - 130003470054615 & 130003470054616
+  - 130003470054690 & 130003470054691
+  - 130003470054725 & 130003470054726
+  - 130003470054750 & 130003470054751
+  - 130003470054860 & 130003470054861
+  - 130003470054880 & 130003470054881
+  - 130003470055010 & 130003470055011
+  - 130003470055445 & 130003470055446
+  - 130003470055565 & 130003470055566
+  - 130003470055680 & 130003470055681
+  - 130003470055865 & 130003470055866
+  - 130003470055995 & 130003470055996
+  - 130003470056175 & 130003470056176
+  - 130003470056240 & 130003470056241
+  - 130003470056895 & 130003470056896
+  - 130003470057005 & 130003470057006
+  - 130003470057050 & 130003470057051
+  - 130003470057085 & 130003470057086
+  - 130003470057420 & 130003470057421
+  - 130003470057440 & 130003470057441
+  - 130003470057580 & 130003470057581
+  - 130003470057595 & 130003470057596
+  - 130003470057995 & 130003470057996
+  - 130003470058405 & 130003470058406
+  - 130003470058495 & 130003470058496
+  - 130003470058730 & 130003470058731
+  - 130003470058770 & 130003470058771
+  - 130003470059040 & 130003470059041
+  - 130003470059080 & 130003470059081
+  - 130003470059175 & 130003470059176
+  - 130003470059285 & 130003470059286
+  - 130003470059315 & 130003470059316
+  - 130003470059475 & 130003470059476
+  - 130003470059545 & 130003470059546
+  - 130003470059680 & 130003470059681
+  - 130003470059710 & 130003470059711
+  - 130003470059830 & 130003470059831
+  - 130003470060085 & 130003470060086
+  - 130003470060190 & 130003470060191
+  - 130003470060255 & 130003470060256
+  - 130003470060400 & 130003470060401
+  - 130003470060430 & 130003470060431
+  - 130003470060565 & 130003470060566
+  - 130003470060620 & 130003470060621
+  - 130003470060765 & 130003470060766
+  - 130003470061120 & 130003470061121
+  - 130003470061320 & 130003470061321
+  - 130003470061405 & 130003470061406
+  - 130003470061855 & 130003470061856
+  - 130003470062035 & 130003470062036
+  - 130003470062095 & 130003470062096
+  - 130003470062110 & 130003470062111
+  - 130003470062355 & 130003470062356
+  - 130003470062785 & 130003470062786
+  - 130003470062825 & 130003470062826
+  - 130003470062840 & 130003470062841
+  - 130003470062905 & 130003470062906
+  - 130003470062965 & 130003470062966
+  - 130003470063260 & 130003470063261
+  - 130003470063285 & 130003470063286
+  - 130003470063665 & 130003470063666
+  - 130003470063695 & 130003470063696
+  - 130003470064220 & 130003470064221
+  - 130003470064255 & 130003470064256
+  - 130003470064675 & 130003470064676
+  - 130003470065330 & 130003470065331
+  - 130003470065470 & 130003470065471
+  - 130003470065660 & 130003470065661
+  - 130003470065730 & 130003470065731
+  - 130003470065775 & 130003470065776
+  - 130003470065865 & 130003470065866
+  - 130003470065960 & 130003470065961
+  - 130003470066085 & 130003470066086
+  - 130003470066250 & 130003470066251
+  - 130003470066435 & 130003470066436
+  - 130003470066490 & 130003470066491
+  - 130003470066630 & 130003470066631
+  - 130003470066730 & 130003470066731
+  - 130003470066805 & 130003470066806
+  - 130003470066885 & 130003470066886
+  - 130003470066935 & 130003470066936
+  - 130003470067030 & 130003470067031
+  - 130003470067115 & 130003470067116
+  - 130003470067150 & 130003470067151
+  - 130003470067265 & 130003470067266
+  - 130003470067420 & 130003470067421
+  - 130003470067590 & 130003470067591
+  - 130003470067625 & 130003470067626
+  - 130003470067650 & 130003470067651
+  - 130003470067995 & 130003470067996
+  - 130003470068010 & 130003470068011
+  - 130003470068025 & 130003470068026
+  - 130003470068075 & 130003470068076
+  - 130003470068135 & 130003470068136
+  - 130003470068185 & 130003470068186
+  - 130003470068245 & 130003470068246
+  - 130003470068305 & 130003470068306
+  - 130003470068335 & 130003470068336
+  - 130003470068480 & 130003470068481
+  - 130003470068655 & 130003470068656
+  - 130003470068830 & 130003470068831
+  - 130003470069030 & 130003470069031
+  - 130003470069220 & 130003470069221
+  - 130003470069400 & 130003470069401
+  - 130003470069460 & 130003470069461
+  - 130003470069625 & 130003470069626
+  - 130003470069710 & 130003470069711
+  - 130003470070235 & 130003470070236
+  - 130003470070385 & 130003470070386
+  - 130003470070575 & 130003470070576
+  - 130003470071075 & 130003470071076
+  - 130003470071295 & 130003470071296
+  - 130003470071580 & 130003470071581
+  - 130003470071710 & 130003470071711
+  - 130003470071920 & 130003470071921
+  - 130003470071965 & 130003470071966
+  - 130003470072005 & 130003470072006
+  - 130003470072100 & 130003470072101
+  - 130003470072120 & 130003470072121
+  - 130003470072165 & 130003470072166
+  - 130003470072260 & 130003470072261
+  - 130003470072280 & 130003470072281
+  - 130003470072425 & 130003470072426
+  - 130003470072490 & 130003470072491
+  - 130003470072555 & 130003470072556
+  - 130003470072865 & 130003470072866
+  - 130003470073145 & 130003470073146
+  - 130003470073580 & 130003470073581
+  - 130003470073685 & 130003470073686
+  - 130003470073700 & 130003470073701
+  - 130003470073725 & 130003470073726
+  - 130003470074035 & 130003470074036
+  - 130003470074105 & 130003470074106
+  - 130003470074450 & 130003470074451
+  - 130003470074570 & 130003470074571
+  - 130003470074600 & 130003470074601
+  - 130003470074620 & 130003470074621
+  - 130003470074760 & 130003470074761
+  - 130003470075360 & 130003470075361
+  - 130003470075440 & 130003470075441
+  - 130003470075540 & 130003470075541
+  - 130003470075620 & 130003470075621
+  - 130003470075725 & 130003470075726
+  - 130003470075805 & 130003470075806
+  - 130003470075970 & 130003470075971
+  - 130003470075990 & 130003470075991
+  - 130003470076010 & 130003470076011
+  - 130003470076250 & 130003470076251
+  - 130003470076330 & 130003470076331
+  - 130003470076760 & 130003470076761
+  - 130003470076855 & 130003470076856
+  - 130003470076910 & 130003470076911
+  - 130003470077145 & 130003470077146
+  - 130003470077175 & 130003470077176
+  - 130003470077205 & 130003470077206
+  - 130003470077260 & 130003470077261
+  - 130003470077285 & 130003470077286
+  - 130003470077540 & 130003470077541
+  - 130003470077645 & 130003470077646
+  - 130003470077705 & 130003470077706
+  - 130003470077785 & 130003470077786
+  - 130003470078030 & 130003470078031
+  - 130003470078360 & 130003470078361
+  - 130003470078415 & 130003470078416
+  - 130003470078540 & 130003470078541
+  - 130003470078600 & 130003470078601
+  - 130003470078635 & 130003470078636
+  - 130003470078765 & 130003470078766
+  - 130003470078780 & 130003470078781
+  - 130003470078965 & 130003470078966
+  - 130003470079250 & 130003470079251
+  - 130003470079390 & 130003470079391
+  - 130003470079640 & 130003470079641
+  - 130003470079945 & 130003470079946
+  - 130003470080075 & 130003470080076
+  - 130003470080115 & 130003470080116
+  - 130003470080390 & 130003470080391
+  - 130003470080490 & 130003470080491
+  - 130003470080580 & 130003470080581
+  - 130003470080740 & 130003470080741
+  - 130003470080900 & 130003470080901
+  - 130003470081000 & 130003470081001
+  - 130003470081155 & 130003470081156
+  - 130003470081365 & 130003470081366
+  - 130003470081415 & 130003470081416
+  - 130003470081545 & 130003470081546
+  - 130003470081650 & 130003470081651
+  - 130003470081675 & 130003470081676
+  - 130003470081935 & 130003470081936
+  - 130003470082075 & 130003470082076
+  - 130003470082215 & 130003470082216
+  - 130003470082590 & 130003470082591
+  - 130003470082710 & 130003470082711
+  - 130003470083030 & 130003470083031
+  - 130003470083060 & 130003470083061
+  - 130003470083400 & 130003470083401
+  - 130003470083430 & 130003470083431
+  - 130003470083500 & 130003470083501
+  - 130003470083630 & 130003470083631
+  - 130003470083900 & 130003470083901
+  - 130003470083915 & 130003470083916
+  - 130003470084020 & 130003470084021
+  - 130003470084155 & 130003470084156
+  - 130003470084475 & 130003470084476
+  - 130003470084490 & 130003470084491
+  - 130003470084620 & 130003470084621
+  - 130003470084700 & 130003470084701
+  - 130003470084870 & 130003470084871
+  - 130003470085000 & 130003470085001
+  - 130003470085155 & 130003470085156
+  - 130003470085305 & 130003470085306
+  - 130003470085340 & 130003470085341
+  - 130003470085395 & 130003470085396
+  - 130003470085540 & 130003470085541
+  - 130003470085590 & 130003470085591
+  - 130003470085600 & 130003470085601
+  - 130003470085960 & 130003470085961
+  - 130003470085990 & 130003470085991
+  - 130003470086040 & 130003470086041
+  - 130003470086210 & 130003470086211
+  - 130003470086255 & 130003470086256
+  - 130003470086270 & 130003470086271
+  - 130003470086435 & 130003470086436
+  - 130003470086480 & 130003470086481
+  - 130003470086635 & 130003470086636
+  - 130003470086660 & 130003470086661
+  - 130003470086830 & 130003470086831
+  - 130003470087025 & 130003470087026
+  - 130003470087040 & 130003470087041
+  - 130003470087210 & 130003470087211
+  - 130003470087430 & 130003470087431
+  - 130003470087520 & 130003470087521
+  - 130003470087805 & 130003470087806
+  - 130003470087830 & 130003470087831
+  - 130003470088070 & 130003470088071
+  - 130003470088125 & 130003470088126
+  - 130003470088345 & 130003470088346
+  - 130003470088405 & 130003470088406
+  - 130003470088545 & 130003470088546
+  - 130003470088620 & 130003470088621
+  - 130003470088645 & 130003470088646
+  - 130003470088660 & 130003470088661
+  - 130003470088715 & 130003470088716
+  - 130003470088790 & 130003470088791
+  - 130003470088855 & 130003470088856
+  - 130003470089115 & 130003470089116
+  - 130003470089430 & 130003470089431
+  - 130003470089715 & 130003470089716
+  - 130003470089765 & 130003470089766
+  - 130003470089895 & 130003470089896
+  - 130003470090165 & 130003470090166
+  - 130003470090175 & 130003470090176
+  - 130003470090225 & 130003470090226
+  - 130003470090270 & 130003470090271
+  - 130003470090335 & 130003470090336
+  - 130003470090365 & 130003470090366
+  - 130003470090450 & 130003470090451
+  - 130003470090585 & 130003470090586
+  - 130003470090680 & 130003470090681
+  - 130003470090705 & 130003470090706
+  - 130003470090755 & 130003470090756
+  - 130003470091230 & 130003470091231
+  - 130003470091310 & 130003470091311
+  - 130003470091335 & 130003470091336
+  - 130003470091425 & 130003470091426
+  - 130003470091645 & 130003470091646
+  - 130003470091665 & 130003470091666
+  - 130003470091680 & 130003470091681
+  - 130003470091690 & 130003470091691
+  - 130003470091930 & 130003470091931
+  - 130003470092400 & 130003470092401
+  - 130003470092425 & 130003470092426
+  - 130003470092705 & 130003470092706
+  - 130003470092730 & 130003470092731
+  - 130003470092845 & 130003470092846
+  - 130003470093010 & 130003470093011
+  - 130003470093035 & 130003470093036
+  - 130003470093150 & 130003470093151
+  - 130003470093255 & 130003470093256
+  - 130003470093670 & 130003470093671
+  - 130003470093800 & 130003470093801
+  - 130003470093930 & 130003470093931
+  - 130003470094000 & 130003470094001
+  - 130003470094075 & 130003470094076
+  - 130003470094250 & 130003470094251
+  - 130003470094410 & 130003470094411
+  - 130003470094540 & 130003470094541
+  - 130003470094730 & 130003470094731
+  - 130003470094815 & 130003470094816
+  - 130003470094860 & 130003470094861
+  - 130003470094905 & 130003470094906
+  - 130003470094995 & 130003470094996
+  - 130003470095150 & 130003470095151
+  - 130003470095285 & 130003470095286
+  - 130003470095320 & 130003470095321
+  - 130003470095600 & 130003470095601
+  - 130003470095885 & 130003470095886
+  - 130003470096100 & 130003470096101
+  - 130003470096220 & 130003470096221
+  - 130003470096275 & 130003470096276
+  - 130003470096380 & 130003470096381
+  - 130003470096400 & 130003470096401
+  - 130003470096430 & 130003470096431
+  - 130003470096510 & 130003470096511
+  - 130003470096570 & 130003470096571
+  - 130003470096590 & 130003470096591
+  - 130003470096785 & 130003470096786
+  - 130003470096840 & 130003470096841
+  - 130003470096885 & 130003470096886
+  - 130003470097290 & 130003470097291
+  - 130003470097340 & 130003470097341
+  - 130003470097495 & 130003470097496
+  - 130003470097720 & 130003470097721
+  - 130003470098030 & 130003470098031
+  - 130003470098345 & 130003470098346
+  - 130003470098455 & 130003470098456
+  - 130003470098505 & 130003470098506
+  - 130003470098595 & 130003470098596
+  - 130003470098825 & 130003470098826
+  - 130003470098840 & 130003470098841
+  - 130003470098865 & 130003470098866
+  - 130003470099245 & 130003470099246
+  - 130003470099325 & 130003470099326
+  - 130003470099590 & 130003470099591
+  - 130003470099805 & 130003470099806
+  - 130003470099875 & 130003470099876
+  - 130003470099890 & 130003470099891
+  - 130003470099910 & 130003470099911
+  - 130003470099980 & 130003470099981
+  - 130003470100020 & 130003470100021
+  - 130003470100165 & 130003470100166
+  - 130003470100215 & 130003470100216
+  - 130003470100255 & 130003470100256
+  - 130003470100310 & 130003470100311
+  - 130003470100745 & 130003470100746
+  - 130003470100885 & 130003470100886
+  - 130003470101340 & 130003470101341
+  - 130003470101595 & 130003470101596
+  - 130003470101650 & 130003470101651
+  - 130003470102420 & 130003470102421
+  - 130003470102635 & 130003470102636
+  - 130003470102705 & 130003470102706
+  - 130003470102865 & 130003470102866
+  - 130003470102965 & 130003470102966
+  - 130003470102985 & 130003470102986
+  - 130003470103220 & 130003470103221
+  - 130003470103325 & 130003470103326
+  - 130003470103480 & 130003470103481
+  - 130003470103555 & 130003470103556
+  - 130003470103665 & 130003470103666
+  - 130003470103770 & 130003470103771
+  - 130003470103780 & 130003470103781
+  - 130003470103915 & 130003470103916
+  - 130003470103955 & 130003470103956
+  - 130003470104345 & 130003470104346
+  - 130003470104520 & 130003470104521
+  - 130003470104660 & 130003470104661
+  - 130003470104825 & 130003470104826
+  - 130003470104915 & 130003470104916
+  - 130003470105070 & 130003470105071
+  - 130003470105135 & 130003470105136
+  - 130003470105570 & 130003470105571
+  - 130003470105590 & 130003470105591
+  - 130003470105720 & 130003470105721
+  - 130003470105735 & 130003470105736
+  - 130003470105845 & 130003470105846
+  - 130003470106235 & 130003470106236
+  - 130003470106295 & 130003470106296
+  - 130003470106400 & 130003470106401
+  - 130003470106900 & 130003470106901
+  - 130003470106970 & 130003470106971
+  - 130003470107140 & 130003470107141
+  - 130003470107205 & 130003470107206
+  - 130003470107225 & 130003470107226
+  - 130003470107235 & 130003470107236
+  - 130003470107290 & 130003470107291
+  - 130003470107465 & 130003470107466
+  - 130003470107560 & 130003470107561
+  - 130003470107675 & 130003470107676
+  - 130003470107715 & 130003470107716
+  - 130003470107820 & 130003470107821
+  - 130003470108020 & 130003470108021
+  - 130003470108140 & 130003470108141
+  - 130003470108465 & 130003470108466
+  - 130003470108480 & 130003470108481
+  - 130003470108560 & 130003470108561
+  - 130003470108620 & 130003470108621
+  - 130003470108755 & 130003470108756
+  - 130003470109175 & 130003470109176
+  - 130003470109275 & 130003470109276
+  - 130003470109315 & 130003470109316
+  - 130003470109435 & 130003470109436
+  - 130003470110230 & 130003470110231
+  - 130003470110440 & 130003470110441
+  - 130003470110480 & 130003470110481
+  - 130003470110730 & 130003470110731
+  - 130003470111040 & 130003470111041
+  - 130003470111050 & 130003470111051
+  - 130003470111270 & 130003470111271
+  - 130003470111350 & 130003470111351
+  - 130003470111455 & 130003470111456
+  - 130003470111505 & 130003470111506
+  - 130003470111925 & 130003470111926
+  - 130003470112010 & 130003470112011
+  - 130003470112035 & 130003470112036
+  - 130003470112475 & 130003470112476
+  - 130003470112585 & 130003470112586
+  - 130003470113085 & 130003470113086
+  - 130003470113145 & 130003470113146
+  - 130003470113230 & 130003470113231
+  - 130003470113300 & 130003470113301
+  - 130003470113425 & 130003470113426
+  - 130003470113450 & 130003470113451
+  - 130003470113545 & 130003470113546
+  - 130003470114115 & 130003470114116
+  - 130003470114125 & 130003470114126
+  - 130003470114425 & 130003470114426
+  - 130003470114515 & 130003470114516
+  - 130003470114560 & 130003470114561
+  - 130003470114615 & 130003470114616
+  - 130003470114700 & 130003470114701
+  - 130003470114920 & 130003470114921
+  - 130003470115160 & 130003470115161
+  - 130003470115275 & 130003470115276
+  - 130003470115345 & 130003470115346
+  - 130003470115465 & 130003470115466
+  - 130003470115880 & 130003470115881
+  - 130003470115920 & 130003470115921
+  - 130003470116080 & 130003470116081
+  - 130003470116230 & 130003470116231
+  - 130003470116485 & 130003470116486
+  - 130003470116590 & 130003470116591
+  - 130003470116605 & 130003470116606
+  - 130003470116680 & 130003470116681
+  - 130003470116820 & 130003470116821
+  - 130003470117190 & 130003470117191
+  - 130003470117260 & 130003470117261
+  - 130003470117470 & 130003470117471
+  - 130003470117545 & 130003470117546
+  - 130003470117805 & 130003470117806
+  - 130003470117840 & 130003470117841
+  - 130003470118180 & 130003470118181
+  - 130003470118510 & 130003470118511
+  - 130003470118655 & 130003470118656
+  - 130003470118865 & 130003470118866
+  - 130003470119160 & 130003470119161
+  - 130003470119290 & 130003470119291
+  - 130003470119405 & 130003470119406
+  - 130003470119525 & 130003470119526
+  - 130003470119685 & 130003470119686
+  - 130003470119695 & 130003470119696
+  - 130003470119895 & 130003470119896
+  - 130003470119925 & 130003470119926
+  - 130003470120205 & 130003470120206
+  - 130003470120250 & 130003470120251
+  - 130003470120470 & 130003470120471
+  - 130003470120495 & 130003470120496
+  - 130003470120675 & 130003470120676
+  - 130003470121095 & 130003470121096
+  - 130003470121345 & 130003470121346
+  - 130003470121555 & 130003470121556
+  - 130003470122080 & 130003470122081
+  - 130003470122185 & 130003470122186
+  - 130003470122480 & 130003470122481
+  - 130003470122600 & 130003470122601
+  - 130003470122905 & 130003470122906
+  - 130003470123015 & 130003470123016
+  - 130003470123025 & 130003470123026
+  - 130003470123055 & 130003470123056
+  - 130003470123130 & 130003470123131
+  - 130003470123645 & 130003470123646
+  - 130003470123835 & 130003470123836
+  - 130003470124165 & 130003470124166
+  - 130003470124195 & 130003470124196
+  - 130003470124360 & 130003470124361
+  - 130003470124610 & 130003470124611
+  - 130003470124770 & 130003470124771
+  - 130003470124930 & 130003470124931
+  - 130003470125380 & 130003470125381
+  - 130003470125710 & 130003470125711
+  - 130003470125865 & 130003470125866
+  - 130003470126010 & 130003470126011
+  - 130003470126080 & 130003470126081
+  - 130003470126235 & 130003470126236
+  - 130003470126455 & 130003470126456
+  - 130003470126475 & 130003470126476
+  - 130003470126490 & 130003470126491
+  - 130003470126520 & 130003470126521
+  - 130003470126665 & 130003470126666
+  - 130003470126705 & 130003470126706
+  - 130003470126745 & 130003470126746
+  - 130003470126815 & 130003470126816
+  - 130003470127220 & 130003470127221
+  - 130003470127455 & 130003470127456
+  - 130003470127555 & 130003470127556
+  - 130003470127655 & 130003470127656
+  - 130003470127670 & 130003470127671
+  - 130003470127740 & 130003470127741
+  - 130003470128020 & 130003470128021
+  - 130003470128245 & 130003470128246
+  - 130003470128450 & 130003470128451
+  - 130003470128470 & 130003470128471
+  - 130003470128665 & 130003470128666
+  - 130003470128800 & 130003470128801
+  - 130003470128845 & 130003470128846
+  - 130003470128855 & 130003470128856
+  - 130003470128875 & 130003470128876
+  - 130003470129000 & 130003470129001
+  - 130003470129315 & 130003470129316
+  - 130003470129330 & 130003470129331
+  - 130003470129480 & 130003470129481
+  - 130003470129610 & 130003470129611
+  - 130003470129680 & 130003470129681
+  - 130003470129825 & 130003470129826
+  - 130003470130085 & 130003470130086
+  - 130003470130190 & 130003470130191
+  - 130003470130290 & 130003470130291
+  - 130003470130300 & 130003470130301
+  - 130003470130350 & 130003470130351
+  - 130003470130390 & 130003470130391
+  - 130003470130490 & 130003470130491
+  - 130003470130695 & 130003470130696
+  - 130003470130995 & 130003470130996
+  - 130003470131175 & 130003470131176
+  - 130003470131245 & 130003470131246
+  - 130003470131260 & 130003470131261
+  - 130003470131335 & 130003470131336
+  - 130003470131380 & 130003470131381
+  - 130003470131525 & 130003470131526
+  - 130003470131660 & 130003470131661
+  - 130003470131750 & 130003470131751
+  - 130003470131765 & 130003470131766
+  - 130003470131905 & 130003470131906
+  - 130003470131985 & 130003470131986
+  - 130003470132235 & 130003470132236
+  - 130003470132340 & 130003470132341
+  - 130003470132385 & 130003470132386
+  - 130003470132525 & 130003470132526
+  - 130003470132675 & 130003470132676
+  - 130003470132730 & 130003470132731
+  - 130003470132760 & 130003470132761
+  - 130003470132980 & 130003470132981
+  - 130003470133305 & 130003470133306
+  - 130003470133325 & 130003470133326
+  - 130003470133345 & 130003470133346
+  - 130003470133630 & 130003470133631
+  - 130003470133920 & 130003470133921
+  - 130003470134020 & 130003470134021
+  - 130003470134400 & 130003470134401
+  - 130003470134625 & 130003470134626
+  - 130003470134760 & 130003470134761
+  - 130003470134910 & 130003470134911
+  - 130003470135060 & 130003470135061
+  - 130003470135140 & 130003470135141
+  - 130003470135275 & 130003470135276
+  - 130003470135790 & 130003470135791
+  - 130003470135805 & 130003470135806
+  - 130003470135875 & 130003470135876
+  - 130003470135990 & 130003470135991
+  - 130003470136145 & 130003470136146
+  - 130003470136345 & 130003470136346
+  - 130003470136515 & 130003470136516
+  - 130003470136580 & 130003470136581
+  - 130003470136840 & 130003470136841
+  - 130003470137175 & 130003470137176
+  - 130003470137335 & 130003470137336
+  - 130003470137395 & 130003470137396
+  - 130003470137445 & 130003470137446
+  - 130003470137575 & 130003470137576
+  - 130003470137665 & 130003470137666
+  - 130003470137930 & 130003470137931
+  - 130003470137980 & 130003470137981
+  - 130003470138015 & 130003470138016
+  - 130003470138035 & 130003470138036
+  - 130003470138100 & 130003470138101
+  - 130003470138180 & 130003470138181
+  - 130003470138200 & 130003470138201
+  - 130003470138210 & 130003470138211
+  - 130003470138355 & 130003470138356
+  - 130003470138725 & 130003470138726
+  - 130003470138830 & 130003470138831
+  - 130003470138840 & 130003470138841
+  - 130003470138950 & 130003470138951
+  - 130003470139135 & 130003470139136
+  - 130003470139250 & 130003470139251
+  - 130003470139320 & 130003470139321
+  - 130003470139350 & 130003470139351
+  - 130003470139390 & 130003470139391
+  - 130003470139490 & 130003470139491
+  - 130003470139555 & 130003470139556
+  - 130003470139650 & 130003470139651
+  - 130003470140245 & 130003470140246
+  - 130003470140290 & 130003470140291
+  - 130003470140380 & 130003470140381
+  - 130003470140565 & 130003470140566
+  - 130003470140625 & 130003470140626
+  - 130003470140645 & 130003470140646
+  - 130003470141380 & 130003470141381
+  - 130003470141450 & 130003470141451
+  - 130003470141565 & 130003470141566
+  - 130003470141600 & 130003470141601
+  - 130003470141755 & 130003470141756
+  - 130003470142055 & 130003470142056
+  - 130003470142135 & 130003470142136
+  - 130003470142240 & 130003470142241
+  - 130003470142270 & 130003470142271
+  - 130003470142405 & 130003470142406
+  - 130003470142650 & 130003470142651
+  - 130003470143025 & 130003470143026
+  - 130003470143070 & 130003470143071
+  - 130003470143115 & 130003470143116
+  - 130003470143375 & 130003470143376
+  - 130003470143460 & 130003470143461
+  - 130003470143510 & 130003470143511
+  - 130003470143805 & 130003470143806
+  - 130003470143875 & 130003470143876
+  - 130003470143960 & 130003470143961
+  - 130003470144010 & 130003470144011
+  - 130003470144080 & 130003470144081
+  - 130003470144340 & 130003470144341
+  - 130003470144445 & 130003470144446
+  - 130003470144585 & 130003470144586
+  - 130003470144815 & 130003470144816
+  - 130003470144950 & 130003470144951
+  - 130003470144970 & 130003470144971
+  - 130003470145110 & 130003470145111
+  - 130003470145150 & 130003470145151
+  - 130003470145160 & 130003470145161
+  - 130003470145190 & 130003470145191
+  - 130003470145355 & 130003470145356
+  - 130003470145375 & 130003470145376
+  - 130003470145390 & 130003470145391
+  - 130003470145425 & 130003470145426
+  - 130003470145585 & 130003470145586
+  - 130003470145785 & 130003470145786
+  - 130003470146005 & 130003470146006
+  - 130003470146110 & 130003470146111
+  - 130003470146280 & 130003470146281
+  - 130003470146340 & 130003470146341
+  - 130003470146590 & 130003470146591
+  - 130003470146645 & 130003470146646
+  - 130003470146835 & 130003470146836
+  - 130003470146855 & 130003470146856
+  - 130003470146955 & 130003470146956
+  - 130003470147085 & 130003470147086
+  - 130003470147175 & 130003470147176
+  - 130003470147265 & 130003470147266
+  - 130003470147350 & 130003470147351
+  - 130003470147410 & 130003470147411
+  - 130003470147850 & 130003470147851
+  - 130003470147900 & 130003470147901
+  - 130003470147915 & 130003470147916
+  - 130003470147970 & 130003470147971
+  - 130003470148255 & 130003470148256
+  - 130003470148275 & 130003470148276
+  - 130003470148520 & 130003470148521
+  - 130003470148575 & 130003470148576
+  - 130003470148825 & 130003470148826
+  - 130003470149025 & 130003470149026
+  - 130003470149035 & 130003470149036
+  - 130003470149110 & 130003470149111
+  - 130003470149320 & 130003470149321
+  - 130003470149390 & 130003470149391
+  - 130003470149660 & 130003470149661
+  - 130003470149790 & 130003470149791
+  - 130003470149995 & 130003470149996
+  - 130003470150020 & 130003470150021
+  - 130003470150345 & 130003470150346
+  - 130003470150355 & 130003470150356
+  - 130003470150500 & 130003470150501
+  - 130003470150725 & 130003470150726
+  - 130003470151030 & 130003470151031
+  - 130003470151070 & 130003470151071
+  - 130003470151125 & 130003470151126
+  - 130003470151210 & 130003470151211
+  - 130003470151355 & 130003470151356
+  - 130003470151655 & 130003470151656
+  - 130003470151730 & 130003470151731
+  - 130003470152000 & 130003470152001
+  - 130003470152060 & 130003470152061
+  - 130003470152430 & 130003470152431
+  - 130003470152580 & 130003470152581
+  - 130003470152960 & 130003470152961
+  - 130003470153195 & 130003470153196
+  - 130003470153355 & 130003470153356
+  - 130003470153445 & 130003470153446
+  - 130003470153635 & 130003470153636
+  - 130003470153735 & 130003470153736
+  - 130003470153770 & 130003470153771
+  - 130003470153895 & 130003470153896
+  - 130003470154040 & 130003470154041
+  - 130003470154270 & 130003470154271
+  - 130003470154410 & 130003470154411
+  - 130003470154440 & 130003470154441
+  - 130003470154535 & 130003470154536
+  - 130003470154550 & 130003470154551
+  - 130003470154830 & 130003470154831
+  - 130003470154865 & 130003470154866
+  - 130003470154875 & 130003470154876
+  - 130003470154965 & 130003470154966
+  - 130003470155185 & 130003470155186
+  - 130003470155800 & 130003470155801
+  - 130003470156240 & 130003470156241
+  - 130003470156285 & 130003470156286
+  - 130003470156295 & 130003470156296
+  - 130003470156480 & 130003470156481
+  - 130003470156610 & 130003470156611
+  - 130003470156655 & 130003470156656
+  - 130003470156680 & 130003470156681
+  - 130003470156775 & 130003470156776
+  - 130003470156935 & 130003470156936
+  - 130003470156965 & 130003470156966
+  - 130003470157000 & 130003470157001
+  - 130003470157080 & 130003470157081
+  - 130003470157335 & 130003470157336
+  - 130003470157400 & 130003470157401
+  - 130003470157450 & 130003470157451
+  - 130003470157535 & 130003470157536
+  - 130003470157560 & 130003470157561
+  - 130003470157610 & 130003470157611
+  - 130003470157620 & 130003470157621
+  - 130003470157805 & 130003470157806
+  - 130003470158060 & 130003470158061
+  - 130003470158395 & 130003470158396
+  - 130003470158470 & 130003470158471
+  - 130003470158540 & 130003470158541
+  - 130003470158630 & 130003470158631
+  - 130003470158715 & 130003470158716
+  - 130003470158825 & 130003470158826
+  - 130003470159105 & 130003470159106
+  - 130003470159575 & 130003470159576
+  - 130003470159980 & 130003470159981
+  - 130003470160005 & 130003470160006
+  - 130003470160060 & 130003470160061
+  - 130003470160105 & 130003470160106
+  - 130003470160125 & 130003470160126
+  - 130003470160630 & 130003470160631
+  - 130003470161205 & 130003470161206
+  - 130003470161255 & 130003470161256
+  - 130003470161405 & 130003470161406
+  - 130003470161905 & 130003470161906
+  - 130003470162255 & 130003470162256
+  - 130003470162325 & 130003470162326
+  - 130003470162335 & 130003470162336
+  - 130003470162350 & 130003470162351
+  - 130003470162380 & 130003470162381
+  - 130003470162660 & 130003470162661
+  - 130003470162770 & 130003470162771
+  - 130003470162810 & 130003470162811
+  - 130003470162975 & 130003470162976
+  - 130003470163075 & 130003470163076
+  - 130003470163110 & 130003470163111
+  - 130003470163255 & 130003470163256
+  - 130003470163280 & 130003470163281
+  - 130003470163545 & 130003470163546
+  - 130003470163575 & 130003470163576
+  - 130003470163720 & 130003470163721
+  - 130003470163875 & 130003470163876
+  - 130003470163895 & 130003470163896
+  - 130003470164060 & 130003470164061
+  - 130003470164100 & 130003470164101
+  - 130003470164235 & 130003470164236
+  - 130003470164480 & 130003470164481
+  - 130003470164700 & 130003470164701
+  - 130003470164720 & 130003470164721
+  - 130003470164760 & 130003470164761
+  - 130003470164795 & 130003470164796
+  - 130003470164830 & 130003470164831
+  - 130003470164900 & 130003470164901
+  - 130003470165030 & 130003470165031
+  - 130003470165100 & 130003470165101
+  - 130003470165495 & 130003470165496
+  - 130003470165505 & 130003470165506
+  - 130003470165555 & 130003470165556
+  - 130003470165730 & 130003470165731
+  - 130003470165810 & 130003470165811
+  - 130003470166035 & 130003470166036
+  - 130003470166055 & 130003470166056
+  - 130003470166445 & 130003470166446
+  - 130003470166660 & 130003470166661
+  - 130003470166745 & 130003470166746
+  - 130003470166775 & 130003470166776
+  - 130003470166820 & 130003470166821
+  - 130003470167410 & 130003470167411
+  - 130003470167535 & 130003470167536
+  - 130003470167945 & 130003470167946
+  - 130003470168255 & 130003470168256
+  - 130003470168265 & 130003470168266
+  - 130003470168400 & 130003470168401
+  - 130003470168455 & 130003470168456
+  - 130003470168620 & 130003470168621
+  - 130003470168635 & 130003470168636
+  - 130003470168675 & 130003470168676
+  - 130003470168750 & 130003470168751
+  - 130003470168975 & 130003470168976
+  - 130003470169195 & 130003470169196
+  - 130003470169290 & 130003470169291
+  - 130003470169405 & 130003470169406
+  - 130003470169930 & 130003470169931
+  - 130003470170230 & 130003470170231
+  - 130003470170245 & 130003470170246
+  - 130003470170550 & 130003470170551
+  - 130003470170570 & 130003470170571
+  - 130003470170955 & 130003470170956
+  - 130003470170965 & 130003470170966
+  - 130003470171035 & 130003470171036
+  - 130003470171230 & 130003470171231
+  - 130003470171330 & 130003470171331
+  - 130003470171740 & 130003470171741
+  - 130003470171845 & 130003470171846
+  - 130003470172040 & 130003470172041
+  - 130003470172340 & 130003470172341
+  - 130003470172360 & 130003470172361
+  - 130003470172390 & 130003470172391
+  - 130003470172420 & 130003470172421
+  - 130003470172975 & 130003470172976
+  - 130003470173070 & 130003470173071
+  - 130003470173100 & 130003470173101
+  - 130003470173145 & 130003470173146
+  - 130003470173160 & 130003470173161
+  - 130003470173190 & 130003470173191
+  - 130003470173225 & 130003470173226
+  - 130003470173240 & 130003470173241
+  - 130003470173265 & 130003470173266
+  - 130003470173280 & 130003470173281
+  - 130003470173325 & 130003470173326
+  - 130003470173360 & 130003470173361
+  - 130003470173485 & 130003470173486
+  - 130003470173570 & 130003470173571
+  - 130003470173705 & 130003470173706
+  - 130003470173815 & 130003470173816
+  - 130003470173860 & 130003470173861
+  - 130003470173965 & 130003470173966
+  - 130003470174005 & 130003470174006
+  - 130003470174125 & 130003470174126
+  - 130003470174205 & 130003470174206
+  - 130003470174295 & 130003470174296
+  - 130003470174330 & 130003470174331
+  - 130003470174605 & 130003470174606
+  - 130003470174810 & 130003470174811
+  - 130003470174830 & 130003470174831
+  - 130003470174850 & 130003470174851
+  - 130003470175045 & 130003470175046
+  - 130003470175120 & 130003470175121
+  - 130003470175145 & 130003470175146
+  - 130003470175280 & 130003470175281
+  - 130003470175355 & 130003470175356
+  - 130003470175535 & 130003470175536
+  - 130003470175860 & 130003470175861
+  - 130003470175910 & 130003470175911
+  - 130003470176130 & 130003470176131
+  - 130003470176265 & 130003470176266
+  - 130003470176575 & 130003470176576
+  - 130003470176765 & 130003470176766
+  - 130003470176780 & 130003470176781
+  - 130003470176835 & 130003470176836
+  - 130003470176945 & 130003470176946
+  - 130003470177145 & 130003470177146
+  - 130003470177230 & 130003470177231
+  - 130003470177440 & 130003470177441
+  - 130003470177455 & 130003470177456
+  - 130003470177600 & 130003470177601
+  - 130003470177670 & 130003470177671
+  - 130003470178100 & 130003470178101
+  - 130003470178225 & 130003470178226
+  - 130003470178475 & 130003470178476
+  - 130003470178485 & 130003470178486
+  - 130003470178525 & 130003470178526
+  - 130003470178540 & 130003470178541
+  - 130003470178580 & 130003470178581
+  - 130003470178600 & 130003470178601
+  - 130003470178720 & 130003470178721
+  - 130003470178770 & 130003470178771
+  - 130003470178810 & 130003470178811
+  - 130003470178885 & 130003470178886
+  - 130003470178940 & 130003470178941
+  - 130003470179085 & 130003470179086
+  - 130003470179145 & 130003470179146
+  - 130003470179195 & 130003470179196
+  - 130003470179240 & 130003470179241
+  - 130003470179385 & 130003470179386
+  - 130003470179520 & 130003470179521
+  - 130003470179540 & 130003470179541
+  - 130003470179740 & 130003470179741
+  - 130003470179815 & 130003470179816
+  - 130003470180240 & 130003470180241
+  - 130003470180315 & 130003470180316
+  - 130003470180395 & 130003470180396
+  - 130003470180480 & 130003470180481
+  - 130003470180555 & 130003470180556
+  - 130003470180645 & 130003470180646
+  - 130003470180775 & 130003470180776
+  - 130003470180830 & 130003470180831
+  - 130003470180920 & 130003470180921
+  - 130003470181035 & 130003470181036
+  - 130003470181165 & 130003470181166
+  - 130003470181315 & 130003470181316
+  - 130003470181435 & 130003470181436
+  - 130003470181460 & 130003470181461
+  - 130003470181535 & 130003470181536
+  - 130003470181775 & 130003470181776
+  - 130003470182030 & 130003470182031
+  - 130003470182090 & 130003470182091
+  - 130003470182275 & 130003470182276
+  - 130003470182710 & 130003470182711
+  - 130003470182730 & 130003470182731
+  - 130003470182975 & 130003470182976
+  - 130003470183170 & 130003470183171
+  - 130003470183220 & 130003470183221
+  - 130003470183300 & 130003470183301
+  - 130003470183335 & 130003470183336
+  - 130003470183420 & 130003470183421
+  - 130003470183545 & 130003470183546
+  - 130003470183595 & 130003470183596
+  - 130003470183650 & 130003470183651
+  - 130003470183730 & 130003470183731
+  - 130003470183775 & 130003470183776
+  - 130003470183975 & 130003470183976
+  - 130003470184220 & 130003470184221
+  - 130003470184285 & 130003470184286
+  - 130003470184310 & 130003470184311
+  - 130003470184650 & 130003470184651
+  - 130003470184825 & 130003470184826
+  - 130003470185025 & 130003470185026
+  - 130003470185215 & 130003470185216
+  - 130003470185340 & 130003470185341
+  - 130003470185450 & 130003470185451
+  - 130003470185580 & 130003470185581
+  - 130003470185690 & 130003470185691
+  - 130003470185750 & 130003470185751
+  - 130003470185770 & 130003470185771
+  - 130003470185785 & 130003470185786
+  - 130003470185925 & 130003470185926
+  - 130003470186210 & 130003470186211
+  - 130003470186385 & 130003470186386
+  - 130003470186430 & 130003470186431
+  - 130003470186570 & 130003470186571
+  - 130003470186700 & 130003470186701
+  - 130003470187090 & 130003470187091
+  - 130003470187510 & 130003470187511
+  - 130003470187640 & 130003470187641
+  - 130003470187865 & 130003470187866
+  - 130003470187935 & 130003470187936
+  - 130003470188000 & 130003470188001
+  - 130003470188010 & 130003470188011
+  - 130003470188195 & 130003470188196
+  - 130003470188225 & 130003470188226
+  - 130003470188280 & 130003470188281
+  - 130003470188305 & 130003470188306
+  - 130003470188385 & 130003470188386
+  - 130003470188395 & 130003470188396
+  - 130003470188645 & 130003470188646
+  - 130003470188660 & 130003470188661
+  - 130003470188985 & 130003470188986
+  - 130003470189040 & 130003470189041
+  - 130003470189120 & 130003470189121
+  - 130003470189130 & 130003470189131
+  - 130003470189360 & 130003470189361
+  - 130003470189440 & 130003470189441
+  - 130003470189455 & 130003470189456
+  - 130003470189570 & 130003470189571
+  - 130003470189685 & 130003470189686
+  - 130003470189710 & 130003470189711
+  - 130003470189720 & 130003470189721
+  - 130003470189735 & 130003470189736
+  - 130003470190165 & 130003470190166
+  - 130003470190225 & 130003470190226
+  - 130003470190250 & 130003470190251
+  - 130003470190590 & 130003470190591
+  - 130003470190680 & 130003470190681
+  - 130003470190785 & 130003470190786
+  - 130003470190795 & 130003470190796
+  - 130003470190925 & 130003470190926
+  - 130003470191030 & 130003470191031
+  - 130003470191315 & 130003470191316
+  - 130003470191370 & 130003470191371
+  - 130003470191520 & 130003470191521
+  - 130003470191545 & 130003470191546
+  - 130003470191555 & 130003470191556
+  - 130003470191615 & 130003470191616
+  - 130003470191860 & 130003470191861
+  - 130003470192120 & 130003470192121
+  - 130003470192585 & 130003470192586
+  - 130003470192665 & 130003470192666
+  - 130003470192840 & 130003470192841
+  - 130003470192875 & 130003470192876
+  - 130003470193095 & 130003470193096
+  - 130003470193155 & 130003470193156
+  - 130003470193350 & 130003470193351
+  - 130003470193690 & 130003470193691
+  - 130003470193810 & 130003470193811
+  - 130003470193825 & 130003470193826
+  - 130003470194020 & 130003470194021
+  - 130003470194415 & 130003470194416
+  - 130003470194755 & 130003470194756
+  - 130003470194945 & 130003470194946
+  - 130003470195080 & 130003470195081
+  - 130003470195090 & 130003470195091
+  - 130003470195145 & 130003470195146
+  - 130003470195460 & 130003470195461
+  - 130003470195475 & 130003470195476
+  - 130003470195485 & 130003470195486
+  - 130003470195700 & 130003470195701
+  - 130003470195965 & 130003470195966
+  - 130003470196330 & 130003470196331
+  - 130003470196370 & 130003470196371
+  - 130003470196410 & 130003470196411
+  - 130003470196510 & 130003470196511
+  - 130003470196785 & 130003470196786
+  - 130003470196795 & 130003470196796
+  - 130003470196840 & 130003470196841
+  - 130003470197130 & 130003470197131
+  - 130003470197150 & 130003470197151
+  - 130003470197190 & 130003470197191
+  - 130003470197440 & 130003470197441
+  - 130003470197600 & 130003470197601
+  - 130003470197795 & 130003470197796
+  - 130003470197930 & 130003470197931
+  - 130003470198105 & 130003470198106
+  - 130003470198155 & 130003470198156
+  - 130003470198175 & 130003470198176
+  - 130003470198210 & 130003470198211
+  - 130003470198335 & 130003470198336
+  - 130003470198430 & 130003470198431
+  - 130003470198800 & 130003470198801
+  - 130003470198955 & 130003470198956
+  - 130003470198980 & 130003470198981
+  - 130003470199140 & 130003470199141
+  - 130003470199165 & 130003470199166
+  - 130003470199220 & 130003470199221
+  - 130003470199275 & 130003470199276
+  - 130003470199345 & 130003470199346
+  - 130003470199420 & 130003470199421
+  - 130003470199440 & 130003470199441
+  - 130003470199480 & 130003470199481
+  - 130003470199565 & 130003470199566
+  - 130003470199885 & 130003470199886
+  - 130003470199895 & 130003470199896
+  - 130003470199970 & 130003470199971
+  - 130003470200035 & 130003470200036
+  - 130003470200110 & 130003470200111
+  - 130003470200535 & 130003470200536
+  - 130003470200555 & 130003470200556
+  - 130003470200755 & 130003470200756
+  - 130003470200840 & 130003470200841
+  - 130003470200975 & 130003470200976
+  - 130003470201005 & 130003470201006
+  - 130003470201085 & 130003470201086
+  - 130003470201435 & 130003470201436
+  - 130003470201935 & 130003470201936
+  - 130003470202040 & 130003470202041
+  - 130003470202170 & 130003470202171
+  - 130003470202395 & 130003470202396
+  - 130003470202555 & 130003470202556
+  - 130003470202585 & 130003470202586
+  - 130003470202625 & 130003470202626
+  - 130003470202655 & 130003470202656
+  - 130003470202710 & 130003470202711
+  - 130003470202815 & 130003470202816
+  - 130003470202840 & 130003470202841
+  - 130003470202985 & 130003470202986
+  - 130003470203000 & 130003470203001
+  - 130003470203225 & 130003470203226
+  - 130003470203290 & 130003470203291
+  - 130003470203310 & 130003470203311
+  - 130003470203670 & 130003470203671
+  - 130003470203785 & 130003470203786
+  - 130003470203820 & 130003470203821
+  - 130003470203940 & 130003470203941
+  - 130003470204075 & 130003470204076
+  - 130003470204330 & 130003470204331
+  - 130003470204435 & 130003470204436
+  - 130003470204470 & 130003470204471
+  - 130003470204705 & 130003470204706
+  - 130003470204725 & 130003470204726
+  - 130003470204905 & 130003470204906
+  - 130003470205125 & 130003470205126
+  - 130003470205360 & 130003470205361
+  - 130003470205420 & 130003470205421
+  - 130003470205440 & 130003470205441
+  - 130003470205500 & 130003470205501
+  - 130003470205900 & 130003470205901
+  - 130003470206035 & 130003470206036
+  - 130003470206290 & 130003470206291
+  - 130003470206330 & 130003470206331
+  - 130003470206655 & 130003470206656
+  - 130003470206665 & 130003470206666
+  - 130003470206700 & 130003470206701
+  - 130003470207080 & 130003470207081
+  - 130003470207220 & 130003470207221
+  - 130003470207830 & 130003470207831
+  - 130003470207855 & 130003470207856
+  - 130003470208160 & 130003470208161
+  - 130003470208230 & 130003470208231
+  - 130003470208755 & 130003470208756
+  - 130003470208850 & 130003470208851
+  - 130003470208885 & 130003470208886
+  - 130003470209010 & 130003470209011
+  - 130003470209710 & 130003470209711
+  - 130003470209720 & 130003470209721
+  - 130003470209870 & 130003470209871
+  - 130003470210435 & 130003470210436
+  - 130003470210485 & 130003470210486
+  - 130003470210540 & 130003470210541
+  - 130003470210550 & 130003470210551
+  - 130003470210710 & 130003470210711
+  - 130003470210735 & 130003470210736
+  - 130003470210760 & 130003470210761
+  - 130003470211365 & 130003470211366
+  - 130003470211760 & 130003470211761
+  - 130003470211840 & 130003470211841
+  - 130003470211855 & 130003470211856
+  - 130003470211920 & 130003470211921
+  - 130003470212025 & 130003470212026
+  - 130003470212055 & 130003470212056
+  - 130003470212290 & 130003470212291
+  - 130003470212335 & 130003470212336
+  - 130003470212455 & 130003470212456
+  - 130003470212690 & 130003470212691
+  - 130003470212755 & 130003470212756
+  - 130003470213365 & 130003470213366
+  - 130003470213445 & 130003470213446
+  - 130003470213525 & 130003470213526
+  - 130003470213580 & 130003470213581
+  - 130003470213590 & 130003470213591
+  - 130003470213610 & 130003470213611
+  - 130003470213655 & 130003470213656
+  - 130003470213695 & 130003470213696
+  - 130003470213790 & 130003470213791
+  - 130003470214150 & 130003470214151
+  - 130003470214190 & 130003470214191
+  - 130003470214265 & 130003470214266
+  - 130003470214335 & 130003470214336
+  - 130003470214400 & 130003470214401
+  - 130003470214460 & 130003470214461
+  - 130003470214495 & 130003470214496
+  - 130003470214535 & 130003470214536
+  - 130003470214630 & 130003470214631
+  - 130003470214665 & 130003470214666
+  - 130003470214785 & 130003470214786
+  - 130003470214865 & 130003470214866
+  - 130003470214950 & 130003470214951
+  - 130003470215075 & 130003470215076
+  - 130003470215125 & 130003470215126
+  - 130003470215205 & 130003470215206
+  - 130003470215260 & 130003470215261
+  - 130003470215280 & 130003470215281
+  - 130003470215315 & 130003470215316
+  - 130003470215430 & 130003470215431
+  - 130003470215695 & 130003470215696
+  - 130003470215915 & 130003470215916
+  - 130003470215945 & 130003470215946
+  - 130003470216140 & 130003470216141
+  - 130003470216300 & 130003470216301
+  - 130003470216650 & 130003470216651
+  - 130003470216675 & 130003470216676
+  - 130003470216790 & 130003470216791
+  - 130003470216840 & 130003470216841
+  - 130003470216860 & 130003470216861
+  - 130003470217025 & 130003470217026
+  - 130003470217085 & 130003470217086
+  - 130003470217175 & 130003470217176
+  - 130003470217360 & 130003470217361
+  - 130003470217465 & 130003470217466
+  - 130003470217610 & 130003470217611
+  - 130003470217680 & 130003470217681
+  - 130003470217905 & 130003470217906
+  - 130003470218125 & 130003470218126
+  - 130003470218295 & 130003470218296
+  - 130003470218345 & 130003470218346
+  - 130003470218585 & 130003470218586
+  - 130003470218860 & 130003470218861
+  - 130003470218960 & 130003470218961
+  - 130003470218990 & 130003470218991
+  - 130003470219045 & 130003470219046
+  - 130003470219540 & 130003470219541
+  - 130003470219610 & 130003470219611
+  - 130003470219850 & 130003470219851
+  - 130003470219925 & 130003470219926
+  - 130003470220170 & 130003470220171
+  - 130003470220290 & 130003470220291
+  - 130003470220345 & 130003470220346
+  - 130003470220395 & 130003470220396
+  - 130003470220430 & 130003470220431
+  - 130003470220440 & 130003470220441
+  - 130003470220565 & 130003470220566
+  - 130003470220835 & 130003470220836
+  - 130003470220855 & 130003470220856
+  - 130003470220925 & 130003470220926
+  - 130003470221015 & 130003470221016
+  - 130003470221365 & 130003470221366
+  - 130003470221545 & 130003470221546
+  - 130003470222135 & 130003470222136
+  - 130003470222310 & 130003470222311
+  - 130003470222370 & 130003470222371
+  - 130003470222485 & 130003470222486
+  - 130003470222670 & 130003470222671
+  - 130003470222720 & 130003470222721
+  - 130003470222800 & 130003470222801
+  - 130003470222895 & 130003470222896
+  - 130003470223235 & 130003470223236
+  - 130003470223250 & 130003470223251
+  - 130003470223345 & 130003470223346
+  - 130003470223460 & 130003470223461
+  - 130003470223490 & 130003470223491
+  - 130003470223520 & 130003470223521
+  - 130003470223590 & 130003470223591
+  - 130003470223765 & 130003470223766
+  - 130003470223820 & 130003470223821
+  - 130003470223865 & 130003470223866
+  - 130003470224020 & 130003470224021
+  - 130003470224050 & 130003470224051
+  - 130003470224145 & 130003470224146
+  - 130003470224195 & 130003470224196
+  - 130003470224475 & 130003470224476
+  - 130003470224505 & 130003470224506
+  - 130003470224520 & 130003470224521
+  - 130003470224595 & 130003470224596
+  - 130003470224925 & 130003470224926
+  - 130003470225045 & 130003470225046
+  - 130003470225115 & 130003470225116
+  - 130003470225255 & 130003470225256
+  - 130003470225560 & 130003470225561
+  - 130003470225630 & 130003470225631
+  - 130003470225940 & 130003470225941
+  - 130003470226165 & 130003470226166
+  - 130003470226320 & 130003470226321
+  - 130003470226355 & 130003470226356
+  - 130003470226595 & 130003470226596
+  - 130003470226715 & 130003470226716
+  - 130003470226745 & 130003470226746
+  - 130003470226795 & 130003470226796
+  - 130003470226870 & 130003470226871
+  - 130003470226925 & 130003470226926
+  - 130003470226935 & 130003470226936
+  - 130003470227265 & 130003470227266
+  - 130003470227320 & 130003470227321
+  - 130003470227350 & 130003470227351
+  - 130003470227480 & 130003470227481
+  - 130003470227780 & 130003470227781
+  - 130003470227850 & 130003470227851
+  - 130003470227895 & 130003470227896
+  - 130003470228215 & 130003470228216
+  - 130003470228275 & 130003470228276
+  - 130003470228335 & 130003470228336
+  - 130003470228425 & 130003470228426
+  - 130003470228475 & 130003470228476
+  - 130003470228650 & 130003470228651
+  - 130003470228870 & 130003470228871
+  - 130003470229025 & 130003470229026
+  - 130003470229165 & 130003470229166
+  - 130003470229305 & 130003470229306
+  - 130003470229420 & 130003470229421
+  - 130003470229480 & 130003470229481
+  - 130003470229540 & 130003470229541
+  - 130003470229570 & 130003470229571
+  - 130003470229580 & 130003470229581
+  - 130003470229605 & 130003470229606
+  - 130003470230075 & 130003470230076
+  - 130003470230345 & 130003470230346
+  - 130003470230485 & 130003470230486
+  - 130003470230660 & 130003470230661
+  - 130003470230790 & 130003470230791
+  - 130003470230885 & 130003470230886
+  - 130003470230925 & 130003470230926
+  - 130003470230985 & 130003470230986
+  - 130003470231015 & 130003470231016
+  - 130003470231165 & 130003470231166
+  - 130003470231280 & 130003470231281
+  - 130003470231590 & 130003470231591
+  - 130003470231615 & 130003470231616
+  - 130003470231770 & 130003470231771
+  - 130003470231795 & 130003470231796
+  - 130003470231940 & 130003470231941
+  - 130003470231980 & 130003470231981
+  - 130003470231990 & 130003470231991
+  - 130003470232070 & 130003470232071
+  - 130003470232285 & 130003470232286
+  - 130003470232395 & 130003470232396
+  - 130003470232485 & 130003470232486
+  - 130003470232590 & 130003470232591
+  - 130003470232625 & 130003470232626
+  - 130003470232860 & 130003470232861
+  - 130003470232920 & 130003470232921
+  - 130003470233000 & 130003470233001
+  - 130003470233015 & 130003470233016
+  - 130003470233100 & 130003470233101
+  - 130003470233255 & 130003470233256
+  - 130003470233635 & 130003470233636
+  - 130003470233850 & 130003470233851
+  - 130003470233870 & 130003470233871
+  - 130003470233885 & 130003470233886
+  - 130003470233975 & 130003470233976
+  - 130003470234005 & 130003470234006
+  - 130003470234060 & 130003470234061
+  - 130003470234210 & 130003470234211
+  - 130003470234585 & 130003470234586
+  - 130003470234980 & 130003470234981
+  - 130003470235090 & 130003470235091
+  - 130003470235175 & 130003470235176
+  - 130003470235195 & 130003470235196
+  - 130003470235350 & 130003470235351
+  - 130003470235500 & 130003470235501
+  - 130003470235575 & 130003470235576
+  - 130003470235590 & 130003470235591
+  - 130003470235795 & 130003470235796
+  - 130003470235805 & 130003470235806
+  - 130003470235825 & 130003470235826
+  - 130003470235910 & 130003470235911
+  - 130003470236000 & 130003470236001
+  - 130003470236045 & 130003470236046
+  - 130003470236125 & 130003470236126
+  - 130003470236245 & 130003470236246
+  - 130003470236260 & 130003470236261
+  - 130003470236375 & 130003470236376
+  - 130003470237110 & 130003470237111
+  - 130003470237280 & 130003470237281
+  - 130003470237325 & 130003470237326
+  - 130003470237380 & 130003470237381
+  - 130003470237395 & 130003470237396
+  - 130003470237665 & 130003470237666
+  - 130003470237840 & 130003470237841
+  - 130003470237880 & 130003470237881
+  - 130003470237930 & 130003470237931
+  - 130003470237945 & 130003470237946
+  - 130003470238150 & 130003470238151
+  - 130003470238185 & 130003470238186
+  - 130003470238470 & 130003470238471
+  - 130003470238550 & 130003470238551
+  - 130003470238620 & 130003470238621
+  - 130003470238765 & 130003470238766
+  - 130003470238780 & 130003470238781
+  - 130003470238930 & 130003470238931
+  - 130003470239050 & 130003470239051
+  - 130003470239080 & 130003470239081
+  - 130003470239100 & 130003470239101
+  - 130003470239210 & 130003470239211
+  - 130003470239245 & 130003470239246
+  - 130003470239395 & 130003470239396
+  - 130003470239435 & 130003470239436
+  - 130003470239455 & 130003470239456
+  - 130003470239470 & 130003470239471
+  - 130003470239560 & 130003470239561
+  - 130003470239635 & 130003470239636
+  - 130003470239650 & 130003470239651
+  - 130003470239675 & 130003470239676
+  - 130003470239840 & 130003470239841
+  - 130003470240055 & 130003470240056
+  - 130003470240290 & 130003470240291
+  - 130003470240690 & 130003470240691
+  - 130003470240850 & 130003470240851
+  - 130003470240930 & 130003470240931
+  - 130003470240945 & 130003470240946
+  - 130003470241215 & 130003470241216
+  - 130003470241405 & 130003470241406
+  - 130003470241475 & 130003470241476
+  - 130003470241505 & 130003470241506
+  - 130003470241515 & 130003470241516
+  - 130003470241530 & 130003470241531
+  - 130003470241545 & 130003470241546
+  - 130003470241570 & 130003470241571
+  - 130003470241585 & 130003470241586
+  - 130003470241630 & 130003470241631
+  - 130003470241650 & 130003470241651
+  - 130003470241800 & 130003470241801
+  - 130003470242105 & 130003470242106
+  - 130003470242180 & 130003470242181
+  - 130003470242350 & 130003470242351
+  - 130003470242455 & 130003470242456
+  - 130003470242475 & 130003470242476
+  - 130003470242660 & 130003470242661
+  - 130003470242975 & 130003470242976
+  - 130003470243020 & 130003470243021
+  - 130003470243270 & 130003470243271
+  - 130003470243335 & 130003470243336
+  - 130003470243360 & 130003470243361
+  - 130003470243385 & 130003470243386
+  - 130003470243815 & 130003470243816
+  - 130003470244200 & 130003470244201
+  - 130003470244240 & 130003470244241
+  - 130003470244265 & 130003470244266
+  - 130003470244280 & 130003470244281
+  - 130003470244355 & 130003470244356
+  - 130003470244660 & 130003470244661
+  - 130003470244805 & 130003470244806
+  - 130003470244835 & 130003470244836
+  - 130003470244855 & 130003470244856
+  - 130003470244965 & 130003470244966
+  - 130003470245055 & 130003470245056
+  - 130003470245150 & 130003470245151
+  - 130003470245170 & 130003470245171
+  - 130003470245400 & 130003470245401
+  - 130003470245990 & 130003470245991
+  - 130003470246120 & 130003470246121
+  - 130003470246170 & 130003470246171
+  - 130003470246405 & 130003470246406
+  - 130003470246600 & 130003470246601
+  - 130003470246790 & 130003470246791
+  - 130003470246825 & 130003470246826
+  - 130003470246840 & 130003470246841
+  - 130003470247120 & 130003470247121
+  - 130003470247140 & 130003470247141
+  - 130003470247170 & 130003470247171
+  - 130003470247360 & 130003470247361
+  - 130003470247490 & 130003470247491
+  - 130003470247795 & 130003470247796
+  - 130003470247935 & 130003470247936
+  - 130003470247970 & 130003470247971
+  - 130003470248235 & 130003470248236
+  - 130003470248735 & 130003470248736
+  - 130003470248860 & 130003470248861
+  - 130003470249050 & 130003470249051
+  - 130003470249125 & 130003470249126
+  - 130003470249250 & 130003470249251
+  - 130003470249330 & 130003470249331
+  - 130003470249415 & 130003470249416
+  - 130003470249720 & 130003470249721
+  - 130003470249915 & 130003470249916
+  - 130003470250035 & 130003470250036
+  - 130003470250150 & 130003470250151
+  - 130003470250180 & 130003470250181
+  - 130003470250665 & 130003470250666
+  - 130003470250715 & 130003470250716
+  - 130003470250745 & 130003470250746
+  - 130003470250935 & 130003470250936
+  - 130003470250965 & 130003470250966
+  - 130003470251645 & 130003470251646
+  - 130003470251665 & 130003470251666
+  - 130003470251775 & 130003470251776
+  - 130003470252090 & 130003470252091
+  - 130003470252370 & 130003470252371
+  - 130003470252385 & 130003470252386
+  - 130003470252430 & 130003470252431
+  - 130003470252650 & 130003470252651
+  - 130003470252700 & 130003470252701
+  - 130003470252725 & 130003470252726
+  - 130003470252755 & 130003470252756
+  - 130003470253030 & 130003470253031
+  - 130003470253065 & 130003470253066
+  - 130003470253105 & 130003470253106
+  - 130003470253150 & 130003470253151
+  - 130003470253185 & 130003470253186
+  - 130003470253200 & 130003470253201
+  - 130003470253340 & 130003470253341
+  - 130003470253360 & 130003470253361
+  - 130003470253450 & 130003470253451
+  - 130003470253580 & 130003470253581
+  - 130003470253595 & 130003470253596
+  - 130003470253675 & 130003470253676
+  - 130003470253720 & 130003470253721
+  - 130003470253750 & 130003470253751
+  - 130003470253950 & 130003470253951
+  - 130003470254225 & 130003470254226
+  - 130003470254300 & 130003470254301
+  - 130003470254450 & 130003470254451
+  - 130003470254495 & 130003470254496
+  - 130003470254795 & 130003470254796
+  - 130003470254975 & 130003470254976
+  - 130003470255015 & 130003470255016
+  - 130003470255180 & 130003470255181
+  - 130003470255210 & 130003470255211
+  - 130003470255240 & 130003470255241
+  - 130003470255255 & 130003470255256
+  - 130003470255275 & 130003470255276
+  - 130003470255300 & 130003470255301
+  - 130003470255560 & 130003470255561
+  - 130003470255640 & 130003470255641
+  - 130003470255800 & 130003470255801
+  - 130003470256100 & 130003470256101
+  - 130003470256310 & 130003470256311
+  - 130003470256710 & 130003470256711
+  - 130003470256840 & 130003470256841
+  - 130003470256975 & 130003470256976
+  - 130003470257235 & 130003470257236
+  - 130003470257465 & 130003470257466
+  - 130003470257475 & 130003470257476
+  - 130003470257565 & 130003470257566
+  - 130003470257610 & 130003470257611
+  - 130003470257725 & 130003470257726
+  - 130003470257835 & 130003470257836
+  - 130003470257915 & 130003470257916
+  - 130003470258045 & 130003470258046
+  - 130003470258060 & 130003470258061
+  - 130003470258080 & 130003470258081
+  - 130003470258270 & 130003470258271
+  - 130003470258310 & 130003470258311
+  - 130003470258395 & 130003470258396
+  - 130003470258590 & 130003470258591
+  - 130003470258865 & 130003470258866
+  - 130003470258875 & 130003470258876
+  - 130003470258920 & 130003470258921
+  - 130003470259285 & 130003470259286
+  - 130003470259350 & 130003470259351
+  - 130003470259385 & 130003470259386
+  - 130003470259655 & 130003470259656
+  - 130003470259705 & 130003470259706
+  - 130003470259810 & 130003470259811
+  - 130003470259895 & 130003470259896
+  - 130003470260030 & 130003470260031
+  - 130003470260085 & 130003470260086
+  - 130003470260480 & 130003470260481
+  - 130003470260530 & 130003470260531
+  - 130003470260565 & 130003470260566
+  - 130003470260630 & 130003470260631
+  - 130003470260665 & 130003470260666
+  - 130003470260775 & 130003470260776
+  - 130003470260895 & 130003470260896
+  - 130003470260920 & 130003470260921
+  - 130003470261125 & 130003470261126
+  - 130003470261215 & 130003470261216
+  - 130003470261365 & 130003470261366
+  - 130003470261550 & 130003470261551
+  - 130003470261575 & 130003470261576
+  - 130003470261605 & 130003470261606
+  - 130003470261755 & 130003470261756
+  - 130003470261810 & 130003470261811
+  - 130003470262290 & 130003470262291
+  - 130003470262350 & 130003470262351
+  - 130003470262365 & 130003470262366
+  - 130003470262490 & 130003470262491
+  - 130003470262515 & 130003470262516
+  - 130003470262730 & 130003470262731
+  - 130003470262960 & 130003470262961
+  - 130003470263075 & 130003470263076
+  - 130003470263100 & 130003470263101
+  - 130003470263355 & 130003470263356
+  - 130003470263440 & 130003470263441
+  - 130003470263465 & 130003470263466
+  - 130003470263570 & 130003470263571
+  - 130003470263725 & 130003470263726
+  - 130003470263945 & 130003470263946
+  - 130003470263955 & 130003470263956
+  - 130003470264050 & 130003470264051
+  - 130003470264425 & 130003470264426
+  - 130003470264575 & 130003470264576
+  - 130003470264890 & 130003470264891
+  - 130003470265320 & 130003470265321
+  - 130003470265570 & 130003470265571
+  - 130003470265635 & 130003470265636
+  - 130003470265725 & 130003470265726
+  - 130003470265880 & 130003470265881
+  - 130003470266060 & 130003470266061
+  - 130003470266165 & 130003470266166
+  - 130003470266315 & 130003470266316
+  - 130003470266385 & 130003470266386
+  - 130003470266455 & 130003470266456
+  - 130003470266710 & 130003470266711
+  - 130003470266770 & 130003470266771
+  - 130003470266820 & 130003470266821
+  - 130003470266955 & 130003470266956
+  - 130003470267030 & 130003470267031
+  - 130003470267335 & 130003470267336
+  - 130003470267410 & 130003470267411
+  - 130003470267460 & 130003470267461
+  - 130003470267630 & 130003470267631
+  - 130003470267710 & 130003470267711
+  - 130003470268050 & 130003470268051
+  - 130003470268070 & 130003470268071
+  - 130003470268225 & 130003470268226
+  - 130003470269095 & 130003470269096
+  - 130003470269140 & 130003470269141
+  - 130003470269425 & 130003470269426
+  - 130003470269515 & 130003470269516
+  - 130003470269835 & 130003470269836
+  - 130003470269995 & 130003470269996
+  - 130003470270080 & 130003470270081
+  - 130003470270405 & 130003470270406
+  - 130003470270650 & 130003470270651
+  - 130003470270705 & 130003470270706
+  - 130003470270845 & 130003470270846
+  - 130003470270920 & 130003470270921
+  - 130003470270940 & 130003470270941
+  - 130003470270965 & 130003470270966
+  - 130003470271045 & 130003470271046
+  - 130003470271100 & 130003470271101
+  - 130003470271225 & 130003470271226
+  - 130003470271340 & 130003470271341
+  - 130003470271485 & 130003470271486
+  - 130003470271560 & 130003470271561
+  - 130003470271585 & 130003470271586
+  - 130003470271610 & 130003470271611
+  - 130003470271640 & 130003470271641
+  - 130003470271705 & 130003470271706
+  - 130003470271720 & 130003470271721
+  - 130003470271745 & 130003470271746
+  - 130003470271795 & 130003470271796
+  - 130003470271830 & 130003470271831
+  - 130003470271860 & 130003470271861
+  - 130003470271890 & 130003470271891
+  - 130003470272360 & 130003470272361
+  - 130003470272685 & 130003470272686
+  - 130003470272795 & 130003470272796
+  - 130003470272835 & 130003470272836
+  - 130003470272870 & 130003470272871
+  - 130003470272950 & 130003470272951
+  - 130003470273060 & 130003470273061
+  - 130003470273130 & 130003470273131
+  - 130003470273165 & 130003470273166
+  - 130003470273270 & 130003470273271
+  - 130003470273305 & 130003470273306
+  - 130003470273390 & 130003470273391
+  - 130003470273495 & 130003470273496
+  - 130003470273505 & 130003470273506
+  - 130003470273615 & 130003470273616
+  - 130003470273960 & 130003470273961
+  - 130003470274170 & 130003470274171
+  - 130003470274565 & 130003470274566
+  - 130003470274910 & 130003470274911
+  - 130003470274930 & 130003470274931
+  - 130003470274945 & 130003470274946
+  - 130003470274985 & 130003470274986
+  - 130003470275240 & 130003470275241
+  - 130003470275285 & 130003470275286
+  - 130003470275535 & 130003470275536
+  - 130003470275845 & 130003470275846
+  - 130003470275925 & 130003470275926
+  - 130003470275955 & 130003470275956
+  - 130003470275980 & 130003470275981
+  - 130003470276185 & 130003470276186
+  - 130003470276370 & 130003470276371
+  - 130003470276610 & 130003470276611
+  - 130003470276635 & 130003470276636
+  - 130003470276750 & 130003470276751
+  - 130003470276820 & 130003470276821
+  - 130003470277030 & 130003470277031
+  - 130003470277095 & 130003470277096
+  - 130003470277185 & 130003470277186
+  - 130003470277255 & 130003470277256
+  - 130003470277460 & 130003470277461
+  - 130003470277575 & 130003470277576
+  - 130003470277585 & 130003470277586
+  - 130003470277825 & 130003470277826
+  - 130003470277870 & 130003470277871
+  - 130003470277890 & 130003470277891
+  - 130003470278330 & 130003470278331
+  - 130003470278345 & 130003470278346
+  - 130003470278500 & 130003470278501
+  - 130003470278845 & 130003470278846
+  - 130003470279010 & 130003470279011
+  - 130003470279030 & 130003470279031
+  - 130003470279240 & 130003470279241
+  - 130003470279285 & 130003470279286
+  - 130003470279750 & 130003470279751
+  - 130003470279780 & 130003470279781
+  - 130003470279900 & 130003470279901
+  - 130003470280075 & 130003470280076
+  - 130003470280090 & 130003470280091
+  - 130003470280125 & 130003470280126
+  - 130003470280145 & 130003470280146
+  - 130003470280330 & 130003470280331
+  - 130003470280570 & 130003470280571
+  - 130003470280620 & 130003470280621
+  - 130003470280645 & 130003470280646
+  - 130003470280655 & 130003470280656
+  - 130003470280720 & 130003470280721
+  - 130003470280850 & 130003470280851
+  - 130003470281145 & 130003470281146
+  - 130003470281270 & 130003470281271
+  - 130003470281435 & 130003470281436
+  - 130003470281635 & 130003470281636
+  - 130003470281805 & 130003470281806
+  - 130003470281855 & 130003470281856
+  - 130003470281935 & 130003470281936
+  - 130003470281955 & 130003470281956
+  - 130003470282090 & 130003470282091
+  - 130003470282415 & 130003470282416
+  - 130003470282660 & 130003470282661
+  - 130003470282750 & 130003470282751
+  - 130003470283005 & 130003470283006
+  - 130003470283085 & 130003470283086
+  - 130003470283145 & 130003470283146
+  - 130003470283155 & 130003470283156
+  - 130003470283255 & 130003470283256
+  - 130003470283570 & 130003470283571
+  - 130003470283685 & 130003470283686
+  - 130003470283750 & 130003470283751
+  - 130003470283760 & 130003470283761
+  - 130003470283810 & 130003470283811
+  - 130003470283945 & 130003470283946
+  - 130003470283955 & 130003470283956
+  - 130003470283995 & 130003470283996
+  - 130003470284145 & 130003470284146
+  - 130003470284165 & 130003470284166
+  - 130003470284230 & 130003470284231
+  - 130003470284290 & 130003470284291
+  - 130003470284380 & 130003470284381
+  - 130003470284430 & 130003470284431
+  - 130003470284985 & 130003470284986
+  - 130003470285250 & 130003470285251
+  - 130003470285420 & 130003470285421
+  - 130003470285435 & 130003470285436
+  - 130003470285870 & 130003470285871
+  - 130003470285965 & 130003470285966
+  - 130003470286120 & 130003470286121
+  - 130003470286150 & 130003470286151
+  - 130003470286175 & 130003470286176
+  - 130003470286200 & 130003470286201
+  - 130003470286285 & 130003470286286
+  - 130003470286395 & 130003470286396
+  - 130003470286415 & 130003470286416
+  - 130003470286570 & 130003470286571
+  - 130003470286600 & 130003470286601
+  - 130003470286900 & 130003470286901
+  - 130003470287255 & 130003470287256
+  - 130003470287425 & 130003470287426
+  - 130003470287535 & 130003470287536
+  - 130003470287700 & 130003470287701
+  - 130003470288195 & 130003470288196
+  - 130003470288495 & 130003470288496
+  - 130003470288570 & 130003470288571
+  - 130003470288780 & 130003470288781
+  - 130003470288845 & 130003470288846
+  - 130003470288860 & 130003470288861
+  - 130003470288875 & 130003470288876
+  - 130003470288900 & 130003470288901
+  - 130003470288925 & 130003470288926
+  - 130003470289005 & 130003470289006
+  - 130003470289075 & 130003470289076
+  - 130003470289450 & 130003470289451
+  - 130003470289495 & 130003470289496
+  - 130003470289560 & 130003470289561
+  - 130003470289670 & 130003470289671
+  - 130003470289710 & 130003470289711
+  - 130003470289870 & 130003470289871
+  - 130003470290435 & 130003470290436
+  - 130003470290445 & 130003470290446
+  - 130003470290830 & 130003470290831
+  - 130003470290880 & 130003470290881
+  - 130003470290890 & 130003470290891
+  - 130003470291245 & 130003470291246
+  - 130003470291375 & 130003470291376
+  - 130003470291565 & 130003470291566
+  - 130003470291615 & 130003470291616
+  - 130003470291630 & 130003470291631
+  - 130003470291735 & 130003470291736
+  - 130003470292140 & 130003470292141
+  - 130003470292195 & 130003470292196
+  - 130003470292345 & 130003470292346
+  - 130003470292555 & 130003470292556
+  - 130003470292705 & 130003470292706
+  - 130003470292765 & 130003470292766
+  - 130003470292850 & 130003470292851
+  - 130003470293070 & 130003470293071
+  - 130003470293110 & 130003470293111
+  - 130003470293265 & 130003470293266
+  - 130003470293330 & 130003470293331
+  - 130003470293410 & 130003470293411
+  - 130003470293715 & 130003470293716
+  - 130003470294135 & 130003470294136
+  - 130003470294185 & 130003470294186
+  - 130003470294215 & 130003470294216
+  - 130003470294255 & 130003470294256
+  - 130003470294275 & 130003470294276
+  - 130003470294510 & 130003470294511
+  - 130003470294730 & 130003470294731
+  - 130003470294925 & 130003470294926
+  - 130003470295365 & 130003470295366
+  - 130003470295410 & 130003470295411
+  - 130003470295520 & 130003470295521
+  - 130003470295680 & 130003470295681
+  - 130003470296150 & 130003470296151
+  - 130003470296160 & 130003470296161
+  - 130003470296255 & 130003470296256
+  - 130003470296525 & 130003470296526
+  - 130003470296565 & 130003470296566
+  - 130003470296595 & 130003470296596
+  - 130003470296615 & 130003470296616
+  - 130003470296975 & 130003470296976
+  - 130003470297055 & 130003470297056
+  - 130003470297465 & 130003470297466
+  - 130003470297490 & 130003470297491
+  - 130003470297540 & 130003470297541
+  - 130003470297625 & 130003470297626
+  - 130003470297695 & 130003470297696
+  - 130003470297755 & 130003470297756
+  - 130003470298105 & 130003470298106
+  - 130003470298585 & 130003470298586
+  - 130003470298615 & 130003470298616
+  - 130003470298860 & 130003470298861
+  - 130003470299115 & 130003470299116
+  - 130003470299125 & 130003470299126
+  - 130003470299275 & 130003470299276
+  - 130003470299395 & 130003470299396
+  - 130003470299685 & 130003470299686
+  - 130003470299730 & 130003470299731
+  - 130003470299790 & 130003470299791
+  - 130003470299985 & 130003470299986
+  - 130003470300080 & 130003470300081
+  - 130003470300145 & 130003470300146
+  - 130003470300265 & 130003470300266
+  - 130003470300325 & 130003470300326
+  - 130003470300560 & 130003470300561
+  - 130003470300970 & 130003470300971
+  - 130003470301040 & 130003470301041
+  - 130003470301095 & 130003470301096
+  - 130003470301375 & 130003470301376
+  - 130003470302010 & 130003470302011
+  - 130003470302090 & 130003470302091
+  - 130003470302155 & 130003470302156
+  - 130003470302195 & 130003470302196
+  - 130003470302315 & 130003470302316
+  - 130003470302325 & 130003470302326
+  - 130003470302660 & 130003470302661
+  - 130003470302780 & 130003470302781
+  - 130003470303155 & 130003470303156
+  - 130003470303315 & 130003470303316
+  - 130003470303375 & 130003470303376
+  - 130003470303435 & 130003470303436
+  - 130003470303460 & 130003470303461
+  - 130003470303685 & 130003470303686
+  - 130003470303825 & 130003470303826
+  - 130003470304065 & 130003470304066
+  - 130003470304140 & 130003470304141
+  - 130003470304245 & 130003470304246
+  - 130003470304395 & 130003470304396
+  - 130003470304495 & 130003470304496
+  - 130003470304505 & 130003470304506
+  - 130003470304525 & 130003470304526
+  - 130003470304535 & 130003470304536
+  - 130003470304665 & 130003470304666
+  - 130003470304680 & 130003470304681
+  - 130003470304720 & 130003470304721
+  - 130003470304735 & 130003470304736
+  - 130003470304885 & 130003470304886
+  - 130003470304910 & 130003470304911
+  - 130003470305085 & 130003470305086
+  - 130003470305590 & 130003470305591
+  - 130003470306100 & 130003470306101
+  - 130003470306505 & 130003470306506
+  - 130003470306520 & 130003470306521
+  - 130003470306565 & 130003470306566
+  - 130003470306605 & 130003470306606
+  - 130003470306830 & 130003470306831
+  - 130003470306890 & 130003470306891
+  - 130003470307005 & 130003470307006
+  - 130003470307365 & 130003470307366
+  - 130003470308195 & 130003470308196
+  - 130003470308240 & 130003470308241
+  - 130003470308260 & 130003470308261
+  - 130003470308460 & 130003470308461
+  - 130003470308480 & 130003470308481
+  - 130003470308900 & 130003470308901
+  - 130003470308930 & 130003470308931
+  - 130003470309020 & 130003470309021
+  - 130003470309095 & 130003470309096
+  - 130003470309165 & 130003470309166
+  - 130003470309195 & 130003470309196
+  - 130003470309400 & 130003470309401
+  - 130003470309480 & 130003470309481
+  - 130003470309495 & 130003470309496
+  - 130003470309560 & 130003470309561
+  - 130003470309775 & 130003470309776
+  - 130003470309815 & 130003470309816
+  - 130003470309860 & 130003470309861
+  - 130003470310040 & 130003470310041
+  - 130003470310100 & 130003470310101
+  - 130003470310130 & 130003470310131
+  - 130003470310170 & 130003470310171
+  - 130003470310530 & 130003470310531
+  - 130003470310585 & 130003470310586
+  - 130003470310665 & 130003470310666
+  - 130003470310695 & 130003470310696
+  - 130003470310745 & 130003470310746
+  - 130003470310755 & 130003470310756
+  - 130003470310785 & 130003470310786
+  - 130003470310855 & 130003470310856
+  - 130003470310915 & 130003470310916
+  - 130003470310940 & 130003470310941
+  - 130003470311280 & 130003470311281
+  - 130003470311480 & 130003470311481
+  - 130003470311490 & 130003470311491
+  - 130003470311510 & 130003470311511
+  - 130003470311540 & 130003470311541
+  - 130003470311635 & 130003470311636
+  - 130003470311695 & 130003470311696
+  - 130003470311800 & 130003470311801
+  - 130003470311895 & 130003470311896
+  - 130003470312225 & 130003470312226
+  - 130003470312390 & 130003470312391
+  - 130003470312490 & 130003470312491
+  - 130003470312645 & 130003470312646
+  - 130003470312940 & 130003470312941
+  - 130003470312960 & 130003470312961
+  - 130003470313240 & 130003470313241
+  - 130003470313355 & 130003470313356
+  - 130003470313420 & 130003470313421
+  - 130003470313460 & 130003470313461
+  - 130003470313470 & 130003470313471
+  - 130003470313600 & 130003470313601
+  - 130003470313625 & 130003470313626
+  - 130003470313655 & 130003470313656
+  - 130003470313700 & 130003470313701
+  - 130003470313900 & 130003470313901
+  - 130003470313920 & 130003470313921
+  - 130003470314510 & 130003470314511
+  - 130003470314650 & 130003470314651
+  - 130003470315005 & 130003470315006
+  - 130003470315140 & 130003470315141
+  - 130003470315225 & 130003470315226
+  - 130003470315310 & 130003470315311
+  - 130003470315430 & 130003470315431
+  - 130003470315525 & 130003470315526
+  - 130003470315550 & 130003470315551
+  - 130003470315600 & 130003470315601
+  - 130003470316100 & 130003470316101
+  - 130003470316440 & 130003470316441
+  - 130003470316670 & 130003470316671
+  - 130003470316720 & 130003470316721
+  - 130003470316775 & 130003470316776
+  - 130003470316865 & 130003470316866
+  - 130003470316880 & 130003470316881
+  - 130003470317015 & 130003470317016
+  - 130003470317065 & 130003470317066
+  - 130003470317150 & 130003470317151
+  - 130003470317840 & 130003470317841
+  - 130003470317935 & 130003470317936
+  - 130003470318185 & 130003470318186
+  - 130003470318210 & 130003470318211
+  - 130003470318310 & 130003470318311
+  - 130003470318520 & 130003470318521
+  - 130003470318630 & 130003470318631
+  - 130003470318720 & 130003470318721
+  - 130003470319520 & 130003470319521
+  - 130003470319845 & 130003470319846
+  - 130003470319975 & 130003470319976
+  - 130003470320060 & 130003470320061
+  - 130003470320070 & 130003470320071
+  - 130003470320195 & 130003470320196
+  - 130003470320465 & 130003470320466
+  - 130003470320505 & 130003470320506
+  - 130003470320575 & 130003470320576
+  - 130003470320880 & 130003470320881
+  - 130003470321165 & 130003470321166
+  - 130003470321185 & 130003470321186
+  - 130003470321210 & 130003470321211
+  - 130003470321285 & 130003470321286
+  - 130003470321435 & 130003470321436
+  - 130003470321445 & 130003470321446
+  - 130003470321550 & 130003470321551
+  - 130003470321645 & 130003470321646
+  - 130003470322040 & 130003470322041
+  - 130003470322105 & 130003470322106
+  - 130003470322245 & 130003470322246
+  - 130003470322270 & 130003470322271
+  - 130003470322280 & 130003470322281
+  - 130003470322360 & 130003470322361
+  - 130003470322635 & 130003470322636
+  - 130003470322980 & 130003470322981
+  - 130003470323035 & 130003470323036
+  - 130003470323255 & 130003470323256
+  - 130003470323375 & 130003470323376
+  - 130003470323430 & 130003470323431
+  - 130003470323555 & 130003470323556
+  - 130003470323600 & 130003470323601
+  - 130003470323645 & 130003470323646
+  - 130003470323700 & 130003470323701
+  - 130003470323905 & 130003470323906
+  - 130003470323960 & 130003470323961
+  - 130003470324100 & 130003470324101
+  - 130003470324270 & 130003470324271
+  - 130003470324625 & 130003470324626
+  - 130003470324665 & 130003470324666
+  - 130003470324785 & 130003470324786
+  - 130003470324890 & 130003470324891
+  - 130003470325045 & 130003470325046
+  - 130003470325115 & 130003470325116
+  - 130003470325185 & 130003470325186
+  - 130003470325255 & 130003470325256
+  - 130003470325300 & 130003470325301
+  - 130003470325490 & 130003470325491
+  - 130003470325500 & 130003470325501
+  - 130003470325620 & 130003470325621
+  - 130003470325690 & 130003470325691
+  - 130003470325815 & 130003470325816
+  - 130003470326090 & 130003470326091
+  - 130003470326125 & 130003470326126
+  - 130003470326310 & 130003470326311
+  - 130003470326900 & 130003470326901
+  - 130003470327130 & 130003470327131
+  - 130003470327460 & 130003470327461
+  - 130003470327615 & 130003470327616
+  - 130003470327740 & 130003470327741
+  - 130003470327870 & 130003470327871
+  - 130003470328060 & 130003470328061
+  - 130003470328250 & 130003470328251
+  - 130003470328295 & 130003470328296
+  - 130003470328395 & 130003470328396
+  - 130003470328585 & 130003470328586
+  - 130003470328620 & 130003470328621
+  - 130003470328700 & 130003470328701
+  - 130003470328710 & 130003470328711
+  - 130003470328745 & 130003470328746
+  - 130003470328805 & 130003470328806
+  - 130003470328970 & 130003470328971
+  - 130003470329010 & 130003470329011
+  - 130003470329055 & 130003470329056
+  - 130003470329185 & 130003470329186
+  - 130003470329225 & 130003470329226
+  - 130003470329470 & 130003470329471
+  - 130003470329580 & 130003470329581
+  - 130003470329710 & 130003470329711
+  - 130003470330125 & 130003470330126
+  - 130003470330140 & 130003470330141
+  - 130003470330190 & 130003470330191
+  - 130003470330270 & 130003470330271
+  - 130003470330325 & 130003470330326
+  - 130003470330395 & 130003470330396
+  - 130003470330450 & 130003470330451
+  - 130003470330475 & 130003470330476
+  - 130003470330605 & 130003470330606
+  - 130003470330850 & 130003470330851
+  - 130003470331235 & 130003470331236
+  - 130003470331405 & 130003470331406
+  - 130003470331565 & 130003470331566
+  - 130003470331695 & 130003470331696
+  - 130003470331870 & 130003470331871
+  - 130003470331940 & 130003470331941
+  - 130003470332090 & 130003470332091
+  - 130003470332420 & 130003470332421
+  - 130003470332585 & 130003470332586
+  - 130003470333045 & 130003470333046
+  - 130003470333190 & 130003470333191
+  - 130003470333340 & 130003470333341
+  - 130003470333375 & 130003470333376
+  - 130003470333450 & 130003470333451
+  - 130003470333535 & 130003470333536
+  - 130003470333635 & 130003470333636
+  - 130003470333800 & 130003470333801
+  - 130003470333835 & 130003470333836
+  - 130003470333890 & 130003470333891
+  - 130003470333995 & 130003470333996
+  - 130003470334055 & 130003470334056
+  - 130003470334510 & 130003470334511
+  - 130003470334525 & 130003470334526
+  - 130003470334535 & 130003470334536
+  - 130003470334670 & 130003470334671
+  - 130003470334785 & 130003470334786
+  - 130003470334930 & 130003470334931
+  - 130003470334950 & 130003470334951
+  - 130003470335030 & 130003470335031
+  - 130003470335115 & 130003470335116
+  - 130003470335325 & 130003470335326
+  - 130003470335490 & 130003470335491
+  - 130003470335555 & 130003470335556
+  - 130003470335595 & 130003470335596
+  - 130003470336135 & 130003470336136
+  - 130003470336320 & 130003470336321
+  - 130003470336480 & 130003470336481
+  - 130003470336535 & 130003470336536
+  - 130003470336565 & 130003470336566
+  - 130003470336640 & 130003470336641
+  - 130003470337000 & 130003470337001
+  - 130003470337045 & 130003470337046
+  - 130003470337125 & 130003470337126
+  - 130003470337380 & 130003470337381
+  - 130003470337445 & 130003470337446
+  - 130003470337470 & 130003470337471
+  - 130003470337560 & 130003470337561
+  - 130003470337845 & 130003470337846
+  - 130003470337870 & 130003470337871
+  - 130003470338050 & 130003470338051
+  - 130003470338450 & 130003470338451
+  - 130003470338680 & 130003470338681
+  - 130003470339120 & 130003470339121
+  - 130003470339440 & 130003470339441
+  - 130003470339515 & 130003470339516
+  - 130003470339560 & 130003470339561
+  - 130003470339580 & 130003470339581
+  - 130003470339610 & 130003470339611
+  - 130003470339645 & 130003470339646
+  - 130003470339840 & 130003470339841
+  - 130003470339865 & 130003470339866
+  - 130003470339975 & 130003470339976
+  - 130003470340155 & 130003470340156
+  - 130003470340200 & 130003470340201
+  - 130003470340295 & 130003470340296
+  - 130003470340360 & 130003470340361
+  - 130003470340680 & 130003470340681
+  - 130003470340715 & 130003470340716
+  - 130003470341290 & 130003470341291
+  - 130003470341310 & 130003470341311
+  - 130003470341720 & 130003470341721
+  - 130003470341840 & 130003470341841
+  - 130003470342045 & 130003470342046
+  - 130003470342100 & 130003470342101
+  - 130003470342430 & 130003470342431
+  - 130003470342480 & 130003470342481
+  - 130003470342520 & 130003470342521
+  - 130003470342550 & 130003470342551
+  - 130003470342625 & 130003470342626
+  - 130003470342665 & 130003470342666
+  - 130003470342690 & 130003470342691
+  - 130003470342720 & 130003470342721
+  - 130003470342840 & 130003470342841
+  - 130003470343570 & 130003470343571
+  - 130003470343605 & 130003470343606
+  - 130003470343845 & 130003470343846
+  - 130003470343880 & 130003470343881
+  - 130003470343950 & 130003470343951
+  - 130003470344145 & 130003470344146
+  - 130003470344300 & 130003470344301
+  - 130003470344430 & 130003470344431
+  - 130003470344460 & 130003470344461
+  - 130003470344635 & 130003470344636
+  - 130003470344815 & 130003470344816
+  - 130003470344960 & 130003470344961
+  - 130003470345250 & 130003470345251
+  - 130003470345410 & 130003470345411
+  - 130003470345595 & 130003470345596
+  - 130003470345660 & 130003470345661
+  - 130003470345700 & 130003470345701
+  - 130003470345720 & 130003470345721
+  - 130003470345730 & 130003470345731
+  - 130003470345790 & 130003470345791
+  - 130003470345910 & 130003470345911
+  - 130003470346130 & 130003470346131
+  - 130003470346190 & 130003470346191
+  - 130003470346330 & 130003470346331
+  - 130003470346420 & 130003470346421
+  - 130003470346455 & 130003470346456
+  - 130003470346830 & 130003470346831
+  - 130003470346980 & 130003470346981
+  - 130003470347085 & 130003470347086
+  - 130003470347295 & 130003470347296
+  - 130003470347465 & 130003470347466
+  - 130003470347545 & 130003470347546
+  - 130003470347980 & 130003470347981
+  - 130003470348015 & 130003470348016
+  - 130003470348085 & 130003470348086
+  - 130003470348160 & 130003470348161
+  - 130003470348245 & 130003470348246
+  - 130003470348410 & 130003470348411
+  - 130003470348425 & 130003470348426
+  - 130003470348505 & 130003470348506
+  - 130003470348620 & 130003470348621
+  - 130003470348630 & 130003470348631
+  - 130003470348725 & 130003470348726
+  - 130003470348880 & 130003470348881
+  - 130003470348920 & 130003470348921
+  - 130003470348935 & 130003470348936
+  - 130003470349035 & 130003470349036
+  - 130003470349055 & 130003470349056
+  - 130003470349930 & 130003470349931
+  - 130003470350015 & 130003470350016
+  - 130003470350235 & 130003470350236
+  - 130003470350340 & 130003470350341
+  - 130003470350525 & 130003470350526
+  - 130003470350730 & 130003470350731
+  - 130003470350765 & 130003470350766
+  - 130003470350810 & 130003470350811
+  - 130003470351100 & 130003470351101
+  - 130003470351310 & 130003470351311
+  - 130003470351550 & 130003470351551
+  - 130003470351660 & 130003470351661
+  - 130003470351710 & 130003470351711
+  - 130003470352110 & 130003470352111
+  - 130003470352140 & 130003470352141
+  - 130003470352190 & 130003470352191
+  - 130003470352215 & 130003470352216
+  - 130003470352255 & 130003470352256
+  - 130003470352265 & 130003470352266
+  - 130003470352350 & 130003470352351
+  - 130003470352475 & 130003470352476
+  - 130003470352655 & 130003470352656
+  - 130003470352730 & 130003470352731
+  - 130003470352740 & 130003470352741
+  - 130003470352795 & 130003470352796
+  - 130003470352875 & 130003470352876
+  - 130003470352975 & 130003470352976
+  - 130003470353275 & 130003470353276
+  - 130003470353285 & 130003470353286
+  - 130003470353320 & 130003470353321
+  - 130003470353655 & 130003470353656
+  - 130003470353795 & 130003470353796
+  - 130003470353860 & 130003470353861
+  - 130003470354015 & 130003470354016
+  - 130003470354050 & 130003470354051
+  - 130003470354210 & 130003470354211
+  - 130003470354255 & 130003470354256
+  - 130003470354480 & 130003470354481
+  - 130003470354530 & 130003470354531
+  - 130003470354550 & 130003470354551
+  - 130003470354735 & 130003470354736
+  - 130003470354755 & 130003470354756
+  - 130003470354765 & 130003470354766
+  - 130003470354870 & 130003470354871
+  - 130003470355000 & 130003470355001
+  - 130003470355030 & 130003470355031
+  - 130003470355260 & 130003470355261
+  - 130003470355320 & 130003470355321
+  - 130003470355480 & 130003470355481
+  - 130003470355555 & 130003470355556
+  - 130003470355840 & 130003470355841
+  - 130003470355995 & 130003470355996
+  - 130003470356115 & 130003470356116
+  - 130003470356150 & 130003470356151
+  - 130003470356230 & 130003470356231
+  - 130003470356305 & 130003470356306
+  - 130003470356500 & 130003470356501
+  - 130003470356510 & 130003470356511
+  - 130003470356725 & 130003470356726
+  - 130003470356775 & 130003470356776
+  - 130003470356805 & 130003470356806
+  - 130003470357025 & 130003470357026
+  - 130003470357140 & 130003470357141
+  - 130003470357290 & 130003470357291
+  - 130003470357675 & 130003470357676
+  - 130003470357800 & 130003470357801
+  - 130003470358105 & 130003470358106
+  - 130003470358160 & 130003470358161
+  - 130003470358205 & 130003470358206
+  - 130003470358360 & 130003470358361
+  - 130003470358435 & 130003470358436
+  - 130003470358465 & 130003470358466
+  - 130003470358520 & 130003470358521
+  - 130003470358695 & 130003470358696
+  - 130003470358860 & 130003470358861
+  - 130003470359330 & 130003470359331
+  - 130003470359450 & 130003470359451
+  - 130003470359760 & 130003470359761
+  - 130003470359960 & 130003470359961
+  - 130003470360085 & 130003470360086
+  - 130003470360165 & 130003470360166
+  - 130003470360520 & 130003470360521
+  - 130003470360605 & 130003470360606
+  - 130003470360685 & 130003470360686
+  - 130003470360700 & 130003470360701
+  - 130003470360755 & 130003470360756
+  - 130003470360800 & 130003470360801
+  - 130003470360855 & 130003470360856
+  - 130003470360975 & 130003470360976
+  - 130003470361015 & 130003470361016
+  - 130003470361050 & 130003470361051
+  - 130003470361330 & 130003470361331
+  - 130003470361395 & 130003470361396
+  - 130003470361595 & 130003470361596
+  - 130003470361660 & 130003470361661
+  - 130003470361900 & 130003470361901
+  - 130003470361920 & 130003470361921
+  - 130003470362180 & 130003470362181
+  - 130003470362390 & 130003470362391
+  - 130003470362625 & 130003470362626
+  - 130003470362900 & 130003470362901
+  - 130003470363340 & 130003470363341
+  - 130003470363420 & 130003470363421
+  - 130003470363460 & 130003470363461
+  - 130003470363515 & 130003470363516
+  - 130003470363650 & 130003470363651
+  - 130003470363700 & 130003470363701
+  - 130003470363725 & 130003470363726
+  - 130003470363875 & 130003470363876
+  - 130003470364035 & 130003470364036
+  - 130003470364240 & 130003470364241
+  - 130003470364325 & 130003470364326
+  - 130003470364365 & 130003470364366
+  - 130003470364440 & 130003470364441
+  - 130003470364505 & 130003470364506
+  - 130003470364935 & 130003470364936
+  - 130003470365050 & 130003470365051
+  - 130003470365210 & 130003470365211
+  - 130003470365550 & 130003470365551
+  - 130003470365575 & 130003470365576
+  - 130003470365620 & 130003470365621
+  - 130003470365675 & 130003470365676
+  - 130003470366015 & 130003470366016
+  - 130003470366335 & 130003470366336
+  - 130003470366355 & 130003470366356
+  - 130003470366510 & 130003470366511
+  - 130003470366725 & 130003470366726
+  - 130003470366735 & 130003470366736
+  - 130003470366750 & 130003470366751
+  - 130003470366775 & 130003470366776
+  - 130003470366855 & 130003470366856
+  - 130003470366935 & 130003470366936
+  - 130003470367030 & 130003470367031
+  - 130003470367165 & 130003470367166
+  - 130003470367585 & 130003470367586
+  - 130003470367620 & 130003470367621
+  - 130003470367770 & 130003470367771
+  - 130003470367820 & 130003470367821
+  - 130003470367970 & 130003470367971
+  - 130003470368075 & 130003470368076
+  - 130003470368375 & 130003470368376
+  - 130003470368555 & 130003470368556
+  - 130003470368640 & 130003470368641
+  - 130003470368785 & 130003470368786
+  - 130003470368805 & 130003470368806
+  - 130003470368850 & 130003470368851
+  - 130003470368880 & 130003470368881
+  - 130003470368920 & 130003470368921
+  - 130003470369030 & 130003470369031
+  - 130003470369205 & 130003470369206
+  - 130003470369380 & 130003470369381
+  - 130003470369435 & 130003470369436
+  - 130003470369495 & 130003470369496
+  - 130003470369965 & 130003470369966
+  - 130003470370115 & 130003470370116
+  - 130003470370360 & 130003470370361
+  - 130003470370370 & 130003470370371
+  - 130003470370690 & 130003470370691
+  - 130003470370730 & 130003470370731
+  - 130003470370840 & 130003470370841
+  - 130003470370970 & 130003470370971
+  - 130003470371165 & 130003470371166
+  - 130003470371270 & 130003470371271
+  - 130003470371465 & 130003470371466
+  - 130003470371525 & 130003470371526
+  - 130003470371555 & 130003470371556
+  - 130003470371565 & 130003470371566
+  - 130003470371610 & 130003470371611
+  - 130003470371650 & 130003470371651
+  - 130003470371745 & 130003470371746
+  - 130003470371900 & 130003470371901
+  - 130003470371965 & 130003470371966
+  - 130003470372040 & 130003470372041
+  - 130003470372050 & 130003470372051
+  - 130003470372270 & 130003470372271
+  - 130003470372305 & 130003470372306
+  - 130003470372635 & 130003470372636
+  - 130003470372930 & 130003470372931
+  - 130003470372975 & 130003470372976
+  - 130003470373015 & 130003470373016
+  - 130003470373220 & 130003470373221
+  - 130003470373230 & 130003470373231
+  - 130003470373305 & 130003470373306
+  - 130003470373455 & 130003470373456
+  - 130003470373495 & 130003470373496
+  - 130003470373550 & 130003470373551
+  - 130003470373610 & 130003470373611
+  - 130003470373655 & 130003470373656
+  - 130003470373690 & 130003470373691
+  - 130003470373765 & 130003470373766
+  - 130003470373835 & 130003470373836
+  - 130003470373965 & 130003470373966
+  - 130003470374420 & 130003470374421
+  - 130003470374500 & 130003470374501
+  - 130003470374605 & 130003470374606
+  - 130003470374730 & 130003470374731
+  - 130003470375170 & 130003470375171
+  - 130003470375190 & 130003470375191
+  - 130003470375370 & 130003470375371
+  - 130003470375460 & 130003470375461
+  - 130003470375520 & 130003470375521
+  - 130003470375695 & 130003470375696
+  - 130003470375780 & 130003470375781
+  - 130003470375975 & 130003470375976
+  - 130003470376045 & 130003470376046
+  - 130003470376075 & 130003470376076
+  - 130003470376315 & 130003470376316
+  - 130003470376365 & 130003470376366
+  - 130003470376475 & 130003470376476
+  - 130003470376850 & 130003470376851
+  - 130003470377145 & 130003470377146
+  - 130003470377200 & 130003470377201
+  - 130003470377385 & 130003470377386
+  - 130003470377605 & 130003470377606
+  - 130003470377660 & 130003470377661
+  - 130003470377785 & 130003470377786
+  - 130003470377835 & 130003470377836
+  - 130003470377950 & 130003470377951
+  - 130003470377975 & 130003470377976
+  - 130003470378010 & 130003470378011
+  - 130003470378105 & 130003470378106
+  - 130003470378415 & 130003470378416
+  - 130003470378900 & 130003470378901
+  - 130003470379110 & 130003470379111
+  - 130003470379240 & 130003470379241
+  - 130003470379325 & 130003470379326
+  - 130003470379370 & 130003470379371
+  - 130003470379485 & 130003470379486
+  - 130003470379745 & 130003470379746
+  - 130003470379975 & 130003470379976
+  - 130003470379985 & 130003470379986
+  - 130003470380150 & 130003470380151
+  - 130003470380505 & 130003470380506
+  - 130003470380630 & 130003470380631
+  - 130003470380850 & 130003470380851
+  - 130003470380940 & 130003470380941
+  - 130003470381045 & 130003470381046
+  - 130003470381220 & 130003470381221
+  - 130003470381285 & 130003470381286
+  - 130003470381460 & 130003470381461
+  - 130003470381495 & 130003470381496
+  - 130003470381590 & 130003470381591
+  - 130003470381710 & 130003470381711
+  - 130003470381840 & 130003470381841
+  - 130003470382015 & 130003470382016
+  - 130003470382040 & 130003470382041
+  - 130003470382315 & 130003470382316
+  - 130003470382455 & 130003470382456
+  - 130003470382535 & 130003470382536
+  - 130003470382635 & 130003470382636
+  - 130003470383210 & 130003470383211
+  - 130003470383530 & 130003470383531
+  - 130003470383595 & 130003470383596
+  - 130003470383710 & 130003470383711
+  - 130003470383795 & 130003470383796
+  - 130003470383940 & 130003470383941
+  - 130003470384395 & 130003470384396
+  - 130003470384530 & 130003470384531
+  - 130003470384590 & 130003470384591
+  - 130003470384760 & 130003470384761
+  - 130003470384770 & 130003470384771
+  - 130003470384865 & 130003470384866
+  - 130003470384965 & 130003470384966
+  - 130003470384985 & 130003470384986
+  - 130003470385065 & 130003470385066
+  - 130003470385080 & 130003470385081
+  - 130003470385100 & 130003470385101
+  - 130003470385170 & 130003470385171
+  - 130003470385225 & 130003470385226
+  - 130003470385270 & 130003470385271
+  - 130003470385560 & 130003470385561
+  - 130003470385690 & 130003470385691
+  - 130003470385890 & 130003470385891
+  - 130003470385940 & 130003470385941
+  - 130003470386020 & 130003470386021
+  - 130003470386030 & 130003470386031
+  - 130003470386085 & 130003470386086
+  - 130003470386220 & 130003470386221
+  - 130003470386360 & 130003470386361
+  - 130003470386585 & 130003470386586
+  - 130003470386870 & 130003470386871
+  - 130003470386955 & 130003470386956
+  - 130003470387140 & 130003470387141
+  - 130003470387420 & 130003470387421
+  - 130003470387660 & 130003470387661
+  - 130003470387985 & 130003470387986
+  - 130003470388015 & 130003470388016
+  - 130003470388130 & 130003470388131
+  - 130003470388360 & 130003470388361
+  - 130003470388485 & 130003470388486
+  - 130003470388650 & 130003470388651
+  - 130003470388815 & 130003470388816
+  - 130003470388860 & 130003470388861
+  - 130003470388995 & 130003470388996
+  - 130003470389475 & 130003470389476
+  - 130003470389595 & 130003470389596
+  - 130003470389765 & 130003470389766
+  - 130003470389775 & 130003470389776
+  - 130003470389790 & 130003470389791
+  - 130003470389810 & 130003470389811
+  - 130003470389995 & 130003470389996
+  - 130003470390210 & 130003470390211
+  - 130003470390340 & 130003470390341
+  - 130003470390430 & 130003470390431
+  - 130003470390440 & 130003470390441
+  - 130003470390540 & 130003470390541
+  - 130003470390665 & 130003470390666
+  - 130003470390685 & 130003470390686
+  - 130003470390985 & 130003470390986
+  - 130003470391555 & 130003470391556
+  - 130003470391590 & 130003470391591
+  - 130003470392090 & 130003470392091
+  - 130003470392190 & 130003470392191
+  - 130003470392405 & 130003470392406
+  - 130003470392425 & 130003470392426
+  - 130003470392615 & 130003470392616
+  - 130003470392645 & 130003470392646
+  - 130003470392820 & 130003470392821
+  - 130003470392940 & 130003470392941
+  - 130003470393015 & 130003470393016
+  - 130003470393220 & 130003470393221
+  - 130003470393415 & 130003470393416
+  - 130003470393540 & 130003470393541
+  - 130003470393780 & 130003470393781
+  - 130003470393925 & 130003470393926
+  - 130003470394005 & 130003470394006
+  - 130003470394110 & 130003470394111
+  - 130003470394245 & 130003470394246
+  - 130003470394275 & 130003470394276
+  - 130003470394480 & 130003470394481
+  - 130003470394545 & 130003470394546
+  - 130003470394560 & 130003470394561
+  - 130003470394620 & 130003470394621
+  - 130003470394725 & 130003470394726
+  - 130003470395310 & 130003470395311
+  - 130003470395590 & 130003470395591
+  - 130003470395640 & 130003470395641
+  - 130003470395775 & 130003470395776
+  - 130003470395875 & 130003470395876
+  - 130003470396060 & 130003470396061
+  - 130003470396350 & 130003470396351
+  - 130003470396385 & 130003470396386
+  - 130003470396455 & 130003470396456
+  - 130003470396580 & 130003470396581
+  - 130003470396640 & 130003470396641
+  - 130003470396655 & 130003470396656
+  - 130003470397225 & 130003470397226
+  - 130003470397235 & 130003470397236
+  - 130003470397450 & 130003470397451
+  - 130003470397765 & 130003470397766
+  - 130003470397980 & 130003470397981
+  - 130003470398155 & 130003470398156
+  - 130003470398285 & 130003470398286
+  - 130003470398295 & 130003470398296
+  - 130003470398570 & 130003470398571
+  - 130003470398670 & 130003470398671
+  - 130003470398715 & 130003470398716
+  - 130003470398800 & 130003470398801
+  - 130003470398935 & 130003470398936
+  - 130003470399005 & 130003470399006
+  - 130003470399085 & 130003470399086
+  - 130003470399380 & 130003470399381
+  - 130003470399945 & 130003470399946
+  - 130003470400160 & 130003470400161
+  - 130003470400515 & 130003470400516
+  - 130003470400650 & 130003470400651
+  - 130003470400820 & 130003470400821
+  - 130003470401045 & 130003470401046
+  - 130003470401055 & 130003470401056
+  - 130003470401120 & 130003470401121
+  - 130003470401190 & 130003470401191
+  - 130003470401320 & 130003470401321
+  - 130003470401410 & 130003470401411
+  - 130003470401690 & 130003470401691
+  - 130003470402140 & 130003470402141
+  - 130003470402195 & 130003470402196
+  - 130003470402265 & 130003470402266
+  - 130003470402420 & 130003470402421
+  - 130003470402445 & 130003470402446
+  - 130003470402750 & 130003470402751
+  - 130003470402880 & 130003470402881
+  - 130003470402890 & 130003470402891
+  - 130003470402950 & 130003470402951
+  - 130003470403095 & 130003470403096
+  - 130003470403185 & 130003470403186
+  - 130003470403215 & 130003470403216
+  - 130003470403250 & 130003470403251
+  - 130003470403360 & 130003470403361
+  - 130003470403600 & 130003470403601
+  - 130003470404260 & 130003470404261
+  - 130003470404385 & 130003470404386
+  - 130003470404895 & 130003470404896
+  - 130003470404980 & 130003470404981
+  - 130003470405015 & 130003470405016
+  - 130003470405210 & 130003470405211
+  - 130003470405280 & 130003470405281
+  - 130003470405375 & 130003470405376
+  - 130003470405565 & 130003470405566
+  - 130003470405785 & 130003470405786
+  - 130003470405895 & 130003470405896
+  - 130003470405950 & 130003470405951
+  - 130003470406010 & 130003470406011
+  - 130003470406195 & 130003470406196
+  - 130003470406215 & 130003470406216
+  - 130003470406245 & 130003470406246
+  - 130003470406335 & 130003470406336
+  - 130003470406470 & 130003470406471
+  - 130003470406480 & 130003470406481
+  - 130003470406630 & 130003470406631
+  - 130003470406665 & 130003470406666
+  - 130003470406715 & 130003470406716
+  - 130003470406820 & 130003470406821
+  - 130003470406955 & 130003470406956
+  - 130003470407255 & 130003470407256
+  - 130003470407270 & 130003470407271
+  - 130003470407435 & 130003470407436
+  - 130003470407515 & 130003470407516
+  - 130003470407685 & 130003470407686
+  - 130003470407760 & 130003470407761
+  - 130003470407770 & 130003470407771
+  - 130003470407865 & 130003470407866
+  - 130003470408065 & 130003470408066
+  - 130003470408240 & 130003470408241
+  - 130003470408290 & 130003470408291
+  - 130003470408380 & 130003470408381
+  - 130003470408395 & 130003470408396
+  - 130003470408425 & 130003470408426
+  - 130003470408465 & 130003470408466
+  - 130003470408575 & 130003470408576
+  - 130003470408705 & 130003470408706
+  - 130003470408735 & 130003470408736
+  - 130003470409255 & 130003470409256
+  - 130003470409315 & 130003470409316
+  - 130003470409370 & 130003470409371
+  - 130003470409570 & 130003470409571
+  - 130003470409645 & 130003470409646
+  - 130003470409710 & 130003470409711
+  - 130003470409830 & 130003470409831
+  - 130003470409875 & 130003470409876
+  - 130003470409940 & 130003470409941
+  - 130003470410095 & 130003470410096
+  - 130003470410120 & 130003470410121
+  - 130003470410130 & 130003470410131
+  - 130003470410260 & 130003470410261
+  - 130003470410275 & 130003470410276
+  - 130003470410430 & 130003470410431
+  - 130003470410475 & 130003470410476
+  - 130003470410745 & 130003470410746
+  - 130003470410820 & 130003470410821
+  - 130003470410895 & 130003470410896
+  - 130003470410925 & 130003470410926
+  - 130003470410965 & 130003470410966
+  - 130003470410995 & 130003470410996
+  - 130003470411090 & 130003470411091
+  - 130003470411185 & 130003470411186
+  - 130003470411210 & 130003470411211
+  - 130003470411230 & 130003470411231
+  - 130003470411305 & 130003470411306
+  - 130003470411440 & 130003470411441
+  - 130003470411575 & 130003470411576
+  - 130003470411755 & 130003470411756
+  - 130003470411850 & 130003470411851
+  - 130003470411915 & 130003470411916
+  - 130003470412135 & 130003470412136
+  - 130003470412365 & 130003470412366
+  - 130003470412425 & 130003470412426
+  - 130003470412435 & 130003470412436
+  - 130003470412560 & 130003470412561
+  - 130003470412985 & 130003470412986
+  - 130003470413015 & 130003470413016
+  - 130003470413245 & 130003470413246
+  - 130003470413580 & 130003470413581
+  - 130003470413860 & 130003470413861
+  - 130003470414265 & 130003470414266
+  - 130003470414310 & 130003470414311
+  - 130003470414365 & 130003470414366
+  - 130003470414470 & 130003470414471
+  - 130003470414635 & 130003470414636
+  - 130003470414880 & 130003470414881
+  - 130003470415050 & 130003470415051
+  - 130003470415070 & 130003470415071
+  - 130003470415120 & 130003470415121
+  - 130003470415285 & 130003470415286
+  - 130003470415335 & 130003470415336
+  - 130003470415535 & 130003470415536
+  - 130003470415605 & 130003470415606
+  - 130003470415675 & 130003470415676
+  - 130003470415785 & 130003470415786
+  - 130003470415795 & 130003470415796
+  - 130003470415805 & 130003470415806
+  - 130003470415850 & 130003470415851
+  - 130003470416075 & 130003470416076
+  - 130003470416320 & 130003470416321
+  - 130003470416495 & 130003470416496
+  - 130003470416600 & 130003470416601
+  - 130003470416625 & 130003470416626
+  - 130003470416830 & 130003470416831
+  - 130003470416865 & 130003470416866
+  - 130003470416875 & 130003470416876
+  - 130003470417015 & 130003470417016
+  - 130003470417035 & 130003470417036
+  - 130003470417155 & 130003470417156
+  - 130003470417250 & 130003470417251
+  - 130003470417320 & 130003470417321
+  - 130003470417335 & 130003470417336
+  - 130003470417345 & 130003470417346
+  - 130003470417605 & 130003470417606
+  - 130003470418005 & 130003470418006
+  - 130003470418120 & 130003470418121
+  - 130003470418220 & 130003470418221
+  - 130003470418315 & 130003470418316
+  - 130003470418415 & 130003470418416
+  - 130003470418440 & 130003470418441
+  - 130003470418730 & 130003470418731
+  - 130003470418775 & 130003470418776
+  - 130003470418830 & 130003470418831
+  - 130003470418860 & 130003470418861
+  - 130003470418965 & 130003470418966
+  - 130003470419055 & 130003470419056
+  - 130003470419105 & 130003470419106
+  - 130003470419665 & 130003470419666
+  - 130003470419770 & 130003470419771
+  - 130003470419830 & 130003470419831
+  - 130003470419930 & 130003470419931
+  - 130003470419960 & 130003470419961
+  - 130003470420050 & 130003470420051
+  - 130003470420170 & 130003470420171
+  - 130003470420300 & 130003470420301
+  - 130003470420345 & 130003470420346
+  - 130003470420455 & 130003470420456
+  - 130003470420550 & 130003470420551
+  - 130003470420620 & 130003470420621
+  - 130003470421015 & 130003470421016
+  - 130003470421150 & 130003470421151
+  - 130003470421235 & 130003470421236
+  - 130003470421325 & 130003470421326
+  - 130003470421475 & 130003470421476
+  - 130003470422325 & 130003470422326
+  - 130003470422365 & 130003470422366
+  - 130003470422685 & 130003470422686
+  - 130003470422760 & 130003470422761
+  - 130003470422855 & 130003470422856
+  - 130003470423000 & 130003470423001
+  - 130003470423085 & 130003470423086
+  - 130003470423200 & 130003470423201
+  - 130003470423255 & 130003470423256
+  - 130003470423265 & 130003470423266
+  - 130003470423415 & 130003470423416
+  - 130003470423590 & 130003470423591
+  - 130003470423620 & 130003470423621
+  - 130003470423875 & 130003470423876
+  - 130003470423965 & 130003470423966
+  - 130003470424190 & 130003470424191
+  - 130003470424335 & 130003470424336
+  - 130003470424400 & 130003470424401
+  - 130003470424495 & 130003470424496
+  - 130003470424850 & 130003470424851
+  - 130003470424880 & 130003470424881
+  - 130003470425055 & 130003470425056
+  - 130003470425075 & 130003470425076
+  - 130003470425105 & 130003470425106
+  - 130003470425370 & 130003470425371
+  - 130003470425395 & 130003470425396
+  - 130003470425480 & 130003470425481
+  - 130003470426020 & 130003470426021
+  - 130003470426250 & 130003470426251
+  - 130003470426690 & 130003470426691
+  - 130003470426785 & 130003470426786
+  - 130003470427135 & 130003470427136
+  - 130003470427325 & 130003470427326
+  - 130003470427375 & 130003470427376
+  - 130003470427640 & 130003470427641
+  - 130003470427705 & 130003470427706
+  - 130003470427890 & 130003470427891
+  - 130003470428065 & 130003470428066
+  - 130003470428085 & 130003470428086
+  - 130003470428190 & 130003470428191
+  - 130003470428350 & 130003470428351
+  - 130003470428510 & 130003470428511
+  - 130003470428525 & 130003470428526
+  - 130003470428535 & 130003470428536
+  - 130003470428900 & 130003470428901
+  - 130003470429195 & 130003470429196
+  - 130003470429395 & 130003470429396
+  - 130003470429545 & 130003470429546
+  - 130003470429915 & 130003470429916
+  - 130003470429990 & 130003470429991
+  - 130003470430170 & 130003470430171
+  - 130003470430330 & 130003470430331
+  - 130003470430535 & 130003470430536
+  - 130003470430740 & 130003470430741
+  - 130003470430820 & 130003470430821
+  - 130003470430830 & 130003470430831
+  - 130003470431120 & 130003470431121
+  - 130003470431380 & 130003470431381
+  - 130003470431405 & 130003470431406
+  - 130003470431475 & 130003470431476
+  - 130003470431965 & 130003470431966
+  - 130003470432010 & 130003470432011
+  - 130003470432070 & 130003470432071
+  - 130003470432135 & 130003470432136
+  - 130003470432395 & 130003470432396
+  - 130003470432520 & 130003470432521
+  - 130003470432775 & 130003470432776
+  - 130003470432785 & 130003470432786
+  - 130003470432810 & 130003470432811
+  - 130003470432865 & 130003470432866
+  - 130003470433150 & 130003470433151
+  - 130003470433180 & 130003470433181
+  - 130003470433380 & 130003470433381
+  - 130003470433445 & 130003470433446
+  - 130003470433885 & 130003470433886
+  - 130003470434030 & 130003470434031
+  - 130003470434165 & 130003470434166
+  - 130003470434375 & 130003470434376
+  - 130003470434435 & 130003470434436
+  - 130003470434460 & 130003470434461
+  - 130003470434515 & 130003470434516
+  - 130003470434775 & 130003470434776
+  - 130003470434815 & 130003470434816
+  - 130003470434845 & 130003470434846
+  - 130003470434920 & 130003470434921
+  - 130003470434940 & 130003470434941
+  - 130003470435030 & 130003470435031
+  - 130003470435640 & 130003470435641
+  - 130003470435805 & 130003470435806
+  - 130003470435845 & 130003470435846
+  - 130003470435860 & 130003470435861
+  - 130003470435885 & 130003470435886
+  - 130003470435960 & 130003470435961
+  - 130003470436530 & 130003470436531
+  - 130003470436640 & 130003470436641
+  - 130003470436690 & 130003470436691
+  - 130003470436725 & 130003470436726
+  - 130003470436840 & 130003470436841
+  - 130003470436850 & 130003470436851
+  - 130003470436880 & 130003470436881
+  - 130003470437160 & 130003470437161
+  - 130003470437185 & 130003470437186
+  - 130003470437260 & 130003470437261
+  - 130003470437500 & 130003470437501
+  - 130003470437820 & 130003470437821
+  - 130003470438100 & 130003470438101
+  - 130003470438280 & 130003470438281
+  - 130003470438290 & 130003470438291
+  - 130003470438645 & 130003470438646
+  - 130003470438660 & 130003470438661
+  - 130003470438750 & 130003470438751
+  - 130003470438785 & 130003470438786
+  - 130003470438890 & 130003470438891
+  - 130003470438960 & 130003470438961
+  - 130003470439000 & 130003470439001
+  - 130003470439015 & 130003470439016
+  - 130003470439025 & 130003470439026
+  - 130003470439115 & 130003470439116
+  - 130003470439255 & 130003470439256
+  - 130003470439410 & 130003470439411
+  - 130003470439475 & 130003470439476
+  - 130003470439865 & 130003470439866
+  - 130003470439875 & 130003470439876
+  - 130003470440045 & 130003470440046
+  - 130003470440280 & 130003470440281
+  - 130003470440365 & 130003470440366
+  - 130003470440385 & 130003470440386
+  - 130003470440540 & 130003470440541
+  - 130003470440610 & 130003470440611
+  - 130003470440760 & 130003470440761
+  - 130003470440870 & 130003470440871
+  - 130003470440900 & 130003470440901
+  - 130003470441000 & 130003470441001
+  - 130003470441035 & 130003470441036
+  - 130003470441235 & 130003470441236
+  - 130003470441295 & 130003470441296
+  - 130003470441525 & 130003470441526
+  - 130003470441560 & 130003470441561
+  - 130003470441695 & 130003470441696
+  - 130003470441710 & 130003470441711
+  - 130003470441800 & 130003470441801
+  - 130003470441975 & 130003470441976
+  - 130003470442180 & 130003470442181
+  - 130003470442215 & 130003470442216
+  - 130003470442235 & 130003470442236
+  - 130003470442390 & 130003470442391
+  - 130003470442625 & 130003470442626
+  - 130003470442655 & 130003470442656
+  - 130003470442790 & 130003470442791
+  - 130003470442905 & 130003470442906
+  - 130003470443355 & 130003470443356
+  - 130003470443445 & 130003470443446
+  - 130003470443460 & 130003470443461
+  - 130003470443650 & 130003470443651
+  - 130003470443675 & 130003470443676
+  - 130003470444080 & 130003470444081
+  - 130003470444200 & 130003470444201
+  - 130003470444440 & 130003470444441
+  - 130003470444520 & 130003470444521
+  - 130003470444560 & 130003470444561
+  - 130003470444820 & 130003470444821
+  - 130003470444925 & 130003470444926
+  - 130003470444940 & 130003470444941
+  - 130003470444955 & 130003470444956
+  - 130003470445070 & 130003470445071
+  - 130003470445235 & 130003470445236
+  - 130003470445275 & 130003470445276
+  - 130003470445375 & 130003470445376
+  - 130003470445450 & 130003470445451
+  - 130003470445600 & 130003470445601
+  - 130003470445790 & 130003470445791
+  - 130003470445835 & 130003470445836
+  - 130003470445895 & 130003470445896
+  - 130003470446045 & 130003470446046
+  - 130003470446170 & 130003470446171
+  - 130003470446235 & 130003470446236
+  - 130003470446250 & 130003470446251
+  - 130003470446300 & 130003470446301
+  - 130003470446430 & 130003470446431
+  - 130003470446465 & 130003470446466
+  - 130003470446520 & 130003470446521
+  - 130003470446540 & 130003470446541
+  - 130003470446700 & 130003470446701
+  - 130003470446855 & 130003470446856
+  - 130003470447025 & 130003470447026
+  - 130003470447070 & 130003470447071
+  - 130003470447165 & 130003470447166
+  - 130003470447275 & 130003470447276
+  - 130003470447465 & 130003470447466
+  - 130003470447720 & 130003470447721
+  - 130003470448090 & 130003470448091
+  - 130003470448135 & 130003470448136
+  - 130003470448170 & 130003470448171
+  - 130003470448360 & 130003470448361
+  - 130003470448405 & 130003470448406
+  - 130003470448485 & 130003470448486
+  - 130003470448505 & 130003470448506
+  - 130003470448745 & 130003470448746
+  - 130003470448810 & 130003470448811
+  - 130003470448900 & 130003470448901
+  - 130003470449030 & 130003470449031
+  - 130003470449140 & 130003470449141
+  - 130003470449315 & 130003470449316
+  - 130003470449525 & 130003470449526
+  - 130003470449600 & 130003470449601
+  - 130003470449765 & 130003470449766
+  - 130003470449815 & 130003470449816
+  - 130003470449865 & 130003470449866
+  - 130003470449910 & 130003470449911
+  - 130003470449925 & 130003470449926
+  - 130003470450010 & 130003470450011
+  - 130003470450090 & 130003470450091
+  - 130003470450215 & 130003470450216
+  - 130003470450320 & 130003470450321
+  - 130003470450845 & 130003470450846
+  - 130003470450965 & 130003470450966
+  - 130003470451070 & 130003470451071
+  - 130003470451180 & 130003470451181
+  - 130003470451310 & 130003470451311
+  - 130003470451500 & 130003470451501
+  - 130003470451770 & 130003470451771
+  - 130003470452060 & 130003470452061
+  - 130003470452100 & 130003470452101
+  - 130003470452155 & 130003470452156
+  - 130003470452165 & 130003470452166
+  - 130003470452195 & 130003470452196
+  - 130003470452315 & 130003470452316
+  - 130003470452360 & 130003470452361
+  - 130003470452435 & 130003470452436
+  - 130003470452735 & 130003470452736
+  - 130003470452800 & 130003470452801
+  - 130003470452915 & 130003470452916
+  - 130003470453090 & 130003470453091
+  - 130003470453270 & 130003470453271
+  - 130003470453325 & 130003470453326
+  - 130003470453440 & 130003470453441
+  - 130003470453455 & 130003470453456
+  - 130003470453890 & 130003470453891
+  - 130003470453935 & 130003470453936
+  - 130003470453950 & 130003470453951
+  - 130003470454075 & 130003470454076
+  - 130003470454160 & 130003470454161
+  - 130003470454445 & 130003470454446
+  - 130003470454495 & 130003470454496
+  - 130003470454580 & 130003470454581
+  - 130003470454945 & 130003470454946
+  - 130003470455010 & 130003470455011
+  - 130003470455320 & 130003470455321
+  - 130003470455395 & 130003470455396
+  - 130003470455765 & 130003470455766
+  - 130003470455850 & 130003470455851
+  - 130003470456125 & 130003470456126
+  - 130003470456145 & 130003470456146
+  - 130003470456190 & 130003470456191
+  - 130003470456245 & 130003470456246
+  - 130003470456270 & 130003470456271
+  - 130003470456285 & 130003470456286
+  - 130003470456780 & 130003470456781
+  - 130003470456920 & 130003470456921
+  - 130003470456945 & 130003470456946
+  - 130003470457060 & 130003470457061
+  - 130003470457080 & 130003470457081
+  - 130003470457230 & 130003470457231
+  - 130003470457365 & 130003470457366
+  - 130003470457440 & 130003470457441
+  - 130003470457620 & 130003470457621
+  - 130003470458040 & 130003470458041
+  - 130003470458075 & 130003470458076
+  - 130003470458275 & 130003470458276
+  - 130003470458405 & 130003470458406
+  - 130003470458540 & 130003470458541
+  - 130003470458630 & 130003470458631
+  - 130003470458665 & 130003470458666
+  - 130003470458705 & 130003470458706
+  - 130003470458755 & 130003470458756
+  - 130003470458780 & 130003470458781
+  - 130003470458945 & 130003470458946
+  - 130003470459005 & 130003470459006
+  - 130003470459100 & 130003470459101
+  - 130003470459545 & 130003470459546
+  - 130003470459640 & 130003470459641
+  - 130003470459665 & 130003470459666
+  - 130003470459795 & 130003470459796
+  - 130003470459870 & 130003470459871
+  - 130003470459915 & 130003470459916
+  - 130003470459925 & 130003470459926
+  - 130003470460115 & 130003470460116
+  - 130003470460235 & 130003470460236
+  - 130003470460330 & 130003470460331
+  - 130003470460365 & 130003470460366
+  - 130003470460575 & 130003470460576
+  - 130003470460785 & 130003470460786
+  - 130003470460800 & 130003470460801
+  - 130003470460890 & 130003470460891
+  - 130003470461010 & 130003470461011
+  - 130003470461040 & 130003470461041
+  - 130003470461165 & 130003470461166
+  - 130003470461175 & 130003470461176
+  - 130003470461205 & 130003470461206
+  - 130003470461270 & 130003470461271
+  - 130003470461715 & 130003470461716
+  - 130003470461825 & 130003470461826
+  - 130003470461845 & 130003470461846
+  - 130003470461860 & 130003470461861
+  - 130003470462015 & 130003470462016
+  - 130003470462175 & 130003470462176
+  - 130003470462490 & 130003470462491
+  - 130003470462645 & 130003470462646
+  - 130003470462900 & 130003470462901
+  - 130003470462955 & 130003470462956
+  - 130003470463365 & 130003470463366
+  - 130003470463410 & 130003470463411
+  - 130003470463450 & 130003470463451
+  - 130003470463650 & 130003470463651
+  - 130003470463830 & 130003470463831
+  - 130003470463910 & 130003470463911
+  - 130003470464060 & 130003470464061
+  - 130003470464130 & 130003470464131
+  - 130003470464240 & 130003470464241
+  - 130003470464260 & 130003470464261
+  - 130003470464335 & 130003470464336
+  - 130003470464380 & 130003470464381
+  - 130003470464390 & 130003470464391
+  - 130003470464495 & 130003470464496
+  - 130003470464600 & 130003470464601
+  - 130003470464850 & 130003470464851
+  - 130003470465015 & 130003470465016
+  - 130003470465160 & 130003470465161
+  - 130003470465215 & 130003470465216
+  - 130003470465615 & 130003470465616
+  - 130003470466130 & 130003470466131
+  - 130003470466150 & 130003470466151
+  - 130003470466290 & 130003470466291
+  - 130003470466315 & 130003470466316
+  - 130003470466420 & 130003470466421
+  - 130003470466650 & 130003470466651
+  - 130003470467000 & 130003470467001
+  - 130003470467115 & 130003470467116
+  - 130003470467410 & 130003470467411
+  - 130003470467560 & 130003470467561
+  - 130003470467690 & 130003470467691
+  - 130003470467705 & 130003470467706
+  - 130003470467765 & 130003470467766
+  - 130003470467910 & 130003470467911
+  - 130003470468120 & 130003470468121
+  - 130003470468140 & 130003470468141
+  - 130003470468205 & 130003470468206
+  - 130003470468280 & 130003470468281
+  - 130003470468425 & 130003470468426
+  - 130003470468670 & 130003470468671
+  - 130003470468815 & 130003470468816
+  - 130003470468980 & 130003470468981
+  - 130003470469065 & 130003470469066
+  - 130003470469830 & 130003470469831
+  - 130003470469865 & 130003470469866
+  - 130003470470080 & 130003470470081
+  - 130003470470100 & 130003470470101
+  - 130003470470145 & 130003470470146
+  - 130003470470275 & 130003470470276
+  - 130003470470705 & 130003470470706
+  - 130003470470825 & 130003470470826
+  - 130003470470920 & 130003470470921
+  - 130003470471060 & 130003470471061
+  - 130003470471145 & 130003470471146
+  - 130003470471195 & 130003470471196
+  - 130003470471375 & 130003470471376
+  - 130003470471650 & 130003470471651
+  - 130003470471840 & 130003470471841
+  - 130003470472140 & 130003470472141
+  - 130003470472205 & 130003470472206
+  - 130003470472240 & 130003470472241
+  - 130003470472320 & 130003470472321
+  - 130003470472445 & 130003470472446
+  - 130003470472460 & 130003470472461
+  - 130003470472475 & 130003470472476
+  - 130003470472535 & 130003470472536
+  - 130003470472685 & 130003470472686
+  - 130003470472720 & 130003470472721
+  - 130003470472745 & 130003470472746
+  - 130003470472855 & 130003470472856
+  - 130003470472905 & 130003470472906
+  - 130003470472980 & 130003470472981
+  - 130003470473200 & 130003470473201
+  - 130003470473230 & 130003470473231
+  - 130003470473335 & 130003470473336
+  - 130003470473720 & 130003470473721
+  - 130003470473935 & 130003470473936
+  - 130003470474010 & 130003470474011
+  - 130003470474695 & 130003470474696
+  - 130003470474855 & 130003470474856
+  - 130003470475325 & 130003470475326
+  - 130003470475640 & 130003470475641
+  - 130003470475655 & 130003470475656
+  - 130003470475715 & 130003470475716
+  - 130003470475810 & 130003470475811
+  - 130003470475820 & 130003470475821
+  - 130003470475925 & 130003470475926
+  - 130003470476010 & 130003470476011
+  - 130003470476080 & 130003470476081
+  - 130003470476310 & 130003470476311
+  - 130003470476525 & 130003470476526
+  - 130003470476640 & 130003470476641
+  - 130003470476710 & 130003470476711
+  - 130003470476765 & 130003470476766
+  - 130003470476845 & 130003470476846
+  - 130003470477100 & 130003470477101
+  - 130003470477725 & 130003470477726
+  - 130003470477945 & 130003470477946
+  - 130003470477965 & 130003470477966
+  - 130003470478000 & 130003470478001
+  - 130003470478150 & 130003470478151
+  - 130003470478260 & 130003470478261
+  - 130003470478415 & 130003470478416
+  - 130003470478455 & 130003470478456
+  - 130003470478485 & 130003470478486
+  - 130003470478950 & 130003470478951
+  - 130003470479090 & 130003470479091
+  - 130003470479100 & 130003470479101
+  - 130003470479145 & 130003470479146
+  - 130003470479380 & 130003470479381
+  - 130003470479500 & 130003470479501
+  - 130003470479555 & 130003470479556
+  - 130003470479825 & 130003470479826
+  - 130003470480030 & 130003470480031
+  - 130003470480090 & 130003470480091
+  - 130003470480495 & 130003470480496
+  - 130003470480515 & 130003470480516
+  - 130003470480595 & 130003470480596
+  - 130003470480810 & 130003470480811
+  - 130003470480950 & 130003470480951
+  - 130003470480985 & 130003470480986
+  - 130003470481075 & 130003470481076
+  - 130003470481125 & 130003470481126
+  - 130003470481485 & 130003470481486
+  - 130003470481505 & 130003470481506
+  - 130003470481515 & 130003470481516
+  - 130003470481540 & 130003470481541
+  - 130003470481550 & 130003470481551
+  - 130003470481615 & 130003470481616
+  - 130003470481845 & 130003470481846
+  - 130003470481955 & 130003470481956
+  - 130003470482045 & 130003470482046
+  - 130003470482195 & 130003470482196
+  - 130003470482505 & 130003470482506
+  - 130003470482670 & 130003470482671
+  - 130003470482825 & 130003470482826
+  - 130003470482985 & 130003470482986
+  - 130003470483305 & 130003470483306
+  - 130003470483395 & 130003470483396
+  - 130003470483625 & 130003470483626
+  - 130003470483645 & 130003470483646
+  - 130003470483770 & 130003470483771
+  - 130003470483900 & 130003470483901
+  - 130003470483945 & 130003470483946
+  - 130003470483985 & 130003470483986
+  - 130003470484090 & 130003470484091
+  - 130003470484395 & 130003470484396
+  - 130003470484835 & 130003470484836
+  - 130003470485075 & 130003470485076
+  - 130003470485160 & 130003470485161
+  - 130003470485210 & 130003470485211
+  - 130003470485255 & 130003470485256
+  - 130003470485405 & 130003470485406
+  - 130003470485600 & 130003470485601
+  - 130003470485730 & 130003470485731
+  - 130003470485745 & 130003470485746
+  - 130003470485845 & 130003470485846
+  - 130003470485900 & 130003470485901
+  - 130003470485970 & 130003470485971
+  - 130003470486675 & 130003470486676
+  - 130003470486800 & 130003470486801
+  - 130003470486815 & 130003470486816
+  - 130003470486955 & 130003470486956
+  - 130003470487205 & 130003470487206
+  - 130003470487420 & 130003470487421
+  - 130003470487565 & 130003470487566
+  - 130003470487595 & 130003470487596
+  - 130003470487820 & 130003470487821
+  - 130003470487840 & 130003470487841
+  - 130003470487870 & 130003470487871
+  - 130003470487940 & 130003470487941
+  - 130003470488005 & 130003470488006
+  - 130003470488300 & 130003470488301
+  - 130003470488410 & 130003470488411
+  - 130003470488905 & 130003470488906
+  - 130003470489035 & 130003470489036
+  - 130003470489075 & 130003470489076
+  - 130003470489185 & 130003470489186
+  - 130003470489250 & 130003470489251
+  - 130003470489385 & 130003470489386
+  - 130003470489580 & 130003470489581
+  - 130003470489670 & 130003470489671
+  - 130003470489680 & 130003470489681
+  - 130003470489745 & 130003470489746
+  - 130003470489805 & 130003470489806
+  - 130003470490725 & 130003470490726
+  - 130003470490785 & 130003470490786
+  - 130003470490805 & 130003470490806
+  - 130003470490985 & 130003470490986
+  - 130003470491045 & 130003470491046
+  - 130003470491165 & 130003470491166
+  - 130003470491345 & 130003470491346
+  - 130003470491410 & 130003470491411
+  - 130003470491760 & 130003470491761
+  - 130003470491780 & 130003470491781
+  - 130003470491795 & 130003470491796
+  - 130003470492310 & 130003470492311
+  - 130003470492330 & 130003470492331
+  - 130003470492460 & 130003470492461
+  - 130003470492610 & 130003470492611
+  - 130003470493075 & 130003470493076
+  - 130003470493145 & 130003470493146
+  - 130003470493365 & 130003470493366
+  - 130003470493640 & 130003470493641
+  - 130003470493730 & 130003470493731
+  - 130003470493920 & 130003470493921
+  - 130003470493935 & 130003470493936
+  - 130003470494030 & 130003470494031
+  - 130003470494150 & 130003470494151
+  - 130003470494290 & 130003470494291
+  - 130003470494480 & 130003470494481
+  - 130003470494575 & 130003470494576
+  - 130003470494740 & 130003470494741
+  - 130003470494835 & 130003470494836
+  - 130003470495295 & 130003470495296
+  - 130003470495440 & 130003470495441
+  - 130003470495455 & 130003470495456
+  - 130003470495520 & 130003470495521
+  - 130003470495600 & 130003470495601
+  - 130003470495655 & 130003470495656
+  - 130003470495680 & 130003470495681
+  - 130003470495830 & 130003470495831
+  - 130003470496000 & 130003470496001
+  - 130003470496035 & 130003470496036
+  - 130003470496065 & 130003470496066
+  - 130003470496100 & 130003470496101
+  - 130003470496335 & 130003470496336
+  - 130003470496825 & 130003470496826
+  - 130003470496905 & 130003470496906
+  - 130003470496945 & 130003470496946
+  - 130003470497010 & 130003470497011
+  - 130003470497355 & 130003470497356
+  - 130003470497400 & 130003470497401
+  - 130003470497455 & 130003470497456
+  - 130003470497565 & 130003470497566
+  - 130003470497645 & 130003470497646
+  - 130003470497800 & 130003470497801
+  - 130003470497810 & 130003470497811
+  - 130003470497850 & 130003470497851
+  - 130003470498120 & 130003470498121
+  - 130003470498215 & 130003470498216
+  - 130003470498280 & 130003470498281
+  - 130003470498325 & 130003470498326
+  - 130003470498410 & 130003470498411
+  - 130003470498425 & 130003470498426
+  - 130003470498490 & 130003470498491
+  - 130003470498680 & 130003470498681
+  - 130003470499085 & 130003470499086
+  - 130003470499165 & 130003470499166
+  - 130003470499525 & 130003470499526
+  - 130003470499670 & 130003470499671
+  - 130003470499690 & 130003470499691
+
+## 14. Five-ticket block has a winner  -  PASS - No exceptions
+
+*Procedure:* Check whether each block of five tickets starting from ticket 001 in each book contains at least one prize.
+
+- No exceptions were noted. Every block of five tickets contains at least one prize.
+
+## 15. Prize value run length  -  PASS - No exceptions
+
+*Procedure:* Check whether more than three consecutive tickets contain the same winning value / prize amount symbol.
+
+- No exceptions were noted. No more than three consecutive tickets share the same prize value.
+
+## 16. Book-set prize rule  -  PASS - No exceptions
+
+*Procedure:* Check whether every consecutive set of 4 books (starting from Book 1) contains exactly 1 prize(s) of Rs.1200.
+
+- No exceptions were noted. Every set of 4 books contains exactly 1 x Rs.1200.
+
+## Appendix I - Play symbol distribution (0347)
+
+| Play symbol | Code | Position 1 | Position 2 | Total |
+|---|---|---:|---:|---:|
+| Rs.50 | KC | 183,363 | 187,106 | 370,469 |
+| Rs.500 | LC | 108,058 | 111,249 | 219,307 |
+| Rs.5,000 | NC | 98,304 | 105,297 | 203,601 |
+| Umbrella (Rs.1,200) | PC | 110,275 | 96,348 | 206,623 |
+| **Total** |  | **500,000** | **500,000** | **1,000,000** |
+
+## Appendix II - Prize distribution (0347)
+
+| Prize amount (LKR) | Code | Total |
+|---:|---|---:|
+| 50 | 03 | 100,000 |
+| 500 | 07 | 9,900 |
+| 1,200 | 26 | 3,125 |
+| 5,000 | 11 | 210 |
+| Loss | 99 | 386,765 |
+| **Total** |  | **500,000** |
+
+## Appendix III - Agent validation code distribution (0347)
+
+| Letter | GLEPS | Non-GLEPS | Losing | Total |
+|---|---:|---:|---:|---:|
+| A | 33,660 | 6,659 | 198,241 | 238,560 |
+| D | 33,019 | 6,517 | 190,174 | 229,710 |
+| R | 32,545 | 6,624 | 196,046 | 235,215 |
+| S | 33,539 | 6,589 | 191,824 | 231,952 |
+| T | 100,000 | 0 | 0 | 100,000 |
+| W | 33,733 | 6,651 | 189,408 | 229,792 |
+| Z | 33,504 | 6,665 | 194,602 | 234,771 |
+| **Total** | **300,000** | **39,705** | **1,160,295** | **1,500,000** |
