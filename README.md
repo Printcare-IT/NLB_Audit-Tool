@@ -38,8 +38,13 @@ recent jobs), so if they already sit on a share, leave them there and point at
 them instead of copying: `--layouts <that folder>`. The drafter only reads
 `.pdf`, `.docx` and `.doc`, so a `.TXT` layout in `inputs/` is ignored by it.
 
-Setup, once: `pip install -r requirements.txt`. LibreOffice is needed only if a
-specification arrives as a legacy `.doc`.
+Setup, once: `pip install python-docx pdfplumber` (there is no
+`requirements.txt` yet). LibreOffice is needed only if a specification arrives
+as a legacy `.doc`.
+
+**Folder name.** The drafter reads `jobs/<job>/inputs/` - plural. A folder
+named `input` is not found; rename it, or pass `--inputs <folder>` to
+`draft_spec.py`.
 
 ## The process for a new set of games
 
@@ -70,8 +75,40 @@ Things it has caught on real jobs:
 - a data spec saying four channels where the file has five
 - a symbol table headed with a game number not in the job, matched to the
   right game by its symbol codes
+- a special symbol (Egg, game 0352) that the specification says wins but the
+  data never pays
+
+### The game spec title line
+
+The drafter identifies each game specification by its title line, which must
+read exactly like this, with the game name **in quotes**:
+
+```
+GAME NO: 0351 - "CAR RACE" (Rs. 50)
+```
+
+Without the quotes the game number is not read (`game None` in the sources
+list). The drafter then falls back to the file name as the game's ID, and one
+problem shows up as several review items: *"has a specification but does not
+appear in the layout file"*, *"appears in the layout file but no game
+specification was supplied"*, *"could not read the game number / name /
+price"*, and follow-on symbol and win-rule items for that game. Fix the title
+line and re-draft rather than resolving those items one by one.
 
 ### Reviewing spec.md
+
+Review items come in three kinds:
+
+| Tag | Meaning | To resolve |
+|---|---|---|
+| **BLOCKING** | The settings cannot be built as they stand | Correct the table, then tick |
+| **LAYOUT** | The layout file disagrees with the specification (a prize count, the win rule, the special symbols, the prize spot, barcode parity) | Confirm the tables follow the **specification**, not the file, and tick. The audit then reports the difference as a layout-file error |
+| check | Worth a look; nothing is known to be wrong | Tick once checked |
+
+A LAYOUT item is a finding about the delivered data, not about `spec.md`.
+Do not "fix" it by copying the file's behaviour into the tables unless the
+client confirms the specification itself is wrong. Record who confirmed it.
+
 
 - Machine-read tables sit under invisible `<!-- table:... -->` anchors. Change
   their **values** freely; keep their column headings.
@@ -203,12 +240,12 @@ The two numbers inside them (3 and 5) are still settings, under
 
 | Value | Meaning | Seen in |
 |---|---|---|
-| `match_two` | two identical play symbols win | 0110, 0111, 0347, 0349, 0350, 0112, 0113 |
-| `match_two_or_special` | two identical, or one special symbol alone | 0345 (Flag), 0348 (Sun) |
-| `special_only` | one special symbol wins; a matching pair does **not** | 0346 (Gold Coin / Diamond) |
+| `match_two` | two identical play symbols win | 0110, 0111, 0347, 0349, 0350, 0112, 0113, 0351 |
+| `match_two_or_special` | two identical, or one special symbol alone | 0345 (Flag), 0348 (Sun), 0353 (Guitar) |
+| `special_only` | one special symbol wins; a matching pair does **not** | 0346 (Gold Coin / Diamond), 0352 (Egg / Duck) |
 
 `forbidden: "two_special"` additionally rejects tickets carrying two special
-symbols (0345, 0346, 0348).
+symbols (0345, 0346, 0348, 0352, 0353).
 
 ### Packing schedule
 
@@ -231,6 +268,7 @@ Every per-book and per-batch rule uses one shape:
 
 ```json
 { "group": "book",  "size": 1,   "amounts": [500],       "mode": "exactly",      "n": 1 }
+{ "group": "book",  "size": 1,   "amounts": [500],       "mode": "min",          "n": 1 }
 { "group": "book",  "size": 1,   "amounts": [200, 500],  "mode": "exactly_one_total" }
 { "group": "book",  "size": 1,   "amounts": [200, 500],  "mode": "at_least_one_total", "n": 1 }
 { "group": "book",  "size": 1,   "amounts": [1000,5000], "mode": "at_most_each", "n": 1 }
@@ -239,7 +277,9 @@ Every per-book and per-batch rule uses one shape:
 
 Note the difference the word "both" makes in the spec: where the restriction
 reads *"Rs.200, Rs.500 or both"* use `at_least_one_total`; where it reads
-*"either Rs.200 or Rs.500"* use `exactly_one_total`.
+*"either Rs.200 or Rs.500"* use `exactly_one_total`. *"contain one prize of
+Rs.500"* is `exactly`; *"contain at least one prize of Rs.500"* is `min`
+(the drafter reads both, and the number may be written as a word or a digit).
 
 ## What the validator catches
 
@@ -273,6 +313,16 @@ directly from the raw file. A likely contributing factor: 0347 uses only **four*
 play symbols (others use six), giving just 16 possible ordered pairs across
 500,000 tickets, which makes consecutive repeats hard to avoid. Raise with the
 data generation team.
+
+**Game 0352 (Lucky Duck) — Egg does not win in the data. OPEN.** Both the
+game spec and the data spec read *"find an Egg symbol or a Duck symbol and win
+the corresponding prize"*. In the September 2026 layout file only Duck (`LB`)
+wins: it appears exactly once on each of the 113,660 winners and on no loser,
+while Egg (`KB`) appears 177,298 times, about as often as the plain symbols,
+at least 63,638 of them on losing tickets. To be raised with the data
+generation team and NLB. If the specification stands, the data must be regenerated. If
+NLB confirms Duck alone wins, change the special symbols to `LB` in `spec.md`
+and record the confirmation.
 
 ## Adding a new winning rule
 
