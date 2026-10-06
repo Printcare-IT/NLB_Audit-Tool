@@ -40,6 +40,8 @@ def normalise(cfg):
     c.pop("schema_version", None)
     c["job"].pop("sources", None)
     for g in c["games"]:
+        if "channel" in g:                      # older settings: one channel
+            g["channels"] = [g.pop("channel")]
         g["prizes"] = sorted(g["prizes"], key=lambda p: p["amount"])
         g["special_symbols"] = g.get("special_symbols") or []
     c["agent"]["low_letters"] = {str(k): v for k, v in c["agent"]["low_letters"].items()}
@@ -89,6 +91,26 @@ class Validator(unittest.TestCase):
     def test_payout_disagreeing_with_declared(self):
         self.cfg["games"][0]["expected"]["payout_pct"] = 53.0
         self.assertIn("payout", self.errors(self.cfg))
+
+    # ---- channels: a game may be printed on several (NLB 0115: four) ----
+    def test_one_game_on_several_channels_is_valid(self):
+        self.assertTrue(validate(F.fixture_config(split=True)).ok)
+
+    def test_channel_belonging_to_no_game(self):
+        self.cfg["layout"]["channels"] = 3
+        self.assertIn("channel(s) 3 belong to no game", self.errors(self.cfg))
+
+    def test_channel_claimed_by_two_games(self):
+        cfg = F.fixture_config(split=True)
+        cfg["games"][1]["channels"] = [2]
+        e = self.errors(cfg)
+        self.assertIn("channel 2 is assigned to both", e)
+        self.assertIn("channel(s) 3 belong to no game", e)
+
+    def test_older_single_channel_settings_are_valid(self):
+        for g in self.cfg["games"]:
+            g["channel"] = g.pop("channels")[0]
+        self.assertTrue(validate(self.cfg).ok)
 
 
 # ====================================================================== #
@@ -181,7 +203,7 @@ class Parsers(unittest.TestCase):
     def test_data_spec(self):
         cfg = F.fixture_config()
         d = parse_data_spec(F.data_spec_text(cfg), "x")
-        self.assertEqual(d["channel_map"], {"0901": 1, "0902": 2})
+        self.assertEqual(d["channel_map"], {"0901": [1], "0902": [2]})
         self.assertEqual(d["agent_low"], {50: "T"})
         self.assertEqual(d["virn_range"], [2000000, 6999999])
         self.assertEqual(d["leading_void_pages"], 2)
@@ -238,6 +260,12 @@ class MarkdownFormat(unittest.TestCase):
         if not found:
             self.skipTest("no real job settings present")
 
+    def test_game_on_several_channels_round_trips(self):
+        cfg = F.fixture_config(split=True)
+        md = render(cfg, [], {}, {"generated": "t"})
+        self.assertIn("| 1 / 2 | 0901 |", md)
+        self.assertEqual(normalise(parse(md)), normalise(cfg))
+
     def test_unticked_items_detected(self):
         md = "## Review items\n\n- [x] **R1** done\n- [ ] **R2** open\n\n## 1. Usage\n"
         self.assertEqual(len(unticked_review_items(md)), 1)
@@ -293,19 +321,19 @@ class Drafter(unittest.TestCase):
         self.assertIn("used for 0902", self.texts(D))
         self.assertEqual(cfg["games"][1]["play_symbols"], self.cfg["games"][1]["play_symbols"])
 
-    def test_spec_count_disagreeing_with_data_is_blocking(self):
+    def test_spec_count_disagreeing_with_data_is_layout_finding(self):
         facts = copy.deepcopy(self.facts)
-        facts["channels"]["1"]["system_prize_codes"]["08"] = 5
+        facts["games"]["0901"]["system_prize_codes"]["08"] = 5
         cfg, D = self.draft(facts=facts)
         hit = [r for r in D.review if "prize code 08" in r["text"]]
-        self.assertTrue(hit and hit[0]["severity"] == "blocking")
+        self.assertTrue(hit and hit[0]["severity"] == "layout")
 
-    def test_win_rule_disagreeing_with_data_is_blocking(self):
+    def test_win_rule_disagreeing_with_data_is_layout_finding(self):
         facts = copy.deepcopy(self.facts)
-        facts["channels"]["2"]["inferred_win_rule"]["inferred_rule"] = "match_two"
+        facts["games"]["0902"]["inferred_win_rule"]["inferred_rule"] = "match_two"
         cfg, D = self.draft(facts=facts)
         hit = [r for r in D.review if "behaves as" in r["text"]]
-        self.assertTrue(hit and hit[0]["severity"] == "blocking")
+        self.assertTrue(hit and hit[0]["severity"] == "layout")
 
     def test_impossible_restriction_is_blocking(self):
         cfg, D = self.draft(docs=self.docs(extra={
@@ -321,6 +349,31 @@ class Drafter(unittest.TestCase):
     def test_no_measurements_is_blocking(self):
         cfg, D = draft_spec.build("T", self.docs(), None)
         self.assertIn("no measured_facts.json", self.texts(D))
+
+
+class DrafterOnSplitChannels(Drafter):
+    """Every drafter test again, with game 0901 printed on two channels.
+    Defect (NLB 0115, one game on four channels): the drafter kept only the
+    last channel, compared the specification's totals with a quarter of the
+    tickets, and raised a false review item for every prize code."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.cfg, cls.tix = F.make_job(seed=7, split=True)
+        cls.facts = facts_for(cls.cfg, cls.tix)
+
+    def test_split_game_is_noted_with_its_serial_ranges(self):
+        cfg, D = self.draft()
+        self.assertEqual(cfg["games"][0]["channels"], [1, 2])
+        self.assertIn("game 0901 is printed on channels 1, 2 (channel 1: 1 - 200; "
+                      "channel 2: 201 - 400)", " ".join(D.ev["layout"]))
+
+    def test_older_facts_without_game_totals_are_blocking(self):
+        facts = copy.deepcopy(self.facts)
+        del facts["games"]
+        cfg, D = self.draft(facts=facts)
+        hit = [r for r in D.review if "Re-run probe_layout.py" in r["text"]]
+        self.assertTrue(hit and hit[0]["severity"] == "blocking")
 
 
 # ====================================================================== #

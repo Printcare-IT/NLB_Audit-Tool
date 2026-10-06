@@ -10,6 +10,10 @@ Game 0901 "TEST MATCH"   - match_two,   lottery 300, channel 1
 Game 0902 "TEST SPECIAL" - special_only (Gold Coin / Diamond), lottery 320,
                            channel 2, two specials together forbidden
 
+With split=True, game 0901 is printed on channels 1 and 2 (serials 1-200 and
+201-400) and game 0902 moves to channel 3: one game on several channels, as
+in NLB 0115 (one game on four channels).
+
 Per book: 4 x Rs.50 (GLEPS), 1 x Rs.500; the third book of each 5-book slot
 also carries the slot's single Rs.1,000.
 
@@ -26,10 +30,10 @@ TICKETS, BOOK, SLOT_BOOKS = 400, 20, 5
 ROWS_PER_PAGE, LEAD_VOID_ROWS, TRAIL_VOID_ROWS = 4, 8, 4
 
 
-def fixture_config():
-    def game(key, name, lot, ch, rule, symbols, specials, forbidden):
+def fixture_config(split=False):
+    def game(key, name, lot, chans, rule, symbols, specials, forbidden):
         return {
-            "key": key, "name": name, "lottery": lot, "channel": ch,
+            "key": key, "name": name, "lottery": lot, "channels": chans,
             "win_rule": rule, "special_symbols": specials, "forbidden": forbidden,
             "play_symbols": symbols, "has_prize_spot": True,
             "prizes": [
@@ -52,7 +56,7 @@ def fixture_config():
         "schema_version": "1.0",
         "job": {"id": "TEST_0901-0902", "client": "NLB", "title": "NLB Scratch Lottery",
                 "ticket_price": 50, "sources": []},
-        "layout": {"block_len": 21, "channels": 2, "lead_columns": 1,
+        "layout": {"block_len": 21, "channels": 3 if split else 2, "lead_columns": 1,
                    "offsets": {"serial": 0, "virn": 1, "bar": 2, "sys": 3, "print": 4,
                                "play_first": 5, "play_count": 6, "play_used": 2,
                                "agent_first": 11, "agent_count": 9, "qa": 20},
@@ -65,10 +69,10 @@ def fixture_config():
         "fixed_rules": {"max_same_value_run": 3, "winner_every_n_tickets": 5,
                         "gleps_amount": 50},
         "games": [
-            game("0901", "TEST MATCH", "300", 1, "match_two",
+            game("0901", "TEST MATCH", "300", [1, 2] if split else [1], "match_two",
                  {"KA": "Face", "LA": "Crown", "NA": "Flag", "PA": "Trophy",
                   "QA": "Key", "UA": "Motor Bicycle"}, [], None),
-            game("0902", "TEST SPECIAL", "320", 2, "special_only",
+            game("0902", "TEST SPECIAL", "320", [3] if split else [2], "special_only",
                  {"KB": "Gold Coin", "LB": "Diamond", "NB": "Gift Box", "PB": "Hand",
                   "QB": "Bundle of Money", "UB": "Face"}, ["KB", "LB"], "two_special"),
         ],
@@ -182,8 +186,8 @@ def make_game(g, seed):
     return tix
 
 
-def make_job(seed=7):
-    cfg = fixture_config()
+def make_job(seed=7, split=False):
+    cfg = fixture_config(split)
     return cfg, {g["key"]: make_game(g, seed + i) for i, g in enumerate(cfg["games"])}
 
 
@@ -210,21 +214,37 @@ def _void_block(g):
             "", "", "", "", "W", "", "S", "", "A", "", "", "", "", "$"]
 
 
+def _channel_slots(cfg):
+    """(channel, game, first ticket index, ticket count) for every channel, in
+    channel order.  A game on several channels has its serials divided evenly
+    between them, the lowest serials on the lowest channel."""
+    slots = []
+    for g in cfg["games"]:
+        chans = sorted(g["channels"] if "channels" in g else [g["channel"]])
+        per = TICKETS // len(chans)
+        slots += [(ch, g, j * per, per) for j, ch in enumerate(chans)]
+    return sorted(slots, key=lambda s: s[0])
+
+
 def write_layout(path, cfg, tickets):
-    games = sorted(cfg["games"], key=lambda g: g["channel"])
+    slots = _channel_slots(cfg)
+    live = max(n for _, _, _, n in slots)
     header = ["PageNo"]
-    for ch in range(1, len(games) + 1):
+    for ch in range(1, len(slots) + 1):
         header += [f"SerialNo{ch}_01", f"VIRN{ch}_01", f"BAR{ch}_01",
                    f"SystemPrizeCode{ch}_01", f"PrizePrintCode{ch}_01"]
         header += [f"Play{ch}{k}_01" for k in range(1, 7)]
         header += [f"Agent_ValCode{ch}{k}_01" for k in range(1, 10)]
         header += [f"QA_SampleCode{ch}_01"]
     rows = []
-    rows += [[_void_block(g) for g in games] for _ in range(LEAD_VOID_ROWS)]
-    for i in range(TICKETS):
-        rows.append([_block(tickets[g["key"]][i]) if tickets[g["key"]][i] is not None
-                     else _void_block(g) for g in games])
-    rows += [[_void_block(g) for g in games] for _ in range(TRAIL_VOID_ROWS)]
+    rows += [[_void_block(g) for _, g, _, _ in slots] for _ in range(LEAD_VOID_ROWS)]
+    for i in range(live):
+        row = []
+        for _, g, first, n in slots:
+            t = tickets[g["key"]][first + i] if i < n else None
+            row.append(_block(t) if t is not None else _void_block(g))
+        rows.append(row)
+    rows += [[_void_block(g) for _, g, _, _ in slots] for _ in range(TRAIL_VOID_ROWS)]
     with open(path, "w", newline="") as f:
         f.write(",".join(header) + "\r\n")
         for r, blocks in enumerate(rows):
@@ -307,7 +327,13 @@ def game_spec_text(cfg, key, extra_restrictions=""):
 def data_spec_text(cfg, heading_override=None):
     """heading_override: {game key: wrong 'LLL GGGG'} to mislabel a symbol table."""
     heading_override = heading_override or {}
-    games = sorted(cfg["games"], key=lambda g: g["channel"])
+    slots = _channel_slots(cfg)
+    games = []
+    for _, g, _, _ in slots:
+        if g not in games:
+            games.append(g)
+    n_ch = len(slots)
+    n_word = {2: "two", 3: "three", 4: "four"}[n_ch]
     how = " ".join(f"Game {g['lottery']} {g['key']}: {MECH[g['key']]}" for g in games)
     pz = " ".join(
         f"Game {g['lottery']} {g['key']} Prize Amount LKR Print Code - Smalls System Prize "
@@ -319,8 +345,9 @@ def data_spec_text(cfg, heading_override=None):
         for g in games)
     na = " ".join(f"Game {g['key']}: " + ('"Gold Coin" and "Diamond" symbols together'
                                           if g.get("forbidden") else "N/A") for g in games)
-    chans = " ".join(f"{g['channel']} ({g['key']})" for g in games)
-    pages = (LEAD_VOID_ROWS + TICKETS + TRAIL_VOID_ROWS) // ROWS_PER_PAGE
+    chans = " ".join(f"{ch} ({g['key']})" for ch, g, _, _ in slots)
+    live = max(n for _, _, _, n in slots)
+    pages = (LEAD_VOID_ROWS + live + TRAIL_VOID_ROWS) // ROWS_PER_PAGE
     return (
         "PRINTCARE SECURE LIMITED INSTANT SCRATCH LOTTERY DATA GENERATION SPECIFICATION "
         "Document Control Original Version: V1.0 Date Issued: 20 July 2026 "
@@ -332,8 +359,8 @@ def data_spec_text(cfg, heading_override=None):
         "random numbers in range 2000000 thru 6999999 Game play symbol patterns NOT "
         f"ALLOWED are: {na} Agent Validation Codes X,X,X,X,X,X,X,X,X "
         f"Print Layout Pages Tickets will be printed in pages of "
-        f"{ROWS_PER_PAGE*len(games)} tickets on two channels across the press web. "
+        f"{ROWS_PER_PAGE*n_ch} tickets on {n_word} channels across the press web. "
         f"Channel {chans} Colour Scheme A B Page Number: nnnnnn (Range 000001 - "
-        f"{pages:06d}) Channel Data occurs two times: Ticket Data occurs four times per "
-        f"channel per page meaning that there are {ROWS_PER_PAGE*len(games)} tickets per "
+        f"{pages:06d}) Channel Data occurs {n_word} times: Ticket Data occurs four times per "
+        f"channel per page meaning that there are {ROWS_PER_PAGE*n_ch} tickets per "
         "page. Live data will be preceded by two pages of void losing tickets.")

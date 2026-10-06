@@ -282,5 +282,33 @@ class AuditChecks(unittest.TestCase):
         self.expect(m, A, {15}, attempts=1)
 
 
+class AuditChecksOnSplitChannels(AuditChecks):
+    """Every check again, with game 0901 printed on two channels (serials
+    1-200 on channel 1, 201-400 on channel 2), as NLB 0115 is printed on four.
+    A split game must audit exactly like a game on one channel."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.cfg, cls.base = F.make_job(seed=7, split=True)
+
+    def test_03_duplicate_serial_across_channels(self):
+        half = F.TICKETS // 2
+        def m(cfg, t, r):
+            i = r.choice([i for i in losers(t[A]) if i >= half])
+            t[A][i]["serial"] = t[A][r.randrange(half)]["serial"]
+        self.expect(m, A, {3, 6})
+
+
+class OlderSettings(unittest.TestCase):
+
+    def test_single_channel_number_still_audits(self):
+        """Settings written before games could span channels carry
+        "channel": n instead of "channels": [n]."""
+        cfg, t = F.make_job(seed=7)
+        for g in cfg["games"]:
+            g["channel"] = g.pop("channels")[0]
+        self.assertEqual(audit(cfg, t), {A: set(), B: set()})
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

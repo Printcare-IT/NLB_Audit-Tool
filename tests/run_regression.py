@@ -44,7 +44,7 @@ ROOT = os.path.abspath(os.path.join(HERE, ".."))
 ENGINE = os.path.join(ROOT, "engine")
 sys.path[:0] = [ENGINE]
 from spec_md import parse                                     # noqa: E402
-from validate_config import validate                          # noqa: E402
+from validate_config import validate, game_channels           # noqa: E402
 import probe_layout as P                                      # noqa: E402
 import draft_spec                                             # noqa: E402
 from doc_text import to_text, flatten                         # noqa: E402
@@ -222,7 +222,7 @@ def main():
 def _guess_layout(job_dir, dirs):
     """At record time, find the layout whose name matches the job's games."""
     cfg = json.load(open(os.path.join(job_dir, "job_config.json")))
-    stem = "-".join(g["key"] for g in sorted(cfg["games"], key=lambda g: g["channel"]))
+    stem = "-".join(g["key"] for g in sorted(cfg["games"], key=lambda g: game_channels(g)[0]))
     for d in list(dirs) + [job_dir, os.path.join(job_dir, "inputs")]:
         for p in glob.glob(os.path.join(d, "*")):
             if os.path.basename(p).upper().startswith(stem) and p.upper().endswith(".TXT"):
