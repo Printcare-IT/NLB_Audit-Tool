@@ -9,6 +9,12 @@ file and assumes as little as possible: the block structure, the channel-to-game
 map, the prize counts, the void convention and the parity rule are all worked
 out from the data itself.
 
+A game may be printed on more than one channel, each channel carrying part of
+its serials.  The facts are written per channel (what the file physically
+holds) and per game (the channels combined); everything compared with a
+specification - prize counts, symbols, win rule, books - uses the per-game
+figures.
+
     python probe_layout.py <layout file> [--out measured_facts.json]
                            [--config <job_config.json>]
 
@@ -306,6 +312,8 @@ def measure(path, struct, void_serial):
             },
             "_patterns": d["sys_by_pattern"],
             "_sys_by_serial": d["sys_by_serial"],
+            "_seen": d["seen"],
+            "_virn_seen": d["virn_seen"],
         }
     return {
         "rows": rows,
@@ -318,7 +326,100 @@ def measure(path, struct, void_serial):
         "void_rows_leading": void_rows_leading,
         "void_rows_trailing": void_rows_trailing,
         "channels": out_ch,
+        "games": merge_by_game(out_ch),
     }
+
+
+def merge_by_game(out_ch):
+    """Combine the channels that carry the same game into one record per game.
+
+    A game may be printed on several channels, each carrying part of its
+    serials (game 0115: four channels, a quarter each).  Every per-game fact
+    - prize counts, symbols, win rule, books - must be read from the whole
+    game, never from one channel.  Duplicate serials and VIRNs are counted
+    across the channels as well as within each one.
+
+    The consecutive-pair counts are summed per channel, so the few pairs that
+    straddle two channels are not counted; they are observations only."""
+    by_game = defaultdict(list)
+    for ch, d in sorted(out_ch.items()):
+        by_game[d["game"]].append((ch, d))
+
+    def summed(ds, field):
+        c = Counter()
+        for d in ds:
+            c.update(d[field])
+        return dict(sorted(c.items()))
+
+    def lowest(vals):
+        vals = [v for v in vals if v is not None]
+        return min(vals) if vals else None
+
+    def highest(vals):
+        vals = [v for v in vals if v is not None]
+        return max(vals) if vals else None
+
+    games = {}
+    for key, parts in by_game.items():
+        ds = [d for _, d in parts]
+        first = ds[0]
+        seen = set().union(*(d["_seen"] for d in ds))
+        vseen = set().union(*(d["_virn_seen"] for d in ds))
+        s_lo = lowest(d["serial_range"][0] for d in ds)
+        s_hi = highest(d["serial_range"][1] for d in ds)
+        missing = s_hi - s_lo + 1 - len(seen) if s_lo is not None else 0
+        patterns = defaultdict(Counter)
+        sys_by_serial = {}
+        by_pos = []
+        for d in ds:
+            for code, pp in d["_patterns"].items():
+                patterns[code].update(pp)
+            sys_by_serial.update(d["_sys_by_serial"])
+            for k, c in enumerate(d["play_symbol_by_position"]):
+                if k == len(by_pos):
+                    by_pos.append(Counter())
+                by_pos[k].update(c)
+        games[key] = {
+            "game": key, "lottery": first["lottery"],
+            "passive_flag": first["passive_flag"],
+            "channels": [ch for ch, _ in parts],
+            "lotteries_by_channel": {ch: d["lottery"] for ch, d in parts},
+            "tickets": sum(d["tickets"] for d in ds),
+            "serial_range": [s_lo, s_hi],
+            "serial_complete": missing == 0,
+            "serial_missing": missing,
+            "serial_duplicates": (sum(d["serial_duplicates"] for d in ds)
+                                  + sum(len(d["_seen"]) for d in ds) - len(seen)),
+            "serial_strictly_ascending_in_file":
+                all(d["serial_strictly_ascending_in_file"] for d in ds),
+            "virn_random_range": [lowest(d["virn_random_range"][0] for d in ds),
+                                  highest(d["virn_random_range"][1] for d in ds)],
+            "virn_duplicates": (sum(d["virn_duplicates"] for d in ds)
+                                + sum(len(d["_virn_seen"]) for d in ds) - len(vseen)),
+            "parity_digit_sum_mod10": {
+                "ok": sum(d["parity_digit_sum_mod10"]["ok"] for d in ds),
+                "bad": sum(d["parity_digit_sum_mod10"]["bad"] for d in ds)},
+            "system_prize_codes": summed(ds, "system_prize_codes"),
+            "prize_print_codes": summed(ds, "prize_print_codes"),
+            "play_symbols": sorted(set().union(*(d["play_symbols"] for d in ds))),
+            "play_positions_used": max(d["play_positions_used"] for d in ds),
+            "play_symbol_by_position": [dict(sorted(c.items())) for c in by_pos],
+            "agent_letters": summed(ds, "agent_letters"),
+            "agent_letters_per_ticket": summed(ds, "agent_letters_per_ticket"),
+            "agent_positions_used": summed(ds, "agent_positions_used"),
+            "qa_sample_code": summed(ds, "qa_sample_code"),
+            "consecutive_same_ordered_pair":
+                sum(d["consecutive_same_ordered_pair"] for d in ds),
+            "consecutive_same_unordered_pair":
+                sum(d["consecutive_same_unordered_pair"] for d in ds),
+            "win_pattern_by_prize_code": {
+                code: {"distinct_patterns": len(pats), "tickets": sum(pats.values())}
+                for code, pats in sorted(patterns.items())
+            },
+            "_patterns": patterns,
+            "_sys_by_serial": sys_by_serial,
+        }
+    return games
 
 
 # ------------------------------------------------------------------ #
@@ -433,6 +534,16 @@ def _book_counts(chdata, book_size, amount_by_code):
     return books, n_books
 
 
+def _config_channels(g):
+    """A game's channels in the settings: a list, or the older single
+    'channel' number."""
+    return g["channels"] if "channels" in g else [g["channel"]]
+
+
+def _chans(chs):
+    return ", ".join(str(c) for c in chs)
+
+
 def compare(meas, cfg):
     diffs = []
     L = cfg["layout"]
@@ -445,18 +556,23 @@ def compare(meas, cfg):
         diffs.append(f"void serial: measured {meas['void_serial']}, "
                      f"settings say {L['void_serial']}")
     by_game = {g["key"]: g for g in cfg["games"]}
-    for ch, d in meas["channels"].items():
-        key = d["game"]
+    for key in sorted(set(by_game) - set(meas["games"]), key=str):
+        diffs.append(f"game {key}: in the settings but not in the data")
+    for key, d in meas["games"].items():
         g = by_game.get(key)
         if g is None:
-            diffs.append(f"channel {ch}: game {key} is not in the settings")
+            diffs.append(f"channel(s) {_chans(d['channels'])}: game {key} is "
+                         "not in the settings")
             continue
-        if g["channel"] != ch:
-            diffs.append(f"game {key}: measured on channel {ch}, "
-                         f"settings say channel {g['channel']}")
-        if g["lottery"] != d["lottery"]:
-            diffs.append(f"game {key}: measured lottery {d['lottery']}, "
-                         f"settings say {g['lottery']}")
+        want_ch = sorted(_config_channels(g))
+        if d["channels"] != want_ch:
+            diffs.append(f"game {key}: measured on channel(s) "
+                         f"{_chans(d['channels'])}, settings say "
+                         f"{_chans(want_ch)}")
+        for ch, lot in d["lotteries_by_channel"].items():
+            if g["lottery"] != lot:
+                diffs.append(f"game {key}: measured lottery {lot} on channel "
+                             f"{ch}, settings say {g['lottery']}")
         want = {p["sys"]: p["count"] for p in g["prizes"]}
         want[g["loss"]["code"]] = g["loss"]["count"]
         got = d["system_prize_codes"]
@@ -582,77 +698,95 @@ def human_report(path, struct, meas):
         W("=" * 70)
         W(f"CHANNEL {ch}  ->  lottery {d['lottery']}, game {d['game']}")
         W("=" * 70)
-        W(f"  live tickets       : {d['tickets']:,}")
-        W(f"  serial range       : {d['serial_range'][0]:,} .. {d['serial_range'][1]:,}")
-        complete = ("yes" if d["serial_complete"]
-                    else f"NO ({d['serial_missing']:,} missing)")
-        W(f"  complete           : {complete}")
-        W(f"  duplicates         : {d['serial_duplicates']:,}")
-        W(f"  ascending in file  : {'yes' if d['serial_strictly_ascending_in_file'] else 'no (interleaved or out of order)'}")
-        W(f"  VIRN random range  : {d['virn_random_range'][0]:,} .. {d['virn_random_range'][1]:,}")
-        W(f"  VIRN duplicates    : {d['virn_duplicates']:,}")
-        p = d["parity_digit_sum_mod10"]
-        W(f"  barcode parity     : {p['ok']:,} correct, {p['bad']:,} wrong "
-          f"(rule: digit sum of VIRN mod 10)")
+        _report_block(W, d)
+    for key, d in meas["games"].items():
+        if len(d["channels"]) < 2:
+            continue
+        W("=" * 70)
+        W(f"GAME {key}  ->  lottery {d['lottery']}, on channels "
+          f"{_chans(d['channels'])} (combined)")
+        W("=" * 70)
+        W("  The game is split across channels: the figures below are for the")
+        W("  whole game, and are the ones to compare with its specification.")
+        W("  Duplicates are counted across the channels as well as within each.")
         W("")
-        W("  system prize codes:")
-        tot = sum(d["system_prize_codes"].values())
-        for code, n in d["system_prize_codes"].items():
-            W(f"    {code}: {n:>9,}  ({n/tot*100:5.2f}%)")
-        if d["prize_print_codes"]:
-            W("  prize print codes:")
-            for code, n in d["prize_print_codes"].items():
-                W(f"    {code:>8}: {n:>9,}")
-        W("")
-        W(f"  play symbols ({len(d['play_symbols'])}): {', '.join(d['play_symbols'])}")
-        W(f"  play positions carrying a symbol : {d['play_positions_used']} "
-          f"of {len(d['play_symbol_by_position'])}")
-        W("")
-        W("  agent validation:")
-        W(f"    letters used     : {', '.join(sorted(d['agent_letters']))}")
-        W(f"    letters/ticket   : {d['agent_letters_per_ticket']}")
-        W(f"    positions used   : {sorted(d['agent_positions_used'])}")
-        W("  agent letter totals:")
-        for x, n in sorted(d["agent_letters"].items()):
-            W(f"    {x}: {n:>9,}")
-        if d["qa_sample_code"]:
-            W(f"  QA sample code     : {d['qa_sample_code']}")
-        W("")
-        inf = infer_win_rule(d)
-        W("  WIN RULE (inferred from the data):")
-        W(f"    {inf['inferred_rule']}  -  {inf['description']}")
-        if inf["special_symbols"]:
-            W(f"    special symbols  : {', '.join(inf['special_symbols'])} "
-              "(appear on winners, never on a loser)")
-        if inf["forbidden"]:
-            W(f"    note             : {inf['forbidden']}")
-        e = inf["evidence"]
-        W(f"    winners with a matching pair    : {e['winners_with_matching_pair']:,}")
-        W(f"    winners without a matching pair : {e['winners_without_matching_pair']:,}")
-        W(f"    losers with a matching pair     : {e['losers_with_matching_pair']:,}")
-        W("")
-        W("  BOOK SIZE (candidates that divide evenly):")
-        for cand in infer_book_size(d):
-            W(f"    {cand['book_size']:>3} tickets -> {cand['books']:,} books; "
-              f"whole prizes per book: {cand['codes_with_whole_number_per_book']}")
-        W("")
-        W("  consecutive-ticket observations (serial order):")
-        W(f"    same ordered pair   : {d['consecutive_same_ordered_pair']:,}")
-        W(f"    same unordered pair : {d['consecutive_same_unordered_pair']:,}")
-        W("")
+        _report_block(W, d)
     return "\n".join(L)
+
+
+def _report_block(W, d):
+    """The measurements of one channel, or of one game across its channels."""
+    W(f"  live tickets       : {d['tickets']:,}")
+    W(f"  serial range       : {d['serial_range'][0]:,} .. {d['serial_range'][1]:,}")
+    complete = ("yes" if d["serial_complete"]
+                else f"NO ({d['serial_missing']:,} missing)")
+    W(f"  complete           : {complete}")
+    W(f"  duplicates         : {d['serial_duplicates']:,}")
+    W(f"  ascending in file  : {'yes' if d['serial_strictly_ascending_in_file'] else 'no (interleaved or out of order)'}")
+    W(f"  VIRN random range  : {d['virn_random_range'][0]:,} .. {d['virn_random_range'][1]:,}")
+    W(f"  VIRN duplicates    : {d['virn_duplicates']:,}")
+    p = d["parity_digit_sum_mod10"]
+    W(f"  barcode parity     : {p['ok']:,} correct, {p['bad']:,} wrong "
+      f"(rule: digit sum of VIRN mod 10)")
+    W("")
+    W("  system prize codes:")
+    tot = sum(d["system_prize_codes"].values())
+    for code, n in d["system_prize_codes"].items():
+        W(f"    {code}: {n:>9,}  ({n/tot*100:5.2f}%)")
+    if d["prize_print_codes"]:
+        W("  prize print codes:")
+        for code, n in d["prize_print_codes"].items():
+            W(f"    {code:>8}: {n:>9,}")
+    W("")
+    W(f"  play symbols ({len(d['play_symbols'])}): {', '.join(d['play_symbols'])}")
+    W(f"  play positions carrying a symbol : {d['play_positions_used']} "
+      f"of {len(d['play_symbol_by_position'])}")
+    W("")
+    W("  agent validation:")
+    W(f"    letters used     : {', '.join(sorted(d['agent_letters']))}")
+    W(f"    letters/ticket   : {d['agent_letters_per_ticket']}")
+    W(f"    positions used   : {sorted(d['agent_positions_used'])}")
+    W("  agent letter totals:")
+    for x, n in sorted(d["agent_letters"].items()):
+        W(f"    {x}: {n:>9,}")
+    if d["qa_sample_code"]:
+        W(f"  QA sample code     : {d['qa_sample_code']}")
+    W("")
+    inf = infer_win_rule(d)
+    W("  WIN RULE (inferred from the data):")
+    W(f"    {inf['inferred_rule']}  -  {inf['description']}")
+    if inf["special_symbols"]:
+        W(f"    special symbols  : {', '.join(inf['special_symbols'])} "
+          "(appear on winners, never on a loser)")
+    if inf["forbidden"]:
+        W(f"    note             : {inf['forbidden']}")
+    e = inf["evidence"]
+    W(f"    winners with a matching pair    : {e['winners_with_matching_pair']:,}")
+    W(f"    winners without a matching pair : {e['winners_without_matching_pair']:,}")
+    W(f"    losers with a matching pair     : {e['losers_with_matching_pair']:,}")
+    W("")
+    W("  BOOK SIZE (candidates that divide evenly):")
+    for cand in infer_book_size(d):
+        W(f"    {cand['book_size']:>3} tickets -> {cand['books']:,} books; "
+          f"whole prizes per book: {cand['codes_with_whole_number_per_book']}")
+    W("")
+    W("  consecutive-ticket observations (serial order):")
+    W(f"    same ordered pair   : {d['consecutive_same_ordered_pair']:,}")
+    W(f"    same unordered pair : {d['consecutive_same_unordered_pair']:,}")
+    W("")
 
 
 def to_facts(struct, meas):
     """The JSON-safe measured facts, exactly as written to measured_facts.json
     (the raw pattern maps use tuple keys and are left out)."""
-    clean = {k: v for k, v in meas.items() if k != "channels"}
-    clean["channels"] = {}
-    for ch_id, ch in meas["channels"].items():
-        c = {k: v for k, v in ch.items() if not k.startswith("_")}
-        c["inferred_win_rule"] = infer_win_rule(ch)
-        c["book_size_candidates"] = infer_book_size(ch)
-        clean["channels"][str(ch_id)] = c
+    clean = {k: v for k, v in meas.items() if k not in ("channels", "games")}
+    for section in ("channels", "games"):
+        clean[section] = {}
+        for ident, d in meas[section].items():
+            c = {k: v for k, v in d.items() if not k.startswith("_")}
+            c["inferred_win_rule"] = infer_win_rule(d)
+            c["book_size_candidates"] = infer_book_size(d)
+            clean[section][str(ident)] = c
     clean["structure"] = {k: v for k, v in struct.items() if k != "sample_rows"}
     return json.loads(json.dumps(clean, default=str))
 

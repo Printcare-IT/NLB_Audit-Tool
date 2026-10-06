@@ -281,6 +281,10 @@ def parse_restrictions(text, tickets, book_size):
         elif "either one prize of" in low and amounts:
             rule = {"group": "book", "size": 1, "amounts": amounts,
                     "mode": "exactly_one_total", "n": 1}
+        elif ((al := re.search(r"contain at least (\w+) prizes? of", low))
+              and amounts and _num_or_word(al.group(1))):
+            rule = {"group": "book", "size": 1, "amounts": amounts,
+                    "mode": "min", "n": _num_or_word(al.group(1))}
         elif re.search(r"contain one prize of", low) and len(amounts) == 1:
             rule = {"group": "book", "size": 1, "amounts": amounts,
                     "mode": "exactly", "n": 1}
@@ -410,7 +414,11 @@ def parse_data_spec(flat, source=""):
 
     m = re.search(r"Channel\s+((?:\d+\s*\(\d{4}\)\s*)+)", flat)
     if m:
-        d["channel_map"] = {k: int(c) for c, k in re.findall(r"(\d+)\s*\((\d{4})\)", m.group(1))}
+        # game -> its channels; one game may be printed on several
+        cmap = {}
+        for c, k in re.findall(r"(\d+)\s*\((\d{4})\)", m.group(1)):
+            cmap.setdefault(k, []).append(int(c))
+        d["channel_map"] = {k: sorted(v) for k, v in cmap.items()}
     m = re.search(r"Range (\d{6})\s*-\s*(\d{6})", flat)
     if m:
         d["page_range"] = [int(m.group(1)), int(m.group(2))]

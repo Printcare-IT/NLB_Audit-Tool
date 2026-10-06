@@ -42,6 +42,12 @@ class Report:
         return not self.errors
 
 
+def game_channels(g):
+    """The channels a game is printed on.  Settings carry a list ("channels");
+    older settings files carry a single number ("channel")."""
+    return list(g["channels"]) if "channels" in g else [g["channel"]]
+
+
 def validate(cfg):
     r = Report()
     struct = cfg["structure"]
@@ -55,14 +61,25 @@ def validate(cfg):
         r.error("job", f"{tickets:,} tickets is not a whole number of "
                        f"{book_size}-ticket books.")
 
-    # channels must match the number of games and be distinct 1..N
-    n_games = len(cfg["games"])
-    if cfg["layout"]["channels"] != n_games:
-        r.error("job", f"layout declares {cfg['layout']['channels']} channels "
-                       f"but {n_games} games are configured.")
-    chans = sorted(g["channel"] for g in cfg["games"])
-    if chans != list(range(1, n_games + 1)):
-        r.error("job", f"channels {chans} should be 1..{n_games}, one per game.")
+    # every channel 1..N belongs to exactly one game; a game may own several
+    n_ch = cfg["layout"]["channels"]
+    owner = {}
+    for g in cfg["games"]:
+        chans = game_channels(g)
+        if not chans:
+            r.error(g["key"], "no channel assigned.")
+        for ch in chans:
+            if not 1 <= ch <= n_ch:
+                r.error(g["key"], f"channel {ch} is outside 1..{n_ch}.")
+            elif ch in owner:
+                r.error("job", f"channel {ch} is assigned to both game "
+                               f"{owner[ch]} and game {g['key']}.")
+            else:
+                owner[ch] = g["key"]
+    free = [ch for ch in range(1, n_ch + 1) if ch not in owner]
+    if free:
+        r.error("job", f"layout declares {n_ch} channels but channel(s) "
+                       f"{', '.join(map(str, free))} belong to no game.")
 
     for g in cfg["games"]:
         key = g["key"]

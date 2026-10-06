@@ -25,6 +25,8 @@ Section order follows the standard job record:
 import datetime
 import re
 
+from validate_config import game_channels
+
 TEMPLATE_VERSION = "1"
 
 WIN_RULE_TEXT = {
@@ -90,7 +92,7 @@ def render(cfg, review, evidence, meta):
     S = cfg["structure"]
     A = cfg["agent"]
     F = cfg["fixed_rules"]
-    games = sorted(cfg["games"], key=lambda g: g["channel"])
+    games = sorted(cfg["games"], key=lambda g: game_channels(g)[0])
     E = lambda k: evidence.get(k, [])
     W = []
     add = W.append
@@ -120,10 +122,13 @@ def render(cfg, review, evidence, meta):
     if review:
         add("Tick each item (`- [x]`) once it is resolved. Items marked "
             "**BLOCKING** also need the relevant table corrected - ticking alone "
-            "will not get past validation.")
+            "will not get past validation. Items marked **LAYOUT** are places where "
+            "the layout file disagrees with the specification: confirm the tables "
+            "follow the specification (not the file) and tick - the audit reports "
+            "the difference as a layout-file error.")
         add("")
         for r in review:
-            tag = "BLOCKING" if r["severity"] == "blocking" else "check"
+            tag = {"blocking": "BLOCKING", "layout": "LAYOUT"}.get(r["severity"], "check")
             where = f"{r['game']} · " if r.get("game") else ""
             add(f"- [ ] **{r['id']} · {where}{tag}** - {r['text']}")
     else:
@@ -166,7 +171,8 @@ def render(cfg, review, evidence, meta):
         add(f"- {line}")
     add("")
     add(_table("games", ["Channel", "Game", "Lottery", "Name"],
-               [[g["channel"], g["key"], g["lottery"], g["name"]] for g in games]))
+               [[" / ".join(str(c) for c in game_channels(g)), g["key"],
+                 g["lottery"], g["name"]] for g in games]))
     add("")
 
     # ---- 3 mechanics ------------------------------------------------
@@ -483,7 +489,7 @@ def parse(md):
             raise SpecError(f"game {key} has no row in the mechanics table")
         mrow = mech[key]
         g = {"key": key, "name": row["Name"], "lottery": row["Lottery"],
-             "channel": _cell_int(row["Channel"]),
+             "channels": [_cell_int(c) for c in row["Channel"].split("/")],
              "win_rule": mrow["Win rule"],
              "special_symbols": _cell_list(mrow["Special symbols"]),
              "forbidden": None if _blank(mrow["Forbidden"]) else mrow["Forbidden"],
@@ -552,5 +558,5 @@ def parse(md):
                              "payout_pct": float(e["Payout %"]),
                              "win_ratio": float(e["Win ratio"])}
         cfg["games"].append(g)
-    cfg["games"].sort(key=lambda g: g["channel"])
+    cfg["games"].sort(key=lambda g: g["channels"][0])
     return cfg

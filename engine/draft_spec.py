@@ -57,6 +57,10 @@ class Draft:
         self.ev[key].append(text)
 
 
+def _chs(chs):
+    return ", ".join(str(c) for c in chs)
+
+
 def _amount_in(name):
     m = re.search(r"(\d[\d,]*)", name or "")
     return int(m.group(1).replace(",", "")) if m else None
@@ -100,10 +104,26 @@ def build(job_id, docs, facts):
     ds = data_specs[0] if data_specs else {"games": {}}
 
     # ---- measured facts ----------------------------------------------
+    # one record per game; a game may be printed on several channels, and
+    # its figures must be the whole game's, never one channel's
     M = facts or {}
-    mch = {}
-    for ch, d in (M.get("channels") or {}).items():
-        mch[d["game"]] = dict(d, channel=int(ch))
+    mch = {key: dict(d) for key, d in (M.get("games") or {}).items()}
+    if not mch:                     # measured_facts.json from an older probe
+        for ch, d in sorted((M.get("channels") or {}).items(), key=lambda x: int(x[0])):
+            if d["game"] in mch:
+                D.item("blocking", f"game {d['game']} is on more than one channel, "
+                       "but measured_facts.json has no per-game totals. Re-run "
+                       "probe_layout.py to refresh it.", d["game"])
+            mch.setdefault(d["game"], dict(d, channels=[]))["channels"].append(int(ch))
+    for key, d in mch.items():
+        if len(d.get("channels", [])) > 1:
+            parts = "; ".join(
+                f"channel {ch}: {c['serial_range'][0]:,} - {c['serial_range'][1]:,}"
+                for ch, c in sorted((M.get("channels") or {}).items(), key=lambda x: int(x[0]))
+                if c.get("game") == key)
+            D.note("layout", f"Measured: game {key} is printed on channels "
+                   f"{_chs(d['channels'])} ({parts}). Its figures below are "
+                   "for the whole game.")
     if not facts:
         D.item("blocking", "no measured_facts.json: nothing in this draft has been "
                "checked against the layout file. Run probe_layout.py first.")
@@ -113,8 +133,9 @@ def build(job_id, docs, facts):
             D.item("blocking", f"game {key} has a specification but does not appear "
                    "in the layout file.", key)
     for key in sorted(set(mch) - set(game_specs)):
-        D.item("blocking", f"game {key} appears in the layout file (channel "
-               f"{mch[key]['channel']}) but no game specification was supplied.", key)
+        D.item("blocking", f"game {key} appears in the layout file (channel(s) "
+               f"{_chs(mch[key]['channels'])}) but no game specification was "
+               "supplied.", key)
 
     # ---- data-spec symbol tables, resolving mislabelled headings ------
     sym_tables = {}
@@ -234,7 +255,7 @@ def build(job_id, docs, facts):
         D.note("layout", f"Measured: barcode parity (digit sum of VIRN mod 10) "
                f"correct on {ok_par:,} tickets, wrong on {bad_par:,}.")
         if bad_par:
-            D.item("blocking", f"{bad_par:,} barcodes fail the digit-sum-mod-10 "
+            D.item("layout", f"{bad_par:,} barcodes fail the digit-sum-mod-10 "
                    "parity rule in the layout file.")
         if ds.get("channels_stated") and ds["channels_stated"] != layout["channels"]:
             D.item("check", f"data spec says channel data occurs "
@@ -268,18 +289,19 @@ def build(job_id, docs, facts):
 
     # ---- games ----------------------------------------------------------
     games = []
-    order = sorted(game_specs, key=lambda k: mch.get(k, {}).get("channel", 99))
+    order = sorted(game_specs, key=lambda k: mch.get(k, {}).get("channels", [99])[0])
     for n, key in enumerate(order, 1):
         s = game_specs[key]
         m = mch.get(key, {})
         for p in s["problems"]:
             D.item("blocking", f"reading {s['source']}: {p}.", key)
 
-        channel = m.get("channel") or (ds.get("channel_map") or {}).get(key) or n
         dch = (ds.get("channel_map") or {}).get(key)
-        if dch and m and dch != m["channel"]:
-            D.item("check", f"data spec puts game {key} on channel {dch}; the file "
-                   f"has it on channel {m['channel']}. The measured channel is used.", key)
+        channels = m.get("channels") or dch or [n]
+        if dch and m and dch != m["channels"]:
+            D.item("check", f"data spec puts game {key} on channel(s) {_chs(dch)}; "
+                   f"the file has it on channel(s) {_chs(m['channels'])}. The "
+                   "measured channels are used.", key)
 
         lottery = s.get("lottery")
         for other, label in ((s.get("serial_lottery"), "serial number table"),
@@ -335,13 +357,13 @@ def build(job_id, docs, facts):
         if inf:
             ev = inf.get("evidence", {})
             if inf.get("inferred_rule") != rule:
-                D.item("blocking", f"the specification describes '{rule}' but the "
+                D.item("layout", f"the specification describes '{rule}' but the "
                        f"layout file behaves as '{inf.get('inferred_rule')}' "
                        f"({ev.get('winners_with_matching_pair', 0):,} winners with a "
                        f"matching pair, {ev.get('winners_without_matching_pair', 0):,} "
                        "without).", key)
             elif rule != "match_two" and set(inf.get("special_symbols", [])) != set(specials):
-                D.item("blocking", f"special symbols: specification gives "
+                D.item("layout", f"special symbols: specification gives "
                        f"{specials}, the layout file behaves as "
                        f"{inf.get('special_symbols')}.", key)
         D.note(("mech", key), f"Specification: \"{s.get('mechanism')}\"")
@@ -399,7 +421,7 @@ def build(job_id, docs, facts):
         if m:
             codes = set(m.get("prize_print_codes", {})) - {"(blank)"}
             if has_spot != bool(codes):
-                D.item("blocking", f"prize spot: specification implies "
+                D.item("layout", f"prize spot: specification implies "
                        f"{'a prize spot' if has_spot else 'no prize spot'}, the file "
                        f"carries {'print codes' if codes else 'none'}.", key)
         loss = {"code": s.get("loss_code", "99"), "count": s.get("loss_count", 0)}
@@ -413,7 +435,7 @@ def build(job_id, docs, facts):
             want[loss["code"]] = loss["count"]
             diffs = [c for c in sorted(set(want) | set(got)) if want.get(c, 0) != got.get(c, 0)]
             for c in diffs:
-                D.item("blocking", f"prize code {c}: specification says "
+                D.item("layout", f"prize code {c}: specification says "
                        f"{want.get(c, 0):,}, the layout file holds {got.get(c, 0):,}.", key)
             if not diffs:
                 D.note(("prize", key), f"Measured: every prize count and the loser "
@@ -437,7 +459,7 @@ def build(job_id, docs, facts):
 
         games.append({
             "key": key, "name": s.get("name", key), "lottery": lottery or "?",
-            "channel": channel, "win_rule": rule or "match_two",
+            "channels": channels, "win_rule": rule or "match_two",
             "special_symbols": specials, "forbidden": forbidden,
             "play_symbols": symbols, "has_prize_spot": has_spot,
             "prizes": prizes, "loss": loss,
@@ -530,11 +552,13 @@ def main():
         f.write(md)
 
     blocking = sum(1 for r in D.review if r["severity"] == "blocking")
+    layout = sum(1 for r in D.review if r["severity"] == "layout")
     print(f"\nDraft written: {out}")
     print(f"  {len(cfg['games'])} game(s), {len(D.review)} review item(s) "
-          f"({blocking} blocking)")
+          f"({blocking} blocking, {layout} layout-file errors)")
+    mark = {"blocking": "X", "layout": "L"}
     for r in D.review:
-        print(f"  {'X' if r['severity']=='blocking' else '?'} {r['id']} "
+        print(f"  {mark.get(r['severity'], '?')} {r['id']} "
               f"{('['+r['game']+'] ') if r.get('game') else ''}{r['text']}")
 
 
