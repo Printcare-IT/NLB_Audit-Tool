@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Layout files - 137 to 226 MB each, too large for git (GitHub rejects
+# files over 100 MB). Keep them on the share and pass --layouts instead.
+*LAYOUT*.TXT
+*LAYOUT*.txt
+*REPRINT*.TXT
+*.rar
+*.zip
+
+# Offender CSVs written by audit_engine.py (game<NNNN>_check<NN>_offenders.csv)
+*_offenders.csv
+
+# Office lock files and backups
+~$*
+.~lock.*#
+BACKUP_*
+
+# Editors and OS
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Scratch output folders
+/jobs/2026.Sep.NLB.4G/out/New folder/
+/jobs/2026.Sep.NLB.4G/out/NLB.Sep.4G/
