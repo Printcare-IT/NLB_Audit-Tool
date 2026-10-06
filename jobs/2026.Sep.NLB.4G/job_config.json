@@ -1,0 +1,639 @@
+{
+ "schema_version": "1.0",
+ "job": {
+  "id": "2026.September.NLB.300",
+  "client": "NLB",
+  "title": "NLB Scratch Lottery",
+  "ticket_price": 50,
+  "sources": [
+   "300 - 0351 CAR RACE.docx - game 0351, version 1.0 Final, September 14, 2026",
+   "300 - 0352 Lucky Duck.docx - game 0352, version 1.0 Final, September 14, 2026",
+   "300 - 0353 MIX RHYTHM.docx - game 0353, version 1.0 Final, September 14, 2026",
+   "0114 FREE HIT.docx - game 0114, version 1.0 Final, September 14, 2026",
+   "NLB Data Spec 300 0351 Car Race_300 0352 Lucky Duck_300 0353 Mix Rhythm_320 0114 Free Hit.docx - data specification, V1.0, 25 SEPTEMBER 2026",
+   "measured_facts.json - produced by probe_layout.py"
+  ]
+ },
+ "layout": {
+  "block_len": 21,
+  "channels": 4,
+  "lead_columns": 1,
+  "offsets": {
+   "serial": 0,
+   "virn": 1,
+   "bar": 2,
+   "sys": 3,
+   "print": 4,
+   "play_first": 5,
+   "play_count": 6,
+   "play_used": 2,
+   "agent_first": 11,
+   "agent_count": 9,
+   "qa": 20
+  },
+  "void_serial": "888888888888888",
+  "passive_flag": "1",
+  "virn_random_range": [
+   2000000,
+   6999999
+  ],
+  "parity_rule": "digit_sum_mod10"
+ },
+ "structure": {
+  "tickets_per_game": 500000,
+  "book_size": 40
+ },
+ "agent": {
+  "high_letters": [
+   "W",
+   "S",
+   "A",
+   "D",
+   "Z",
+   "R"
+  ],
+  "low_letters": {
+   "50": "T"
+  },
+  "positions": 9,
+  "letters_used": 3
+ },
+ "fixed_rules": {
+  "max_same_value_run": 3,
+  "winner_every_n_tickets": 5,
+  "gleps_amount": 50
+ },
+ "games": [
+  {
+   "key": "0351",
+   "name": "CAR RACE",
+   "lottery": "300",
+   "channel": 1,
+   "win_rule": "match_two",
+   "special_symbols": [],
+   "forbidden": null,
+   "has_prize_spot": false,
+   "play_symbols": {
+    "KA": "Rs. 50",
+    "LA": "Rs. 500",
+    "NA": "Rs. 5,000",
+    "PA": "Rs. 10,000",
+    "QA": "Rs. 25,000",
+    "UA": "Rs. 100,000"
+   },
+   "prizes": [
+    {
+     "sys": "03",
+     "amount": 50,
+     "print": "",
+     "tier": "Low",
+     "count": 100000,
+     "symbol": "KA"
+    },
+    {
+     "sys": "07",
+     "amount": 500,
+     "print": "",
+     "tier": "High",
+     "count": 12520,
+     "symbol": "LA"
+    },
+    {
+     "sys": "11",
+     "amount": 5000,
+     "print": "",
+     "tier": "High",
+     "count": 84,
+     "symbol": "NA"
+    },
+    {
+     "sys": "12",
+     "amount": 10000,
+     "print": "",
+     "tier": "High",
+     "count": 42,
+     "symbol": "PA"
+    },
+    {
+     "sys": "13",
+     "amount": 25000,
+     "print": "",
+     "tier": "High",
+     "count": 42,
+     "symbol": "QA"
+    },
+    {
+     "sys": "15",
+     "amount": 100000,
+     "print": "",
+     "tier": "High",
+     "count": 1,
+     "symbol": "UA"
+    }
+   ],
+   "loss": {
+    "code": "99",
+    "count": 387311
+   },
+   "gleps_per_book": 8,
+   "packing": [
+    {
+     "slots": 41,
+     "books": 300,
+     "allocation": [
+      {
+       "amount": 500,
+       "mode": "min",
+       "n": 300
+      },
+      {
+       "amount": 5000,
+       "mode": "exact",
+       "n": 2
+      },
+      {
+       "amount": 10000,
+       "mode": "exact",
+       "n": 1
+      },
+      {
+       "amount": 25000,
+       "mode": "exact",
+       "n": 1
+      }
+     ]
+    },
+    {
+     "slots": 1,
+     "books": 200,
+     "allocation": [
+      {
+       "amount": 500,
+       "mode": "min",
+       "n": 200
+      },
+      {
+       "amount": 5000,
+       "mode": "exact",
+       "n": 2
+      },
+      {
+       "amount": 10000,
+       "mode": "exact",
+       "n": 1
+      },
+      {
+       "amount": 25000,
+       "mode": "exact",
+       "n": 1
+      }
+     ]
+    }
+   ],
+   "group_rules": [
+    {
+     "group": "book",
+     "size": 1,
+     "amounts": [
+      500
+     ],
+     "mode": "min",
+     "n": 1
+    },
+    {
+     "group": "book",
+     "size": 1,
+     "amounts": [
+      5000,
+      10000,
+      25000,
+      100000
+     ],
+     "mode": "at_most_each",
+     "n": 1
+    }
+   ],
+   "expected": {
+    "revenue": 25000000,
+    "pool": 13250000,
+    "payout_pct": 53.0,
+    "win_ratio": 4.44
+   }
+  },
+  {
+   "key": "0352",
+   "name": "LUCKY DUCK",
+   "lottery": "300",
+   "channel": 2,
+   "win_rule": "special_only",
+   "special_symbols": [
+    "KB",
+    "LB"
+   ],
+   "forbidden": "two_special",
+   "has_prize_spot": true,
+   "play_symbols": {
+    "KB": "Egg",
+    "LB": "Duck",
+    "NB": "Feather",
+    "PB": "Lotus",
+    "QB": "Tortoise",
+    "UB": "Fish"
+   },
+   "prizes": [
+    {
+     "sys": "03",
+     "amount": 50,
+     "print": "dd",
+     "tier": "Low",
+     "count": 100000
+    },
+    {
+     "sys": "07",
+     "amount": 500,
+     "print": "hh",
+     "tier": "High",
+     "count": 12500
+    },
+    {
+     "sys": "08",
+     "amount": 1000,
+     "print": "jj",
+     "tier": "High",
+     "count": 950
+    },
+    {
+     "sys": "11",
+     "amount": 5000,
+     "print": "mm",
+     "tier": "High",
+     "count": 210
+    }
+   ],
+   "loss": {
+    "code": "99",
+    "count": 386340
+   },
+   "gleps_per_book": 8,
+   "packing": [
+    {
+     "slots": 41,
+     "books": 300,
+     "allocation": [
+      {
+       "amount": 500,
+       "mode": "exact",
+       "n": 300
+      },
+      {
+       "amount": 1000,
+       "mode": "min",
+       "n": 22
+      },
+      {
+       "amount": 5000,
+       "mode": "min",
+       "n": 5
+      }
+     ]
+    },
+    {
+     "slots": 1,
+     "books": 200,
+     "allocation": [
+      {
+       "amount": 500,
+       "mode": "exact",
+       "n": 200
+      },
+      {
+       "amount": 1000,
+       "mode": "min",
+       "n": 15
+      },
+      {
+       "amount": 5000,
+       "mode": "min",
+       "n": 3
+      }
+     ]
+    }
+   ],
+   "group_rules": [
+    {
+     "group": "book",
+     "size": 1,
+     "amounts": [
+      500
+     ],
+     "mode": "exactly",
+     "n": 1
+    },
+    {
+     "group": "book",
+     "size": 1,
+     "amounts": [
+      1000,
+      5000
+     ],
+     "mode": "at_most_each",
+     "n": 1
+    }
+   ],
+   "expected": {
+    "revenue": 25000000,
+    "pool": 13250000,
+    "payout_pct": 53.0,
+    "win_ratio": 4.4
+   }
+  },
+  {
+   "key": "0353",
+   "name": "MIX RHYTHM",
+   "lottery": "300",
+   "channel": 3,
+   "win_rule": "match_two_or_special",
+   "special_symbols": [
+    "PC"
+   ],
+   "forbidden": "two_special",
+   "has_prize_spot": true,
+   "play_symbols": {
+    "KC": "Drum",
+    "LC": "Microphone",
+    "NC": "Radio",
+    "PC": "Guitar",
+    "QC": "Trumpet",
+    "UC": "Piano"
+   },
+   "prizes": [
+    {
+     "sys": "03",
+     "amount": 50,
+     "print": "dd",
+     "tier": "Low",
+     "count": 100000
+    },
+    {
+     "sys": "07",
+     "amount": 500,
+     "print": "hh",
+     "tier": "High",
+     "count": 12500
+    },
+    {
+     "sys": "08",
+     "amount": 1000,
+     "print": "jj",
+     "tier": "High",
+     "count": 110
+    },
+    {
+     "sys": "11",
+     "amount": 5000,
+     "print": "mm",
+     "tier": "High",
+     "count": 126
+    },
+    {
+     "sys": "12",
+     "amount": 10000,
+     "print": "nn",
+     "tier": "High",
+     "count": 42
+    },
+    {
+     "sys": "37",
+     "amount": 20000,
+     "print": "ww",
+     "tier": "High",
+     "count": 42
+    }
+   ],
+   "loss": {
+    "code": "99",
+    "count": 387180
+   },
+   "gleps_per_book": 8,
+   "packing": [
+    {
+     "slots": 41,
+     "books": 300,
+     "allocation": [
+      {
+       "amount": 500,
+       "mode": "exact",
+       "n": 300
+      },
+      {
+       "amount": 1000,
+       "mode": "min",
+       "n": 2
+      },
+      {
+       "amount": 5000,
+       "mode": "min",
+       "n": 3
+      },
+      {
+       "amount": 10000,
+       "mode": "exact",
+       "n": 1
+      },
+      {
+       "amount": 20000,
+       "mode": "exact",
+       "n": 1
+      }
+     ]
+    },
+    {
+     "slots": 1,
+     "books": 200,
+     "allocation": [
+      {
+       "amount": 500,
+       "mode": "exact",
+       "n": 200
+      },
+      {
+       "amount": 1000,
+       "mode": "min",
+       "n": 1
+      },
+      {
+       "amount": 5000,
+       "mode": "min",
+       "n": 2
+      },
+      {
+       "amount": 10000,
+       "mode": "exact",
+       "n": 1
+      },
+      {
+       "amount": 20000,
+       "mode": "exact",
+       "n": 1
+      }
+     ]
+    }
+   ],
+   "group_rules": [
+    {
+     "group": "book",
+     "size": 1,
+     "amounts": [
+      500
+     ],
+     "mode": "exactly",
+     "n": 1
+    },
+    {
+     "group": "book",
+     "size": 1,
+     "amounts": [
+      1000,
+      5000,
+      10000,
+      20000
+     ],
+     "mode": "at_most_each",
+     "n": 1
+    }
+   ],
+   "expected": {
+    "revenue": 25000000,
+    "pool": 13250000,
+    "payout_pct": 53.0,
+    "win_ratio": 4.43
+   }
+  },
+  {
+   "key": "0114",
+   "name": "FREE HIT",
+   "lottery": "320",
+   "channel": 4,
+   "win_rule": "match_two_or_special",
+   "special_symbols": [
+    "LD"
+   ],
+   "forbidden": "two_special",
+   "has_prize_spot": true,
+   "play_symbols": {
+    "KD": "Bat",
+    "LD": "Ball",
+    "ND": "Hat",
+    "PD": "Wicket",
+    "QD": "Trophy",
+    "UD": "Shoe"
+   },
+   "prizes": [
+    {
+     "sys": "03",
+     "amount": 50,
+     "print": "dd",
+     "tier": "Low",
+     "count": 100000
+    },
+    {
+     "sys": "07",
+     "amount": 500,
+     "print": "hh",
+     "tier": "High",
+     "count": 12500
+    },
+    {
+     "sys": "09",
+     "amount": 2000,
+     "print": "kk",
+     "tier": "High",
+     "count": 790
+    },
+    {
+     "sys": "12",
+     "amount": 10000,
+     "print": "nn",
+     "tier": "High",
+     "count": 42
+    }
+   ],
+   "loss": {
+    "code": "99",
+    "count": 386668
+   },
+   "gleps_per_book": 8,
+   "packing": [
+    {
+     "slots": 41,
+     "books": 300,
+     "allocation": [
+      {
+       "amount": 500,
+       "mode": "exact",
+       "n": 300
+      },
+      {
+       "amount": 2000,
+       "mode": "min",
+       "n": 18
+      },
+      {
+       "amount": 10000,
+       "mode": "exact",
+       "n": 1
+      }
+     ]
+    },
+    {
+     "slots": 1,
+     "books": 200,
+     "allocation": [
+      {
+       "amount": 500,
+       "mode": "exact",
+       "n": 200
+      },
+      {
+       "amount": 2000,
+       "mode": "min",
+       "n": 12
+      },
+      {
+       "amount": 10000,
+       "mode": "exact",
+       "n": 1
+      }
+     ]
+    }
+   ],
+   "group_rules": [
+    {
+     "group": "book",
+     "size": 1,
+     "amounts": [
+      500
+     ],
+     "mode": "exactly",
+     "n": 1
+    },
+    {
+     "group": "book",
+     "size": 1,
+     "amounts": [
+      2000,
+      10000
+     ],
+     "mode": "at_most_each",
+     "n": 1
+    }
+   ],
+   "expected": {
+    "revenue": 25000000,
+    "pool": 13250000,
+    "payout_pct": 53.0,
+    "win_ratio": 4.41
+   }
+  }
+ ]
+}

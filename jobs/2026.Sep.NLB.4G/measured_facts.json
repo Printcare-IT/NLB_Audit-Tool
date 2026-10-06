@@ -1,0 +1,729 @@
+{
+ "rows": 500304,
+ "bad_field_count_rows": 0,
+ "pages": 83384,
+ "rows_per_page": 6,
+ "void_serial": "888888888888888",
+ "void_tickets": 1216,
+ "void_rows_leading": 240,
+ "void_rows_trailing": 64,
+ "channels": {
+  "1": {
+   "game": "0351",
+   "lottery": "300",
+   "passive_flag": "1",
+   "tickets": 500000,
+   "serial_range": [
+    1,
+    500000
+   ],
+   "serial_complete": true,
+   "serial_missing": 0,
+   "serial_duplicates": 0,
+   "serial_strictly_ascending_in_file": true,
+   "virn_random_range": [
+    2000009,
+    6999997
+   ],
+   "virn_duplicates": 0,
+   "parity_digit_sum_mod10": {
+    "ok": 500000,
+    "bad": 0
+   },
+   "system_prize_codes": {
+    "03": 100000,
+    "07": 12520,
+    "11": 84,
+    "12": 42,
+    "13": 42,
+    "15": 1,
+    "99": 387311
+   },
+   "prize_print_codes": {
+    "(blank)": 500000
+   },
+   "play_symbols": [
+    "KA",
+    "LA",
+    "NA",
+    "PA",
+    "QA",
+    "UA"
+   ],
+   "play_positions_used": 2,
+   "play_symbol_by_position": [
+    {
+     "KA": 154212,
+     "LA": 77650,
+     "NA": 67514,
+     "PA": 68257,
+     "QA": 66347,
+     "UA": 66020
+    },
+    {
+     "KA": 153272,
+     "LA": 80213,
+     "NA": 63575,
+     "PA": 66785,
+     "QA": 67175,
+     "UA": 68980
+    }
+   ],
+   "agent_letters": {
+    "A": 236164,
+    "D": 230213,
+    "R": 229801,
+    "S": 229257,
+    "T": 100000,
+    "W": 237599,
+    "Z": 236966
+   },
+   "agent_letters_per_ticket": {
+    "3": 500000
+   },
+   "agent_positions_used": {
+    "1": 164641,
+    "2": 167014,
+    "3": 168899,
+    "4": 167066,
+    "5": 166371,
+    "6": 165392,
+    "7": 167856,
+    "8": 167013,
+    "9": 165748
+   },
+   "qa_sample_code": {
+    "$": 500000
+   },
+   "consecutive_same_ordered_pair": 3880,
+   "consecutive_same_unordered_pair": 3880,
+   "win_pattern_by_prize_code": {
+    "03": {
+     "distinct_patterns": 1,
+     "tickets": 100000
+    },
+    "07": {
+     "distinct_patterns": 1,
+     "tickets": 12520
+    },
+    "11": {
+     "distinct_patterns": 1,
+     "tickets": 84
+    },
+    "12": {
+     "distinct_patterns": 1,
+     "tickets": 42
+    },
+    "13": {
+     "distinct_patterns": 1,
+     "tickets": 42
+    },
+    "15": {
+     "distinct_patterns": 1,
+     "tickets": 1
+    },
+    "99": {
+     "distinct_patterns": 30,
+     "tickets": 387311
+    }
+   },
+   "inferred_win_rule": {
+    "inferred_rule": "match_two",
+    "description": "two identical play symbols win",
+    "special_symbols": [],
+    "forbidden": null,
+    "evidence": {
+     "winners_with_matching_pair": 112689,
+     "winners_without_matching_pair": 0,
+     "losers_with_matching_pair": 0
+    }
+   },
+   "book_size_candidates": [
+    {
+     "book_size": 20,
+     "books": 25000,
+     "codes_with_whole_number_per_book": {
+      "03": 4
+     }
+    },
+    {
+     "book_size": 25,
+     "books": 20000,
+     "codes_with_whole_number_per_book": {
+      "03": 5
+     }
+    },
+    {
+     "book_size": 40,
+     "books": 12500,
+     "codes_with_whole_number_per_book": {
+      "03": 8
+     }
+    },
+    {
+     "book_size": 50,
+     "books": 10000,
+     "codes_with_whole_number_per_book": {
+      "03": 10
+     }
+    },
+    {
+     "book_size": 100,
+     "books": 5000,
+     "codes_with_whole_number_per_book": {
+      "03": 20
+     }
+    }
+   ]
+  },
+  "2": {
+   "game": "0352",
+   "lottery": "300",
+   "passive_flag": "1",
+   "tickets": 500000,
+   "serial_range": [
+    1,
+    500000
+   ],
+   "serial_complete": true,
+   "serial_missing": 0,
+   "serial_duplicates": 0,
+   "serial_strictly_ascending_in_file": true,
+   "virn_random_range": [
+    2000001,
+    6999997
+   ],
+   "virn_duplicates": 0,
+   "parity_digit_sum_mod10": {
+    "ok": 500000,
+    "bad": 0
+   },
+   "system_prize_codes": {
+    "03": 100000,
+    "07": 12500,
+    "08": 950,
+    "11": 210,
+    "99": 386340
+   },
+   "prize_print_codes": {
+    "dd": 178319,
+    "hh": 114085,
+    "jj": 104602,
+    "mm": 102994
+   },
+   "play_symbols": [
+    "KB",
+    "LB",
+    "NB",
+    "PB",
+    "QB",
+    "UB"
+   ],
+   "play_positions_used": 2,
+   "play_symbol_by_position": [
+    {
+     "KB": 28345,
+     "LB": 29703,
+     "NB": 106697,
+     "PB": 112350,
+     "QB": 112093,
+     "UB": 110812
+    },
+    {
+     "KB": 28627,
+     "LB": 26985,
+     "NB": 114110,
+     "PB": 109622,
+     "QB": 110528,
+     "UB": 110128
+    }
+   ],
+   "agent_letters": {
+    "A": 239648,
+    "D": 227263,
+    "R": 231205,
+    "S": 234356,
+    "T": 100000,
+    "W": 233712,
+    "Z": 233816
+   },
+   "agent_letters_per_ticket": {
+    "3": 500000
+   },
+   "agent_positions_used": {
+    "1": 169922,
+    "2": 163770,
+    "3": 164122,
+    "4": 166270,
+    "5": 164115,
+    "6": 170040,
+    "7": 167629,
+    "8": 163530,
+    "9": 170602
+   },
+   "qa_sample_code": {
+    "$": 500000
+   },
+   "consecutive_same_ordered_pair": 0,
+   "consecutive_same_unordered_pair": 0,
+   "win_pattern_by_prize_code": {
+    "03": {
+     "distinct_patterns": 16,
+     "tickets": 100000
+    },
+    "07": {
+     "distinct_patterns": 16,
+     "tickets": 12500
+    },
+    "08": {
+     "distinct_patterns": 16,
+     "tickets": 950
+    },
+    "11": {
+     "distinct_patterns": 16,
+     "tickets": 210
+    },
+    "99": {
+     "distinct_patterns": 12,
+     "tickets": 386340
+    }
+   },
+   "inferred_win_rule": {
+    "inferred_rule": "special_only",
+    "description": "a single special symbol wins; a matching pair does NOT win",
+    "special_symbols": [
+     "KB",
+     "LB"
+    ],
+    "forbidden": "two special symbols never appear together on the same ticket",
+    "evidence": {
+     "winners_with_matching_pair": 0,
+     "winners_without_matching_pair": 113660,
+     "losers_with_matching_pair": 0
+    }
+   },
+   "book_size_candidates": [
+    {
+     "book_size": 20,
+     "books": 25000,
+     "codes_with_whole_number_per_book": {
+      "03": 4
+     }
+    },
+    {
+     "book_size": 25,
+     "books": 20000,
+     "codes_with_whole_number_per_book": {
+      "03": 5
+     }
+    },
+    {
+     "book_size": 40,
+     "books": 12500,
+     "codes_with_whole_number_per_book": {
+      "03": 8,
+      "07": 1
+     }
+    },
+    {
+     "book_size": 50,
+     "books": 10000,
+     "codes_with_whole_number_per_book": {
+      "03": 10
+     }
+    },
+    {
+     "book_size": 100,
+     "books": 5000,
+     "codes_with_whole_number_per_book": {
+      "03": 20
+     }
+    }
+   ]
+  },
+  "3": {
+   "game": "0353",
+   "lottery": "300",
+   "passive_flag": "1",
+   "tickets": 500000,
+   "serial_range": [
+    1,
+    500000
+   ],
+   "serial_complete": true,
+   "serial_missing": 0,
+   "serial_duplicates": 0,
+   "serial_strictly_ascending_in_file": true,
+   "virn_random_range": [
+    2000007,
+    6999999
+   ],
+   "virn_duplicates": 0,
+   "parity_digit_sum_mod10": {
+    "ok": 500000,
+    "bad": 0
+   },
+   "system_prize_codes": {
+    "03": 100000,
+    "07": 12500,
+    "08": 110,
+    "11": 126,
+    "12": 42,
+    "37": 42,
+    "99": 387180
+   },
+   "prize_print_codes": {
+    "dd": 150131,
+    "hh": 78987,
+    "jj": 68422,
+    "mm": 68607,
+    "nn": 65370,
+    "ww": 68483
+   },
+   "play_symbols": [
+    "KC",
+    "LC",
+    "NC",
+    "PC",
+    "QC",
+    "UC"
+   ],
+   "play_positions_used": 2,
+   "play_symbol_by_position": [
+    {
+     "KC": 91690,
+     "LC": 96063,
+     "NC": 95978,
+     "PC": 24336,
+     "QC": 96776,
+     "UC": 95157
+    },
+    {
+     "KC": 98980,
+     "LC": 92883,
+     "NC": 93896,
+     "PC": 26605,
+     "QC": 92005,
+     "UC": 95631
+    }
+   ],
+   "agent_letters": {
+    "A": 235970,
+    "D": 232336,
+    "R": 230750,
+    "S": 235507,
+    "T": 100000,
+    "W": 238603,
+    "Z": 226834
+   },
+   "agent_letters_per_ticket": {
+    "3": 500000
+   },
+   "agent_positions_used": {
+    "1": 165566,
+    "2": 164670,
+    "3": 161804,
+    "4": 166807,
+    "5": 164045,
+    "6": 174290,
+    "7": 169007,
+    "8": 165466,
+    "9": 168345
+   },
+   "qa_sample_code": {
+    "$": 500000
+   },
+   "consecutive_same_ordered_pair": 0,
+   "consecutive_same_unordered_pair": 0,
+   "win_pattern_by_prize_code": {
+    "03": {
+     "distinct_patterns": 15,
+     "tickets": 100000
+    },
+    "07": {
+     "distinct_patterns": 15,
+     "tickets": 12500
+    },
+    "08": {
+     "distinct_patterns": 15,
+     "tickets": 110
+    },
+    "11": {
+     "distinct_patterns": 15,
+     "tickets": 126
+    },
+    "12": {
+     "distinct_patterns": 13,
+     "tickets": 42
+    },
+    "37": {
+     "distinct_patterns": 13,
+     "tickets": 42
+    },
+    "99": {
+     "distinct_patterns": 20,
+     "tickets": 387180
+    }
+   },
+   "inferred_win_rule": {
+    "inferred_rule": "match_two_or_special",
+    "description": "two identical symbols win, or a single special symbol wins",
+    "special_symbols": [
+     "PC"
+    ],
+    "forbidden": "two special symbols never appear together on the same ticket",
+    "evidence": {
+     "winners_with_matching_pair": 61879,
+     "winners_without_matching_pair": 50941,
+     "losers_with_matching_pair": 0
+    }
+   },
+   "book_size_candidates": [
+    {
+     "book_size": 20,
+     "books": 25000,
+     "codes_with_whole_number_per_book": {
+      "03": 4
+     }
+    },
+    {
+     "book_size": 25,
+     "books": 20000,
+     "codes_with_whole_number_per_book": {
+      "03": 5
+     }
+    },
+    {
+     "book_size": 40,
+     "books": 12500,
+     "codes_with_whole_number_per_book": {
+      "03": 8,
+      "07": 1
+     }
+    },
+    {
+     "book_size": 50,
+     "books": 10000,
+     "codes_with_whole_number_per_book": {
+      "03": 10
+     }
+    },
+    {
+     "book_size": 100,
+     "books": 5000,
+     "codes_with_whole_number_per_book": {
+      "03": 20
+     }
+    }
+   ]
+  },
+  "4": {
+   "game": "0114",
+   "lottery": "320",
+   "passive_flag": "1",
+   "tickets": 500000,
+   "serial_range": [
+    1,
+    500000
+   ],
+   "serial_complete": true,
+   "serial_missing": 0,
+   "serial_duplicates": 0,
+   "serial_strictly_ascending_in_file": true,
+   "virn_random_range": [
+    2000013,
+    6999989
+   ],
+   "virn_duplicates": 0,
+   "parity_digit_sum_mod10": {
+    "ok": 500000,
+    "bad": 0
+   },
+   "system_prize_codes": {
+    "03": 100000,
+    "07": 12500,
+    "09": 790,
+    "12": 42,
+    "99": 386668
+   },
+   "prize_print_codes": {
+    "dd": 176776,
+    "hh": 114129,
+    "kk": 106147,
+    "nn": 102948
+   },
+   "play_symbols": [
+    "KD",
+    "LD",
+    "ND",
+    "PD",
+    "QD",
+    "UD"
+   ],
+   "play_positions_used": 2,
+   "play_symbol_by_position": [
+    {
+     "KD": 120699,
+     "LD": 29328,
+     "ND": 83897,
+     "PD": 87640,
+     "QD": 92969,
+     "UD": 85467
+    },
+    {
+     "KD": 123610,
+     "LD": 36387,
+     "ND": 87275,
+     "PD": 84421,
+     "QD": 81175,
+     "UD": 87132
+    }
+   ],
+   "agent_letters": {
+    "A": 237162,
+    "D": 231520,
+    "R": 235142,
+    "S": 229571,
+    "T": 100000,
+    "W": 235395,
+    "Z": 231210
+   },
+   "agent_letters_per_ticket": {
+    "3": 500000
+   },
+   "agent_positions_used": {
+    "1": 166625,
+    "2": 166968,
+    "3": 162270,
+    "4": 167360,
+    "5": 167318,
+    "6": 171745,
+    "7": 169736,
+    "8": 161709,
+    "9": 166269
+   },
+   "qa_sample_code": {
+    "$": 500000
+   },
+   "consecutive_same_ordered_pair": 0,
+   "consecutive_same_unordered_pair": 0,
+   "win_pattern_by_prize_code": {
+    "03": {
+     "distinct_patterns": 9,
+     "tickets": 100000
+    },
+    "07": {
+     "distinct_patterns": 9,
+     "tickets": 12500
+    },
+    "09": {
+     "distinct_patterns": 9,
+     "tickets": 790
+    },
+    "12": {
+     "distinct_patterns": 8,
+     "tickets": 42
+    },
+    "99": {
+     "distinct_patterns": 20,
+     "tickets": 386668
+    }
+   },
+   "inferred_win_rule": {
+    "inferred_rule": "match_two_or_special",
+    "description": "two identical symbols win, or a single special symbol wins",
+    "special_symbols": [
+     "LD"
+    ],
+    "forbidden": "two special symbols never appear together on the same ticket",
+    "evidence": {
+     "winners_with_matching_pair": 47617,
+     "winners_without_matching_pair": 65715,
+     "losers_with_matching_pair": 0
+    }
+   },
+   "book_size_candidates": [
+    {
+     "book_size": 20,
+     "books": 25000,
+     "codes_with_whole_number_per_book": {
+      "03": 4
+     }
+    },
+    {
+     "book_size": 25,
+     "books": 20000,
+     "codes_with_whole_number_per_book": {
+      "03": 5
+     }
+    },
+    {
+     "book_size": 40,
+     "books": 12500,
+     "codes_with_whole_number_per_book": {
+      "03": 8,
+      "07": 1
+     }
+    },
+    {
+     "book_size": 50,
+     "books": 10000,
+     "codes_with_whole_number_per_book": {
+      "03": 10
+     }
+    },
+    {
+     "book_size": 100,
+     "books": 5000,
+     "codes_with_whole_number_per_book": {
+      "03": 20
+     }
+    }
+   ]
+  }
+ },
+ "structure": {
+  "fields_per_row": 85,
+  "lead_columns": 1,
+  "lead_names": [
+   "PageNo"
+  ],
+  "block_len": 21,
+  "channels": 4,
+  "offsets": {
+   "serial": 0,
+   "virn": 1,
+   "bar": 2,
+   "sys": 3,
+   "print": 4,
+   "play_first": 5,
+   "play_count": 6,
+   "agent_first": 11,
+   "agent_count": 9,
+   "qa": 20
+  },
+  "header_names_block1": [
+   "SerialNo1_01",
+   "VIRN1_01",
+   "BAR1_01",
+   "SystemPrizeCode1_01",
+   "PrizePrintCode1_01",
+   "Play11_01",
+   "Play12_01",
+   "Play13_01",
+   "Play14_01",
+   "Play15_01",
+   "Play16_01",
+   "Agent_ValCode11_01",
+   "Agent_ValCode12_01",
+   "Agent_ValCode13_01",
+   "Agent_ValCode14_01",
+   "Agent_ValCode15_01",
+   "Agent_ValCode16_01",
+   "Agent_ValCode17_01",
+   "Agent_ValCode18_01",
+   "Agent_ValCode19_01",
+   "QA_SampleCode1_01"
+  ]
+ }
+}
