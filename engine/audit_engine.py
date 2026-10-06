@@ -37,7 +37,10 @@ WINNING RULES SUPPORTED
 LAYOUT FILE
 -----------
 Header row, then one row per print page position:
-    PageNo + N ticket blocks of 21 fields (one block per channel/game).
+    PageNo + N ticket blocks of 21 fields (one block per channel).  Each
+    channel belongs to one game; a game may own several channels, each
+    carrying part of its serials.  Tickets are filed by serial number, so
+    every check reads a game in serial order whatever its channels.
 VOID filler rows carry the configured void serial and are skipped wherever
 they appear - leading or trailing padding is normal and is not an exception.
 """
@@ -50,7 +53,7 @@ import sys
 from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from validate_config import validate          # noqa: E402
+from validate_config import validate, game_channels   # noqa: E402
 
 
 # ------------------------------------------------------------------ #
@@ -83,7 +86,8 @@ class Job:
         self.win_every = F["winner_every_n_tickets"]
         self.gleps_amount = F["gleps_amount"]
         self.games = {g["key"]: g for g in cfg["games"]}
-        self.by_channel = {g["channel"]: g["key"] for g in cfg["games"]}
+        self.by_channel = {ch: g["key"] for g in cfg["games"]
+                           for ch in game_channels(g)}
 
     def money(self, amount):
         return f"Rs.{amount:,}"
@@ -356,9 +360,9 @@ def check_03_serial(job, g, info):
     missing = [f"{job.flag}{lot}{g.key}{n+1:07d}"
                for n in range(job.tickets) if g.serial[n] is None]
     dups = [s for (k, s) in info["duplicates"] if k == g.key]
-    ch = g.cfg["channel"]
-    mal = [f"row {rw}: {s}" for (rw, c, s) in info["malformed"] if c == ch]
-    wrong = [f"row {rw}: {s}" for (rw, c, s) in info["wrong_game"] if c == ch]
+    chans = set(game_channels(g.cfg))
+    mal = [f"row {rw}: {s}" for (rw, c, s) in info["malformed"] if c in chans]
+    wrong = [f"row {rw}: {s}" for (rw, c, s) in info["wrong_game"] if c in chans]
     if missing:
         r.fail(missing); r.note(f"{len(missing):,} serial number(s) missing.")
     if dups:
@@ -872,13 +876,6 @@ def write_markdown(path, job, results, apps, info, layout_path):
             W("")
             for ln in r.finding:
                 W(f"- {ln}")
-            if not r.passed and r.offenders:
-                W("")
-                W(f"*Offending items ({len(r.offenders)}, first 500 shown):*")
-                for o in r.offenders[:500]:
-                    W(f"  - {o}")
-                if len(r.offenders) > 500:
-                    W(f"  - ... {len(r.offenders)-500:,} more (see the CSV)")
             W("")
         apI, apII, apIII = apps[key]
         W(f"## Appendix I - Play symbol distribution ({key})")
@@ -957,12 +954,6 @@ def write_word(path, job, results, apps, info, layout_path):
                                  else RGBColor(0xC0, 0, 0))
             for ln in r.finding:
                 c[2].add_paragraph(ln)
-            if not r.passed and r.offenders:
-                c[2].add_paragraph("Offending items:")
-                for o in r.offenders[:200]:
-                    c[2].add_paragraph("  " + o)
-                if len(r.offenders) > 200:
-                    c[2].add_paragraph(f"  ... {len(r.offenders)-200:,} more - see the CSV.")
         apI, apII, apIII = apps[key]
         doc.add_heading("Appendix I - Play symbol distribution", level=2)
         t = doc.add_table(rows=1, cols=5); t.style = "Table Grid"
