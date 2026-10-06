@@ -1,0 +1,194 @@
+{
+ "schema_version": "1.0",
+ "job": {
+  "id": "2026.Sep.NLB.1G",
+  "client": "NLB",
+  "title": "NLB Scratch Lottery",
+  "ticket_price": 50,
+  "sources": [
+   "0115 Sakura Mal.docx - game 0115, version 1.0 Final, September 14, 2026",
+   "NLB Data Spec 320 0115 Sakura Mal.docx - data specification, V1.0, 25 SEPTEMBER 2026",
+   "measured_facts.json - produced by probe_layout.py"
+  ]
+ },
+ "layout": {
+  "block_len": 21,
+  "channels": 4,
+  "lead_columns": 1,
+  "offsets": {
+   "serial": 0,
+   "virn": 1,
+   "bar": 2,
+   "sys": 3,
+   "print": 4,
+   "play_first": 5,
+   "play_count": 6,
+   "play_used": 2,
+   "agent_first": 11,
+   "agent_count": 9,
+   "qa": 20
+  },
+  "void_serial": "888888888888888",
+  "passive_flag": "1",
+  "virn_random_range": [
+   2000000,
+   6999999
+  ],
+  "parity_rule": "digit_sum_mod10"
+ },
+ "structure": {
+  "tickets_per_game": 500000,
+  "book_size": 40
+ },
+ "agent": {
+  "high_letters": [
+   "W",
+   "S",
+   "A",
+   "D",
+   "Z",
+   "R"
+  ],
+  "low_letters": {
+   "50": "T"
+  },
+  "positions": 9,
+  "letters_used": 3
+ },
+ "fixed_rules": {
+  "max_same_value_run": 3,
+  "winner_every_n_tickets": 5,
+  "gleps_amount": 50
+ },
+ "games": [
+  {
+   "key": "0115",
+   "name": "SAKURA MAL",
+   "lottery": "320",
+   "channels": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "win_rule": "match_two",
+   "special_symbols": [],
+   "forbidden": null,
+   "has_prize_spot": true,
+   "play_symbols": {
+    "KA": "Sun",
+    "LA": "Butterfly",
+    "NA": "Squirrel",
+    "PA": "Bee",
+    "QA": "Bunch of Flower",
+    "UA": "Tree"
+   },
+   "prizes": [
+    {
+     "sys": "03",
+     "amount": 50,
+     "print": "dd",
+     "tier": "Low",
+     "count": 100000
+    },
+    {
+     "sys": "07",
+     "amount": 500,
+     "print": "hh",
+     "tier": "High",
+     "count": 12500
+    },
+    {
+     "sys": "08",
+     "amount": 1000,
+     "print": "jj",
+     "tier": "High",
+     "count": 1790
+    },
+    {
+     "sys": "11",
+     "amount": 5000,
+     "print": "mm",
+     "tier": "High",
+     "count": 42
+    }
+   ],
+   "loss": {
+    "code": "99",
+    "count": 385668
+   },
+   "gleps_per_book": 8,
+   "packing": [
+    {
+     "slots": 41,
+     "books": 300,
+     "allocation": [
+      {
+       "amount": 500,
+       "mode": "exact",
+       "n": 300
+      },
+      {
+       "amount": 1000,
+       "mode": "min",
+       "n": 42
+      },
+      {
+       "amount": 5000,
+       "mode": "exact",
+       "n": 1
+      }
+     ]
+    },
+    {
+     "slots": 1,
+     "books": 200,
+     "allocation": [
+      {
+       "amount": 500,
+       "mode": "exact",
+       "n": 200
+      },
+      {
+       "amount": 1000,
+       "mode": "min",
+       "n": 28
+      },
+      {
+       "amount": 5000,
+       "mode": "exact",
+       "n": 1
+      }
+     ]
+    }
+   ],
+   "group_rules": [
+    {
+     "group": "book",
+     "size": 1,
+     "amounts": [
+      500
+     ],
+     "mode": "exactly",
+     "n": 1
+    },
+    {
+     "group": "book",
+     "size": 1,
+     "amounts": [
+      1000,
+      5000
+     ],
+     "mode": "at_most_each",
+     "n": 1
+    }
+   ],
+   "expected": {
+    "revenue": 25000000,
+    "pool": 13250000,
+    "payout_pct": 53.0,
+    "win_ratio": 4.37
+   }
+  }
+ ]
+}
