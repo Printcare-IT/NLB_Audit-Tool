@@ -1,0 +1,46 @@
+{
+ "name": "lottery-layout-audit",
+ "title": "Scratch Lottery Layout Audit",
+ "version": "1.0.0",
+ "description": "Audits a scratch-lottery layout (print data) file against the client's game and data specifications, and produces signed-off audit reports.",
+ "owner": "Printcare Premedia - PSL",
+ "runtime": {
+  "language": "python",
+  "python": ">=3.9",
+  "install": "pip install -r requirements.txt",
+  "system_dependencies": ["LibreOffice (only for legacy .doc specifications)"]
+ },
+ "entrypoint": "python audit_tool.py <command> --job <job> [--layout <file>] --json",
+ "agent_instructions": "CLAUDE.md",
+ "integration_contract": "MODULE.md",
+ "workspace": {
+  "jobs_root": "jobs/",
+  "job_inputs": "jobs/<job>/inputs/",
+  "job_outputs": "jobs/<job>/out/",
+  "environment": {
+   "AUDIT_LAYOUTS_DIR": "optional - shared folder holding layout files too large to copy into the job"
+  }
+ },
+ "commands": {
+  "status":  {"purpose": "report the job's stage and next action", "mutates": false},
+  "new":     {"purpose": "create jobs/<job>/inputs and out", "mutates": true},
+  "probe":   {"purpose": "measure the layout file -> measured_facts.json", "mutates": true, "long_running": true},
+  "draft":   {"purpose": "draft spec.md from documents + measurements", "mutates": true},
+  "build":   {"purpose": "reviewed spec.md -> job_config.json (review and validation gates)", "mutates": true},
+  "verify":  {"purpose": "compare settings with the layout file", "mutates": false, "long_running": true},
+  "audit":   {"purpose": "run the audit, write reports to out/", "mutates": true, "long_running": true},
+  "run":     {"purpose": "build + verify + audit, stopping at the first gate", "mutates": true, "long_running": true},
+  "test":    {"purpose": "regression suite (unit only unless --layouts is given)", "mutates": false}
+ },
+ "exit_codes": {
+  "0": "succeeded (audit: every check passed)",
+  "1": "refused or failed - read the log",
+  "2": "audit completed with exceptions in the layout file",
+  "3": "waiting on a person - spec.md has unticked review items"
+ },
+ "stages": ["missing", "needs_inputs", "needs_layout", "needs_draft", "needs_review", "spec_unreadable", "needs_build", "ready_to_audit", "audited", "legacy"],
+ "human_gates": [
+  {"stage": "needs_review", "who": "auditor", "action": "resolve and tick every review item in jobs/<job>/spec.md"},
+  {"stage": "audited", "who": "auditor", "action": "read out/audit_report.md and sign off; record the job as golden"}
+ ]
+}

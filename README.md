@@ -4,8 +4,14 @@ One tool for every NLB job. The engine is never edited for a new job: a job is
 described by a reviewed markdown specification, and the settings are generated
 from it.
 
+**Running it as a platform module or with Claude:** use the single entry point
+`python audit_tool.py <command> --job <job> [--json]` - see
+[MODULE.md](MODULE.md) for the contract and [CLAUDE.md](CLAUDE.md) for the
+agent instructions. This README describes the engine underneath.
+
 ```
-nlb/
+<repo>/
+  audit_tool.py           module entry point: status, draft, build, run, ... (MODULE.md)
   engine/
     probe_layout.py       measures a layout file (no settings needed)
     draft_spec.py         drafts spec.md from the documents + measurements
@@ -17,8 +23,9 @@ nlb/
     run_regression.py     runs everything below
     test_audit_checks.py  every audit check, one injected defect per test
     test_pipeline.py      validator, parsers, markdown, drafter, gates
+    test_module.py        audit_tool.py stages, gates and exit codes
     fixtures.py           the synthetic job generator
-    golden/               recorded results of real jobs
+    golden/               recorded results of real jobs (none recorded yet)
   jobs/
     <job>/
       inputs/             game specs + data spec (.pdf / .docx / .doc)
@@ -26,7 +33,7 @@ nlb/
       measured_facts.json from probe_layout.py
       spec.md             THE RECORD - drafted, then reviewed by you
       job_config.json     generated from spec.md - never edit by hand
-      out/                audit reports and offender CSVs
+      out/                audit reports, audit_summary.json, offender CSVs
 ```
 
 **Where the layout file goes.** Put it in `jobs/<job>/inputs/` beside the
@@ -38,8 +45,7 @@ so if they already sit on a share, leave them there and point at them instead
 of copying: `--layouts <that folder>`. The drafter only reads
 `.pdf`, `.docx` and `.doc`, so a `.TXT` layout in `inputs/` is ignored by it.
 
-Setup, once: `pip install python-docx pdfplumber` (there is no
-`requirements.txt` yet). LibreOffice is needed only if a specification arrives
+Setup, once: `pip install -r requirements.txt`. LibreOffice is needed only if a specification arrives
 as a legacy `.doc`.
 
 **Folder name.** The drafter reads `jobs/<job>/inputs/` - plural. A folder
@@ -130,15 +136,16 @@ overwriting it.
 Run after **any** change to the engine, and before trusting a new release:
 
 ```
-python tests/run_regression.py --unit-only                  # under a second
+python tests/run_regression.py --unit-only                  # about ten seconds
 python tests/run_regression.py --layouts <layout folder>    # a few minutes
 ```
 
-**Layer 1 - unit tests (58, under a second, no files needed).** A generator
+**Layer 1 - unit tests (106, about ten seconds, no files needed).** A generator
 builds a small synthetic job that passes every rule. Each test injects one
 defect and asserts that *exactly* the right check fails - no more, no fewer.
 They cover all 15 audit checks, the validator, the specification parsers, the
-markdown format, the drafter's cross-checks and both build gates. Several are
+markdown format, the drafter's cross-checks, both build gates and the
+`audit_tool.py` entry point. Several are
 named after real defects found during development (the losers-run bug, the
 nested Word table, thousands separators, the contents page) and fail if that
 defect returns.
@@ -300,5 +307,14 @@ builder ignores prose outside the machine-read tables.
 
 ## Adding a new winning rule
 
-Only reason to touch the engine. Add a branch to `should_win()` and the new
-name to `WIN_RULES` in `validate_config.py`. Everything else is settings.
+The usual reason to touch the engine. Five places, all required:
+
+- `should_win()` in `audit_engine.py` - the rule itself
+- `WIN_RULES` in `validate_config.py`
+- `WIN_RULE_TEXT` in `spec_md.py` - its description in `spec.md`
+- `read_win_rule()` in `spec_parse.py` - so the drafter recognises its wording
+- the win-rule inference in `probe_layout.py` - otherwise `verify` reports a
+  disagreement on every job that uses it
+
+Then add tests. See [docs/architecture.md](docs/architecture.md) for this and
+the other kinds of change.
