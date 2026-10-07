@@ -18,7 +18,7 @@ nlb/
     test_audit_checks.py  every audit check, one injected defect per test
     test_pipeline.py      validator, parsers, markdown, drafter, gates
     fixtures.py           the synthetic job generator
-    golden/               recorded results of real jobs (created by --record)
+    golden/               recorded results of real jobs
   jobs/
     <job>/
       inputs/             game specs + data spec (.pdf / .docx / .doc)
@@ -33,14 +33,10 @@ nlb/
 specifications, so everything for a job sits together. The tools take its path
 as an argument, so it can live anywhere; only `run_regression.py` has to find
 it on its own, and it looks in any `--layouts` folder you pass, then the job
-folder, then `jobs/<job>/inputs/`. Layout files are large (137 to 226 MB on
-recent jobs), so if they already sit on a share, leave them there and point at
-them instead of copying: `--layouts <that folder>`. The drafter only reads
+folder, then `jobs/<job>/inputs/`. Layout files are large (often over 100 MB),
+so if they already sit on a share, leave them there and point at them instead
+of copying: `--layouts <that folder>`. The drafter only reads
 `.pdf`, `.docx` and `.doc`, so a `.TXT` layout in `inputs/` is ignored by it.
-
-**Not in git.** `.gitignore` excludes layout files (`*LAYOUT*.TXT`, `.rar`,
-`.zip` - GitHub rejects files over 100 MB) and the offender CSVs. Keep the
-layout files on the share; regenerate the CSVs by re-running the audit.
 
 Setup, once: `pip install python-docx pdfplumber` (there is no
 `requirements.txt` yet). LibreOffice is needed only if a specification arrives
@@ -59,21 +55,10 @@ named `input` is not found; rename it, or pass `--inputs <folder>` to
 4. REVIEW jobs/<job>/spec.md     - resolve and tick every review item
 5. python engine/build_config.py --job jobs/<job>
 6. python engine/probe_layout.py <layout file> --config jobs/<job>/job_config.json
-7. python engine/audit_engine.py --config jobs/<job>/job_config.json \
-                                 --layout <layout file> --out jobs/<job>/out
+7. python engine/audit_engine.py --config jobs/<job>/job_config.json --layout <layout file> --out jobs/<job>/out
 ```
 
 Step 3 can run step 2 for you: `draft_spec.py --job jobs/<job> --layout <file>`.
-
-**What step 7 writes to `out/`.** `audit_report.md` and `audit_report.docx`
-give, for each check, its procedure, its findings and either "No exceptions
-were noted" or the number of exceptions, followed by the three appendices
-(play symbol, prize amount and agent validation code distributions). They do
-not list the offending items. Each check with exceptions gets its own
-`game<key>_check<NN>_offenders.csv`, which lists every offending item. The
-audit validates the settings first and stops if they fail;
-`--skip-validation` bypasses that and is not for signed-off audits. Rename the
-reports for delivery if needed - a re-run overwrites `audit_report.*`.
 
 ### What the drafter does
 
@@ -82,15 +67,14 @@ the three sources wherever they speak to the same fact - game spec, data spec,
 and the delivered file. **Every disagreement becomes a review item.** It never
 overwrites a reviewed `spec.md`; a second run writes `spec.draft.md`.
 
-Things it has caught on real jobs:
+The kinds of problem it catches include:
 
-- the 0345 batch rule that no data could satisfy (BLOCKING)
-- a data spec page range ten pages short of the file
-- a data spec saying four channels where the file has five
+- a rule in the specification that no data could satisfy (BLOCKING)
+- a data spec page range that does not match the file
+- a data spec channel count that differs from the file
 - a symbol table headed with a game number not in the job, matched to the
   right game by its symbol codes
-- a special symbol (Egg, game 0352) that the specification says wins but the
-  data never paid - the data was regenerated
+- a special symbol that the specification says wins but the data never pays
 
 ### The game spec title line
 
@@ -98,7 +82,7 @@ The drafter identifies each game specification by its title line, which must
 read exactly like this, with the game name **in quotes**:
 
 ```
-GAME NO: 0351 - "CAR RACE" (Rs. 50)
+GAME NO: <number> - "<GAME NAME>" (Rs. <price>)
 ```
 
 Without the quotes the game number is not read (`game None` in the sources
@@ -123,14 +107,14 @@ A LAYOUT item is a finding about the delivered data, not about `spec.md`.
 Do not "fix" it by copying the file's behaviour into the tables unless the
 client confirms the specification itself is wrong. Record who confirmed it.
 
+
 - Machine-read tables sit under invisible `<!-- table:... -->` anchors. Change
   their **values** freely; keep their column headings.
 - Everything else is prose for you and is ignored by the builder - add notes
   wherever useful.
 - Tick each review item with `- [x]` once resolved. Adding a short note after
   the tick records what you decided.
-- Several amounts in one cell are separated with ` / `. The same goes for the
-  channels of a game printed on several: `1 / 2 / 3 / 4`.
+- Several amounts in one cell are separated with ` / `.
 
 ### The two gates in build_config.py
 
@@ -146,31 +130,18 @@ overwriting it.
 Run after **any** change to the engine, and before trusting a new release:
 
 ```
-python tests/run_regression.py --unit-only                  # a few seconds
+python tests/run_regression.py --unit-only                  # under a second
 python tests/run_regression.py --layouts <layout folder>    # a few minutes
 ```
 
-**Known problem:** `run_regression.py` currently stops with *"Start directory
-is not importable"* before running any test. Until that is fixed, run the unit
-tests directly from the `tests` folder:
-
-```
-cd tests
-python -m unittest test_audit_checks test_pipeline
-```
-
-Nothing runs these tests automatically - there is no CI and no git hook.
-
-**Layer 1 - unit tests (102, a few seconds, no files needed).** A generator
+**Layer 1 - unit tests (58, under a second, no files needed).** A generator
 builds a small synthetic job that passes every rule. Each test injects one
 defect and asserts that *exactly* the right check fails - no more, no fewer.
 They cover all 15 audit checks, the validator, the specification parsers, the
-markdown format, the drafter's cross-checks and both build gates. The audit
-check and drafter tests run twice: once with one game per channel, and once
-with one game printed on two channels, which must give identical results.
-Several are named after real defects found during development (the losers-run
-bug, the nested Word table, thousands separators, the contents page, the split
-game read from one channel) and fail if that defect returns.
+markdown format, the drafter's cross-checks and both build gates. Several are
+named after real defects found during development (the losers-run bug, the
+nested Word table, thousands separators, the contents page) and fail if that
+defect returns.
 
 **Layer 2 - golden results on real jobs.** For each job with
 `tests/golden/<job>.json`, the runner confirms that:
@@ -212,23 +183,13 @@ That JSON is the evidence base for drafting the markdown specification, so every
 figure in the draft is either quoted from a specification document or measured
 here — never guessed.
 
-**One game on several channels.** A game may be printed on more than one
-channel, each carrying part of its serials (game 0115: four channels, serials
-1–125,000 on channel 1, 125,001–250,000 on channel 2, and so on). The facts
-are written twice: `channels` (what each block of the file physically holds)
-and `games` (each game's channels combined). Everything compared with a
-specification — prize counts, symbols, win rule, books, packing — uses the
-`games` figures, and duplicate serials and VIRNs are counted across a game's
-channels. A `measured_facts.json` from before this change has no `games`
-section; re-run the probe to refresh it.
-
 With `--config` it also compares the measurements against the settings and lists
 every disagreement. It checks:
 
 | Area | Catches |
 |---|---|
 | Channel count, void serial | File shape differs from the settings |
-| Each game's channels, lottery code | A game configured on the wrong channel, or a channel of a split game left out |
+| Channel to game map, lottery code | A game configured on the wrong channel |
 | Every prize count and the loser count | Any count out by even one |
 | Play symbol set, both directions | A symbol in the data but not the settings, or the reverse |
 | Inferred winning rule and special symbols | Settings say `match_two`, data says `special_only` |
@@ -271,23 +232,18 @@ The two numbers inside them (3 and 5) are still settings, under
 | `structure` | tickets per game, book size |
 | `agent` | high-tier letters, the low-tier letter per low prize amount |
 | `fixed_rules` | run length, winner interval, GLEPS amount |
-| `games[]` | per game: channels, symbols, prize table, win rule, packing, group promises |
-
-`channels` is a list: `[1]` for a game on one channel, `[1, 2, 3, 4]` for a
-game printed across four. Every channel belongs to exactly one game. In
-`spec.md` the games table shows it as `1 / 2 / 3 / 4`. Settings built before
-this change carry `"channel": 1` instead; they are still read correctly.
+| `games[]` | per game: symbols, prize table, win rule, packing, group promises |
 
 ### Winning rules
 
-| Value | Meaning | Seen in |
-|---|---|---|
-| `match_two` | two identical play symbols win | 0110, 0111, 0347, 0349, 0350, 0112, 0113, 0351, 0115 |
-| `match_two_or_special` | two identical, or one special symbol alone | 0345 (Flag), 0348 (Sun), 0353 (Guitar), 0114 (Ball) |
-| `special_only` | one special symbol wins; a matching pair does **not** | 0346 (Gold Coin / Diamond), 0352 (Egg / Duck) |
+| Value | Meaning |
+|---|---|
+| `match_two` | two identical play symbols win |
+| `match_two_or_special` | two identical, or one special symbol alone |
+| `special_only` | one special symbol wins; a matching pair does **not** |
 
 `forbidden: "two_special"` additionally rejects tickets carrying two special
-symbols (0345, 0346, 0348, 0352, 0353, 0114).
+symbols.
 
 ### Packing schedule
 
@@ -325,7 +281,7 @@ Rs.500"* is `exactly`; *"contain at least one prize of Rs.500"* is `min`
 
 ## What the validator catches
 
-Run before every audit. It has already found a real specification error.
+Run before every audit.
 
 - prize counts against the stated sub-total and ticket count
 - pool, revenue, payout percentage and win ratio
@@ -334,45 +290,13 @@ Run before every audit. It has already found a real specification error.
 - **whether a group promise is achievable at all**
 - symbols referenced by prizes and special rules actually exist
 - print codes present or absent according to `has_prize_spot`
-- every channel belongs to exactly one game (a game may own several)
 
-## Specification notes
+## Job-specific notes
 
-**Game 0345 — batch rule withdrawn.** An earlier draft required *"each batch of
-75 books should contain a minimum of one Rs.10,000 winner"*, which was
-impossible (167 batches needed, 84 prizes available). The revised specification
-replaces it with a per-slot guarantee of **2 x Rs.10,000 per box**, which the
-delivered data satisfies exactly (41 x 2 + 2 = 84, matching the prize table with
-zero slack). The settings reflect the revised rule; no batch rule is configured.
-
-**Game 0347 — 59% payout is intentional.** A special promotional case, confirmed
-by NLB. Every other NLB game runs at 53%. The validator checks payout against
-the figure declared in the settings, so no change is needed — but do not
-"correct" it to 53%.
-
-**Game 0347 — three standing exceptions.** 1,787 books carry no NON-GLEPS prize,
-and 3,627 consecutive ticket pairs repeat a play pattern. Both were reproduced
-directly from the raw file. A likely contributing factor: 0347 uses only **four**
-play symbols (others use six), giving just 16 possible ordered pairs across
-500,000 tickets, which makes consecutive repeats hard to avoid. Raise with the
-data generation team.
-
-**Game 0352 (Lucky Duck) — Egg did not win in the first data. RESOLVED.**
-Both the game spec and the data spec read *"find an Egg symbol or a Duck
-symbol and win the corresponding prize"*. In the first September 2026 layout
-file only Duck (`LB`) won; Egg (`KB`) appeared about as often as the plain
-symbols, at least 63,638 times on losing tickets. The drafter flagged it. The
-layout file was regenerated on 29 September 2026, and in the new file Egg and
-Duck both behave as winning symbols, as specified, so the settings keep
-`KB, LB`.
-
-**Game 0115 (Sakura Mal) — one game on four channels.** The first job printed
-as a single game across every channel: serials 1–125,000 on channel 1,
-125,001–250,000 on channel 2, 250,001–375,000 on channel 3 and
-375,001–500,000 on channel 4, each channel holding 3,125 whole books. Before
-the tool supported this, the drafter read only one channel and raised a false
-review item for every prize count. The data itself was correct: counts match
-the specification exactly and all 15 checks pass.
+Notes about a particular game or job (withdrawn rules, confirmed exceptions,
+non-standard payout, open questions with the client) belong in that job's
+`jobs/<job>/spec.md`, not in this file. `spec.md` is the job's record, and the
+builder ignores prose outside the machine-read tables.
 
 ## Adding a new winning rule
 
