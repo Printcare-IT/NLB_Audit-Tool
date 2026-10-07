@@ -999,6 +999,39 @@ def write_csvs(out_dir, results):
     return written
 
 
+def write_summary_json(path, job, results, info, layout_path, files):
+    """Machine-readable summary for callers that do not parse the reports."""
+    live = info["rows"] * job.channels - info["void_tickets"]
+    games = []
+    for key, res in results.items():
+        games.append({
+            "key": key,
+            "name": job.games[key]["name"],
+            "passed": all(r.passed for r in res),
+            "checks": [{"index": r.index, "title": r.title, "passed": r.passed,
+                        "offenders": len(r.offenders)} for r in res],
+        })
+    summary = {
+        "job_id": job.cfg["job"]["id"],
+        "layout_file": os.path.basename(layout_path),
+        "generated": f"{datetime.datetime.now():%Y-%m-%d %H:%M:%S}",
+        "load": {
+            "rows": info["rows"],
+            "live_tickets": live,
+            "void_tickets": info["void_tickets"],
+            "malformed_serials": len(info["malformed"]),
+            "duplicate_serials": len(info["duplicates"]),
+            "bad_field_count_rows": len(info["bad_field_count"]),
+        },
+        "all_passed": all(g["passed"] for g in games),
+        "exceptions": sum(1 for g in games for c in g["checks"] if not c["passed"]),
+        "games": games,
+        "files": [os.path.basename(f) for f in files],
+    }
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(summary, f, indent=1)
+
+
 # ------------------------------------------------------------------ #
 #  Main                                                               #
 # ------------------------------------------------------------------ #
@@ -1051,6 +1084,9 @@ def main():
         dx = None
         print("  (python-docx not installed - Word report skipped)")
     csvs = write_csvs(args.out, results)
+    sj = os.path.join(args.out, "audit_summary.json")
+    write_summary_json(sj, job, results, info, args.layout,
+                       [md] + ([dx] if dx else []) + csvs)
 
     print("\nReports written:")
     print(f"  {md}")
@@ -1058,6 +1094,7 @@ def main():
         print(f"  {dx}")
     for c in csvs:
         print(f"  {c}")
+    print(f"  {sj}")
 
     print("\n================ SUMMARY ================")
     for key, res in results.items():

@@ -178,7 +178,7 @@ def main():
     args = ap.parse_args()
 
     print("== unit tests ==")
-    r = subprocess.run([sys.executable, "-m", "unittest", "discover", "-s", HERE, "-t", ROOT],
+    r = subprocess.run([sys.executable, "-m", "unittest", "discover", "-s", HERE],
                        capture_output=True, text=True, cwd=ROOT)
     last = r.stderr.strip().splitlines()
     print("   " + (last[-3] if len(last) >= 3 else "") + " -> " + (last[-1] if last else ""))
